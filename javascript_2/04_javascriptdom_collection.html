@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>集合的存取</title>
+    </head>
+    <body>
+        <script>
+            function collection() {
+                //宣告變數im是取得圖片物件的成員。
+                let im = document.images.length;
+                //宣告變數a是取得第1張圖片的寬度。
+                let a = document.images[0].width;
+                //宣告變數b是取得第2張圖片的邊框寬度。
+                let b = document.images["myimg2"].border;
+                //宣告變數c是取得第3張圖片的名稱。
+                let c = document.all["myimg3"].name;
+                //宣告變數d是取得超連結的href屬性。
+                let d = document.links.item(0).href;
+                document.all.result.value = `images物件的數目：${im} \n` + `第1張圖片的寬度：${a} \n`
+                + `第2張圖片的邊框寬度：${b} \n` + `第3張圖片的名稱：${c} \n` + `超連結的href：${d}`;
+            }
+        </script>
+        <textarea name="result" rows="6" cols="60"></textarea><br />
+        <button name="mybtn" onclick="collection()">存取images物件屬性</button>
+        <p>
+        <img src="../images/fb.png" border="0" name="myimg1" width="50">
+        <img src="../images/ig.png" border="0" name="myimg2" width="50">
+        <img src="../images/line.png" border="0" name="myimg3" width="50"> 
+        <a href="https://www.google.com.tw" target="_blank">Google</a>
+    </body>
+</html>

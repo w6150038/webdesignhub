@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<title>Web Design Hub</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+	<link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        function loadComponent(id, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(content => {
+                    document.getElementById(id).innerHTML = content;
+                })
+                .catch(error => console.error(`無法載入 ${file}`, error));
+        }
+
+        loadComponent("header", "header.html");
+        loadComponent("footer", "footer.html");
+    </script>
+    <div id="header"></div>
+    <main>
+      <section class="timeline">
+        <h2>📖 我的學習日誌</h2>
+        <div class="timeline-container">
+      
+          <div class="timeline-item">
+            <div class="timeline-date">2025-03-30</div>
+            <div class="timeline-content">
+              <h3>🎨 點擊改變按鈕顏色</h3>
+              <p>學會了如何使用 JavaScript 改變按鈕顏色。</p>
+              <a href="chatgpt/01_jsdom.html#section1">查看實作</a>
+            </div>
+          </div>
+      
+          <div class="timeline-item">
+            <div class="timeline-date">2025-03-29</div>
+            <div class="timeline-content">
+              <h3>💻 首頁製作完成</h3>
+              <p>今天完成了首頁製作，接下來會陸續增加JS學習的日誌。</p>
+              <a href="#">沒有連結</a>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+</body>
+</html>

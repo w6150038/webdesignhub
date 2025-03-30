@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="文字變化與排版">
+	<meta name="author" content="王群銘">
+	<title>文字變化與排版</title>
+	<style type="text/css">
+		* {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;	
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+	<h2>段落標記</h2>
+	<p>
+	<table border="1">
+		<tr>
+			<th>標記名稱</th>
+			<th>語法</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>&lt;p&gt;</td>
+			<td>&lt;p&gt;...&lt;/p&gt;</td>
+			<td>分段功能，設定段落置中或靠右對齊，如果將&lt;p&gt;起始標記放置結尾，也有分段功能。</td>
+		</tr>
+		<tr>
+			<td>&lt;br&gt;</td>
+			<td>&lt;br /&gt;</td>
+			<td>換行功能，不需要結束標記，也沒有屬性。</td>
+		</tr>
+	</table>
+	&lt;p&gt;與&lt;br&gt;顯示結果：<br />
+	我是第一段<p>
+	我是第一段第一行<br />
+	我是第一段第二行<br />
+	我是第一段第三行
+	<p>我是第二段</p>
+	我是第二段第一行<br />
+	我是第二段第二行<br />
+	我是第二段第三行<p>
+
+	<h2>區塊元素(Block Level)與行內元素(Inline)</h2>
+	<ul>
+		<li>
+			區塊元素：預設會從新行開始，寬度會佔滿整個容器，可以利用CSS設定寬度(width)與高度(height)，也可以利用margin及padding設定邊距與填充距離(留白)。<br />
+			<p style="background-color:#a7fb9c;">這是區塊元素</p>
+		</li>
+		<li>
+			行內元素：預設會以同一行內呈現，不允許利用CSS設定寬度(width)與高度(height)，但可使用line-height改變高度。可以利用CSS設定margin及padding，但只會改變左右邊界及填充(留白)。&lt;span&gt;及&lt;a&gt;都是行內標記。<br />
+			行內元素如果在CSS語法加上display: block屬性，則會以區塊元素來呈現。<br />
+			<span style="background-color:#a7c4e1">這是行內元素</span>
+			<span style="background-color:#a7c4e1; display: block;">行內元素加上display: block後變成區塊元素</span>
+		</li>
+	</ul>
+
+	<h2>對齊與縮排標記</h2>
+	<p>
+	<table border="1">
+		<tr>
+			<th>標記名稱</th>
+			<th>語法</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>&lt;pre&gt;</td>
+			<td>&lt;pre&gt;...&lt;/pre&gt;</td>
+			<td>按照html語法排列方式顯示文字。</td>
+		</tr>
+		<tr>
+			<td>&lt;blockquote&gt;</td>
+			<td>&lt;blockquote&gt;...&lt;/blockquote&gt;</td>
+			<td>標記內的文字換行並縮排。</td>
+		</tr>
+		<tr>
+			<td>&lt;hr&gt;</td>
+			<td>&lt;hr /&gt;</td>
+			<td>分隔線</td>
+		</tr>
+		<tr>
+			<td>&lt;h1&gt;</td>
+			<td>&lt;h1&gt;...&lt;h6&gt;</td>
+			<td>設定段落標題大小，&lt;h1&gt;最大，&lt;h6&gt;最小，標記裡的文字會獨佔一行。</td>
+		</tr>
+	<table>
+	&lt;pre&gt;顯示結果：<br />
+	<pre>
+		我是html原始碼。
+  		我是html原始碼。
+		我是html原始碼。
+  		我是html原始碼。
+	</pre>
+
+	&lt;blockquote&gt;顯示結果：<br />
+		關務署臺中關<br />
+		關務署臺中關<br />
+	<blockquote style="border-top: 2px solid #959595; border-bottom: 2px solid #959595;" cite="http://https://web.customs.gov.tw/taichung">
+		<p>關務署臺中關，換行縮排。</p>
+		<p>關務署臺中關，換行縮排。</p>
+	</blockquote>
+		關務署臺中關。
+	<p>
+
+	&lt;hr&gt;顯示結果：<br />
+	<hr />
+
+	&lt;h1&gt;到&lt;h6&gt;顯示結果：<br />
+		<h1>我是h1</h1><br />
+		<h2>我是h2</h2><br />
+		<h3>我是h3</h3><br />
+		<h4>我是h4</h4><br />
+		<h5>我是h5</h5><br />
+		<h6>我是h6</h6>
+		<p>
+
+	<h2>文字效果標記</h2>
+	<p>
+	<table border="1">
+		<tr>
+			<th>標記名稱</th>
+			<th>語法</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>&lt;b&gt;</td>
+			<td>&lt;b&gt;...&lt;/b&gt;</td>
+			<td>粗體</td>
+		</tr>
+		<tr>
+			<td>&lt;strong&gt;</td>
+			<td>&lt;strong&gt;...&lt;/strong&gt;</td>
+			<td>粗體，html5建議使用。</td>
+		</tr>
+		<tr>
+			<td>&lt;i&gt;</td>
+			<td>&lt;i&gt;...&lt;/i&gt;</td>
+			<td>斜體</td>
+		</tr>
+		<tr>
+			<td>&lt;u&gt;</td>
+			<td>&lt;u&gt;...&lt;/u&gt;</td>
+			<td>底線</td>
+		</tr>
+	</table>
+	<p>
+	HTML5建議不再使用上述標記，改用CSS語法。
+	<table border="1">
+		<tr>
+			<th>HTML標記</th>
+			<th>改用CSS語法</th>
+		</tr>
+		<tr>
+			<td>&lt;font&gt;</td>
+			<td>font-family, font-size…等標記</td>
+		</tr>
+		<tr>
+			<td>&lt;b&gt;</td>
+			<td>font-weight</td>
+		</tr>
+		<tr>
+			<td>&lt;i&gt;</td>
+			<td>font-style</td>
+		</tr>
+		<tr>
+			<td>&lt;u&gt;</td>
+			<td>font-decoration</td>
+		</tr>
+	</table>
+	<p>
+	<h2>文字上、下標記</h2>
+	<p>
+	適用於顯示化學式或數學式。<br />
+	上標記：&lt;sup&gt;...&lt;/sup&gt;<br />
+	下標記：&lt;sub&gt;...&lt;/sub&gt;<br />
+	例如：SO<sub>4</sub><sup>2+</sup>
+
+	<h2>項目符號與編號清單</h2>
+	<p>
+	符號清單(無序清單Unordered List)：<br />
+		&lt;ul&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目1&lt;/li&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目2&lt;/li&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目3&lt;/li&gt;<br />
+		&lt;/ul&gt;<br />
+	HTML5不支援用&lt;ul&gt;的type屬性來設定項目符號的樣式，必須改用CSS語法的list-style-type語法定義。
+	<p>
+	編號清單(有序清單Ordered List)：<br />
+		&lt;ol&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目1&lt;/li&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目2&lt;/li&gt;<br />
+			&nbsp;&nbsp;&lt;li&gt;清單項目3&lt;/li&gt;<br />
+		&lt;/ol&gt;
+	<p>
+	&lt;ol&gt;標記屬性：<br />
+	<table border="1">
+		<tr>
+			<th>屬性名稱</th>
+			<th>設定值</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>type</td>
+			<td>設定值參考下表</td>
+			<td>數目樣式，預設值：type="1"</td>
+		</tr>
+		<tr>
+			<td>start</td>
+			<td>1,2,3等整數值</td>
+			<td>編號起始值，預設值：start=1</td>
+		</tr>
+		<tr>
+			<td>reversed</td>
+			<td>reversed</td>
+			<td>反向排序</td>
+		</tr>
+	</table>
+	<p>
+	<table border="1">
+		<tr>
+			<th>type設定值</th>
+			<th>項目編號樣式</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>type="1"</td>
+			<td>1,2,3,...</td>
+			<td>阿拉伯數字</td>
+		</tr>
+		<tr>
+			<td>type="A"</td>
+			<td>A,B,C,...</td>
+			<td>大寫英文字母</td>
+		</tr>
+		<tr>
+			<td>type="a"</td>
+			<td>a,b,c,...</td>
+			<td>小寫英文字母</td>
+		</tr>
+		<tr>
+			<td>type="Ⅰ"</td>
+			<td>Ⅰ,Ⅱ,Ⅲ,...</td>
+			<td>大寫羅馬數字</td>
+		</tr>
+		<tr>
+			<td>type="ⅰ"</td>
+			<td>ⅰ,ⅱ,ⅲ,...</td>
+			<td>小寫羅馬數字</td>
+		</tr>
+	</table>
+	<p>
+	巢狀式清單(以醫院練習)：
+	<ul>
+		<li>臺大醫院</li>
+			<ul>
+				<li>心臟科</li>
+					<ol>
+						<li>AAA醫師</li>
+						<li>BBB醫師</li>
+						<li>CCC醫師</li>
+					</ol>
+				<li>耳鼻喉科</li>
+					<ol>
+						<li>DDD醫師</li>
+						<li>EEE醫師</li>
+						<li>FFF醫師</li>
+					</ol>
+				<li>眼科</li>
+					<ol>
+						<li>GGG醫師</li>
+						<li>HHH醫師</li>
+						<li>III醫師</li>
+					</ol>
+			</ul>		
+		<li>長庚醫院</li>
+			<ul>
+				<li>心臟科</li>
+					<ol>
+						<li>JJJ醫師</li>
+						<li>KKK醫師</li>
+						<li>LLL醫師</li>
+					</ol>
+				<li>耳鼻喉科</li>
+					<ol>
+						<li>MMM醫師</li>
+						<li>NNN醫師</li>
+						<li>OOO醫師</li>
+					</ol>
+				<li>眼科</li>	
+					<ol>
+						<li>PPP醫師</li>
+						<li>QQQ醫師</li>
+						<li>RRR醫師</li>
+					</ol>
+			</ul>
+		<li>馬偕醫院</li>
+			<ul>
+				<li>心臟科</li>
+					<ol>
+						<li>SSS醫師</li>
+						<li>TTT醫師</li>
+						<li>UUU醫師</li>
+					</ol>
+				<li>耳鼻喉科</li>
+					<ol>
+						<li>VVV醫師</li>
+						<li>WWW醫師</li>
+						<li>XXX醫師</li>
+					</ol>
+				<li>眼科</li>
+					<ol>
+						<li>YYY醫師</li>
+						<li>ZZZ醫師</li>
+						<li>aaa醫師</li>
+					</ol>
+			</ul>
+	</ul>
+
+	<ol style="background:#fae3e3; padding: 10px; list-style: cjk-ideographic inside;">
+		<li>工學院
+			<ul style="background:#f6feaa; padding: 20px; list-style: square;">
+				<li style="background:#fce694">機械系</li>
+				<li style="background:#fce694">化工系</li>
+			</ul>
+		</li>
+		<li>管學院
+			<ul style="background:#f6feaa; padding: 20px; list-style: square;">
+				<li style="background:#fce694">資管系</li>
+				<li style="background:#fce694">企管系</li>
+			</ul>
+		</li>
+	</ol>
+
+	<h2>CSS的list-style-type屬性</h2>
+	<ul>
+		<li>&lt;ul&gt;和&lt;ol&gt;標記可以利用CSS的list-style-type屬性來改變編號樣式。</li>
+		<li>list-style-type: none是隱藏項目，隱藏後的項目列表還是會有預設的邊距和填充(留白)，如果要隱藏，可說定CSS的margin: 0和padding: 0。</li>
+		<li>
+			<table>
+				<tr>
+					<th>屬性值</th>
+					<th>套用效果</th>
+				</tr>
+				<tr>
+					<td>none[預設保留邊距和填充(留白)]</td>
+					<td>
+						<ol align="left" style="list-style-type: none;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>none(將margin和padding設為0)</td>
+					<td>
+						<ol align="left" style="list-style-type: none; margin: 0; padding: 0;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>circle</td>
+					<td>
+						<ul align="left" style="list-style-type: circle;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>square</td>
+					<td>
+						<ul align="left" style="list-style-type: square;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>cjk-ideographic</td>
+					<td>
+						<ol align="left" style="list-style-type: cjk-ideographic;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>decimal</td>
+					<td>
+						<ol align="left" style="list-style-type: decimal;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>decimal-leading-zero</td>
+					<td>
+						<ol align="left" style="list-style-type: decimal-leading-zero;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						lower-alpha<br />
+						lower-latin
+					</td>
+					<td>
+						<ol align="left" style="list-style-type: lower-alpha;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						upper-alpha<br />
+						upper-latin
+					</td>
+					<td>
+						<ol align="left" style="list-style-type: upper-alpha;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>lower-greek</td>
+					<td>
+						<ol align="left" style="list-style-type: lower-greek;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						lower-roman<br />
+					</td>
+					<td>
+						<ol align="left" style="list-style-type: lower-roman;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						upper-roman<br />
+					</td>
+					<td>
+						<ol align="left" style="list-style-type: upper-roman;">
+							<li>羽毛球</li>
+							<li>棒球</li>
+							<li>籃球</li>
+						</ol>
+					</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+
+	<h2>CSS的list-style-position屬性</h2>
+	<ul>
+		<li>
+			inside：指編號項目在&lt;li&gt;標記範圍裡面。
+			<ol style="list-style-position: inside">
+				<li style="border-left:1px solid red;">羽毛球</li>
+				<li style="border-left:1px solid red;">棒球</li>
+				<li style="border-left:1px solid red;">籃球</li>
+			</ol>
+		</li>	
+		<li>
+			outside：指編號項目在&lt;li&gt;標記範圍外面，此為預設值。
+			<ol style="list-style-position: outside">
+				<li style="border-left:1px solid red;">羽毛球</li>
+				<li style="border-left:1px solid red;">棒球</li>
+				<li style="border-left:1px solid red;">籃球</li>
+			</ol>
+		</li>
+	</ul>
+
+	<h2>CSS的list-style屬性</h2>
+	<ul>
+		<li>此屬性是將list-style-type和list-style-position合併寫在一起。</li>
+		<li>語法：&lt;ol style="list-style: inside lower-alpha&gt;</li>
+		<li>
+			顯示結果：<br />
+			<ol style="list-style: inside lower-alpha;">
+				<li style="border-left:1px solid red;">羽毛球</li>
+				<li style="border-left:1px solid red;">棒球</li>
+				<li style="border-left:1px solid red;">籃球</li>
+			</ol>
+		</li>
+	</ul>
+
+	<h2>定義清單(Definition List)</h2>
+	<p>
+	適用於有主題與內容的兩段式文字，第一段以&lt;dt&gt;標記定義主題，第二段以&lt;dd&gt;標記定義內容。<br />
+	&lt;dl&gt;<br />
+	&nbsp;&nbsp;&lt;dt&gt;標題A&lt;/dt&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;內容A-1&lt;/dd&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;內容A-2&lt;/dd&gt;<br />
+	&nbsp;&nbsp;&lt;dt&gt;標題B&lt;/dt&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;內容B-1&lt;/dd&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;內容B-2&lt;/dd&gt;<br />
+	&lt;/dl&gt;
+	<dl>
+		<dt>台積電：</dt>
+		<dd>
+			台灣積體電路製造公司（英語：Taiwan Semiconductor Manufacturing Company Limited），簡稱台積電、TSMC。
+		</dd>
+		<dd>
+			台積電2330，今日股價：1,040元。
+		</dd>
+	</dl>
+	<dl>
+		<dt>宏達電：</dt>
+		<dd>
+			宏達國際電子（英語：HTC Corporation，全名「High Tech Computer Corporation」），簡稱宏達電或HTC。
+		</dd>
+		<dd>
+			宏達電2498，今日股價：43.25元。
+		</dd>
+	</dl>
+
+	<h2>註解與特殊符號</h2>
+	<p>
+	註解符號：&lt;!--註解文字--&gt;
+	<p>
+	特殊符號：<br />
+	<table border="1">
+		<tr>
+			<th>特殊符號</th>
+			<th>HTML表示法</th>
+		</tr>
+		<tr>
+			<td>&copy;</td>
+			<td>&amp;copy;</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>&amp;lt;</td>
+		</tr>
+		<tr>
+			<td>&gt;</td>
+			<td>&amp;gt;</td>
+		</tr>
+		<tr>
+			<td>&quot;</td>
+			<td>&amp;quot;</td>
+		</tr>
+		<tr>
+			<td>&amp;</td>
+			<td>&amp;amp;</td>
+		</tr>
+		<tr>
+			<td>半形空白</td>
+			<td>&amp;nbsp;</td>
+		</tr>
+		<tr>
+			<td>全形空白</td>
+			<td>&amp;emsp;</td>
+		</tr>
+	</table>
+	<p>
+	Emoji符號：
+	<table border="1">
+		<tr>
+			<th>Emoji</th>
+			<th>十進進位(Dec)</th>
+			<th>十六進位(Hex)</th>
+		</tr>
+		<tr>
+			<td>&#128512;</td>
+			<td>&amp;#128512;</td>
+			<td>&amp;#x1F600;</td>
+		</tr>
+		<tr>
+			<td>&#128513;</td>
+			<td>&amp;#128513;</td>
+			<td>&amp;#x1F601;</td>
+		</tr>
+		<tr>
+			<td>&#128514;</td>
+			<td>&amp;#128514;</td>
+			<td>&amp;#x1F602;</td>
+		</tr>
+		<tr>
+			<td>&#128515;</td>
+			<td>&amp;#128515;</td>
+			<td>&amp;#x1F603;</td>
+		</tr>
+		<tr>
+			<td>&#128516;</td>
+			<td>&amp;#128516;</td>
+			<td>&amp;#x1F604;</td>
+		</tr>
+	</table>
+	<p>
+	因為Emoji符號眾多，可以參考<a href="https://zh.wikipedia.org/wiki/emoji" target="_blank">維基百科Emoji列表</a>。例如找到喜愛的符號後往左邊查會得到「U+1F63x」，再往上查會得到「7」，將「U+1F63x」的最後一碼x改成7，再將「U+」改成「&amp;#x」，並在結尾加上;(分號)，就會得到「&amp;#x1F637;」就會是這個表情符號&#x1F637;。
+
+	<h2>meta標記</h2>
+	<ul>
+		<li>必須放在&lt;head&gt;與&lt;/head&gt;標記之間。</li>
+		<li>語法分兩大類：</li>
+			<ol>
+				<li>&lt;meta&nbsp;http-equiv="定義HTTP表頭相關資訊"&nbsp;content="表頭相關資訊內容"&gt;</li>
+				<li>&lt;meta&nbsp;name="宣告網頁相關資訊"&nbsp;content="網頁相關資訊內容"&gt;</li>
+			</ol>
+		<li>http-equiv屬性</li>
+			<dl>
+				<dt>content-type</dt>
+				<dd>&lt;meta&nbsp;http-equiv="content-type"&nbsp;content="text/html;&nbsp;charset=big5"&gt;</dd>
+				<dd>設定網頁格式的屬性設定值，每一項內容以分號;隔開。</dd>
+				<dd>text/html表示以text與html標準來編譯網頁。</dd>
+				<dd>charset是指定網頁的編碼字集(Character Set)，big5是繁體中文；zh-tw是台灣(中文)；gb2312是大陸(簡體)。</dd>
+			</dl>
+			<dl>
+				<dt>refresh</dt>
+				<dd>&lt;meta&nbsp;http-equiv="refresh"&nbsp;content="10;&nbsp;url=http://www.google.com.tw"&gt;</dd>
+				<dd>設定預設秒數自動轉址，如果省略網址，則表示重新整理網頁。</dd>
+			</dl>
+			<dl>
+				<dt>expires</dt>
+				<dd>&lt;meta&nbsp;http-equiv="expires"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
+				<dd>設定網頁到期時間，當網頁時間到期時，瀏覽器會從伺服器重新下載網頁，content值必須使用GMT時間格式。</dd>
+			</dl>
+			<dl>
+				<dt>pragma</dt>
+				<dd>&lt;meta&nbsp;http-equiv="pragma"&nbsp;content="no-cache"&gt;</dd>
+				<dd>設定網頁快取(cache)。</dd>
+				<dd>當content設定"no-cache"時，表示禁止瀏覽器從暫存區讀取快取，使用者無法離線瀏覽。</dd>
+			</dl>
+			<dl>
+				<dt>set-cookie</dt>
+				<dd>&lt;meta&nbsp;http-equiv="set-cookie"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
+				<dd>設定cookie到期時間，content值必須使用GMT時間格式。</dd>
+			</dl>
+			<dl>
+				<dt>windows-target</dt>
+				<dd>&lt;meta&nbsp;http-equiv="windows-target"&nbsp;content="_top"&gt;</dd>
+				<dd>"_top"表示強制將網頁顯示於最上層，防止他人在框架裡顯示您的網頁。</dd>
+			</dl>
+		<li>name屬性</li>
+			<dl>
+				<dt>keywords</dt>
+				<dd>&lt;meta&nbsp;name="keywords"&nbsp;content="bedminton,羽球,羽球拍,羽球鞋,運動"&gt;</dd>
+				<dd>設定網頁的關鍵字。</dd>
+				<dd>content裡填入網頁的關鍵字，可讓搜尋引擎更容易搜尋到網頁，可輸入中、英文、數字，以逗號,隔開。</dd>
+			</dl>
+			<dl>
+				<dt>description</dt>
+				<dd>&lt;meta&nbsp;name="description"&nbsp;content="網頁簡要說明"&gt;</dd>
+				<dd>說明網頁主要內容，建議不要超過100個字元。</dd>
+			</dl>
+			<dl>
+				<dt>author</dt>
+				<dd>&lt;meta&nbsp;name="author"&nbsp;content="Daniel"&gt;</dd>
+				<dd>說明網頁的作者。</dd>
+			</dl>
+			<dl>
+				<dt>creation-date</dt>
+				<dd>&lt;meta&nbsp;name="creation-date"&nbsp;content="Fri, 22 Nov 2024 08:00:00 GMT"&gt;</dd>
+				<dd>標註網頁製作時間，必須使用GMT時間格式。</dd>
+			</dl>
+			<dl>
+				<dt>viewport</dt>
+				<dd>&lt;meta&nbsp;name="viewport"&nbsp;content="width=device-width, initial-scale=1"</dd>
+				<dd>width=device-width：指定瀏覽器頁面寬度等同於手機、平板…等裝置。</dd>
+				<dd>initial-scale=1：指定畫面初始縮放比例為100%，即不放大也不縮小。</dd>
+			</dl>
+	</ul>
+
+	<h2>div標記</h2>
+	<ul>
+		<li>可將網頁元件做對齊、建立群組與圖層的功能。</li>
+		<li>搭配CSS與JavaScript語法時，能讓網頁元件產生移動效果。</li>
+		<li>能將控制元件顯示與隱藏。</li>
+		<li>屬於獨立的區塊標記(block-level)，不會與其他元件同時顯示在同一行，在結束標記&lt;/div&gt;後會自動換行。</li>
+		<li>放在&lt;div&gt;...&lt;/div&gt;裡的元件是一個群組，屬於單一物件。</li>
+		<li>&lt;div align="center" style="font-size:13pt;"&gt;...&lt/div&gt;</li>
+		<li>div屬性</li>
+			<dl>
+				<dt>align</dt>
+				<dd>設定元件對齊方式：center(置中)、left(靠左)、right(靠右)。</dd>
+				<dd>center的作用與置中標記&lt;center&gt;...&lt;/center&gt;功能相同。</dd>
+			</dl>
+			<dl>
+				<dt>style</dt>
+				<dd>設定元件樣式。</dd>
+			</dl>
+		<li>WAI-ARIA無障礙應用</li>
+			<ol>
+				<li>簡稱ARIA，是由W3C制定的無障礙網頁應用準則。</li>
+				<li>&lt;div&gt;和&lt;span&gt;標記不會加入Accessibility Tree(可訪問樹)，因此需要再加入ARIA的role、are-*及status來提供有用的資訊。</li>
+				<li>語法：&lt;div role="content" aria-label="蘋果"&gt;</li>
+			</ol>
+	</ul>
+
+	<h2>span標記</h2>
+	<ul>
+		<li>屬於行內標記(inline-level)，可與其他元件顯示於同一行。</li>
+		<li>&lt;span style="font-size:13pt;"&gt;...&lt;/span&gt;</li>
+		<li>&lt;span&gt;標記無法設定寬高，如果在CSS設定margin屬性也只會影響左右邊距。如果要設定寬高，只要在span裡加入CSS語法：display: inline-block或display: block，將span元件改變為區塊模式，就可以設定寬高。</li>
+	</ul>
+	</main>
+	<div id="footer"></div>
+</body>
+</html>

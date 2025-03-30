@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>顯示物件</title>
+    </head>
+    <body>
+        <div id="showItems"></div>
+        <hr>
+        <div>我是DIV</div>
+        <table border="1">
+            <tr>
+                <td>我是表格</td>
+            </tr>
+        </table>
+        <form>
+            <input type="text" size="15" value="我是文字方塊">
+        </form>
+        <img src="../images/music.png" border="0"><br />
+        <button name="showitemsBtn" onclick="showmyitem()">顯示物件</button>
+        <script>
+            function showmyitem() {
+               let all = document.getElementsByTagName('*');
+               let tagList = [];
+               for (let i = 0; i < all.length; i ++) {
+                tagList.push(all[i].tagName);
+               }
+               let tagname = `目前文件內共有 ${all.length} 個物件<br />`;
+               tagname += tagList.join("、");
+               document.getElementById('showItems').innerHTML = tagname;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="前端資料儲存">
+	<meta name="author" content="王群銘">
+	<title>Web Storage</title>
+	<style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+        <h2>Web Storage概念</h2>
+        <ul>
+            <li>Web Storage是一種將少量資料儲存於client(用戶端)磁碟的技術，只要支援Web Storage API規格的瀏覽器都可以使用JavaScript操作它。</li>
+            <li>Web Storage的容量是由用戶端程式(瀏覽器)決定，約1MB~5MB。</li>
+            <li>安全性比Cookie高。</li>
+            <li>以一組key-value對應保存資料。</li>
+            <li>
+                <table border="1">
+                    <tr>
+                        <th>Web Storage類型</th>
+                        <th>生命週期</th>
+                        <th>有效範圍</th>
+                    </tr>
+                    <tr>
+                        <td>localStorage</td>
+                        <td>執行刪除指令才會消失。</td>
+                        <td>同一網站的網頁可跨視窗及分頁。</td>
+                    </tr>
+                    <tr>
+                        <td>sessionStorage</td>
+                        <td>瀏覽器視窗或分頁關閉後才會消失。</td>
+                        <td>只對當前瀏覽器視窗或分頁有效。</td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+
+        <h2>存取localStorage</h2>
+        <ul>
+            <li>只有來自相同來源的網頁才能取得同一個localStorage。</li>
+            <li>相同來源的網頁是指協定(Protocol)、主機(Domain與IP)、傳輸埠(Port)都必須相同。</li>
+			<li>
+				Web Storage只允許儲存字串資料，存取方式分為：<br />
+				<ol>
+					<li>Storage物件的setItem與getItem。</li>
+					<li>陣列索引。</li>
+					<li>屬性。</li>
+				</ol>
+			</li>
+        </ul>
+
+		<h3>Storage物件的setItem與getItem</h3>
+		<ul>
+			<li>
+				儲存是用setItem，語法：window.localStorage.setItem(key, value);<br />
+				例如：指定一個localStorage變數userdata，並指定它的值為「Hello, World.」。<br />
+				語法：window.localStorage.setItem("userdata", "Hello, World.");
+			</li>
+			<li>
+				讀取是用getItem，語法：var 變數 = window.localStorage.getItem(key);<br />
+				例如：讀取userdata資料，語法：var value = window.localStorage.getItem("userdata");
+			</li>
+			<li>window可省略不寫。</li>
+			<li>
+				總結：<br />
+				儲存資料：localStorage.setItem('key', value)。<br />
+				取得資料：localStorage.getItem('key')。<br />
+				刪除某個資料：localStorage.removeItem('key')。<br />
+				清除所有資料：localStorage.clear()。
+			</li>
+		</ul>
+
+		<h3>陣列索引</h3>
+		<ul>
+			<li>儲存語法：window.localStorage["userdata"] = "Hello, World.";</li>
+			<li>讀取語法：var value = window.localStorage["userdata"];</li>
+			<li>window可省略不寫。</li>
+		</ul>
+
+		<h3>屬性</h3>
+		<ul>
+			<li>儲存語法：window.localStorage.userdata = "Hello, World.";</li>
+			<li>讀取語法：var value = window.localStorage.userdata;</li>
+			<li>window可省略不寫。</li>
+		</ul>
+		<p>
+			<fieldset>
+				<legend>通勤(學)使用交通工具調查</legend>
+				<form method="post" action="" id="frm" onsubmit="return false;">
+					姓名：<input type="text" id="username" value=""><br />
+					最常使用的交通工具<br />
+					<input type="radio" id="vehicle1" name="vehicle" class="vehicle" value="步行">
+					<label for="vehicle1">步行</label><br />
+					<input type="radio" id="vehicle2" name="vehicle" class="vehicle" value="騎自行車">
+					<label for="vehicle2">騎自行車</label><br />
+					<input type="radio" id="vehicle3" name="vehicle" class="vehicle" value="騎機車">
+					<label for="vehicle3">騎機車</label><br />
+					<input type="radio" id="vehicle4" name="vehicle" class="vehicle" value="開車">
+					<label for="vehicle4">開車</label><br />
+					<input type="radio" id="vehicle5" name="vehicle" class="vehicle" value="搭乘大眾運輸">
+					<label for="vehicle5">搭乘大眾運輸</label><br />
+					<button id="btn_save">儲存至localStorage</button>
+					<button id="btn_load">從localStorage讀取資料</button>
+				</form>
+				<div id="showdata"></div>
+			</fieldset>
+		</p>
+		<script>
+			window.addEventListener('load', () => {
+				if (typeof(Storage) === "undefined") {
+					alert('您的瀏覽器不支援Web Storage。');
+				} else {
+					document.getElementById('btn_save').addEventListener('click', saveToLocalStorage);
+					document.getElementById('btn_load').addEventListener('click', loadFromLocalStorage);
+				}
+			})
+
+			function saveToLocalStorage() {
+				let name = document.getElementById('username').value;
+				let vehicleElement = document.querySelector('input[name="vehicle"]:checked');
+				
+				if (name === "") {
+					alert('請輸入姓名！')
+					return;
+				}
+
+				if (!vehicleElement) {
+            		alert('請選擇一種交通工具！');
+            		return;
+        		}
+
+				localStorage.setItem('username', name);
+				localStorage.setItem('vehicle', vehicleElement.value);
+				document.getElementById('showdata').innerHTML = "儲存成功！";
+			}
+
+			function loadFromLocalStorage() {
+        		let name = localStorage.getItem('username');
+        		let vehicle = localStorage.getItem('vehicle');
+
+        		if (name && vehicle) {
+            		document.getElementById('showdata').innerHTML = `姓名：${name}<br />交通工具：${vehicle}`;
+        		} else {
+            		document.getElementById('showdata').innerHTML = "查無資料！";
+        		}
+    		}
+		</script>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>

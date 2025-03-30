@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="css排版">
+	<meta name="author" content="王群銘">
+	<title>CSS排版</title>
+	<style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+        th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+        .calc {
+            width: calc(100% - 400px);
+            background-color: red;
+            color: white;
+        }
+
+        a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+	</style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+    <h2>邊界margin</h2>
+    <ul>
+        <li>在邊框(border)外圍，用來設定元件的邊緣距離，共有上下左右四邊屬性可設定。</li>
+        <li>
+            margin-top：上邊界。<br />
+            margin-right： 右邊界。<br />
+            margin-bottom：下邊界。<br />
+            margin-left：左邊界。<br />
+            口訣：上右下左。
+        </li>
+        <li>長度單位：pt、px、%、auto(預設值)。</li>
+        <li>
+            語法1：選擇器{margin-top:設定值;}<br />
+            語法2：<br />
+            &emsp;&emsp;div {<br />
+            &emsp;&emsp;&emsp;margin-top: 20px;<br />
+            &emsp;&emsp;&emsp;margin-right: 40pt;<br />
+            &emsp;&emsp;&emsp;margin-bottom: 100%<br />
+            &emsp;&emsp;&emsp;margin-left: auto;<br />
+            &emsp;&emsp;}<br />
+            語法3：margin:上邊界值 右邊界值 下邊界值 左邊界值(以空白隔開)<br />
+            &emsp;&emsp;div {margin: 5px 10px 15px 20px}&emsp;/*上：5px，右：10px，下：15px，左：20px*/<br />
+            &emsp;&emsp;div {margin: 5px;}&emsp;/*四邊界皆為5px*/<br />
+            &emsp;&emsp;div {margin: 5px 10px;}&emsp;/*上：5px，右：10px，下：5px，左：10px*/<br />
+            &emsp;&emsp;div {margin: 5px 10px 15px;}&emsp;/*上：5px，右：10px，下：15px，左：10px*/
+        </li>
+        <li>為了方便控制網頁中元件的位置，利用&lt;div&gt;標記設好網頁內容寬度，並且水平置中，將margin屬性上下設為0，左右就根據瀏覽器大小自行調整。<br />
+            語法：margin: 0 auto;
+        </li>
+    </ul>
+
+    <h2>邊框border</h2>
+    <p>
+    <table border="1">
+        <tr>
+            <th>屬性</th>
+            <th>屬性名稱</th>
+            <th>設定值</th>
+        </tr>
+        <tr>
+            <td>border-style</td>
+            <td>邊框樣式</td>
+            <td>
+                none(預設值)<br />
+                solid(實線)<br />
+                dashed(虛線)<br />
+                double(雙實線)<br />
+                dotted(點線)<br />
+                groove(3D凹線)<br />
+                ridge(3D凸線)<br />
+                inset(3D嵌入線)<br />
+                outset(3D浮出線)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                border-top-style<br />
+                border-left-style<br />
+                border-bottm-style<br />
+                border-right-style
+            </td>
+            <td>四邊邊框樣式</td>
+            <td>同border-style</td>
+        </tr>
+        <tr>
+            <td>border-width</td>
+            <td>邊框寬度</td>
+            <td>
+                寬度數值(px, pt, %)<br />
+                thin(薄)<br />
+                thick(厚)<br />
+                medium(中等，預設值)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                border-top-width<br />
+                border-left-width<br />
+                border-bottom-width<br />
+                border-right-width
+            </td>
+            <td>四邊寬度</td>
+            <td>同border-width</td>
+        </tr>
+        <tr>
+            <td>border-color</td>
+            <td>邊框顏色</td>
+            <td>
+                顏色名稱<br />
+                16進位(HEX)碼<br />
+                RGB碼
+            </td>
+        </tr>
+        <tr>
+            <td>
+                border-top-color<br />
+                border-left-color<br />
+                border-bottom-color<br />
+                border-right-color
+            </td>
+            <td>四邊顏色</td>
+            <td>同border-color</td>
+        </tr>
+        <tr>
+            <td>border</td>
+            <td colspan="2" align="center">綜合應用</td>
+        </tr>
+        <tr>
+            <td>border-radius</td>
+            <td>邊框導圓角</td>
+            <td>px, pt, %</td>
+        </tr>
+        <tr>
+            <td>
+                border-top-left-radius<br />
+                border-top-right-radius<br />
+                border-bottom-left-radius<br />
+                border-bottom-right-radius
+            </td>
+            <td>四邊導圓角</td>
+            <td>同border-radius</td>
+        </tr>
+        <tr>
+            <td>border-image</td>
+            <td>花邊框線</td>
+            <td>
+                source<br />
+                slice(必填)<br />
+                width<br />
+                repeat(stretch, repeat, round)<br />
+            </td>
+        </tr>
+    </table>
+    
+    <h2>border-style邊框樣式</h2>
+    <ul>
+        <li>
+            語法1：選擇器{border-style:設定值;}<br />
+            語法2：選擇器{border-style:上 右 下 左;}
+        </li>
+        <li><a href="03_csstypesetting_borderstyle.html" target="_blank">border-style</a></li>
+    </ul>
+    
+    <h2>border-width邊框寬度</h2>
+    <ul>
+        <li>
+            語法1：選擇器{border-width:設定值;}<br />
+            語法2：選擇器{border-width:上 右 下 左;}
+        </li>
+        <li><a href="03_csstypesetting_borderwidth.html" target="_blank">border-width</a></li>
+    </ul>
+    
+    <h2>border-color邊框顏色</h2>
+    <ul>
+        <li>
+            語法1：選擇器{border-color:設定值;}<br />
+            語法2：選擇器{border-color:上 右 下 左;}
+        </li>
+    </ul>
+
+    <h2>border邊框綜合設定</h2>
+    <ul>
+        <li>可將border-style，border-width與border-color一次設定好。沒有先後順序，以空白隔開。</li>
+        <li>語法：選擇器{border: border-style border-width border-color;}</li>
+    </ul>
+
+    <h2>border-radius邊框導圓角</h2>
+    <ul>
+        <li>語法：選擇器{border-radius:設定值;}</li>
+        <li><a href="03_csstypesetting_borderradius.html" target="_blank">border-radius</a></li>
+    </ul>
+
+    <h2>border-image花樣邊框</h2>
+    <ul>
+        <li>語法：選擇器{border-image:source slice width repeat;}</li>
+        <li>source：url(圖片路徑)，必填。</li>
+        <li>slice：切出圖片使用的界線，必填。</li>
+        <li>width：圖片寬度，可省略。</li>
+        <li>repeat：圖片填充方式，可省略。</li>
+            <ol>
+                <li>stretch：把圖片拉伸至整個邊框區域。</li>
+                <li>repeat：重複填滿。</li>
+                <li>round：重複填滿並自動調整圖片大小。</li>
+            </ol>
+    </ul>
+
+    <h2>邊界留白padding</h2>
+    <ul>
+        <li>指邊框(border)內與HTML元件邊緣的距離。</li>
+        <li>
+            <table border="1">
+                <tr align="center">
+                    <th>屬性</th>
+                    <th>屬性名稱</th>
+                    <th>設定值</th>
+                </tr>
+                <tr>
+                    <td>padding-top</td>
+                    <td>上邊界留白距離</td>
+                    <td rowspan="4">px, pt, %, auto</td>
+                </tr>
+                <tr>
+                    <td>padding-right</td>
+                    <td>右邊界留白距離</td>
+                </tr>
+                <tr>
+                    <td>padding-bottom</td>
+                    <td>下邊界留白距離</td>
+                </tr>
+                <tr>
+                    <td>padding-left</td>                
+                    <td>左邊界留白距離</td>
+                </tr>
+            </table>
+        </li>
+        <li>語法：選擇器{padding:上邊界留白 右邊界留白 下邊界留白 左邊界留白;}</li>
+        <li>邊界margin、邊框border與邊界留白padding通常都是搭配使用的。</li>
+        <li><a href="03_csstypesetting_padding.html" target="_blank">padding</a></li>
+    </ul>
+
+    <h2>網頁元件定位position</h2>
+    <ul>
+        <li>一般定位</li>
+        <ul>
+            <li>
+                <table border="1">
+                    <tr align="center">
+                        <th>屬性</th>
+                        <th>屬性名稱</th>
+                        <th>設定值</th>
+                    </tr>
+                    <tr>
+                        <td>position</td>
+                        <td>設定元件位置排列方式</td>
+                        <td>
+                            absolute(絕對定位)<br />
+                            relative(相對定位)<br />
+                            static(靜止)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>width、height</td>
+                        <td>指定元件寬度與高度</td>
+                        <td>px, pt</td>
+                    </tr>
+                    <tr>
+                        <td>left</td>
+                        <td>指定元件與左邊界距離(x座標)</td>
+                        <td>px, pt</td>
+                    </tr>
+                    <tr>
+                        <td>top</td>
+                        <td>指定元件與上邊界距離(y座標)</td>
+                        <td>px, pt</td>
+                    </tr>
+                    <tr>
+                        <td>overflow</td>
+                        <td>元件超出邊界的顯示方式</td>
+                        <td>
+                            visible<br />
+                            hidden<br />
+                            scroll<br />
+                            auto
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>visibility</td>
+                        <td>是否顯示</td>
+                        <td>
+                            visible<br />
+                            hidden<br />
+                            inherit
+                    </tr>
+                </table>
+            </li>
+            <li>position</li>
+            <ul>
+                <li>通常會與&lt;div&gt;標記搭配使用，是用來將元件精確定位，top、right、bottom、left屬性決定元件的位置。</li>
+                <li>static(靜態定位)：元件依照常規流(Normal Flow)，此時top、right、bottom、left及z-index均無效。</li>
+                <li>absolute(絕對定位)：元件脫離常規流，設定top、right、bottom、left時，元件原本所在的位置會移除，下一個元件會順著常規流移到原本元件的位置，並且以有使用position定位的上一層元件(父元件)的左上角點為原點來定位，如果找不到父元件，則以&lt;body&gt;左上角點為原點來定位。</li>
+                <li>relative(相對定位)：元件依照常規流，設定top、right、bottom、left時，原本的位置會保留下來，下一個元件會固定不動，並以元件本身的左上角為原點來定位。</li>
+                <li>
+                    <a href="03_csstypesetting_position.html" target="_blank">absolute與relative</a>
+                </li>
+                <li>fixed(固定定位)：元件脫離常規流，直接指定元件在viewport(裝置寬跟高的固定位置)，就算拉動捲軸也不會改變元件在viewport的位置。</li>
+                <li>sticky(粘滯定位)：必須指定top、right、bottom、left才能發揮作用，根據使用者捲動的行為來定位，一般狀況下是相對定位，但當元件超出目標區域時就變成固定定位。IE/Edge15不支援，Safari需要加上「-webkit-」。</li>
+            </ul>
+            <li>overflow</li>
+            <ul>
+                <li>visible：不管元件長寬，內容完全呈現。</li>
+                <li>hidden：超過長寬的內容就不會顯示。</li>
+                <li>scroll：無論內容有無超出長寬，都加入捲軸。</li>
+                <li>auto：視情況是否顯示捲軸。</li>
+                <li><a href="03_csstypesetting_overflow.html" target="_blank">overflow</a></li>
+            </ul>
+            <li>float</li>
+            <ul>
+                <li>
+                    <table border="1">
+                        <tr>
+                            <th>性質</th>
+                            <th>性質名稱</th>
+                            <th>說明</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                float: left;<br /> 
+                                float: right;
+                            </td>
+                            <td>允許文字與圖片排列</td>
+                            <td>
+                                left：圖片在左側<br />
+                                right：圖片在右側
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                clear: left;<br />
+                                clear: right;<br />
+                                clear: both;
+                            </td>
+                            <td>清除float設定</td>
+                            <td>
+                                left：清除float: left設定<br />
+                                right：清除float: right設定<br />
+                                both：清除float: left與float: right設定
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li><a href="03_csstypesetting_float.html" target="_blank">float</a></li>
+            </ul>
+        </ul>
+
+        <li>圖層定位z-index</li>
+        <ul>
+            <li>必須與position屬性一起使用。</li>
+            <li>當元件相互重疊時，可以指定元件之間的上下層次順序。</li>
+            <li>z-index數值大的元件會排在數值小的元件上面，也就是數值越大，層次越高。</li>
+            <li>如果兩個元件的z-index值相同，則會以程式後寫者位於上方(back-to-front)。</li>
+            <li><a href="03_csstypesetting_zindex.html" target="_blank">z-index</a></li>
+        </ul>
+        <li>calc()函式</li>
+        <ul>
+            <li>可以使用在任何一個需要數值的地方，例如px、length、angle、time、number，單位：px、％、em、rem。</li>
+            <li>
+                語法：calc{expression}<br />
+                例如：width: calc(100% - 80px)
+            </li>
+            <li>+-*/運算符號前後必須空一格。</li>
+            <li>
+                <div class="calc">calc(100% - 400px)</div>
+            </li>
+        </ul>
+    </ul>
+
+    <h2>超連結特效</h2>
+    <ul>
+        <li>超連結有4種狀態：尚未連結(link)、已連結(visited)、滑鼠移到連結時(hover)、執行中(active)。</li>
+        <li>語法：<br />
+            &emsp;&emsp;a {樣式屬性;屬性值;}<br />
+            &emsp;&emsp;a:link {樣式屬性;屬性值;}<br />
+            &emsp;&emsp;a:visited {樣式屬性;屬性值;}<br />
+            &emsp;&emsp;a:active {樣式屬性;屬性值;}<br />
+            &emsp;&emsp;a:hover {樣式屬性;屬性值;}<br />
+        </li>
+        <li>通常使用a選擇器與a:hover選擇器就可以做出效果。</li>
+        <li>圖片超連結特效：a:hover {background-image: url(圖片來源);}。</li>
+    </ul>
+
+    <h2>滑鼠游標特效cursor</h2>
+    <p>
+    語法1：cursor {滑鼠游標樣式;}<br />
+    語法2：body {cursor: url(游標檔.cur);}
+
+    <h2>display區塊模式</h2>
+    <p>
+    display: block 區塊固定大小，當文字超過區塊時，文字會換行。<br />
+    display: inline 區塊隨著內容變動，當文字超過區塊時，區塊會擴大。
+</body>
+</main>
+<div id="footer"></div>
+</html>

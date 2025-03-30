@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="認識javascript">
+	<meta name="author" content="王群銘">
+	<title>addEventListener</title>
+    <style type="text/css">
+		body {
+			font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+			background-color: #EEEEEE;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		a[target="_blank"] {
+			background-color:#789DBC; color:white; font-weight:bold;
+		}
+
+		a:hover {
+			color:black; background-color:rgb(187, 187, 250);
+		}
+
+        hr {
+            border: 3px solid rgb(168, 168, 237);
+            border-radius: 3px;    
+        }
+
+        button {
+            background-color: green;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>addEventListener()</h1>
+    <p style="background-color: black; color: yellow;">
+        &lt;button id="btn1"&gt;按一下顯示文字&lt;/button&gt;<br />
+        &lt;p id="demo1"&gt;&lt;/p&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;document.getElementById("btn1").addEventListener("click", function() {<br />
+        &emsp;&emsp;document.getElementById("demo1").innerHTML = "Hello Taiwan";<br />
+        &emsp;});<br />
+        &lt;/script&gt;
+    </p>
+    <button id="btn1">按一下顯示文字</button>
+    <p id="demo1"></p>
+    <script>
+        document.getElementById("btn1").addEventListener("click", function() {
+            document.getElementById("demo1").innerHTML = "Hello Taiwan";
+        });
+    </script>
+    <hr>
+    <p style="background-color: black; color: yellow;">
+        &lt;button id="btn2"&gt;按一下呼叫alert計算sum函式&lt;/button&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;&emsp;function sum(x1, y1) {<br />
+        &emsp;&emsp;&emsp;var x1 = 6 ; y1 = 7;<br />
+        &emsp;&emsp;&emsp;var z1 = x1 + y1;<br />
+        &emsp;&emsp;&emsp;alert(`x = ${x1}, y = ${y1}, x + y = ${z1}`);<br />
+        &emsp;&emsp;}<br />
+        &emsp;&emsp;btn2.addEventListener("click", sum);<br />
+        &lt;/script&gt;
+    </p>
+    <button id="btn2">按一下呼叫alert計算sum函式</button>
+    <script>
+        function sum(x1, y1) {
+           var x1 = 6 ; y1 = 7;
+           var z1 = x1 + y1;
+           alert(`x = ${x1}, y = ${y1}, x + y = ${z1}`);
+        }
+        btn2.addEventListener("click", sum);
+    </script>
+    <hr>
+    <p style="background-color: black; color: yellow;">
+        &lt;button id="btn3"&gt;按一下呼叫多個函式&lt;/button&gt;<br />
+        &lt;p id="demo2"&gt;&lt;/p&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;function f1() {<br />
+        &emsp;&emsp;alert("呼叫第1個函式");<br />
+        &emsp;}<br />
+        &emsp;function f2() {<br />
+        &emsp;&emsp;alert("呼叫第2個函式");<br />
+        &emsp;}<br />
+        &emsp;function f3() {<br />
+        &emsp;&emsp;document.getElementById("demo2").innerHTML = "呼叫第3個函式";<br />
+        &emsp;}<br />
+        &emsp;var x2 = document.getElementById("btn3");<br />
+        &emsp;x2.addEventListener("click", f1);<br />
+        &emsp;x2.addEventListener("click", f2);<br />
+        &emsp;x2.addEventListener("click", f3);<br />
+        &lt;/script&gt;
+    </p>
+    <button id="btn3">按一下呼叫多個函式</button>
+    <p id="demo2"></p>
+    <script>
+        function f1() {
+            alert("呼叫第1個函式");
+        }
+        function f2() {
+            alert("呼叫第2個函式");
+        }
+        function f3() {
+            document.getElementById("demo2").innerHTML = "呼叫第3個函式";
+        }
+        var x2 = document.getElementById("btn3");
+        x2.addEventListener("click", f1);
+        x2.addEventListener("click", f2);
+        x2.addEventListener("click", f3);
+    </script>
+    <hr>
+
+    <p>碰一下按鈕、按一下按鈕與離開按鈕等3個事件產生結果</p>
+    <p style="background-color: black; color: yellow;">
+        &lt;button id="btn4"&gt;我是按鈕&lt;/button&gt;<br />
+        &lt;p id="demo3"&gt;&lt;/p&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;function a1() {<br />
+        &emsp;&emsp;document.getElementById("demo3").innerHTML += "歡迎光臨，請點一下按鈕。"<br />
+        &emsp;}<br />
+        &emsp;function a2() {<br />
+        &emsp;&emsp;document.getElementById("demo3").innerHTML += "謝謝您的點擊，請離開按鈕。"<br />
+        &emsp;}<br />
+        &emsp;function a3() {<br />
+        &emsp;&emsp;document.getElementById("demo3").innerHTML += "謝謝光臨！"<br />
+        &emsp;}<br />
+        &emsp;var x3 = document.getElementById("btn4");<br />
+        &emsp;x3.addEventListener("mouseover", a1);<br />
+        &emsp;x3.addEventListener("click", a2);<br />
+        &emsp;x3.addEventListener("mouseout", a3);<br />
+        &lt;/script&gt;
+    </p>
+    <button id="btn4">我是按鈕</button>
+    <p id="demo3"></p>
+    <script>
+        function a1() {
+            document.getElementById("demo3").innerHTML += "歡迎光臨，請點一下按鈕。<br />"
+        }
+        function a2() {
+            document.getElementById("demo3").innerHTML += "謝謝您的點擊，請離開按鈕。<br />"
+        }
+        function a3() {
+            document.getElementById("demo3").innerHTML += "謝謝光臨！<br />"
+        }
+        var x3 = document.getElementById("btn4");
+        x3.addEventListener("mouseover", a1);
+        x3.addEventListener("click", a2);
+        x3.addEventListener("mouseout", a3);
+    </script>
+    <hr>
+
+    <p>按下按鈕計算，並將結果顯示於網頁上。</p>
+    <p style="background-color: black; color: yellow;">
+        &lt;button id="btn5"&gt;按一下計算 3 * 9 = 27&lt;/button&gt;<br />
+        &lt;p id="demo4"&gt;&lt;/p&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;function multi(c, d) {<br />
+        &emsp;&emsp;var c = 3; d = 9;<br />
+        &emsp;&emsp;var e = c * d;<br />
+        &emsp;&emsp;var r =`c = ${c}, d = ${d}, c * d = ${e}`;<br />
+        &emsp;&emsp;document.getElementById("demo4").innerHTML = r;<br />
+        &emsp;}<br />
+        &emsp;btn5.addEventListener("click", multi);<br />
+        &lt;/script&gt;
+    </p>
+    <button id="btn5">按一下計算 3 * 9 = 27</button>
+    <p id="demo4"></p>
+    <script>
+        function multi(c, d) {
+           var c = 3; d = 9;
+           var e = c * d;
+           var r =`c = ${c}, d = ${d}, c * d = ${e}`;
+           document.getElementById("demo4").innerHTML = r;
+        }
+        btn5.addEventListener("click", multi);
+    </script>    
+</body>
+</html>

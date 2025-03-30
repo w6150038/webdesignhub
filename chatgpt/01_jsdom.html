@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<title>Web Design Hub</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+    <style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+        .btn_chgcolor {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+
+	<script>
+		window.onload = function () {
+			let hash = window.location.hash; // 取得 URL 的 #錨點
+			if (hash) {
+				document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+			}
+		};
+	</script>
+
+	<div id="header"></div>
+	<main>
+		<section>
+        <h2 id="section1">點擊變色按鈕</h2>
+        <ol>
+            <li>建立一個 HTML 按鈕</li>
+            <li>用JavaScript讓它每次點擊時，變換不同顏色</li>
+        </ol>
+		<p style="background-color: black; color: yellow;">
+		&lt;button id="btn_chgcolor" class="btn_chgcolor"&gt;點擊變換顏色&lt;/button&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;let a = document.getElementById('btn_chgcolor');<br />
+        &emsp;const colors = [<br />
+        &emsp;&emsp;{ background: 'red', color: 'yellow' },<br />
+        &emsp;&emsp;{ background: 'yellow', color: 'blue' },<br />
+        &emsp;&emsp;{ background: 'green', color: 'white' }<br />
+        &emsp;];<br />
+        &emsp;function changeColor() {<br />
+        &emsp;&emsp;const randomIndex = Math.floor(Math.random() * colors.length);<br />
+        &emsp;&emsp;const newColor = colors[randomIndex];<br />
+        &emsp;&emsp;this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;<br />
+        &emsp;}<br />
+        &emsp;a.addEventListener('click', changeColor);<br />
+        &lt;/script&gt;
+		</p>
+        <button id="btn_chgcolor" class="btn_chgcolor">點擊變換顏色</button>
+        <script>
+            let a = document.getElementById('btn_chgcolor');
+            
+            // 顏色選項
+            const colors = [
+                { background: 'red', color: 'yellow' },
+                { background: 'yellow', color: 'blue' },
+                { background: 'green', color: 'white' }
+            ];
+            
+            // 顏色隨機變換
+            function changeColor() {
+                const randomIndex = Math.floor(Math.random() * colors.length);
+                const newColor = colors[randomIndex];
+                this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;
+            }
+        
+            // 綁定事件
+            a.addEventListener('click', changeColor);
+        </script>
+		<p>
+		<h3>程式說明</h3>
+		<p style="background-color: black; color: yellow;">
+		const colors = [<br />
+        &emsp;{ background: 'red', color: 'yellow' },<br />
+       	&emsp;{ background: 'yellow', color: 'blue' },<br />
+        &emsp;{ background: 'green', color: 'white' }<br />
+        ];<br />
+		</p>
+		<p>
+			這一行定義了一個 colors 陣列，其中包含了三個顏色物件。每個物件有兩個屬性：
+			background：背景顏色。
+			color：文字顏色。
+			這樣我們就有三個顏色組合可以隨機選擇。
+		</p>
+		<p style="background-color: black; color: yellow;">
+		function changeColor() {<br />
+		&emsp;const randomIndex = Math.floor(Math.random() * colors.length);<br />
+		&emsp;const newColor = colors[randomIndex];<br />
+		&emsp;this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;<br />
+		}<br />
+		</p>
+		<p>這個函式的作用是隨機選擇一組顏色，然後把這個顏色設定到按鈕上。</p>
+		<p style="background-color: black; color: yellow;">
+			const randomIndex = Math.floor(Math.random() * colors.length);
+		</p>
+		<p>
+			<ol>
+				<li>Math.random()：</li>
+				<ul>
+					<li>這個函式會回傳一個介於0（包含）到1（不包含）之間的隨機小數，例如：0.25、0.78、0.99 等。</li>
+				</ul>
+				<li>Math.random() * colors.length：</li>
+				<ul>
+					<li>colors.length 代表陣列的長度，在這裡 colors.length 是 3（因為我們有三組顏色）。</li>
+					<li>Math.random() * 3 會產生 0 ~ 2.9999 之間的數字，像 1.45、0.89、2.73。</li>
+				</ul>
+				<li>Math.floor(...)：</li>
+				<ul>
+					<li>Math.floor() 會向下取整，確保我們得到的是 0, 1 或 2（這些是 colors 陣列的索引）。</li>
+					<li>
+						例如：<br />
+						Math.floor(1.45) → 1<br />
+						Math.floor(2.73) → 2<br />
+						Math.floor(0.89) → 0	
+					</li>
+				</ul>
+				<li>這樣，我們就能確保 randomIndex 是 0、1 或 2，對應 colors 陣列的索引。</li>
+			</ol>
+		</p>
+		<p style="background-color: black; color: yellow;">
+			const newColor = colors[randomIndex];
+		</p>
+		<p>
+			<ol>
+				<li>這一行是從 colors 陣列中取出隨機的顏色組合。</li>
+				<li>
+					randomIndex 可能是 0、1 或 2，所以 colors[randomIndex] 會回傳對應的物件：<br />
+					如果 randomIndex === 0，則 newColor = { background: 'red', color: 'yellow' }<br />
+					如果 randomIndex === 1，則 newColor = { background: 'yellow', color: 'blue' }<br />
+					如果 randomIndex === 2，則 newColor = { background: 'green', color: 'white' }
+				</li>
+				<li>所以 newColor 變數會儲存這次隨機選到的顏色組合。</li>
+			</ol>
+		</p>
+		<p style="background-color: black; color: yellow;">
+			this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;
+		</p>
+		<p>
+			<ol>
+				<li>這一行是改變按鈕的顏色，讓它變成 newColor 指定的樣式。</li>
+				<li>this 代表被點擊的按鈕（因為我們用 addEventListener 綁定函式）。</li>
+				<li>style.cssText 允許一次設定多個 CSS 樣式。</li>
+			</ol>
+		</p>
+		<p>
+			整體函式流程：
+			<ol>
+				<li>產生 randomIndex，確保它是 0, 1 或 2。</li>
+				<li>用這個 randomIndex 從 colors 陣列中選出一組顏色組合。</li>
+				<li>把這組顏色套用到按鈕上，改變 background-color 和 color。</li>
+			</ol>
+		</p>
+		<p>
+			完整程式流程，假設現在點擊一次按鈕：
+			<ol>
+				<li>Math.random() 產生 0.78</li>
+				<li>Math.floor(0.78 * 3) = Math.floor(2.34) = 2</li>
+				<li>randomIndex = 2</li>
+				<li>newColor = colors[2] = { background: 'green', color: 'white' }</li>
+				<li>this.style.cssText = "background-color: green; color: white";</li>
+				<li>按鈕變成綠底白字</li>
+			</ol>
+			顏色可能會不同，因為 randomIndex 每次都會變化。
+		</p>
+		</section>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>

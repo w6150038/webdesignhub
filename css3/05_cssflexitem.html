@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="css-flexitems">
+	<meta name="author" content="王群銘">
+	<title>cssflexitems</title>
+	<style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Roboto Slab', serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #dce3e4;
+            display: flex;
+            justify-content: center;  /* 靠主軸中心點對齊(置中對齊) */
+            align-items: center;      /* 交叉軸置中對齊(垂直置中對齊) */
+        }
+
+        header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+        /*
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+        */
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 770px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+        .card-container {
+            width: auto;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;  /* 設定card-container可以多行 */
+            justify-content: flex-start;  /* 靠主軸起點對齊(靠左對齊) */
+            align-items: center;  /* 交叉軸置中對齊(垂直置中對齊) */
+        }
+
+        .card {
+            margin: 25px;
+            background-color: #fff;
+            width: 250px;
+            min-width: 250px;
+            height: 500px;
+            min-height: 450px;
+            border-radius: 12px;
+            box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 30px 18px -8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1, 1.1);
+            cursor: pointer;
+        }
+
+        .card-title {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-family: 'Roboto slab', serif;
+        }
+
+        .card-cost {
+            font-size: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+        }
+
+        .card-text {
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: #868686;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 335px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .item {
+            display: flex;
+        }
+
+        button {
+            align-self: center;
+            border-radius: 5px;
+            padding: 5px;
+            margin-left: .1rem;
+            border: 1px solid #c0c0c0;
+        }
+
+        button:hover {
+            transform: scale(1.1, 1.1);
+            cursor: pointer;
+        }
+
+        .flex-none {
+            flex: none;  /* 相當於flex: 0 0 auto (不伸展、不壓縮、隨內容調整大小) */
+        }
+
+        .flex-150 {
+            flex: 150px  /* 只設定寬度(flex-basis) */
+        }
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+    <div class="card-container">
+        <div class="card">
+            <img class="card-img" src="../images/coffee/latte.jpg" alt="拿鐵咖啡">
+            <div class="card-body">
+                <h5 class="card-title">拿鐵咖啡</h5>
+                <div class="item">
+                    <p class="card-text">富含堅果及果酸風味的濃縮咖啡為基底，沖入溫熱微甜鮮奶，口感絲滑順口。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 120</span>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../images/coffee/americano.jpg" alt="美式咖啡">
+            <div class="card-body">
+                <h5 class="card-title">美式咖啡</h5>
+                <div class="item">
+                    <p class="card-text">結合經典濃縮咖啡及熱水，帶來濃郁豐富的咖啡滋味。。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 90</span>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
+            <div class="card-body">
+                <h5 class="card-title">卡布奇諾</h5>
+                <div class="item">
+                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 150</span>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
+            <div class="card-body">
+                <h5 class="card-title">卡布奇諾</h5>
+                <div class="item">
+                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 150</span>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
+            <div class="card-body">
+                <h5 class="card-title">卡布奇諾</h5>
+                <div class="item">
+                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 150</span>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
+            <div class="card-body">
+                <h5 class="card-title">卡布奇諾</h5>
+                <div class="item">
+                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                    <button class="flex-150">查看</button>
+                </div>
+                <span class="card-cost">$ 150</span>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- <div id="footer"></div> -->
+</body>
+</html>

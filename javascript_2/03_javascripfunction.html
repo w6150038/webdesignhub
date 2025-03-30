@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="JavaScript函式">
+	<meta name="author" content="王群銘">
+	<title>JavaScript函式</title>
+	<style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+        th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+    <h2>函式(Function)</h2>
+    <ul>
+        <li>也稱為函數，是一組定義好的程式敘述，當主程式需要使用函式內定義的程式時，只要叫呼該函式，就可以執行。</li>
+        <li>可重複呼叫使用，簡化程式流程。</li>
+        <li>程式除錯容易。</li>
+        <li>便於分工合作完成程式。</li>
+        <li>函式必須先行定義，定義好的函式並不會自動執行，只有在程式中呼叫該函式名稱之後，才會執行該函式。</li>
+    </ul>
+    <h3>定義函式</h3>
+    <ul>
+       <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function 函式名稱() {<br />
+            &emsp;&emsp;程式敘述;<br />
+            &emsp;&emsp;//如果需要函式回傳值給主程式，可用return敘述來傳回資料，無回傳值的話可省略。<br />
+            &emsp;&emsp;renturn 回傳值;<br />
+            &emsp;}<br />
+            &lt;/script&gt;
+            </p>
+       </li> 
+    </ul>
+    <h3>呼叫函式</h3>
+    <ul>
+        <li>函式名稱();</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp; //定義myJob函式<br />
+            &emsp;function myJob() {<br />
+            &emsp;&emsp;document.write("我的工作是網頁程式設計！");<br />
+            &emsp;}<br />
+            &emsp;//呼叫myJob函式<br />
+            &emsp;myJob();<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //定義myJob函式
+                function myJob() {
+                    document.write("我的工作是網頁程式設計！");
+                }
+                //呼叫myJob函式
+                myJob();
+            </script>
+        </li>
+    </ul>
+    <h3>函式參數</h3>
+    <ul>
+        <li>函式可以將參數(parameter)傳入函式裡，成為函式裡的變數。</li>
+        <li>函式參數只會存活在函式裡，函式執行完成後也會跟著結束。</li>
+        <li>參數與參數之間必須以逗號,隔開，呼叫函式的引數(Argument)數量最好要與函式所定義的參數數量相等。</li>
+        <li>
+            JavaScript呼叫函式時，並不會對引數數量做檢查，只會從左到右將引數與參數配對，當引數少於參數時，
+            少的會傳回undefined，當引數多於參數時，多的會被忽略。
+        </li>
+        <li>arguments物件：可以取得引數陣列，利用arguments.length屬性可取得函式傳入引數的數量。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function 函式名稱(參數1, 參數2..., 參數n)(...) {<br />
+            &emsp;&emsp;程式敘述;<br />
+            &emsp;}<br />
+            &emsp;函式名稱 (引數1, 引數2,...,引數n);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//定義myScore1函式，並設定3個參數。<br />
+            &emsp;function myScore1(stu_Name, stu_Math, stu_English) {<br />
+            &emsp;&emsp;document.write(`引數數量：` + arguments.length);<br />
+            &emsp;&emsp;document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);<br />
+            &emsp;}<br />
+            &emsp;myScore1(`Daniel`, `90`, `100`);<br />
+            &emsp;//當引數少於參數時，少的會回undefined。<br />
+            &emsp;myScore1(`Jennifer`, `60`);<br />
+            &emsp;//當引數多於參數時，多的會被忽略。<br />
+            &emsp;myScore1(`John`, `70`, `90`, `92`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //定義myScore函式，並設定3個參數。
+                function myScore1(stu_Name, stu_Math, stu_English) {
+                    document.write(`引數數量：` + arguments.length + `<br />`);
+                    document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);
+                }
+                myScore1(`Daniel`, `90`, `100`);
+                document.write(`<br />`);
+                //當引數少於參數時，少的會回undefined。
+                myScore1(`Jennifer`, `60`);
+                document.write(`<br />`);
+                //當引數多於參數時，多的會被忽略。
+                myScore1(`John`, `70`, `90`, `92`);
+            </script>
+        </li>
+        <li>
+            當引數少於參數時，少的會回undefined，此時可先指定參數預設值，避免傳回undefined。<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//定義myScore2函式，並設定3個參數預設值。<br />
+            &emsp;function myScore2(stu_Name = "", stu_Math = 0, stu_English = 0) {<br />
+            &emsp;&emsp;document.write(`引數數量：` + arguments.length);<br />
+            &emsp;&emsp;document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);<br />
+            &emsp;}<br />
+            &emsp;myScore2(`Daniel`, `90`, `100`);<br />
+            &emsp;//當引數少於參數時，少的會傳回0。<br />
+            &emsp;myScore2(`Jennifer`, `60`);<br />
+            &emsp;//當引數多於參數時，多的會被忽略。<br />
+            &emsp;myScore2(`John`, `70`, `90`, `92`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //定義myScore2函式，並設定3個參數預設值。
+                function myScore2(stu_Name = "", stu_Math = 0, stu_English = 0) {
+                    document.write(`引數數量：` + arguments.length + `<br />`);
+                    document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);
+                }
+                myScore2(`Daniel`, `90`, `100`);
+                document.write(`<br />`);
+                //當引數少於參數時，少的會傳回0。
+                myScore2(`Jennifer`, `60`);
+                document.write(`<br />`);
+                //當引數多於參數時，多的會被忽略。
+                myScore2(`John`, `70`, `90`, `92`);
+            </script>
+        </li>
+        <p>
+        <li>
+            也可以利用typeof來判斷資料型態。<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function myScore3(stu_Name, stu_Math, stu_English) {<br />
+            &emsp;&emsp;if (typeof stu_English === `undefined`) {<br />
+            &emsp;&emsp;&emsp;stu_English = 0;<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;document.write(`引數數量：` + arguments.length);<br />
+            &emsp;&emsp;document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);<br />
+            &emsp;}<br />
+            &emsp;myScore3(`Daniel`, `90`, `100`);<br />
+            &emsp;//當引數少於參數時，少的會傳回0。<br />
+            &emsp;myScore3(`Jennifer`, `60`);<br />
+            &emsp;//當引數多於參數時，多的會被忽略。<br />
+            &emsp;myScore3(`John`, `70`, `90`, `92`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                function myScore3(stu_Name, stu_Math, stu_English) {
+                    if (typeof stu_English === `undefined`) {
+                        stu_English = 0;
+                    }
+                    document.write(`引數數量：` + arguments.length + `<br />`);
+                    document.write(`學生姓名：${stu_Name}，數學成績：${stu_Math}，英文成績：${stu_English}`);
+                }
+                myScore3(`Daniel`, `90`, `100`);
+                document.write(`<br />`);
+                //當引數少於參數時，少的會傳回0。
+                myScore3(`Jennifer`, `60`);
+                document.write(`<br />`);
+                //當引數多於參數時，多的會被忽略。
+                myScore3(`John`, `70`, `90`, `92`);
+            </script>
+        </li>
+        <li>空字車(" "、' '或` `)、0、-0、null、NaN、undefined轉換為boolean都是false。</li>
+    </ul>
+    <h3>函式回傳值</h3>
+    <ul>
+        <li>如果希望能取得函式執行處理之後的結果，可以利用return敘述回傳。</li>
+        <li>如果只有輸入return，而沒有回傳值，表示只終止函式執行，結果會回傳undefined。</li>
+        <li>語法：return value(回傳值);</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//建立add函式，並建立a, b兩個參數。<br />
+            &emsp;function add(a, b) {<br />
+            &emsp;&emsp;//回傳a + b。<br />
+            &emsp;&emsp;return a + b;<br />
+            &emsp;}<br />
+            &emsp;//宣告sum變數，a = 5和b = 3的引數。<br />
+            &emsp;let sum = add(5, 3);<br />
+            &emsp;document.write(`計算結果：${sum}`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //建立add函式，並建立a, b兩個參數。
+                function add(a, b) {
+                    //回傳a + b。
+                    return a + b;
+                }
+                //宣告sum變數，a = 5和b = 3的引數。
+                let sum = add(5, 3);
+                document.write(`計算結果：${sum}`);
+            </script>
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//建立checkage變數，並建立age參數，起始值0。<br />
+            &emsp;function checkage(age = 0) {<br />
+            &emsp;&emsp;document.write(`您的年齡：${age}歲，`);<br />
+            &emsp;&emsp;if (age &lt; 18) {<br />
+            &emsp;&emsp;&emsp;return `未成年`;<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;return `成年`;<br />
+            &emsp;}<br />
+            &emsp;document.write(checkage(17));<br />
+            &emsp;document.write(checkage(20));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //建立checkage變數，並建立age參數，起始值0。
+                function checkage(age = 0) {
+                    document.write(`您的年齡：${age}歲，`);
+                    if (age <= 18) {
+                        return `未成年`;
+                    }
+                    return `成年`;
+                }
+                document.write(checkage(17) + `<br />`);
+                document.write(checkage(20));
+            </script>
+        </li>
+        <li>
+            renturn可以返回任何資料型態的值，如數字、字串、布林值、物件、陣列和另一個函式。<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//建立getUser函式。<br />
+            &emsp;function getUser() {<br />
+            &emsp;&emsp;//在return裡建立各資料型態的值，公式是：名稱: 資料,，例如：name: `Daniel`,。<br />
+            &emsp;&emsp;//return包起來的程式要用大括弧{}。<br />
+            &emsp;&emsp;return {<br />
+            &emsp;&emsp;&emsp;id: `008285`,<br />
+            &emsp;&emsp;&emsp;name: `Daniel`,<br />
+            &emsp;&emsp;&emsp;age: 25,<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;//宣告useer變數，取得getUser函式。<br />
+            &emsp;let user = getUser();<br />
+            &emsp;document.write(`員工編號：${user.id}`);<br />
+            &emsp;document.write(`員工姓名：${user.name}`);<br />
+            &emsp;document.write(`員工年齡：${user.age}`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //建立getUser函式。
+                function getUser() {
+                    //在return裡建立各資料型態的值，公式是：名稱: 資料,，例如：name: `Daniel`,。
+                    //return包起來的程式要用大括弧{}。
+                    return {
+                        id: `008285`,
+                        name: `Daniel`,
+                        age: 25,
+                    }
+                }
+                //宣告useer變數，取得getUser函式。
+                let user = getUser();
+                document.write(`員工編號：${user.id}<br />`);
+                document.write(`員工姓名：${user.name}<br />`);
+                document.write(`員工年齡：${user.age}`);
+            </script>
+        </li>
+        <li>
+            高階返回函式<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function createNum(x) {<br />
+            &emsp;&emsp;return function(y) {<br />
+            &emsp;&emsp;&emsp;document.write(`x = ${x}; y = ${y}`);<br />
+            &emsp;&emsp;&emsp;document.write(`${x} * ${y} = `);<br />
+            &emsp;&emsp;&emsp;return x * y;<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;let double = createNum(3);<br />
+            &emsp;document.write(double(9));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                function createNum(x) {
+                    return function(y) {
+                        document.write(`x = ${x}; y = ${y}<br />`);
+                        document.write(`${x} * ${y} = `);
+                        return x * y;
+                    }
+                }
+                let double = createNum(3);
+                document.write(double(9));
+            </script>
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//定義myAvg函式，並設定3個參數與起始值。<br />
+            &emsp;function myAvg(stu_Name = "", stu_Math = 0, stu_English = 0) {<br />
+            &emsp;&emsp;document.write(`學生姓名：${stu_Name} 數學成績：${stu_Math} 英文成績：${stu_English}`);<br />
+            &emsp;&emsp;//建立stu_Avg變數並計算數學與英文的平均分數。<br />
+            &emsp;&emsp;let stu_Avg = (stu_Math + stu_English) / 2 ;<br />
+            &emsp;&emsp;//回傳stu_Avg計算結果。<br />
+            &emsp;&emsp;return stu_Avg;<br />
+            &emsp;}<br />
+            &emsp;//方法1：直接用documwnt.write取得myAvg函式回傳值。<br />
+            &emsp;document.write(`平均成績：` + myAvg(`John`, 70, 80));<br />
+            &emsp;//方法2：宣告avg變數取得myAvg函式回傳值。<br />
+            &emsp;let avg = myAvg(`Daniel`, 90, 100);<br />
+            &emsp;document.write(`平均成績：` + avg);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //定義myAvg函式，並設定3個參數與起始值。
+                function myAvg(stu_Name = "", stu_Math = 0, stu_English = 0) {
+                    document.write(`學生姓名：${stu_Name}<br />數學成績：${stu_Math}<br />英文成績：${stu_English}<br />`);
+                    //建立stu_Avg變數並計算數學與英文的平均分數。
+                    let stu_Avg = (stu_Math + stu_English) / 2 ;
+                    //回傳stu_Avg計算結果。
+                    return stu_Avg;
+                }
+                //方法1：直接用documwnt.write取得myAvg函式回傳值。
+                document.write(`平均成績：` + myAvg(`John`, 70, 80) + `<p>`);
+                //方法2：宣告avg變數取得myAvg函式回傳值。
+                let avg = myAvg(`Daniel`, 90, 100);
+                document.write(`平均成績：` + avg);
+            </script>
+        </li>
+    </ul>
+
+    <h2>函式多重用法</h2>
+    <ul>
+        <li>JavaScript的函式屬於一級函式(First-class Function)。</li>
+        <li>一級函式特性：
+            <ol>
+                <li>可以指定給變數。</li>
+                <li>可以當作引數傳給函式使用。</li>
+                <li>可以作為函式的回傳值。</li>
+            </ol>
+        </li>
+    </ul>
+    <h3>函式宣告式(Function Declaration，簡稱FD)</h3>
+    <ul>
+        <li>函式宣告在執行階段之前就會被建立，因此具有提升Hoisting的特性。</li>
+        <li>整個程式同一個作用域(Scope)內都可以呼叫這個函式。</li>
+        <li>呼叫函式方法放在函式定義之前或之後都可以。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;myfunc(30, 50);<br />
+            &emsp;function myfunc(a, b) {<br />
+            &emsp;&emsp;document.write(`a = ${a}, b = ${b});<br />
+            &emsp;}<br />
+            &emsp;myfunc(100, 200);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                myfunc(30, 50);
+                function myfunc(a, b) {
+                    document.write(`a = ${a}, b = ${b}<br />`);
+                }
+                myfunc(100, 200);
+            </script>
+        </li>
+    </ul>
+    <h3>遞迴呼叫(Recursive Calls)</h3>
+    <ul>
+        <li>
+            遞回函式(Recursive Function)簡單來說就是在一個函式當中再去呼叫它自己，其中一個實際的範例就是階層的計算(Factorial)。
+        </li>
+        <li>遞回函式通常需要有兩項條件，一項是重複執行它自己，另一項則是跳出執行的出口，避免造成無窮迴圈。</li>
+        <li>
+            能夠使用遞回函式，是因為函式堆疊（Stack）的特性，當函式呼叫另一個函式時，需等候裡面的函式執行完，才會繼續回來執行自己的函式內容，應用到堆疊（Stack）資料結構後進先出（LIFO）的概念。
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function factorial_1() {<br />
+            &emsp;&emsp;for (i = 5; i >= 1; i--) {<br />
+            &emsp;&emsp;&emsp;if (i === 1) {<br />
+            &emsp;&emsp;&emsp;&emsp;document.write(`${i} = `);<br />
+            &emsp;&emsp;&emsp;} else {<br />
+            &emsp;&emsp;&emsp;&emsp;document.write(`${i} * `);<br />
+            &emsp;&emsp;&emsp;}<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;function factorial_2(num) {<br />
+            &emsp;&emsp;if (num === 1) {<br />
+            &emsp;&emsp;&emsp;return num;<br />
+            &emsp;&emsp;} else {<br />
+            &emsp;&emsp;&emsp;return num * factorial_2(num - 1);<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;document.write(`5! = `) + factorial_1();<br />
+            &emsp;document.write(factorial_2(5));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                function factorial_1() {
+                    for (i = 5; i >= 1; i--) {
+                        if (i === 1) {
+                            document.write(`${i} = `);
+                        } else {
+                            document.write(`${i} * `);
+                        }
+                    }
+                }
+                function factorial_2(num) {
+                    if (num === 1) {
+                        return num;
+                    } else {
+                        return num * factorial_2(num - 1);
+                    }
+                }
+                document.write(`5! = `) + factorial_1();
+                document.write(factorial_2(5));
+            </script>
+        </li>
+    </ul>
+    <h3>箭頭函式(開頭沒有function)</h3>
+    <ul>
+        <li>
+            單行寫法(不用加return)：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const num1 = (a, b) => a * b;<br />
+            &emsp;document.write(`計算結果：${num1(2, 3)}`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const num1 = (a, b) => a * b;
+                document.write(`計算結果：${num1(2, 3)}`);
+            </script>
+        </li>
+        <li>
+            多行寫法(需要加return)<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const num2 = (a, b) => {<br />
+            &emsp;&emsp;let r = a * b;<br />
+            &emsp;&emsp;return `a = ${a}, b = ${b}, a * b = ${r}`;<br />
+            &emsp;}<br />
+            &emsp;document.write(num2(5, 9));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const num2 = (a, b) => {
+                    let r = a * b;
+                    return `a = ${a}, b = ${b}, a * b = ${r}`;
+                }
+                document.write(num2(5, 9));
+            </script>
+        </li>
+    </ul>
+    <h3>函式表達式</h3>
+    <ul>
+        <li>若將函式指派給變數，這種定義方式稱之為「函式表達式(Function Expressions，簡稱FE)」。</li>
+        <li>函式初始化之後就不會再變動的，所以變數通常使用const宣告。</li>
+        <li>
+            語法：<br />
+            const 變數 = function(參數1, 參數2,...,參數n) {<br />
+            &emsp;程式敘述;<br />
+            &emsp;return 回傳值;<br />
+            }
+        </li>
+    </ul>
+    <h3>匿名函式</h3>
+    <ul>
+        <li>是指沒有名稱的函式。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            const myfunc = function(a, b) {<br />
+            &emsp;return a * b;<br />
+            }<br />
+            myfunc(3, 5);
+            </p>
+        </li>
+        <li>匿名函式可以使用箭頭函式來表示。語法：<br />
+            const 變數 = (參數1, 參數2,...,參數n) => {<br />
+            &emsp;程式敘述;<br />
+            &emsp;return 回傳值;<br />
+            }
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const myfunc1 = (a, b) => {<br />
+            &emsp;&emsp;let c = a * b;<br />
+            &emsp;&emsp;return `a = ${a}; b = ${b}; a * b = ${c}`;<br />
+            &emsp;}<br />
+            &emsp;document.write(myfunc1(10, 20));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const myfunc1 = (a, b) => {
+                    let c = a * b;
+                    return `a = ${a}; b = ${b}; a * b = ${c}`;
+                }
+                document.write(myfunc1(10, 20));
+            </script>
+        </li>
+        <li>
+            如果函式區塊內只有一行程式碼，則箭頭函式就可以移除大括弧，並內建return回傳值。<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const myfunc2 = (a, b) => `a = ${a}; b = ${b} a + b = ${a + b}`;<br />
+            &emsp;document.write(myfunc2(10, 20));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const myfunc2 = (a, b) => `a = ${a}; b = ${b}<br />a + b = ${a + b}`;
+                document.write(myfunc2(10, 20));
+            </script>
+        </li>
+    </ul>
+    <h3>具名函式</h3>
+    <ul>
+        <li>是指function後面加上名稱。</li>
+        <li>只能在函式內部呼叫，在函式之外是不存在的。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            const myfunc = function add(a, b) {<br />
+            &emsp;return a * b;<br />
+            }<br />
+            myfunc(3, 5);
+            </p>
+        </li>
+        <li>
+            五階乘式用具名函式寫法：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const factorial_3 = function fac_1() {<br />
+            &emsp;&emsp;for (i = 5; i >= 1; i--) {<br />
+            &emsp;&emsp;&emsp;if (i === 1) {<br />
+            &emsp;&emsp;&emsp;&emsp;document.write(`${i} = `);<br />
+            &emsp;&emsp;&emsp;} else {<br />
+            &emsp;&emsp;&emsp;&emsp;document.write(`${i} * `);<br />
+            &emsp;&emsp;&emsp;}<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;const factorial_4 = function fac_2(num) {<br />
+            &emsp;&emsp;if (num === 1) {<br >
+            &emsp;&emsp;&emsp;return num;<br />
+            &emsp;&emsp;} else {<br />
+            &emsp;&emsp;return num * fac_2(num - 1);<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;document.write("5! = ") + factorial_3();<br />
+            &emsp;document.write(factorial_4(5));<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const factorial_3 = function fac_1() {
+                    for (i = 5; i >= 1; i--) {
+                        if (i === 1) {
+                            document.write(`${i} = `);
+                        } else {
+                            document.write(`${i} * `);
+                        }
+                    }
+                }
+                const factorial_4 = function fac_2(num) {
+                    if (num === 1) {
+                        return num;
+                    } else {
+                        return num * fac_2(num - 1);
+                    }
+                }
+                document.write(`5! = `) + factorial_3();
+                document.write(factorial_4(5));
+            </script>
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//建立checkflag函式，參數為flag。<br />
+            &emsp;function checkflag(flag) {<br />
+            &emsp;&emsp;//宣告myfunc變數，並設定為空值。<br />
+            &emsp;&emsp;let myfunc = null;<br />
+            &emsp;&emsp;//如果參數flag為true或false，<br />
+            &emsp;&emsp;if (flag) {<br />
+            &emsp;&emsp;&emsp;//則建立myfunc函式裡a, b兩個引數，並且相加；<br />
+            &emsp;&emsp;&emsp;myfunc = (a, b) => `a = ${a}, b = ${b}, a + b = ${a + b}`;<br />
+            &emsp;&emsp;} else {<br />
+            &emsp;&emsp;&emsp;//否則將myfunc函式裡a, b兩個引數相乘。<br />
+            &emsp;&emsp;&emsp;myfunc = (a, b) => `a = ${a}, b = ${b}, a * b = ${a * b}`;<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;document.write(myfunc(10, 20));<br />
+            &emsp;}<br />
+            &emsp;//flag裡的參數為true，表示它是有值，所以a, b會相加。<br />
+            &emsp;checkflag(true);<br />
+            &emsp;//flag裡的參數為false，表示它是空值，所以a, b會相乘。<br />
+            &emsp;checkflag(false);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //建立checkflag函式，參數為flag。
+                function checkflag(flag) {
+                    //宣告myfunc變數，並設定為空值。
+                    let myfunc = null;
+                    //如果參數flag為true或false，
+                    if (flag) {
+                        //則建立myfunc函式裡a, b兩個引數，並且相加；
+                        myfunc = (a, b) => `a = ${a}, b = ${b}, a + b = ${a + b}`;
+                    } else {
+                        //否則將myfunc函式裡a, b兩個引數相乘。
+                        myfunc = (a, b) => `a = ${a}, b = ${b}, a * b = ${a * b}`;
+                    }
+                    document.write(myfunc(10, 20) + `<br />`);
+                }
+                //flag裡的參數為true，表示它是有值，所以a, b會相加。
+                checkflag(true);
+                //flag裡的參數為false，表示它是空值，所以a, b會相乘。
+                checkflag(false);
+            </script>
+        </li>
+    </ul>
+
+    <h2>物件與this關鍵字</h2>
+    <p>
+    <h3>物件</h3>
+    <ul>
+        <li>函式本身也是物件，跟一般物件一樣具有「屬性(Properties)」與「方法(Method)」。</li>
+        <li>在主控台查看物件的屬性與方法：console.dir 函式名稱();。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function obj() {<br />
+            &emsp;&emsp;console.log(`hello`);<br />
+            &emsp;}<br />
+            &emsp;console.dir(obj);<br />
+            &lt;/script&gt;
+            </p>
+            <script>
+                function obj() {
+                    console.log(`hello`);
+                }
+                console.dir(obj);
+            </script>
+        </li>
+        <li>
+            任何事跟物都可以視為「物件」，以杯子來說，杯子是一個「物件」，杯子的外觀(容量、形狀、顏色)屬於「屬性」。
+            杯子的功能(裝水、開蓋等動作)，屬於物件的「方法」，「屬性」與「方法」屬於物件的「成員」。
+        </li>
+        <li>
+            定義物件方式-1：使用大括弧{}的物件實字(Object Literal)，此方式比較常用。<br />
+            let object = {物件成員};
+        </li>
+        <li>
+            物件是由一對大括弧包著一個以上的成員所組成，各個成員是一種name/value的結構，各成員以逗號(,)隔開，name(名稱)
+            與value(值)之間以冒號(:)隔開。<br />
+            //宣告object物件，並以大括弧包住物件成員。<br />
+            let object = {<br />
+            &emsp;//成員1<br />
+            &emsp;name1 : value1,<br />
+            &emsp;//成員2<br />
+            &emsp;name2 : value2,<br />
+            &emsp;//成員3<br />
+            &emsp;name3 : value3<br />
+            }<br />
+        </li>
+        <li>
+            物件成員的值的資料型態是數字、字串、陣列或函式皆可，如果成員的值是定義物件的樣式，就屬於該物件的「屬性」；
+            如果成員的值是定義物件要做的事情，就屬於該物件的「方法」，並且把要做的事情放在函式裡。<br />
+            //宣告car物件。<br />
+            let car = {<br />
+            &emsp;//屬性color。<br />
+            &emsp;color : "red",<br />
+            &emsp;//屬性speed。<br />
+            &emsp;speed : 100,<br />
+            &emsp;//drive方法。<br />
+            &emsp;drive() {<br />
+            &emsp;&emsp;return "車子啟動"<br />
+            &emsp;}<br />
+            }<br />
+            <p>
+            定義好物件後，要存取屬性與方法，可以使用點記法(Dot Notation)。<br />
+            //取得car物件的color屬性值。<br />
+            car.color<br />
+            //執行car物件的drive()方法。<br />
+            car.drive()
+        </li>
+        <li>
+            定義物件方式-2：使用function函式建立物件，再使用new關鍵字產生物件實體。<br />
+            function person() {物件成員}<br />
+            const object = new object();
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//宣告person變數為物件。<br />
+            &emsp;let person = {<br />
+            &emsp;&emsp;//name資料用陣列方式。<br />
+            &emsp;&emsp;name : ["Daniel", "Mary"],<br />
+            &emsp;&emsp;address : "臺中市",<br />
+            &emsp;&emsp;mail : "abc@hotmail.com",<br />
+            &emsp;&emsp;age : 28,<br />
+            &emsp;&emsp;txt() {<br />
+            &emsp;&emsp;&emsp;//用this關鍵字指定屬性。<br />
+            &emsp;&emsp;&emsp;document.write(`您好，我是${this.name[0]}，今年${this.age}歲。`);<br />
+            &emsp;&emsp;&emsp;document.write(`我家住在${this.address}，我的e-mail是：${this.mail}。`);<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &emsp;//原本age是28，現改為35。<br />
+            &emsp;person.age = 35;<br />
+            &emsp;person.tel = "04-22221111";<br />
+            &emsp;person.work = function() {<br />
+            &emsp;&emsp;document.write(`${this.name[1]}正在努力工作賺錢。`);<br />
+            &emsp;}<br />
+            &emsp;//呼叫person的txt函式。<br />
+            &emsp;person.txt();<br />
+            &emsp;//呼叫person的work函式。<br />
+            &emsp;person.work();<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //宣告person變數為物件。
+                let person = {
+                    //name資料用陣列方式。
+                    name : ["Daniel", "Mary"],
+                    address : "臺中市",
+                    mail : "abc@hotmail.com",
+                    age : 28,
+                    txt() {
+                        //用this關鍵字指定屬性。
+                        document.write(`您好，我是${this.name[0]}，今年${this.age}歲。<br />`);
+                        document.write(`我家住在${this.address}，我的e-mail是：${this.mail}。<br />`);
+                    }
+                }
+                //原本age是28，現改為35。
+                person.age = 35;
+                person.tel = "04-22221111";
+                person.work = function() {
+                    document.write(`${this.name[1]}正在努力工作賺錢。`);
+                }
+                //呼叫person的txt函式。
+                person.txt();
+                //呼叫person的work函式。
+                person.work();
+            </script>
+        </li>
+    </ul>
+    <h3>this關鍵字</h3>
+    <ul>
+        <li>this的指向並沒有固定哪一個目標，而是看呼叫的物件是誰。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;//宣告color字串變數，值為綠色。<br />
+            &emsp;var color = `綠色`;<br />
+            &emsp;//建立showColor函式，用this指向color變數綠色。<br />
+            &emsp;function showColor() {<br />
+            &emsp;&emsp;return this.color;<br />
+            &emsp;}<br />
+            
+            &emsp;//宣告carA物件，屬性drive呼叫showColor函式(不用再加小括弧)，且this會指向carA的屬性紅色。<br />
+            &emsp;let carA = {<br />
+            &emsp;&emsp;color : `紅色`,<br />
+            &emsp;&emsp;drive : showColor,<br />
+            &emsp;}<br />
+
+            &emsp;//宣告carB物件，屬性drive呼叫showColor函式(不用再加小括弧)，且this會指向carB的屬性藍色。<br />
+            &emsp;let carB = {<br />
+            &emsp;&emsp;color : `藍色`,<br />
+            &emsp;&emsp;drive : showColor,<br />
+            &emsp;}<br />
+
+            &emsp;document.write(`車輛A顏色：${carA.drive()}`);<br />
+            &emsp;document.write(`車輛B顏色：${carB.drive()}`);<br />
+            &emsp;document.write(`原本預設顏色：${showColor()}`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                //宣告color字串變數，值為綠色。
+                var color = `綠色`;
+                //建立showColor函式，用this指向color變數綠色。
+                function showColor() {
+                    return this.color;
+                }
+                
+                //宣告carA物件，屬性drive呼叫showColor函式(不用再加小括弧)，且this會指向carA的屬性紅色。
+                let carA = {
+                    color : `紅色`,
+                    drive : showColor,
+                }
+
+                //宣告carB物件，屬性drive呼叫showColor函式(不用再加小括弧)，且this會指向carB的屬性藍色。
+                let carB = {
+                    color : `藍色`,
+                    drive : showColor,
+                }
+
+                document.write(`車輛A顏色：${carA.drive()}<br />`);
+                document.write(`車輛B顏色：${carB.drive()}<br />`);
+                document.write(`原本預設顏色：${showColor()}`);
+            </script>
+        </li>
+    </ul>
+
+    <h2>立即執行函式(Immediately Invoked Function Expression，簡稱IIFE)</h2>
+    <ul>
+        <li>在函式表達式後面加上括號()，JS會立即執行該函式，</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;let hellofunc = function() {<br />
+            &emsp;&emsp;document.write(`您好！`);<br />
+            &emsp;} ();<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                let hellofunc = function() {
+                    document.write(`您好！`);
+                } ();
+            </script>
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;const num3 = function(a ,b) {<br />
+            &emsp;&emsp;return `a = ${a}; b = ${b}; a * b = ${a * b}`<br />
+            &emsp;} (10, 20);<br />
+            &emsp;document.write(num3);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                const num3 = function(a ,b) {
+                    return `a = ${a}; b = ${b}; a * b = ${a * b}`
+                } (10, 20);
+                document.write(num3);
+            </script>
+        </li>
+        <li>
+            IIFE如果不需要return回傳值，就不需要宣告變數來接收執行結果，只要使用小括弧()將函式包起來即可。<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;(function() {<br />
+            &emsp;&emsp;document.write("小括弧包在裡面");<br />
+            &emsp;}) ();<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                (function() {
+                    document.write("小括弧包在裡面");
+                }) ();
+            </script>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;(function() {<br />
+            &emsp;&emsp;document.write("小括弧包在外面");<br />
+            &emsp;} ());<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                (function() {
+                    document.write("小括弧包在外面");
+                } ());
+            </script>
+        </li>
+    </ul>
+    <h3>use strict嚴謹模式</h3>
+    <ul>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;(function() {<br />
+            &emsp;&emsp;'use strict';<br />
+            &emsp;&emsp;程式敘述;<br />
+            &emsp;}) ();<br />
+            &lt;/script&gt;
+            </p>
+        </li>
+        <li>嚴謹模式放在整個JS程式首行，全部JS程式都會以嚴謹模式執行；如果放在函式裡的首行，那麼就只有該函式裡的敘述會套用嚴謹模式。</li>
+    </ul>
+    嚴謹模式常見的限制：
+    <ol>
+        <li>變數必須先使用var、let或const宣告才能使用。</li>
+        <li>禁止變數名稱重複。</li>
+        <li>新制的八進位值使用0o前綴(數字0 + 小寫英文字母o)，因此不允許使用舊制的八進位值。</li>
+        <li>禁止this敘述指向全域。</li>
+    </ol>
+</main>
+<div id="footer"></div>
+</body>
+</html>

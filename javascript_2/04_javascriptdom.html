@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="JavaScriptDOM">
+	<meta name="author" content="王群銘">
+	<title>JavaScriptDOM</title>
+	<style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+
+        html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+        body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+        header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+        .header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+        .header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+        .hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+        .hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+        .hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+        .html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+        nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+        .nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+        .nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+        .nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+        /* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+        .dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+        th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+        button {
+            background-color: rgb(63, 3, 63);
+            font-size: 15px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #div-1 {
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            width: 120px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        #div-2 {
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            width: 120px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        #div-3 {
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            width: 120px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        #translate-container {
+            display: flex;
+            border: 1px solid green;
+            justify-content: flex-start;
+            width: 280px;
+        }
+
+        #translate-1 {
+            background-color: #2db34a;
+            border-radius: 8px;
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .box-container {
+            display: flex;
+            border: 1px solid green;
+            justify-content: flex-start;
+            width: 600px;
+        }
+
+        .box-item-1 {
+            background-color: #de49a3;
+            border-radius: 8px;
+            color: white;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .box-item-2 {
+            background-color: #6351ee;
+            border-radius: 8px;
+            color: white;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .query-container {
+            display: flex;
+            border: 1px solid green;
+            justify-content: flex-start;
+            width: 600px;
+        }
+
+        .query-box-1 {
+            background-color: #de49a3;
+            border-radius: 8px;
+            color: white;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .query-box-2 {
+            background-color: #6351ee;
+            border-radius: 8px;
+            color: white;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #coffee {
+            color: red;
+            border: 1px solid red;
+            width: 500px;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+    <main>
+    <h2>取得物件資訊</h2>
+    <ul>
+        <li>
+            <table border="1">
+                <tr>
+                    <th>方法</th>
+                    <th>說明</th>
+                </tr>
+                <tr>
+                    <td>getElementById</td>
+                    <td>取得物件ID</td>
+                </tr>
+                <tr>
+                    <td>getElementsByClassName</td>
+                    <td>取得物件類別名稱</td>
+                </tr>
+                <tr>
+                    <td>getElementsByName</td>
+                    <td>取得物件名稱</td>
+                </tr>
+                <tr>
+                    <td>getElementsByTagName</td>
+                    <td>取得物件標記名稱</td>
+                </tr>
+                <tr>
+                    <td>querySelector</td>
+                    <td>取得物件的選擇器</td>
+                </tr>
+            </table>
+        </li>
+        <br />
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function chgBorder() {<br />
+            &emsp;&emsp;document.getElementById('myImg').border = "5";<br />
+            &emsp;&emsp;document.getElementById('myImg').style.borderStyle = "double";<br />
+            &emsp;&emsp;document.getElementsByTagName('div')[19].innerHTML = "圖片已加上框線！";<br />
+            &emsp;}<br />
+            &emsp;function chgColor() {<br />
+            &emsp;&emsp;let div1 = document.getElementsByTagName('div')[19];<br />
+            &emsp;&emsp;div1.style.cssText = "color: blue; font-size: 25px";<br />
+            &emsp;&emsp;div1.innerHTML = "文字變成藍色，字體放大！";<br />
+            &emsp;}<br />
+            &lt;/script&gt;<br />
+            &lt;img id="myImg" src="../images/music.png" border="0"&gt;<br />
+            &lt;!--div{18}--&gt;<br />
+            &lt;div&gt;執行結果&lt;/div&gt;<br />
+            &lt;!--div[19]--&gt;<br />
+            &lt;div&gt;&lt;/div&gt;<br />
+            &lt;button onclick="chgBorder()"&gt;圖片加框線&lt;/button&gt;<br />
+            &lt;button onclick="chgColor()"&gt;改變文字顏色與大小&lt;/button&gt;<br />
+            </p>
+            <script>
+                function chgBorder() {
+                    document.getElementById('myImg').border = "5";
+                    document.getElementById('myImg').style.borderStyle = "double";
+                    document.getElementsByTagName('div')[19].innerHTML = "圖片已加上框線！";
+                }
+
+                function chgColor() {
+                    let div1 = document.getElementsByTagName('div')[19];
+                    div1.style.cssText = "color: blue; font-size: 25px";
+                    div1.innerHTML = "文字變成藍色，字體放大！";
+                }
+            </script>
+            <!--圖片-->
+            <img id="myImg" src="../images/music.png" border="0"><br />
+            <!--div{18}-->
+            <div>執行結果</div>
+            <!--div[19]-->
+            <div></div>
+            <!--按鈕-->
+            <button onclick="chgBorder()">圖片加框線</button>
+            <button onclick="chgColor()">改變文字顏色與大小</button>
+        </li>
+        <li>
+            修改物件的CSS樣式必須透過物件的style屬性，它會傳回CSSStyleDeclaration物件，使用方式有3種：<br />
+            <ol>
+                <li>
+                    設定多種樣式：<br />
+                    HTMLElement.style.cssText = "background-color: red; color: yellow";<br />
+                    <p style="background-color: black; color: yellow;">
+                    &lt;div id="div-1"&gt;JavaScript&lt;/div&gt;<br />
+                    &lt;button onclick="chgDiv_1()"&gt;點擊改變樣式&lt;/button&gt;<br />
+                    &lt;script&gt;<br />
+                    &emsp;function chgDiv_1() {<br />
+                    &emsp;&emsp;document.getElementById('div-1').style.cssText = "background-color: red; color: yellow";<br />
+                    &emsp;}<br />
+                    &lt;/script&gt;<br />
+                    </p>
+                    <div id="div-1">JavaScript</div>
+                    <p>
+                    <button onclick="chgDiv_1()">點擊改變樣式</button>
+                    <script>
+                        function chgDiv_1() {
+                            document.getElementById('div-1').style.cssText = "background-color: red; color: yellow";
+                        }
+                    </script>
+                </li>
+                <li>
+                    使用setAttribute：<br />
+                    HTMLElement.setAttribute("style", "background-color: green; color: yellow");<br />
+                    <p style="background-color: black; color: yellow;">
+                    &lt;div id="div-2"&gt;JavaScript&lt;/div&gt;<br />
+                    &lt;button onclick="chgDiv_2()"&gt;點擊改變樣式&lt;/button&gt;<br />
+                    &lt;script&gt;<br />
+                    &emsp;function chgDiv_2() {<br />
+                    &emsp;&emsp;document.getElementById('div-2').setAttribute("style", "background-color: green; color: yellow");<br />
+                    &emsp;}<br />
+                    &lt;/script&gt;<br/>
+                    </p>
+                    <div id="div-2">JavaScript</div>
+                    <p>
+                    <button onclick="chgDiv_2()">點擊改變樣式</button>
+                    <script>
+                        function chgDiv_2() {
+                            document.getElementById('div-2').setAttribute("style", "background-color: green; color: yellow");
+                        }
+                    </script>
+                </li>
+                <li>
+                    設定特定的CSS樣式：<br />
+                    HTMLElement.style.color = "red";<br />
+                    <p style="background-color: black; color: yellow;">
+                    &lt;div id="div-3"&gt;JavaScript&lt;/div&gt;<br />
+                    &lt;button onclick="chgDiv_3()"&gt;點擊改變樣式&lt;/button&gt;<br />
+                    &lt;script&gt;<br />
+                    &emsp;function chgDiv_3() {<br />
+                    &emsp;&emsp;document.getElementById('div-3').style.color = "red";<br />
+                    &emsp;}<br />
+                    &lt;/script&gt;<br />
+                    </p>
+                    <div id="div-3">JavaScript</div>
+                    <p>
+                    <button onclick="chgDiv_3()">點擊改變樣式</button>
+                    <script>
+                        function chgDiv_3() {
+                            document.getElementById('div-3').style.color = "red";
+                        }
+                    </script>
+                </li>
+            </ol>
+        </li>
+    </ul>
+
+    <h3>getElementById</h3>
+    <p style="background-color: black; color: yellow;">
+    &lt;div id="translate-container"&gt;<br />
+    &emsp;&lt;div id="translate-1"&gt;item&lt;/div&gt;<br />
+    &lt;/div&gt;<br />
+    &lt;button onclick="translate_1()"&gt;點擊移動方塊&lt;/button&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function translate_1() {<br />
+    &emsp;&emsp;let trans_1 = document.getElementById('translate-1');<br />
+    &emsp;&emsp;trans_1.style.cssText = "transition: 2s ease-in-out; transform: translate(200px); color: yellow; background-color: red";<br />
+    &emsp;}<br />
+    &lt;/script&gt;<br />
+    </p>
+    <div id="translate-container">
+        <div id="translate-1">item</div>
+    </div>
+    <button onclick="translate_1()">點擊移動方塊</button>
+    <script>
+        function translate_1() {
+            let trans_1 = document.getElementById('translate-1');
+            trans_1.style.cssText = "transition: 2s ease-in-out; transform: translate(200px); color: yellow; background-color: red";
+        }
+    </script>
+    <p>
+    
+    <h3>getElementsByClassName</h3>
+    <p>後面要連接[索引值]，從0開始。</p>
+    <p style="background-color: black; color: yellow;">
+    &lt;div class="box-container"&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-1"&gt;item-1&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-2"&gt;item-2&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-1"&gt;item-3&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-2"&gt;item-4&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-1"&gt;item-5&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-2"&gt;item-6&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-1"&gt;item-7&lt;/div&gt;<br />
+    &emsp;&emsp;&lt;div class="box-item-2"&gt;item-8&lt;/div&gt;<br />
+    &lt;/div&gt;<br />
+    &lt;div class="addText-1"&gt;&lt;/div&gt;<br />
+    &lt;button onclick="box_item_2()"&gt;點擊改變item樣式&lt;/button&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function box_item_2() {<br />
+    &emsp;&emsp;let x1 = document.getElementsByClassName('box-item-2');<br />
+    &emsp;&emsp;for (let i = 0; i &lt; x1.length; i ++) {<br />
+    &emsp;&emsp;x1[i].style.cssText = "background-color: black; color: yellow";<br />
+    &emsp;}<br />
+    &emsp;let x2 = document.getElementsByClassName('addText-1')[0];<br />
+    &emsp;x2.innerHTML = "item2、4、6、8樣式已變更！";<br />
+    &emsp;x2.style.cssText = "font-size: 20px; color: blue";<br />
+    &emsp;}<br />
+    &lt;/script&gt;<br />
+    </p>
+    <div class="box-container">
+        <div class="box-item-1">item-1</div>
+        <div class="box-item-2">item-2</div>
+        <div class="box-item-1">item-3</div>
+        <div class="box-item-2">item-4</div>
+        <div class="box-item-1">item-5</div>
+        <div class="box-item-2">item-6</div>
+        <div class="box-item-1">item-7</div>
+        <div class="box-item-2">item-8</div>
+    </div>
+    <div class="addText-1"></div>
+    <button onclick="box_item_2()">點擊改變item樣式</button>
+    <script>
+        function box_item_2() {
+            let x1 = document.getElementsByClassName('box-item-2');
+            for (let i = 0; i < x1.length; i ++) {
+                x1[i].style.cssText = "background-color: black; color: yellow";
+            }
+            let x2 = document.getElementsByClassName('addText-1')[0];
+            x2.innerHTML = "item2、4、6、8樣式已變更！";
+            x2.style.cssText = "font-size: 20px; color: blue";
+        }
+    </script>
+    <p>
+    
+    <h3>getElementsByName</h3>
+    <p style="background-color: black; color: yellow;">
+    &lt;form name="form"&gt;<br />
+    &emsp;姓名：&lt;input type='text' name='name' id='name' autocomplete="off"/&gt;<br />
+    &emsp;E-mail：&lt;input type='text' name='email' id='email' autocomplete="off"/&gt;<br />
+    &emsp;&lt;input type='submit' value='送出' onclick="processFormData()"/&gt;<br />
+    &lt;/form&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function processFormData() {<br />
+    &emsp;let nameElement = document.getElementsByName('name');<br />
+    &emsp;let name = nameElement[0].value;<br />
+    &emsp;let emailElement = document.getElementsByName('email');<br />
+    &emsp;let email = emailElement[0].value;<br />
+    &emsp;alert(`你的姓名是：${name}\n電子郵件是：${email}`);<br />
+    &emsp;}<br />
+    &lt;/script&gt;<br />
+    </p>
+    <form name="form">
+        姓名：<input type='text' name='name' id='name' autocomplete="off"/><br />
+        E-mail：<input type='text' name='email' id='email' autocomplete="off"/><br />
+        <input type='submit' value='送出' onclick="processFormData()"/>
+    </form>
+    <script>
+        function processFormData() {
+            let nameElement = document.getElementsByName('name');
+            let name = nameElement[0].value;
+            let emailElement = document.getElementsByName('email');
+            let email = emailElement[0].value;
+            alert(`你的姓名是：${name}\n電子郵件是：${email}`);
+        }
+    </script>
+    <p>
+    <h3>getElementsByTagName</h3>
+    <p>後面要連接[索引值]，從0開始。</p>
+    <p style="background-color: black; color: yellow;">
+    &lt;span&gt;文字1&lt;/span&gt;<br />
+    &lt;span&gt;文字2&lt;/span&gt;<br />
+    &lt;span&gt;文字3&lt;/span&gt;<br />
+    &lt;span&gt;文字4&lt;/span&gt;<br />
+    &lt;div id="spanText"&gt;&lt;/div&gt;<br />
+    &lt;button onclick="chgSpan()"&gt;點擊改變文字樣式&lt;/button&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function chgSpan() {<br />
+    &emsp;&emsp;let span1 = document.getElementsByTagName('span');<br />
+    &emsp;&emsp;for (let j = 1; j &lt; span1.length; j += 2) {<br />
+    &emsp;&emsp;&emsp;span1[j].style.cssText = "font-size: 20px; color: yellow; background-color: gray";<br />
+    &emsp;&emsp;}<br />
+    &emsp;&emsp;let x3 = document.getElementById('spanText');<br />
+    &emsp;&emsp;x3.innerHTML = `文字2和文字4樣式已變更！`;<br />
+    &emsp;&emsp;x3.style.cssText = "display: inline; font-size: 20px; color: white; background-color: black;"<br />
+    &emsp;}<br />
+    &lt;/script&gt;<br />
+    </p>
+    <span>文字1</span>
+    <span>文字2</span>
+    <span>文字3</span>
+    <span>文字4</span>
+    <br />
+    <div id="spanText"></div>
+    <button onclick="chgSpan()">點擊改變文字樣式</button>
+    <script>
+        function chgSpan() {
+            let span1 = document.getElementsByTagName('span');
+            for (let j = 1; j < span1.length; j += 2) {
+                span1[j].style.cssText = "font-size: 20px; color: yellow; background-color: gray";
+            }
+            let x3 = document.getElementById('spanText');
+            x3.innerHTML = `文字2和文字4樣式已變更！<br />`;
+            x3.style.cssText = "display: inline; font-size: 20px; color: white; background-color: black";
+        }
+    </script>
+    <p>
+    
+    <h3>querySelector</h3>
+    <ul>
+        <li>
+            id選擇器(#)：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;p id="query_1"&gt;JavaScript&lt;/p&gt;<br />
+            &lt;p id="query_2"&gt;&lt;/p&gt;<br />
+            &lt;button onclick="query()"&gt;點擊改變文字樣式&lt;/button&gt;<br />
+            &lt;script&gt;<br />
+            &emsp;function query() {<br />
+            &emsp;&emsp;let q1 = document.querySelector('#query_1');<br />
+            &emsp;&emsp;q1.style.cssText = "border: 2px solid green; border-radius: 5px; font-size: 20px; color: blue; width: 200px";<br />
+            &emsp;&emsp;let q2 = document.querySelector('#query_2');<br />
+            &emsp;&emsp;q2.innerHTML = `文字樣式已變更！`;<br />
+            &emsp;&emsp;q2.style.cssText = "display: inline; font-size: 20px; color: white; background-color: black";<br />
+            &emsp;}<br />
+            &lt;/script&gt;<br />
+            </p>
+            <p id="query_id1">JavaScript</p>
+            <p id="query_id2"></p>
+            <button onclick="query_id()">點擊改變文字樣式</button>
+            <script>
+                function query_id() {
+                let q1 = document.querySelector('#query_id1');
+                q1.style.cssText = "border: 2px solid green; border-radius: 5px; font-size: 20px; color: blue; width: 200px";
+                let q2 = document.querySelector('#query_id2');
+                q2.innerHTML = `文字樣式已變更！<br />`;
+                q2.style.cssText = "display: inline; font-size: 20px; color: white; background-color: black";
+                }
+            </script>
+        </li>
+        <p>
+        <li>
+            class選擇器(.)：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;p class="query_class"&gt;第一個段落&lt;/p&gt;<br />
+            &lt;p class="query_class"&gt;第二個段落&lt;/p&gt;<br />
+            &lt;div class="query_div1"&gt;&lt;/div&gt;<br />
+            &lt;button onclick="query_class()"&gt;點擊改變段落樣式&lt;/button&gt;<br />
+            &lt;script&gt;<br />
+            &emsp;function query_class() {<br />
+            &emsp;&emsp;let q3 = document.querySelector('.query_class');<br />
+            &emsp;&emsp;q3.style.cssText = "display: inline; background-color: blue; color: white; font-size: 20px";<br />
+            &emsp;&emsp;let q4 = document.querySelector('.query_div1');<br />
+            &emsp;&emsp;q4.innerHTML = `兩個段落class名稱一樣，但卻只有第一個段落有被更改樣式！`<br />
+            &emsp;&emsp;q4.style.cssText = "display: inline; background-color: black; color: white; font-size: 20px";<br />
+            &emsp;}<br />
+            &lt;/script&gt;<br />
+            </p>
+            <p class="query_class">第一個段落</p>
+            <p class="query_class">第二個段落</p>
+            <div class="query_div1"></div>
+            <button onclick="query_class()">點擊改變段落樣式</button>
+            <script>
+                function query_class() {
+                    let q3 = document.querySelector('.query_class');
+                    q3.style.cssText = "display: inline; background-color: blue; color: white; font-size: 20px";
+                    let q4 = document.querySelector('.query_div1');
+                    q4.innerHTML = `兩個段落class名稱一樣，但卻只有第一個段落有被更改樣式！<br />`
+                    q4.style.cssText = "display: inline; background-color: black; color: white; font-size: 20px";
+                }
+            </script>
+        </li>
+    </ul>
+
+    <h3>querySelectorAll</h3>
+    <ul>
+        <li>適用於多個class選擇器，後面要連接[索引值]，從0開始。</li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;div class="query-container"&gt;<br />
+            &emsp;&lt;div class="query-box-1"&gt;item-1&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-2"&gt;item-2&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-1"&gt;item-3&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-2"&gt;item-4&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-1"&gt;item-5&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-2"&gt;item-6&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-1"&gt;item-7&lt;/div&gt;<br />
+            &emsp;&lt;div class="query-box-2"&gt;item-8&lt;/div&gt;<br />
+            &lt;/div&gt;<br />
+            &lt;span&gt;&lt;button onclick="query_box_1()"&gt;點擊變更item-1、3、5、7的樣式&lt;/button&gt;&lt;/span&gt;<br />
+            &lt;span&gt;&lt;button onclick="query_box_2()"&gt;點擊變更item-2、4、6、8的樣式&lt;/button&gt;&lt;/span&gt;<br />
+            &lt;span&gt;&lt;button onclick="query_recover()"&gt;還原樣式&lt;/button&gt;&lt;/span&gt;<br /> 
+            &lt;script&gt;<br />
+            &emsp;function query_box_1() {<br />
+            &emsp;&emsp;let q5 = document.querySelectorAll('.query-box-1');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q5.length; i ++) {<br />
+            &emsp;&emsp;&emsp;q5[i].style.cssText = "background-color: green; color: yellow; font-weight: bold;";<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;let q6 = document.querySelectorAll('.query-box-2');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q6.length; i ++) {<br />
+            &emsp;&emsp;&emsp;q6[i].style.cssText = "background-color: #6351ee; color: white";<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+
+            &emsp;function query_box_2() {<br />
+            &emsp;&emsp;let q7 = document.querySelectorAll('.query-box-2');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q7.length; i ++) {<br />
+            &emsp;&emsp;&emsp;q7[i].style.cssText = "background-color: green; color: yellow; font-weight: bold;";<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;let q8 = document.querySelectorAll('.query-box-1');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q8.length; i ++) {<br />
+            &emsp;&emsp;&emsp;q8[i].style.cssText = "background-color: #de49a3; color: white";<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+
+            &emsp;function query_recover() {<br />
+            &emsp;&emsp;let q9 = document.querySelectorAll('.query-box-1');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q9.length; i++) {<br />
+            &emsp;&emsp;q9[i].style.cssText = "background-color: #de49a3; color: white";<br />
+            &emsp;&emsp;}<br />
+            &emsp;&emsp;let q10 = document.querySelectorAll('.query-box-2');<br />
+            &emsp;&emsp;for (let i = 0; i &lt; q10.length; i++) {<br />
+            &emsp;&emsp;&emsp;q10[i].style.cssText = "background-color: #6351ee; color: white";<br />
+            &emsp;&emsp;}<br />
+            &emsp;}<br />
+            &lt;/script&gt;<br />
+            </p>
+            <div class="query-container">
+                <div class="query-box-1">item-1</div>
+                <div class="query-box-2">item-2</div>
+                <div class="query-box-1">item-3</div>
+                <div class="query-box-2">item-4</div>
+                <div class="query-box-1">item-5</div>
+                <div class="query-box-2">item-6</div>
+                <div class="query-box-1">item-7</div>
+                <div class="query-box-2">item-8</div>
+            </div>
+            <span><button onclick="query_box_1()">點擊變更item-1、3、5、7的樣式</button></span>
+            <span><button onclick="query_box_2()">點擊變更item-2、4、6、8的樣式</button></span>
+            <span><button onclick="query_recover()">還原樣式</button></span>
+            <script>
+                function query_box_1() {
+                    let q5 = document.querySelectorAll('.query-box-1');
+                    for (let i = 0; i < q5.length; i ++) {
+                        q5[i].style.cssText = "background-color: green; color: yellow; font-weight: bold;";
+                    }
+                    let q6 = document.querySelectorAll('.query-box-2');
+                    for (let i = 0; i < q6.length; i ++) {
+                        q6[i].style.cssText = "background-color: #6351ee; color: white";
+                    }
+                }
+
+                function query_box_2() {
+                    let q7 = document.querySelectorAll('.query-box-2');
+                    for (let i = 0; i < q7.length; i ++) {
+                        q7[i].style.cssText = "background-color: green; color: yellow; font-weight: bold;";
+                    }
+                    let q8 = document.querySelectorAll('.query-box-1');
+                    for (let i = 0; i < q8.length; i ++) {
+                        q8[i].style.cssText = "background-color: #de49a3; color: white";
+                    }
+                }
+
+                function query_recover() {
+                    let q9 = document.querySelectorAll('.query-box-1');
+                    for (let i = 0; i < q9.length; i++) {
+                        q9[i].style.cssText = "background-color: #de49a3; color: white";
+                    }
+                    let q10 = document.querySelectorAll('.query-box-2');
+                    for (let i = 0; i < q10.length; i++) {
+                        q10[i].style.cssText = "background-color: #6351ee; color: white";
+                    }
+                }
+            </script>
+        </li>
+    </ul>
+
+    <h3>處理物件節點</h3>
+    <p>
+        <table border="1">
+            <tr>
+                <th>屬性</th>
+                <th>說明</th>
+            </tr>
+            <tr>
+                <td>firstChild</td>
+                <td>第一個子節點</td>
+            </tr>
+            <tr>
+                <td>lastChild</td>
+                <td>最後一個子節點</td>
+            </tr>
+            <tr>
+                <td>parentNode</td>
+                <td>父節點</td>
+            </tr>
+            <tr>
+                <td>childNodes</td>
+                <td>子節點</td>
+            </tr>
+            <tr>
+                <td>previousSibling</td>
+                <td>上一個節點</td>
+            </tr>
+            <tr>
+                <td>nextSibling</td>
+                <td>下一個節點</td>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <table border="1">
+            <tr>
+                <th>屬性</th>
+                <th>說明</th>
+            </tr>
+            <tr>
+                <td>nodeName</td>
+                <td>名稱</td>
+            </tr>
+            <tr>
+                <td>nodeValue</td>
+                <td>內容</td>
+            </tr>
+            <tr>
+                <td>nodeType</td>
+                <td>種類，1表示元素節點，3表示文字節點</td>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <p style="background-color: black; color: yellow;">
+            &lt;button onclick="checknode()"&gt;檢查節點關係&lt;/button&gt;<br />
+            &lt;textarea cols="63" rows="9" id="area"&gt;&lt;/textare&gt;<br />
+            &lt;div id="coffee">Coffee<br />
+            &emsp;&lt;a href="#" id="latte"&gt;拿鐵咖啡&lt;/a&gt;<br />
+            &emsp;&lt;a href="#" id="americano"&gt;美式咖啡&lt;/a&gt;<br />
+            &emsp;&lt;a href="#" id="cappuccino"&gt;卡布奇諾&lt;/a&gt;<br />
+            &lt;/div&gt;<br />
+            &lt;script&gt;<br />
+            &emsp;function checknode() {<br />
+            &emsp;&emsp;let ar1 = document.getElementById('area');<br />
+            &emsp;&emsp;let co1 = document.getElementById('coffee');<br />
+            &emsp;&emsp;ar1.value += `第一個子節點(firstChild)的nodeValue(內容) = ${co1.firstChild.nodeValue} \n`;<br />
+            &emsp;&emsp;ar1.value += `第一個子節點(childNodes)的nodeValue(內容) = ${co1.childNodes.item(0).nodeValue} \n`;<br />
+            &emsp;&emsp;ar1.value += `最後一個子節點(lastChild)的nodeType(種類) = ${co1.lastChild.nodeType} \n`;<br />
+            &emsp;&emsp;ar1.value += `coffee的下一個節點(nextSibling)的id名稱 = ${co1.firstChild.nextSibling.getAttribute('id')} \n`;<br />
+            &emsp;&emsp;ar1.value += `latte的父節點(parentNode) = ` + document.getElementById('latte').parentNode.getAttribute('id');<br />
+            &emsp;}<br />
+            &lt;/script&gt;
+        </p>
+        <button onclick="checknode()">檢查節點關係</button><br />
+        <textarea cols="63" rows="9" id="area"></textarea>
+        <div id="coffee">Coffee
+            <a href="#" id="latte">拿鐵咖啡</a>
+            <a href="#" id="americano">美式咖啡</a>
+            <a href="#" id="cappuccino">卡布奇諾</a>
+        </div>
+    </p>
+    <script>
+        function checknode() {
+            let ar1 = document.getElementById('area');
+            let co1 = document.getElementById('coffee');
+            ar1.value += `第一個子節點(firstChild)的nodeValue(內容) = ${co1.firstChild.nodeValue} \n`;
+            ar1.value += `第一個子節點(childNodes)的nodeValue(內容) = ${co1.childNodes.item(0).nodeValue} \n`;
+            ar1.value += `最後一個子節點(lastChild)的nodeType(種類) = ${co1.lastChild.nodeType} \n`;
+            ar1.value += `coffee的下一個節點(nextSibling)的id名稱 = ${co1.firstChild.nextSibling.getAttribute('id')} \n`;
+            ar1.value += `latte的父節點(parentNode) = ` + document.getElementById('latte').parentNode.getAttribute('id');
+        }
+    </script>
+
+    <h3>屬性的讀取與設定</h3>
+    <p>
+        <table border="1">
+            <tr>
+                <th>方法</th>
+                <th>說明</th>
+            </tr>
+            <tr>
+                <td>getAttribute(string name)</td>
+                <td>讀取由name參數指定的屬性值</td>
+            </tr>
+            <tr>
+                <td>setAttribute(string name, string value)</td>
+                <td>新增或修改屬性值</td>
+            </tr>
+        </table>
+    </p>
+    <p style="background-color: black; color: yellow;">
+        &lt;script&gt;<br />
+        &emsp;//建立chgBorderWidth函式，參數為px。<br />
+        &emsp;function chgBorderWidth(px) {<br />
+        &emsp;&emsp;let showTable = document.getElementById('attrTable');<br />
+        &emsp;&emsp;//設定框線屬性。<br />
+        &emsp;&emsp;showTable.setAttribute("border", px);<br />
+        &emsp;&emsp;//取得id名稱為showMessage的文字方塊，內容是取得showtable表格的寬度500。<br />
+        &emsp;&emsp;document.getElementById('showMessage').value=`表格寬度：${showTable.getAttribute('width')}`;<br >
+        &emsp;&emsp;//showText是id名稱，可以直接當變數，所以不用宣告一個變數，然後document.getElementById('id名稱')。<br />
+        &emsp;&emsp;showText.style.cssText = 'color: blue; font-size: 25px';<br />
+        &emsp;&emsp;showText.innerHTML = `表格框線為：${showTable.getAttribute('border', px)}px`<br />
+        &emsp;}<br />
+        &lt;/script&gt;<br />
+        &lt;input type="text" id="showMessage"&gt;<br />
+        &lt;table id="attrTable" width="500" cellspacing="2" cellpadding="2" border="1" bgcolor="#775B59"&gt;<br />
+        &emsp;&lt;tr id="tr1" bgcolor="#32161F"&gt;<br />
+        &emsp;&emsp;&lt;th&gt;國文&lt;/th&gt;<br />
+        &emsp;&emsp;&lt;th&gt;英文&lt;/th&gt;<br />
+        &emsp;&emsp;&lt;th&gt;數學&lt;/th&gt;<br />
+        &emsp;&lt;/tr&gt;<br />
+        &emsp;&lt;tr id="tr2"&gt;<br />
+        &emsp;&emsp;&lt;td&gt;90&lt;/td&gt;<br />
+        &emsp;&emsp;&lt;td&gt;60&lt;/td&gt;<br />
+        &emsp;&emsp;&lt;td&gt;80&lt;/td&gt;<br />
+        &emsp;&lt;/tr&gt;<br />
+        &emsp;&lt;tr id="tr3"&gt;<br />
+        &emsp;&emsp;&lt;td&gt;70&lt;/td&gt;<br />
+        &emsp;&emsp;&lt;td&gt;86&lt;/td&gt;<br />
+        &emsp;&emsp;&lt;td&gt;98&lt;/td&gt;<br />
+        &emsp;&lt;/tr&gt;<br />
+        &lt;/table&gt;<br />
+        &lt;div id="showText"&gt;&lt;/div&gt;<br />
+        &lt;button onclick="chgBorderWidth(3)"&gt;3px&lt;/button&gt;<br />
+        &lt;button onclick="chgBorderWidth(5)"&gt;5px&lt;/button&gt;<br />
+        &lt;button onclick="chgBorderWidth(10)"&gt;10px&lt;/button&gt;
+    </p>
+    <a href="04_javascriptdom_attribute.html" target="_blank">看結果</a>
+    
+    <p style="background-color: black; color: yellow;">
+        姓名：&lt;input id="nameText" size="20"&gt;<br />
+        性別：<br />
+        &emsp;&lt;input type="radio" name="gender" value="男"&gt;男<br />
+        &emsp;&lt;input type="radio" name="gender" value="女"&gt;女<br />
+        興趣：<br />
+        &emsp;&lt;input type="checkbox" name="interest" value="運動"&gt;運動<br />
+        &emsp;&lt;input type="checkbox" name="interest" value="電影"&gt;電影<br />
+        &emsp;&lt;input type="checkbox" name="interest" value="上網"&gt;上網<br />
+        電子郵件：&lt;input type="text" id="mailText" size="30"&gt;<br />
+        &lt;button type="submit" id="subbtn-1" value="送出" onclick="sbt()"&gt;送出&lt;/button&gt;<br />
+        &lt;button type="reset" id="resetbtn-1" value="取消"&gt;取消&lt;/button&gt;<br />
+        &lt;div id="r_name"&gt;&lt;/div&gt;<br />
+        &lt;div id="r_gender"&gt;&lt;/div&gt;<br />
+        &lt;div id="r_interest"&gt;&lt;/div&gt;<br />
+        &lt;div id="r_mail"&gt;&lt;/div&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;function sbt() {<br />
+        &emsp;&emsp;let name = document.getElementById('nameText').value;<br />
+        &emsp;&emsp;document.getElementById('r_name').innerHTML = `姓名：${name ? name.value : "請填寫姓名"}`;<br />
+        <br />
+        &emsp;&emsp;let gender = document.querySelector('input[name="gender"]:checked');<br />
+        &emsp;&emsp;document.getElementById('r_gender').innerHTML = `性別：${gender ? gender.value : "請選擇性別"}`;<br />
+        <br />
+        &emsp;&emsp;let interests = document.querySelectorAll('input[name="interest"]:checked');<br />
+        &emsp;&emsp;let interestValues = Array.from(interests).map(interest => interest.value).join("、");<br />
+        &emsp;&emsp;document.getElementById('r_interest').innerHTML = `興趣：${interestValues || "請勾選興趣"}`;<br />
+        <br />
+        &emsp;&emsp;let mail = document.getElementById('mailText').value;<br />
+        &emsp;&emsp;document.getElementById('r_mail').innerHTML = `電子郵件：${mail}`;<br />
+        &emsp;}<br />
+        &lt;/script&gt;
+    </p>
+    <p>
+        姓名：<input id="nameText" size="20"><br />
+        性別：
+            <input type="radio" name="gender" value="男">男&emsp;
+            <input type="radio" name="gender" value="女">女<br />
+        興趣：
+            <input type="checkbox" name="interest" value="運動">運動&emsp;
+            <input type="checkbox" name="interest" value="電影">電影&emsp;
+            <input type="checkbox" name="interest" value="上網">上網<br />
+        電子郵件：<input type="text" id="mailText" size="30"><br />
+        <button type="submit" id="subbtn-1" value="送出" onclick="sbt()">送出</button>
+        <button type="reset" id="resetbtn-1" value="取消">取消</button>
+        <div id="r_name"></div>
+        <div id="r_gender"></div>
+        <div id="r_interest"></div>
+        <div id="r_mail"></div>
+    </p>
+    <script>
+        function sbt() {
+            let name = document.getElementById('nameText').value;
+            document.getElementById('r_name').innerHTML = `姓名：${name ? name.value : "請填寫姓名"}`;
+
+            let gender = document.querySelector('input[name="gender"]:checked');
+            document.getElementById('r_gender').innerHTML = `性別：${gender ? gender.value : "請選擇性別"}`;
+
+            let interests = document.querySelectorAll('input[name="interest"]:checked');
+            let interestValues = Array.from(interests).map(interest => interest.value).join("、");
+            document.getElementById('r_interest').innerHTML = `興趣：${interestValues || "請勾選興趣"}`;
+
+            let mail = document.getElementById('mailText').value;
+            document.getElementById('r_mail').innerHTML = `電子郵件：${mail}`;
+        }
+    </script>
+    
+    <h2>DOM物件的操作</h2>
+    <p>
+        <ul>
+            <li>一個物件包含了屬性(Property)、事件(Event)、方法(Method)與集合(Collection)。</li>
+            <li>語法：物件.方法或屬性</li>
+        </ul>   
+    </p>
+
+    <h3>window物件</h3>
+    <p style="background-color: black; color: yellow;">
+        &lt;div id="showItems"&gt;&lt;/div&gt;<br />
+        &lt;hr&gt;<br />
+        &lt;div&gt;我是DIV&lt;/div&gt;<br />
+        &lt;table border="1"&gt;<br />
+        &emsp;&lt;tr&gt;<br />
+        &emsp;&emsp;&lt;td&gt;我是表格&lt;/td&gt;<br />
+        &emsp;&lt;/tr&gt;<br />
+        &lt;/table&gt;<br />
+        &lt;form&gt;<br />
+        &emsp;&lt;input type="text" size="15" value="我是文字方塊"&gt;<br />
+        &lt;/form&gt;<br />
+        &lt;img src="../images/music.png" border="0"&gt;<br />
+        &lt;button name="showitemsBtn" onclick="showmyitem()"&gt;顯示物件&lt;/button&gt;<br />
+        &lt;script&gt;<br />
+        &emsp;function showmyitem() {<br />
+        &emsp;&emsp;let all = document.getElementsByTagName('*');<br />
+        &emsp;&emsp;let tagList = [];<br />
+        &emsp;&emsp;for (let i = 0; i &lt; all.length; i ++) {<br />
+        &emsp;&emsp;&emsp;tagList.push(all[i].tagName);<br />
+        &emsp;&emsp;}<br />
+        &emsp;&emsp;let tagname = `目前文件內共有 ${all.length} 個物件`;<br />
+        &emsp;&emsp;tagname += tagList.join("、");<br />
+        &emsp;&emsp;document.getElementById('showItems').innerHTML = tagname;<br />
+        &emsp;}<br />
+        &lt;/script&gt;
+    </p>
+    <a href="04_javascriptdom_allelement.html" target="_blank">看結果</a>
+    <p>
+
+    <h3>DOM集合(Collection)</h3>
+    <p>
+        <ul>
+            <li>當想要操作具有特定名稱的物件時就可以使用集合。</li>
+            <li>集合指令可方便管理相同性質的物件。</li>
+            <li>
+                <table border="1">
+                    <tr>
+                        <th>集合</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>all[]</td>
+                        <td>所有物件。</td>
+                    </tr>
+                    <tr>
+                        <td>anchors[]</td>
+                        <td>所有Anchor物件(具有name屬性的&lt;a&gt;標記)。</td>
+                    </tr>
+                    <tr>
+                        <td>forms[]</td>
+                        <td>所有Form物件。</td>
+                    </tr>
+                    <tr>
+                        <td>images[]</td>
+                        <td>所有Image物件。</td>
+                    </tr>
+                    <tr>
+                        <td>links[]</td>
+                        <td>所有Area和Link物件(具有href屬性的&lt;a&gt;及&lt;area&gt;標記)。</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                存取集合中的物件方式：<br />
+                <ol>
+                    <li>使用索引(Index)，第1個物件的索引值是0，第2個物件的索引值是1，以此類推，例如：document.images[2]。</li>
+                    <li>使用物件名稱(Name)，例如：document.images["myImg"]。</li>
+                    <li>使用all傳回文件內名稱符合的集合，例如：document.all["myImg"]。</li>
+                </ol>
+            </li>
+            <p>
+            <li>
+                <table border="1">
+                    <caption>集合物件的屬性</caption>
+                    <tr>
+                        <th>屬性</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>length</td>
+                        <td>集合中的成員數。</td>
+                    </tr>
+                </table>
+            </li>
+            <p>
+            <li>
+                <table border="1">
+                    <caption>集合物件的方法</caption>
+                    <tr>
+                        <th>方法</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>item(index)</td>
+                        <td>指定第幾個元素(index從0開始)。</td>
+                    </tr>
+                    <tr>
+                        <td>namedItem(id)</td>
+                        <td>指定元素id名稱。</td>
+                    </tr>
+                </table>
+            </li>
+            <p style="background-color: black; color: yellow;">
+                &lt;textarea name="result" rows="6" cols="60"&gt;&lt;/textarea&gt;<br />
+                &lt;button name="mybtn" onclick="collection()"&gt;存取images物件屬性&lt;/button&gt;<br />
+                &lt;img src="../images/fb.png" border="0" name="myimg1" width="50"&gt;<br />
+                &lt;img src="../images/ig.png" border="0" name="myimg2" width="50"&gt;<br />
+                &lt;img src="../images/line.png" border="0" name="myimg3" width="50"> &gt;<br />
+                &lt;a href="https://www.google.com.tw" target="_blank"&gt;Google&lt;/a&gt;<br />
+                &lt;script&gt;<br />
+                &emsp;function collection() {<br />
+                &emsp;&emsp;//宣告變數im是取得圖片物件的成員。<br />
+                &emsp;&emsp;let im = document.images.length;<br />
+                &emsp;&emsp;//宣告變數a是取得第1張圖片的寬度。<br />
+                &emsp;&emsp;let a = document.images[0].width;<br />
+                &emsp;&emsp;//宣告變數b是取得第2張圖片的邊框寬度。<br />
+                &emsp;&emsp;let b = document.images["myimg2"].border;<br />
+                &emsp;&emsp;//宣告變數c是取得第3張圖片的名稱。<br />
+                &emsp;&emsp;let c = document.all["myimg3"].name;<br />
+                &emsp;&emsp;//宣告變數d是取得超連結的href屬性。<br />
+                &emsp;&emsp;let d = document.links.item(0).href;<br />
+                &emsp;&emsp;document.all.result.value = `images物件的數目：${im} \n` + `第1張圖片的寬度：${a} \n`<br />
+                &emsp;&emsp;+ `第2張圖片的邊框寬度：${b} \n` + `第3張圖片的名稱：${c} \n` + `超連結的href：${d}`;<br />
+                &emsp;}<br />
+                &lt;/script&gt;
+            </p>
+            <a href="04_javascriptdom_collection.html" target="_blank">看結果</a>
+        </ul>
+    </p>
+
+    <h2>DOM元件樣式</h2>
+    <ul>
+        <li>語法：元件名稱.style.樣式屬性值。</li>
+        <li>
+            <table border="1">
+                <caption>CSS與JavaScript樣式表示法</caption>
+                <tr>
+                    <th>CSS</th>
+                    <th>JavaScript</th>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>style.width</td>
+                </tr>
+                <tr>
+                    <td>font-size</td>
+                    <td>style.fontSize</td>
+                </tr>
+                <tr>
+                    <td>background-color</td>
+                    <td>style.backgroundColor</td>
+                </tr>
+                <tr>
+                    <td>border-top-width</td>
+                    <td>style.borderTopWidth</td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <p style="background-color: black; color: yellow;">
+                &lt;table id="myTable" border="1" cellspacing="2" cellpadding="2"&gt;<br />
+                &emsp;&lt;tr id="tr1"&gt;<br />
+                &emsp;&emsp;&lt;th&gt;國文&lt;/th&gt;<br />
+                &emsp;&emsp;&lt;th&gt;英文&lt;/th&gt;<br />
+                &emsp;&emsp;&lt;th&gt;數學&lt;/th&gt;<br />
+                &emsp;&lt;/tr&gt;<br />
+                &emsp;&lt;tr id="tr2"&gt;<br />
+                &emsp;&emsp;&lt;td&gt;90&lt;/td&gt;<br />
+                &emsp;&emsp;&lt;td&gt;60&lt;/td&gt;<br />
+                &emsp;&emsp;&lt;td&gt;80&lt;/td&gt;<br />
+                &emsp;&lt;/tr&gt;<br />
+                &emsp;&lt;tr id="tr3"&gt;<br />
+                &emsp;&emsp;&lt;td&gt;60&lt;/td&gt;<br />
+                &emsp;&emsp;&lt;td&gt;85&lt;/td&gt;<br />
+                &emsp;&emsp;&lt;td&gt;83&lt;/td&gt;<br />
+                &emsp;&lt;/tr&gt;<br />
+                &lt;/table&gt;<br />
+                改變表格寬度<br />
+                &lt;button onclick="tableWidth('200px')"&gt;寬度200px&lt;/button&gt;<br />
+                &lt;button onclick="tableWidth('300px')"&gt;寬度300px&lt;/button&gt;<br />
+                &lt;hr&gt;
+                改變背景顏色<br />
+                &lt;button class="colorbtn" onclick="chgTableColor('#C7DFC5')" style="background-color: #C7DFC5"&gt;&lt;/button&gt;<br />
+                &lt;button class="colorbtn" onclick="chgTableColor('#C1DBE3')" style="background-color: #C1DBE3"&gt;&lt;/button&gt;<br />
+                &lt;button class="colorbtn" onclick="chgTableColor('#CEBACF')" style="background-color: #CEBACF"&gt;&lt;/button&gt;<br />
+                &lt;button class="colorbtn" onclick="chgTableColor('#EBD2B4')" style="background-color: #EBD2B4"&gt;&lt;/button&gt;<br />
+                &lt;script&gt;<br />
+                &emsp;function tableWidth(w) {<br />
+                &emsp;&emsp;let table = document.getElementById('myTable');<br />
+                &emsp;&emsp;table.style.width = w;<br />
+                &emsp;}<br />
+                &emsp;function chgTableColor(col) {<br />
+                &emsp;&emsp;let table = document.getElementById('myTable');<br />
+                &emsp;&emsp;table.style.backgroundColor = col;<br />
+                &emsp;&emsp;}<br />
+                &lt;/script&gt;
+            </p>
+            <p>
+                <a href="04_javascriptdom_style.html" target="_blank">看結果</a>
+            </p>
+        </li>
+    </ul>
+</main>
+<div id="footer"></div>
+</body>
+</html>
