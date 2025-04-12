@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="認識javascript">
+	<meta name="author" content="王群銘">
+	<title>認識javascript</title>
+    <style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+        th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+        button {
+            background-color: green;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+    <h2>Javascript語法架構</h2>
+    <ul>
+        <li>
+            <p style="background-color: black; color: yellow;">
+            &lt;script type="text/javascript"&gt;<br />
+            &emsp;Javascript語法<br />
+            &lt;/script&gt;
+            </p>
+        </li>
+        <li>放在&lt;head&gt;標記裡：適用於一開始顯示網頁時就執行程式。</li>
+        <li>放在&lt;body&gt;標記裡：依照網頁載入順序執行程式。</li>
+    </ul>
+
+    <h2>物件(Object)</h2>
+    <ul>
+        <li>標準物件模型(Document Object Model-DOM)：以window為底層，包含了窗框(frame)、文件(document)等，文件裡包含圖片(image)、表單(form)、按鈕(botton)等物件。</li>
+        <li>透過id、name屬性，或forms[]、images[]等物件集合就能取得物件，並且使用各自的屬性。</li>
+        <li>例如：在網頁裡顯示「歡迎光臨」文字，網頁本身的物件是document，屬於window下層，語法為：<br />
+            window.document.write("歡迎光臨")，因為JavaScript程式碼與物件在同一頁，所以window可省略不寫：<br />
+            document.write("歡迎光臨")
+        </li>
+    </ul>
+
+    <h2>屬性(Property)</h2>
+    <ul>
+        <li>是用來設定或取得物件的屬性內容。</li>
+        <li>語法：物件名稱.屬性="設定值"<br />
+            例如：document.bgcolor="yellow"
+        </li>
+    </ul>
+
+    <h2>函式(Function)</h2>
+    <ul>
+        <li>是先寫好的一段程式碼，可以被不同的物件、事件重複呼叫執行。</li>
+        <li>使用函式必須知道定義函式的方法與所輸入的引數，及傳回何種結果。</li>
+        <li>操作步驟：<br />
+            1.定義函式。<br />
+            2.呼叫函式。
+        </li>
+        <li>語法：<br />
+            function 函式名稱(參數) {<br />
+            &emsp;JavaScript敘述<br />
+            &emsp;...<br />
+            &emsp;...<br />
+            &emsp;return(回傳值)&emsp;//有回傳值的時候才需要<br />
+            }
+        </li>
+        <li>範例1：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;input type="button" value="呼叫alert函式" onclick="alert('哈囉');"&gt;<br />
+            </p>
+            說明：<br />
+            上面語法是以事件(Event)來呼叫函式，當事件發生時，函式就會被呼叫並執行，onclick是「按一下」事件，所以當使用者按一下按鈕，就會呼叫函式。<br />
+            <input type="button" value="呼叫alert函式" onclick="alert('哈囉');">
+        </li>
+        <li>範例2<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script type="text/javascript"&gt;<br />
+            &emsp;//建立add函式，並建立a, b兩個參數。<br />
+            &emsp;&emsp;function add(a, b) {<br />
+            &emsp;&emsp;//回傳a + b。<br />
+            &emsp;&emsp;return a + b;<br />
+            &emsp;}<br />
+            &emsp;//宣告sum變數，a = 5和b = 3的引數。<br />
+            &emsp;let sum = add(5, 3);<br />
+            &emsp;document.write(`計算結果：${sum}`);<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script type="text/javascript">
+                //建立add函式，並建立a, b兩個參數。
+                function add(a, b) {
+                    //回傳a + b。
+                    return a + b;
+                }
+                //宣告sum變數，a = 5和b = 3的引數。
+                let sum = add(5, 3);
+                document.write(`計算結果：${sum}`);
+            </script>
+            <p>
+            按下面的連結會跳出a = 2, b = 7, a + b = 9 的訊息框：<br />
+            <p style="background-color: black; color: yellow;">
+            &lt;script&gt;<br />
+            &emsp;function sum_1(a, b) {<br />
+            &emsp;&emsp;let a1 = 2; b1 = 7;<br />
+            &emsp;&emsp;return `a = ${a1}, b = ${b1}, a + b = ${a1 + b1}`;<br />
+            &emsp;}<br />
+            &lt;/script&gt;<br />
+            </p>
+            <script>
+                function sum_1(a, b) {
+                    let a1 = 2; b1 = 7;
+                    return `a = ${a1}, b = ${b1}, a + b = ${a1 + b1}`;
+                }
+            </script>
+            <p style="background-color: black; color: yellow;">&lt; a href="#" onclick="alert(sum_1())">按一下計算&gt;&lt;/a&gt;</p>
+            <a href="#" onclick="alert(sum_1())">按一下計算</a><p>
+            也可以用設定按鈕的方式：<br />
+            <p style="background-color: black; color: yellow;">&lt;button value="按一下計算" onclick="alert(sum_1())"&gt;按一下計算&lt;/button&gt;</p>
+            <button value="按一下計算" onclick="alert(sum_1())">按一下計算</button>
+        </li>
+    </ul>
+
+    <h2>事件(Event)</h2>
+    <ul>
+        <li>「事件」是指使用者的動作或系統所引發的訊號。</li>
+        <li>用特定的程式來處理事件，稱為「事件處理(Event Handling)」。</li>
+        <li>負責處理事件的程式稱為「事件處理程序(Event Handler)」</li>
+        <li>事件處理程序(Event Handler)通常與物件(Object)相關，不同的物件會支援不同的事件處理程序。</li>
+        <p>
+        <li>
+            <table border="1">
+                <caption>事件處理程序</caption>
+                <tr>
+                    <td>onClick</td>
+                    <td>滑鼠點選物件時</td>
+                </tr>
+                <tr>
+                    <td>onMouseOver</td>
+                    <td>滑鼠經過物件時</td>
+                </tr>
+                <tr>
+                    <td>onMouseOut</td>
+                    <td>滑鼠離開物件時</td>
+                </tr>
+                <tr>
+                    <td>onLoad</td>
+                    <td>網頁載入時</td>
+                </tr>
+                <tr>
+                    <td>onUnLoad</td>
+                    <td>離開網頁時</td>
+                </tr>
+                <tr>
+                    <td>onError</td>
+                    <td>載入發生錯誤時</td>
+                </tr>
+                <tr>
+                    <td>onAbort</td>
+                    <td>停止載入影像時</td>
+                </tr>
+                <tr>
+                    <td>onFocus</td>
+                    <td>滑鼠或表單元件取得焦點時</td>
+                </tr>
+                <tr>
+                    <td>onBlur</td>
+                    <td>滑鼠或表單元件失去焦點時</td>
+                </tr>
+                <tr>
+                    <td>onSelect</td>
+                    <td>選取表單元件內容時</td>
+                </tr>
+                <tr>
+                    <td>onChange</td>
+                    <td>改變欄位的資料時</td>
+                </tr>
+                <tr>
+                    <td>onReset</td>
+                    <td>重設表單時</td>
+                </tr>
+                <tr>
+                    <td>onSubmit</td>
+                    <td>送出表單時</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+
+    <h2>addEventListener()函式註冊事件</h2>
+    <ul>
+        <li>當網頁程式碼較多時，想要處理表單元件，可以使用addEventListener()函式註冊事件處理函式。例如，在名稱為btn的按鈕按一下時呼叫sum()函數，語法為：<br />
+            <p style="background-color: black; color: yellow;">
+                btn.addEventListener("click",sum);
+            </p>
+        </li>
+        <li>如果要在按鈕上呼叫多個函式，只要多加幾行addEventListener()函式即可。</li>
+        <li>addEventListener()函式註冊可以在網頁一載入時就執行，只要將函式指定在window的onLoad事件即可。</li>
+        <li><a href="01_javascriptbasic_addeventlistener.html" target="_blank">addEventListener應用</a></li>
+    </ul>
+
+    <h2>運算符號</h2>
+    <p>
+    <h3>比較運算子</h3>
+    <p>用來判斷兩邊的運算元是否相等、大於或小於。</p>
+    <table border="1" width="500">
+        <tr>
+            <th>比較運算子</th>
+            <th>說明</th>
+            <th>範例</th>
+        </tr>
+        <tr>
+            <td align="center">&gt;</td>
+            <td>左邊值大於右邊值則成立</td>
+            <td>a &gt; b</td>
+        </tr>
+        <tr>
+            <td align="center">&lt;</td>
+            <td>左邊值小於右邊值則成立</td>
+            <td>a &lt; b</td>
+        </tr>
+        <tr>
+            <td align="center">==</td>
+            <td>兩邊相等則成立</td>
+            <td>a == b</td>
+        </tr>
+        <tr>
+            <td align="center">!=</td>
+            <td>兩邊不相等則成立</td>
+            <td>a != b</td>
+        </tr>
+        <tr>
+            <td align="center">&gt;=</td>
+            <td>左邊值大於或等於右邊值則成立</td>
+            <td>a &gt;= b</td>
+        </tr>
+        <tr>
+            <td align="center">&lt;=</td>
+            <td>左邊值小於或等於右邊值則成立</td>
+            <td>a &lt;= b</td>
+        </tr>
+    </table>
+    <p>
+
+    <h3>算術運算子</h3>
+    <p>
+    <table border="1" width="500">
+        <tr>
+            <th>算術運算子</th>
+            <th>說明</th>
+            <th>範例</th>
+        </tr>
+        <tr align="center">
+            <td>+</td>
+            <td>加</td>
+            <td>a + b</td>
+        </tr>
+        <tr align="center">
+            <td>-</td>
+            <td>減</td>
+            <td>a - b</td>
+        </tr>
+        <tr align="center">
+            <td>*</td>
+            <td>乘</td>
+            <td>a * b</td>
+        </tr>
+        <tr align="center">
+            <td>/</td>
+            <td>除</td>
+            <td>a / b</td>
+        </tr>
+        <tr align="center">
+            <td>%</td>
+            <td>取餘數</td>
+            <td>a % b</td>
+        </tr>
+        <tr align="center">
+            <td>--</td>
+            <td>遞減</td>
+            <td>
+                a--(先傳回a，然後a減1)<br />
+                --a(先減1，然後傳回a)
+            </td>
+        </tr>
+        <tr align="center">
+            <td>++</td>
+            <td>遞加</td>
+            <td>
+                a++(先傳回a，然後a加1)<br />
+                ++a(先加1，然後傳回a)
+            </td>
+        </tr>
+    </table>
+    <p>
+
+    <h3>邏輯運算子</h3>
+    <p>
+    <table border="1" width="500">
+        <tr>
+            <th>邏輯運算子</th>
+            <th>說明</th>
+            <th>範例</th>
+        </tr>
+        <tr> 
+            <td align="center">&&</td>
+            <td>AND運算(左右兩邊都成立時才傳回真(True))</td>
+            <td>a&&b</td>
+         </tr>
+        <tr>
+            <td align="center">||</td>
+            <td>OR運算(只要左右兩邊有一邊成立時才傳回真(True))</td>
+            <td>a||b</td>
+         </tr>
+    </table>
+    <p>
+
+    <h3>指派運算子</h3>
+    <p>
+        單一指派運算子：將資料值指派給變數。例如：a = 5;&emsp;//a等於5<br />
+        複合指派運算子：與其它的運算子結合。<br />
+        例如：<br />
+        a += 5;&emsp;//a等於a + 5<br />
+        a -= 5;&emsp;//a等於a - 5
+    </p>
+
+    <h3>字串</h3>
+    <p>
+        「+」號可用來連接兩個字串。<br />
+        例如：a = "abc" + "def";&emsp;//a等於abcdef<br />
+    </p>
+    <p>
+        運算式如果有數字也有字串，只要其中值是字串，其後面的值也會轉換成字串。<br />
+        例如：<br />
+        var a = 3 + 10 + "abc";&emsp;//a等於13abc<br />
+        var b = "abc" + 3 + 10;&emsp;//a等於abc310
+    </p>
+
+    <h3>if...else條件式</h3>
+    <p>
+        語法：<br />
+        if(條件判斷式) {<br/>
+        &emsp;&emsp;條件成立，則執行這裡面的程式敘述。<br />
+        } else {<br />
+        &emsp;&emsp;條件不成立，則執行這裡面的程式敘述。<br />
+        }<br />
+        範例：<br />
+        if(a &gt;= b) {<br />
+        &emsp;&emsp;如果a大於等於b，則執行這裡面的程式敘述。<br />
+        } else {<br />
+        &emsp;&emsp;如果a不是大於等於b，則執行這裡面的程式敘述。<br />
+        }
+    </p>
+    <p>如果條件不成立時不執行任何程式敘述，可以省略else語法。</p>
+    <p>
+        如果條件判斷式不只一個，則可以在else語法後面再加上if條件式。<br />
+        範例：<br />
+        if(a == b){<br />
+        &emsp;&emsp;如果a等於b，則執行這裡面的程式敘述。<br />
+        }else if(a &gt; b){<br />
+        &emsp;&emsp;否則如果a大於b，則執行這裡面的程式敘述。<br />
+        }else if(a &lt; b){<br />
+        &emsp;&emsp;否則如果a小於b，則執行這裡面的程式敘述。<br />
+        }
+    </p>
+
+    <h3>for迴圈</h3>
+    <p>當程式需要重複執行時，可利用for迴圈來執行。</p>
+    <p>
+        語法：<br />
+        for(起始值; 條件判斷式; 增減值) {<br />
+        &emsp;&emsp;條件成立時，則執行這裡面的程式敘述。<br />
+        }<br />
+        範例：計算1到100的總和<br />
+        <p style="background-color: black; color: yellow;">
+        &lt;script&gt;<br />
+        &emsp;let n1 = 0;<br />
+        &emsp;for (let m1 = 1; m1 &lt;= 100; m1 ++) {<br />
+        &emsp;&emsp;if (m1 === 100) {<br />
+        &emsp;&emsp;&emsp;document.write(`${m1} = `);<br />
+        &emsp;&emsp;} else {<br />
+        &emsp;&emsp;&emsp;document.write(`${m1} + `);<br />
+        &emsp;&emsp;}<br />
+        &emsp;&emsp;n1 += m1;<br />
+        &emsp;}<br />
+        &emsp;document.write(n1);<br />
+        &lt;/script&gt;<br />
+        </p>
+        顯示結果：<br />
+        <script>
+            let n1 = 0;
+            for (let m1 = 1; m1 <= 100; m1 ++) {
+                if (m1 === 100) {
+                    document.write(`${m1} = `);
+                } else {
+                    document.write(`${m1} + `);
+                }
+                n1 += m1;
+            }
+            document.write(n1);
+        </script>
+    </p>
+    <p style="background-color: black; color: yellow;">
+        &lt;script&gt;<br />
+        &emsp;document.write(`&lt;table&gt;`);<br />
+        &emsp;&emsp;document.write(`&lt;caption&gt; 九九乘法表 &lt;/caption&gt;`);<br />
+        &emsp;&emsp;&emsp;for(j = 1; j &lt; 10; j ++) {<br />
+        &emsp;&emsp;&emsp;&emsp;document.write(`&lt;tr&gt;`);<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;for(i = 2; i &lt; 10; i ++) {<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;var tmp = i * j;<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;document.write(`&lt;td&gt; ${i} * ${j} = ${tmp} &lt;/td&gt;`);<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;}<br />
+        &emsp;&emsp;&emsp;&emsp;document.write(`&lt;/tr&gt;`);<br />
+        &emsp;&emsp;&emsp;}<br />
+        &emsp;document.write(`&lt;/table&gt;`);<br />
+        &lt;/script&gt;<br />
+    </p>
+        <script>
+            document.write(`<table>`);
+                document.write(`<caption> 九九乘法表 </caption>`);
+                    for(j = 1; j < 10; j ++) {
+                        document.write(`<tr>`);
+                            for(i = 2; i < 10; i ++) {
+                                var tmp = i * j;
+                                document.write(`<td> ${i} * ${j} = ${tmp} </td>`);
+                            }
+                        document.write(`</tr>`);
+                    }
+            document.write(`</table>`);
+        </script>
+    </p>
+
+    <p>假設a = 10, b = 20, c = 10，則(a = b)、(a == b)、(a == c)依序會顯示何值？</p>
+    <p style="background-color: black; color: yellow;">
+    &lt;button id="btn6"&gt;顯示答案&lt;/button&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function x(a, b, c) {<br />
+    &emsp;&emsp;var a = 10;<br />
+    &emsp;&emsp;var b = 20;<br />
+    &emsp;&emsp;var c = 10;<br />
+    &emsp;&emsp;//a變成10。<br />
+    &emsp;&emsp;a = b;<br>
+    &emsp;&emsp;var x1 = a == b;<br />
+    &emsp;&emsp;var x2 = a == c;<br />
+    &emsp;&emsp;alert(`a = ${a}`);<br />
+    &emsp;&emsp;alert(`a == b 為 ${x1}`);<br />
+    &emsp;&emsp;alert(`a == c 為 ${x2}`);<br />
+    &emsp;}<br />
+    &emsp;btn6.addEventListener('click', x);<br />
+    &lt;/script&gt;<br />
+    </p>
+    <button id="btn6">顯示答案</button>
+    <script>
+        function x(a, b, c) {
+            var a = 10;
+            var b = 20;
+            var c = 10;
+            //a變成10。
+            a = b;
+            var x1 = a == b;
+            var x2 = a == c;
+            alert(`a = ${a}`);
+            alert(`a == b 為 ${x1}`);
+            alert(`a == c 為 ${x2}`);
+        }
+        btn6.addEventListener('click', x);
+    </script>
+
+    <p>用for迴圈計算出1+3+5+...+15的總和。</p>
+    <p style="background-color: black; color: yellow;">
+    &lt;button id="btn7" onclick="value1()"&gt;計算1+3+5+...+15的總和&lt;/button&gt;<br />
+    &lt;script&gt;<br />
+    &emsp;function value1() {<br />
+    &emsp;&emsp;var x = 0; str = "";<br />
+    &emsp;&emsp;for (i = 1; i &lt;= 15; i += 2) {<br />
+    &emsp;&emsp;&emsp;if (i == 1) {<br />
+    &emsp;&emsp;&emsp;&emsp;//str = "1"	<br />
+    &emsp;&emsp;&emsp;&emsp;str = i;<br />
+    &emsp;&emsp;&emsp;} else {<br />
+    &emsp;&emsp;&emsp;&emsp;//str = "1 + 3", str = "1 + 3 + 5", str = "1 + 3+ 5 + 7", str = "1 + 3 + 3 + 7", str = "1 + 3 + 5 + 7 + 9", str = "1 + 3 + 5 + 7 + 9 + 11", str ="1 + 3 + 5 + 7 + 9 + 11 + 13", str = "1 + 3 + 5 + 7 + 9 + 11 + 13 + 15"<br />
+    &emsp;&emsp;&emsp;&emsp;str += "+" + i; <br />
+    &emsp;&emsp;&emsp;}<br />
+    &emsp;&emsp;&emsp;//x = 0 + 1, x = 1 + 3, x = 4 + 5, x = 9 + 7, x = 16 + 9, x = 25 + 11, x = 36 + 13, x = 49 + 15<br />
+    &emsp;&emsp;&emsp;x += i;<br />
+    &emsp;&emsp;}<br />
+    &emsp;alert(`${str} = ${x}`);<br />
+    &emsp;}<br />
+    &lt;/script&gt;<br />
+    </p>
+    <button id="btn7" onclick="value1()">計算1+3+5+...+15總和</button>
+    <script>
+        function value1() {
+            var x = 0; str = "";
+            for (i = 1; i <= 15; i += 2) {
+                if (i == 1) {
+                    //str = "1"	
+                    str = i;
+                } else {
+                    //str = "1 + 3", str = "1 + 3 + 5", str = "1 + 3+ 5 + 7", str = "1 + 3 + 3 + 7", str = "1 + 3 + 5 + 7 + 9", str = "1 + 3 + 5 + 7 + 9 + 11", str ="1 + 3 + 5 + 7 + 9 + 11 + 13", str = "1 + 3 + 5 + 7 + 9 + 11 + 13 + 15"
+                    str += "+" + i; 
+                }
+                //x = 0 + 1, x = 1 + 3, x = 4 + 5, x = 9 + 7, x = 16 + 9, x = 25 + 11, x = 36 + 13, x = 49 + 15
+                x += i;
+            }
+        alert(`${str} = ${x}`);
+        }
+    </script>
+    </main>
+    <div id="footer"></div>
+</body>
+</html>

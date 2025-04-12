@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="表格與表單">
+	<meta name="author" content="王群銘">
+	<title>表格與表單</title>
+	<style type="text/css">
+		* {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+<h2>表格基本架構</h2>
+<ul>
+	<li>一個基本的表格包含「表格(table)」、「儲存格(cell)」、「欄(column)」、「列(row)」。</li>
+	<li>列：橫列；欄：直欄。</li>
+	<li>
+		<table>
+			<tr>
+				<th>標記</th>
+				<th>說明</th>
+			</tr>
+			<tr>
+				<td>&lt;table&gt;</td>
+				<td>表格的開始與結束</td>
+			</tr>
+			<tr>
+				<td>&lt;caption&gt;</td>
+				<td>表格標題</td>
+			</tr>
+			<tr>
+				<td>&lt;thead&gt;</td>
+				<td>定義表頭內容</td>
+			</tr>
+			<tr>
+				<td>&lt;tbody&gt;</td>
+				<td>定義表身內容</td>
+			</tr>
+			<tr>
+				<td>&lt;tfoot&gt;</td>
+				<td>定義表尾內容</td>
+			</tr>
+			<tr>
+				<td>&lt;th&gt;</td>
+				<td>增加表格標題</td>
+			</tr>
+			<tr>
+				<td>&lt;tr&gt;</td>
+				<td>增加表格列</td>
+			</tr>
+			<tr>
+				<td>&lt;td&gt;</td>
+				<td>增加表格欄</td>
+			</tr>
+		</table>
+	</li>
+	<li>thead、tfoot與tbody是描述表格結構，適合用在長表格，三者出現順序建議為thead、tfoot、tbody</li>
+	<li>設定步驟：</li>
+		<ol>
+			<li>設定表格：&lt;table border="1"&gt;...&lt;/table&gt;(border屬性：顯示框線)</li>
+			<li>設定橫列數目：&lt;tr&gt;...&lt;/tr&gt;</li>
+			<li>設定直欄數目：&lt;td&gt;...&lt;/td&gt;</li>
+		</ol>
+	<li>
+		<table>
+			<tr>
+				<td>第1列第1欄</td>
+				<td>第1列第2欄</td>
+				<td>第1列第3欄</td>
+			</tr>
+			<tr>
+				<td>第2列第1欄</td>
+				<td>第2列第2欄</td>
+				<td>第2列第3欄</td>
+			</tr>
+			<tr>
+				<td>第3列第1欄</td>
+				<td>第3列第2欄</td>
+				<td>第3列第3欄</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<h2>&lt;caption&gt;標記與&lt;th&gt;標記</h2>
+<ul>
+	<li>&lt;caption&gt;表格標題&lt;/caption&gt;</li>
+	<li>&lt;th&gt;第1列第1欄標題&lt;/th&gt;</li>
+	<li>
+		<table>
+			<caption>表格標題</caption>
+			<tr>
+				<th>第1列第1欄標題</th>
+				<th>第1列第2欄標題</th>
+				<th>第1列第3欄標題</th>
+			</tr>
+			<tr>
+				<td>第2列第1欄</td>
+				<td>第2列第2欄</td>
+				<td>第2列第3欄</td>
+			</tr>
+			<tr>
+				<td>第3列第1欄</td>
+				<td>第3列第2欄</td>
+				<td>第3列第3欄</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<h2>儲存格文字不換行</h2>
+<ul>
+	<li>&lt;td nowrap&gt;...&lt;/td&gt;</li>
+</ul>
+
+<h2>合併儲存格</h2>
+<ul>
+	<li>合併左右欄&lt;td&nbsp;colspan&gt;...&lt;/td&gt;</li>
+	<li>
+		<table>
+			<tr>
+				<td colspan="3">合併3欄</td>
+			</tr>
+			<tr>
+				<td>第2列第1欄</td>
+				<td>第2列第2欄</td>
+				<td>第2列第3欄</td>
+			</tr>
+		</table>
+	</li>
+	<li>合併上下列&lt;td&nbsp;rowspan&gt;...&lt;/td&gt;</li>
+	<li>
+		<table>
+			<tr>
+				<td rowspan="3">合併3列</td>
+				<td>第1列第2欄</td>
+				<td>第1列第3欄</td>
+			</tr>
+			<tr>
+				<td>第2列第2欄</td>
+				<td>第2列第3欄</td>
+			</tr>
+			<tr>
+				<td>第3列第2欄</td>
+				<td>第3列第3欄</td>
+			</tr>
+		</table>
+	</li>
+	<li>遇到空白儲存格時，輸入&amp;nbsp;，可避免儲存格邊框消失。</li>
+</ul>
+
+<h2>CSS的border-collapse屬性</h2>
+<ul>
+	<li>此功能是用來將表格欄位邊框合併，讓表格變得更美化，</li>
+	<li>
+		border-collapse: separate：此為預設值，邊框彼此間分開。
+		<table border="1" width="500" style="border: 2px solid red; border-collapse: separate;">
+			<tr>
+				<td style="border: 2px solid red; border-collapse: separate;">border-collapse: separate</td>
+				<td style="border: 2px solid red; border-collapse: separate;">border-collapse: separate</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		border-collapse: collapse：邊框合併為單一邊框，建議使用。
+		<table border="1" width="500" style="border: 2px solid red; border-collapse: collapse;">
+			<tr>
+				<td style="border: 2px solid red; border-collapse: collapse;">border-collapse: collapse</td>
+				<td style="border: 2px solid red; border-collapse: collapse;">border-collapse: collapse</td>
+			</tr>
+		</table>
+	</li>
+	<li>border-collapse: inherit：繼承自父層的border-collapse屬性值，不建議使用。</li>
+</ul>
+
+<h2>表單</h2>
+<ul>
+	<li>表單元件：文字元件、清單元件、核取元件、按鈕元件。</li>
+	<li>&lt;input&gt;文字欄位的type屬性除了「text」之外，還有「email、tel、url」屬性，建議搭配required屬性，這樣送出表單後瀏覽器就會檢查是否有正確輸入。</li>
+	<li>&lt;form&gt;...&lt;/form&gt;標記</li>
+		<ul>
+			<li>表單的開始與結束標記。</li>
+			<li>語法：&lt;form&nbsp;method="post"&nbsp;action="abc.asp"&gt;</li>
+			<li>屬性：</li>
+				<ol>
+					<li>method</li>
+						<ol type="a">
+							<li>設定資料傳送方式。</li>
+							<li>設定值有post與get。</li>
+							<li>get：資料會直接加在url之後，安全性較差，並且有255個字數限制。</li>
+							<li>post：將資料封裝後再傳送，字串長度無限制，安全性高。</li>
+						</ol>
+					<li>action</li>
+						<ol type="a">
+							<li>設定資料傳送目的地，表單會與asp或php等資料庫程式配合使用。</li>
+							<li>如資料量不大，可設定傳送到e-mail，語法：&lt;form&nbsp;method="post"&nbsp;action="mailto:abc@mail.com.tw?subject="XXX"&nbsp;enctype="text/plain"&gt;</li>
+							<li>?subject="XXX"：設定郵件主旨。</li>
+							<li>enctype</li>
+								<ol type="A">
+									<li>表單傳送的編碼方式，且只有method="post"才有效。</li>
+									<li>enctype="application/x-www-form-urlencoded，此為預設值，可省略不寫。</li>
+									<li>enctype="multipart/form-data"，用於上傳檔案的時候。</li>
+									<li>enctype="text/plain"，將表單內容傳送到e-mail，enctype的設定值必須設為"text/plain"，否則會出現亂碼。</li>
+								</ol>
+						</ol>
+					<li>target</li>
+						<ul>
+							<li>指定提交的目的視窗。</li>
+							<li>
+								<table>
+									<tr>
+										<th>屬性值</th>
+										<th>說明</th>
+									</tr>
+									<tr>
+										<td>_blank</td>
+										<td>開新視窗</td>
+									</tr>
+									<tr>
+										<td>_self</td>
+										<td>目前的視窗</td>
+									</tr>
+									<tr>
+										<td>_parent</td>
+										<td>上一層視窗(父視窗)</td>
+									</tr>
+									<tr>
+										<td>_top</td>
+										<td>最上層視窗</td>
+									</tr>
+									<tr>
+										<td>頁框名稱</td>
+										<td>直接指定視窗或頁框名稱</td>
+									</tr>
+								</table>
+							</li>
+						</ul>
+					<li>
+						<dl>
+							<dt>autocomplete</dt>
+							<dd>設定input元件是否使用自動完成，屬性值有on與off。</dd>
+						<dl>
+					</li>
+					<li>
+						<dl>
+							<dt>novalidate</dt>
+							<dd>不須驗證表單，輸入novalidate即可。</dd>
+						</dl>
+					</li>
+				</ol>
+			<li>表單元件如下表：</li>
+				<table>
+					<tr>
+						<th>表單元件名稱</th>
+						<th>元件名稱</th>
+						<th>範例</th>
+					</tr>
+					<tr>
+						<td rowspan="13">輸入元件</td>
+						<td>text</td>
+						<td>&lt;input&nbsp;type="text"&nbsp;name="t1"&nbsp;size="20"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>textarea</td>
+						<td>&lt;textarea&nbsp;rows="2"&nbsp;name="s1"&nbsp;size="20"&gt;&lt;/textarea&gt;</td>
+					</tr>
+					<tr>
+						<td>password</td>
+						<td>&lt;input&nbsp;type="password"&nbsp;name="pw"&nbsp;size="5"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>date</td>
+						<td>&lt;input&nbsp;type="date"&nbsp;name="bday"&nbsp;max="2023-12-31"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>month</td>
+						<td>&lt;input&nbsp;type="month"&nbsp;name="bmonth"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>week</td>
+						<td>&lt;input&nbsp;type="week"&nbsp;name="bweek"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>number</td>
+						<td>&lt;input&nbsp;type="number"&nbsp;name="quantity"&nbsp;min="1"&nbsp;max="5"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>search</td>
+						<td>&lt;input&nbsp;type="search"&nbsp;name="searchword"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>color</td>
+						<td>&lt;input&nbsp;type="color"&nbsp;name="colorpicker"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>range</td>
+						<td>&lt;input&nbsp;type="range"&nbsp;name="setrange"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>output</td>
+						<td>&lt;output&nbsp;name="x"&nbsp;for="a&nbsp;b"&gt;&lt;/output&gt;</td>
+					<tr>
+					<tr>
+						<td>keygen</td>
+						<td>&lt;keygen&nbsp;name="security"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td rowspan="2">清單元件</td>
+						<td>select</td>
+						<td>&lt;select&nbsp;size="1"&nbsp;name="d1"&gt;&lt;/select&gt;</td>
+					</tr>
+					<tr>
+						<td>datalist</td>
+						<td>&lt;datalist&nbsp;id="search_list"&gt;&lt;/datalist&gt;</td>
+					</tr>
+					<tr>
+						<td rowspan="2">核取元件</td>
+						<td>radio</td>
+						<td>&lt;input&nbsp;type="radio"&nbsp;name="r1"&nbsp;value="v1"&nbsp;checked&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>checkbox</td>
+						<td>&lt;input&nbsp;type="checkbox"&nbsp;name="c1"&nbsp;value="on"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td rowspan="3">按鈕元件</td>
+						<td>submit</td>
+						<td>&lt;input&nbsp;type="submit"&nbsp;name="sbtn"&nbsp;value="送出"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>reset</td>
+						<td>&lt;input&nbsp;type="reset"&nbsp;name="rbtn"&nbsp;value="重新填寫"&nbsp;/&gt;</td>
+					</tr>
+					<tr>
+						<td>button</td>
+						<td>&lt;input&nbsp;type="button"&nbsp;name="b1"&nbsp;value="按鈕"&nbsp;/&gt;</td>
+					</tr>
+				</table>
+		</ul>
+	<p>
+	<li>
+			<table>
+				<caption>表單常用屬性</caption>
+				<tr>
+					<th>屬性</th>
+					<th>說明</th>
+				</tr>
+				<tr>
+					<td>autocomplete</td>
+					<td>布林值，自動完成。</td>
+				</tr>
+				<tr>
+					<td>autofocus</td>
+					<td>布林值，取得焦點。</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>布林值，表單禁用元件。</td>
+				</tr>
+				<tr>
+					<td>max</td>
+					<td>指定最大值(數字或日期時間)，不可以小於min屬性值。</td>
+				</tr>
+				<tr>
+					<td>maxlength</td>
+					<td>type屬性值為text、email、search、password、tel、url，用來限制最大長度(可輸入的字數)。</td>
+				</tr>
+				<tr>
+					<td>min</td>
+					<td>指定最小值(數字或日期時間)，不可以大於max屬性值。</td>
+				</tr>
+				<tr>
+					<td>minlength</td>
+					<td>type屬性值為text、email、search、password、tel、url，用來限制最小長度(可輸入的字數)。</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>當元件為空值時，顯示預設提醒文字。</td>
+				</tr>
+				<tr>
+					<td>readonly</td>
+					<td>布林值，設定元件不可編輯。</td>
+				</tr>
+				<tr>
+					<td>required</td>
+					<td>布林值，欄位值必須填寫，且提交表單前會檢查格式。</td>
+				</tr>
+				<tr>
+					<td>size</td>
+					<td>type屬性值為text、email、search、password、tel、url，用來指定元件的大小(寬度)，預設值為20。</td>
+				</tr>
+			</table>
+	</li>
+</ul>
+
+<h2>&lt;label&gt;標記</h2>
+<ul>
+	<li>表單元件建議搭配&lt;label&gt;標記使用，雖然從外觀上看不出任何效果，但當滑鼠點選&lt;label&gt;標記內的文字，就會將「焦點(focus)」轉到標籤指定的元件。</li>
+	<li>語法：&lt;label&nbsp;for="元件的id"&gt;</li>
+	<li>for的屬性值必須是元件的id值。</li>
+	<li>
+		範例：<p>
+		<table>
+		<td align="left">
+		<p>
+		<form method="post" action="" name="frm">
+			<label for="username">請輸入姓名：</label>
+			<input type="text" name="username" id="username">
+			<p>
+			<label for="birthday">出生日期：</label>
+			<input type="date" name="birthday" id="birthday">
+			<p>
+			<fieldset>
+				<legend>興趣</legend>
+				<input type="checkbox" id="sport" value="運動" checked>
+				<label for="sport">運動</label>
+				<input type="checkbox" id="travel" value="旅遊">
+				<label for="旅遊">旅遊</label>
+				<input type="checkbox" id="movie" value="電影">
+				<label for="電影">電影</label>
+			</fieldset>
+			<p>
+			<button type="submit" name="submitbtn">確定送出</button>
+			<button type="reset" name="resetbtn">取消重填</button>
+		</form>
+		</td>
+		</table>
+	</li>
+</ul>
+
+<h2>輸入元件</h2>
+<ul>
+	<li>文字方塊text</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="text"&nbsp;name="username"&nbsp;value="guest"&nbsp;size="10"&nbsp;maxlength="10"&nbsp;/&gt;<br />
+			    請輸入姓名：<input type="text" name="username" value="guest" size="10" maxlength="10" />
+			</li>
+			<li>
+				<dl>
+					<dt>type="text"</dt>
+					<dd>單行文字方塊，上限255個字元。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>name="username"</dt>
+					<dd>文字方塊的名稱，方便表單處理程式辨認表單元件，英文、數字或底線皆可，有大小寫區分。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>value="guest"</dt>
+					<dd>文字方塊顯示文字的預設值，若省略此屬性，則文字方塊顯示空白。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>size="10"</dt>
+					<dd>文字方塊的長度，若省略此屬性，則預設值為size="20"。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>maxlength="10"</dt>
+					<dd>限制輸入文字方塊的字數，例如手機號碼10碼、郵遞區號6碼……等。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>autofocus</dt>
+					<dd>載入網頁後，自動將游標移到此文字方塊欄位。</dd>
+				</dl>
+			</li>
+		</ul>
+	<li>文字區域欄位textarea</li>
+		<ul>
+			<li>語法：&lt;textarea&nbsp;name="memo"&nbsp;cols="20"&nbsp;rows="3"&nbsp;wrap="hard"&gt;&lt;/textarea&gt;<br />
+				請輸入留言：<textarea name="memo" cols="20" rows="2" wrap="hard"></textarea>
+			</li>
+			<li>
+				<dl>
+					<dt>name="memo"</dt>
+					<dd>文字區域欄位名稱，英文、數字及底線皆可，有大小寫區分。</dd>
+				</dl>
+				<dl>
+					<dt>cols="20"</dt>
+					<dd>文字區域欄位寬度。</dd>
+				</dl>
+				<dl>
+					<dt>rows="2"</dt>
+					<dd>文字區域欄位列數。</dd>
+				<dt>
+				</dl>
+				<dl>
+					<dt>wrap="hard"</dt>
+					<dd>設定文字區域欄位內的文字送出表單後是否換行。設定值：hard(換行)、soft(不換行)，如無設定此屬性，預設值為不換行。</dd>
+				</dl>
+			</li>
+		</ul>
+	<li>有些網站的加入會員功能，帳號是由系統產生，因此使用者不需要輸入，或是購物網站裡的商品價格是固定的，金額會利用文字方塊顯示，但不能輸入，這時可加上readonly屬性。</li>
+	<li>密碼欄位password</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="password"&nbsp;name="p1"&nbsp;size="15"&nbsp;minlength="8"&nbsp;maxlegth="12"&nbsp;placeholder="8位數以上密碼"&nbsp;/&gt;<br />
+				請輸入密碼：<input type="password" name="p1" size="15" minlength="8" maxlength="12" placeholder="8到12位密碼" /><br />
+				placeholder：提醒使用者輸入正確資訊。
+			</li>
+		</ul>
+	<li>日期欄位date</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="date"&nbsp;name="selectdate"&nbsp;/&gt;<br />
+				請選擇日期：<input type="date" name="selectdate" />
+			</li>
+		</ul>
+	<li>年月欄位month</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="month"&nbsp;name="selectmonth"&nbsp;/&gt;<br />
+				請選擇年月：<input type="month" name="selectmonth">
+			</li>
+		</ul>
+	<li>年週欄位week</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="week"&nbsp;name="selectweek"&nbsp;/&gt;<br />
+				請選擇年週：<input type="week" name="selectweek">
+			</li>
+		</ul>
+	<li>數字欄位number</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="number"&nbsp;name="setnumber"&nbsp;value="5"&nbsp;min="1"&nbsp;max="20"&nbsp;/&gt;<br />
+				請選擇1到20的數字：<input type="number" name="setnumber" value="5" min="1" max="20" />
+			</li>
+			<li>數字欄位是以上下鍵來選擇數字。</li>
+			<li>value：預設顯示的數字；min：限制最小值；max：限制最大值。</li>
+		</ul>
+	<li>色彩欄位color</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="color"&nbsp;name="setcolor"&nbsp;value="#ff00ff"&nbsp;/&gt;<br />
+				請選擇顏色：<input type="color" name="setcolor" value="#ff00ff" />
+			</li>
+			<li>value：預設顯示的顏色。</li>
+		</ul>
+	<li>範圍欄位range</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="range"&nbsp;name="selectrange"&nbsp;value="5"&nbsp;min="0"&nbsp;max="20"&nbsp;/&gt;<br />
+				調整音量：0<input type="range" name="selectrange" value="30" min="1" max="100" />100
+			</li>
+			<li>介面是水平式捲軸。</li>
+			<li>value：預設捲動到的數值。</li>
+		</ul>
+	<li>搜尋欄位search</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="search"&nbsp;name="searchword"&nbsp;value="請輸入搜尋關鍵字"&nbsp;/&gt;<br />
+				請輸入關鍵字：<input type="search" name="searchword" value="請輸入搜尋關鍵字" />
+			</li>
+			<li>value：預設顯示的文字。</li>
+		</ul>
+	<li>上傳檔案file</li>
+		<ul>
+			<li>語法：&lt;input&nbsp;type="file"&nbsp;name="upfile"&nbsp;/&gt;<br />
+				請上傳檔案：<input type="file" name="upfile" />
+			</li>
+		</ul>
+</ul>
+
+<h2>清單元件</h2>
+<ul>
+	<li>select</li>
+		<ul>
+			<li>select元件是&lt;select&gt;...&lt;/select&gt;標記(空清單)與&lt;option value="..."&gt;...&lt;/option&gt;標記(清單選項)組成。<br /></li>
+			<li>語法：<br />
+				&lt;select&nbsp;size="1"&nbsp;name="sport"&gt;<br />
+				&nbsp;&nbsp;&lt;option value="游泳"&gt;游泳&lt;/option&gt;<br />
+				&nbsp;&nbsp;&lt;option value="跑步"&gt;跑步&lt;/option&gt;<br />
+				&nbsp;&nbsp;&lt;option value="羽球"&gt;羽球&lt;/option&gt;<br />
+				&nbsp;&nbsp;&lt;option value="籃球"&gt;籃球&lt;/option&gt;<br />
+				&lt;/select&gt;<br />
+				請選擇喜愛的運動：
+					<select size="1" name="sport">
+						<option value="游泳">游泳</option>
+						<option value="跑步">跑步</option>
+						<option value="羽球">羽球</option>
+						<option value="籃球">籃球</option>
+					</select>
+			</li>
+			<li>name="sport"：清單名稱。</li>
+			<li>size="1"：下拉式清單。</li>
+			<li>size="4"(數值等於清單總數)：列表式清單。<br />
+				請選擇喜愛的運動：
+					<select size="4" name="sport">
+						<option value="游泳">游泳</option>
+						<option value="跑步">跑步</option>
+						<option value="羽球">羽球</option>
+						<option value="籃球">籃球</option>
+					</select>
+			</li>
+			<li>size="3"(數值小於清單總數)：捲軸式清單。<br />
+				請選擇喜愛的運動：
+					<select size="3" name="sport">
+						<option value="游泳">游泳</option>
+						<option value="跑步">跑步</option>
+						<option value="羽球">羽球</option>
+						<option value="籃球">籃球</option>
+					</select>
+			</li>
+			<li>multiple：加上此屬性，按下ctrl或shift鍵可複選。<br />
+				請選擇喜愛的運動(可複選)：
+					<select size="4" name="sport" multiple>
+						<option value="游泳">游泳</option>
+						<option value="跑步">跑步</option>
+						<option value="羽球">羽球</option>
+						<option value="籃球">籃球</option>
+					</select>
+			</li>
+		</ul>
+	<li>datalist</li>
+		<ul>
+			<li>datalist元件是&lt;datalist&gt;...&lt;/datalist&gt;標記(空清單)與&lt;option&nbsp;value="..."&gt;...&lt;/option&gt;標記(清單選項)組成。</li>
+			<li>一開始要先用&lt;input&nbsp;list="清單名稱"&nbsp;&gt;指定清單名稱。</li>
+			<li>再來用&lt;datalist&nbsp;id="清單名稱"&gt;，必須使用id屬性去指定清單名稱。</li>
+			<li>input的list和datalist的id名稱要設定一樣，這樣才可以取得datalist元件裡的清單。</li>
+			<li>datalist元件的功能主要是自建字庫清單。</li>
+			<li>
+				語法：<br />
+				&lt;input&nbsp;list="browsers"&nbsp;/&gt;<br />
+					&nbsp;&nbsp;&lt;datalist&nbsp;id="browsers"&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Microsoft&nbsp;Edge"&gt;&lt;/option&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Firefox"&gt;&lt;/option&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Google&nbsp;Chrome"&gt;&lt;/option&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Opera"&gt;&lt;/option&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Safari"&gt;&lt;/option&gt;<br />
+					&nbsp;&nbsp;&lt;/datalist&gt;<br />
+				請選擇常用的瀏覽器：
+					<input list="browsers" />
+					<datalist id="browsers">
+						<option value="Microsoft Edge"></option>
+						<option value="Firefox"></option>
+						<option value="Google Chrome"></option>
+						<option value="Opera"></option>
+						<option value="Safari"></option>
+					</datalist>
+			</li>
+		</ul>
+</ul>
+
+<h2>核取元件</h2>
+<ul>
+	<li>單選核取圓鈕radio</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="radio"&nbsp;name="gender"&nbsp;value="男"&nbsp;/&gt;男生<br />
+					&emsp;&emsp;&emsp;&lt;input&nbsp;type="radio"&nbsp;name="gender"&nbsp;value="女"&nbsp;checked&nbsp;/&gt;女生
+					<form method="post" action="abc.asp">
+						請選擇性別：
+						<input type="radio" name="gender" value="男" />男生
+						<input type="radio" name="gender" value="女" checked />女生
+					</form>
+			</li>
+			<li>type="radio"：產生單一選擇按鈕。</li>
+			<li>name="gender"：此屬性值相同的元件，會被視為同一組radio元件。</li>
+			<li>value="女"：當表單被送出時，已選取的value值會進行下一步處理，所以此屬性的值無法從外觀看出，必須在radio元件旁加上文字，才能顯示出來讓使用者了解意思。</li>
+			<li>checked：預設已選取。</li>
+		</ul>
+	<li>複選核取方塊checkbox</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="checkbox"&nbsp;name="interest"&nbsp;value="羽球"&nbsp;checked&nbsp;/&gt;羽球<br />
+				&emsp;&emsp;&emsp;&lt;input&nbsp;type="checkbox"&nbsp;name="interest"&nbsp;value="桌球"&nbsp;/&gt;桌球<br />
+				&emsp;&emsp;&emsp;&lt;input&nbsp;type="checkbox"&nbsp;name="interest"&nbsp;value="棒球"&nbsp;/&gt;棒球<br />
+				<form method="post" action="abc.asp">
+					請選擇興趣：
+					<input type="checkbox" name="interest" value="羽球" checked />羽球
+					<input type="checkbox" name="interest" value="桌球" />桌球
+					<input type="checkbox" name="interest" value="棒球" />棒球
+				</form>
+			</li>
+			<li>type="checkbox"：產生一個選取方塊。</li>
+			<li>name="interest"：此屬性值相同的元件，會被視為同一組checkbox元件，而同一組內可以有多個checkbox元件被選擇。</li>
+			<li>value="羽球"：當表單被送出時，已選取的value值會進行下一步處理，所以此屬性的值無法從外觀看出，必須在checkbox元件旁加上文字，才能顯示出來讓使用者了解意思。</li>
+			<li>checked：預設已選取。</li>
+		</ul>
+</ul>
+
+<h2>按鈕元件</h2>
+<ul>
+	<li>submit</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="submit"&nbsp;name="s1"&nbsp;value="送出"&nbsp;/&gt;<br />
+				顯示結果：<input type="submit" name="s1" value="送出" />
+			</li>
+			<li>type="submit"：產生一個送出按鈕，當使用者按下按鈕時，表單會依照&lt;form&gt;標記裡的action屬性所設定的方式送出表單。</li>
+			<li>name="s1"：按鈕元件的名稱。</li>
+			<li>value="送出"：顯示於按鈕上的文字。</li>
+		</ul>
+	<li>reset</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="reset"&nbsp;name="r1"&nbsp;value="重新填寫"&nbsp;/&gt;<br />
+				顯示結果：<input type="submit" name="s1" value="重新填寫" />
+			</li>
+			<li>type="reset"：產生一個取消按鈕，當使用者按下按鈕時，會將表單裡所有元件的值回復到預設值。</li>
+			<li>name="r1"：按鈕元件的名稱。</li>
+			<li>value="重新填寫"：顯示於按鈕上的文字。</li>
+		</ul>
+	<li>button</li>
+		<ul>
+			<li>
+				語法：&lt;input&nbsp;type="button"&nbsp;name="b1"&nbsp;value="回上頁"&nbsp;onclick="javascript:history.back();&nbsp;/&gt;<br />
+				顯示結果：<input type="button" name="b1" value="回上頁" onclick="javascript:history.back();" />
+			</li>
+			<li>type="button"：產生一般按鈕，必須搭配script語法來達到想要的效果。</li>
+			<li>name="b1"：按鈕元件的名稱。</li>
+			<li>value="回上頁"：顯示於按鈕上的文字。</li>
+		</ul>
+</ul>
+
+<hr>
+<h1>做一個會員登入頁面練習</h1>
+<p>
+<h2>會員登入</h2>
+<form method="post" action="member.asp" autocomplete="off">
+	請輸入帳號密碼：<br />
+	帳號：<input type="text" name="username" size="10" /><br />
+	密碼：<input type="password" name="password" size="10" /><br />
+	<input type="submit" name="s1" value="登入" />
+	<input type="reset" name="r1" value="取消" />
+	<input type="button" name="back" value="回上頁" onclick="javascript:history.back();" />
+</form>
+<hr>
+
+<h2>表單分組&lt;fieldset&gt;與&lt;legend&gt;</h2>
+<ul>
+	語法：<br />
+		&lt;fieldset&gt;<br />
+		&nbsp;&nbsp;&lt;legend&gt;分組標題&lt;/legend&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;分組內容<br />
+		&lt;/fieldset&gt;<br />
+	顯示結果：<br />
+		<fieldset>
+			<legend>分組標題</legend>
+			分組內容
+		</fieldset>
+</ul>
+</main>
+<div id="footer"></div>
+</body>
+</html>

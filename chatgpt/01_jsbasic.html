@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<title>第1週：JavaScript基礎語法</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+    <style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+        .btn_chgcolor {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+		pre {
+			background-color: black; color: yellow;
+		}
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+
+	<script>
+		window.onload = function () {
+			let hash = window.location.hash; // 取得 URL 的 #錨點
+			if (hash) {
+				document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+			}
+		};
+	</script>
+
+	<div id="header"></div>
+	<main>
+        <section id="section_1">
+			<h2>變數與常數</h2>
+<pre><code>
+	&lt;script&gt;
+		let myname = "Daniel";
+		const myage = 25;
+		document.write(`我的名字是：${myname}，今年${myage}歲。`);
+	&lt;/script&gt;
+</code></pre>
+			<p>
+			<script>
+				let myname = "Daniel";
+				const myage = 25;
+				document.write(`我的名字是：${myname}，今年${myage}歲。`);
+			</script>
+		</section>
+
+		<section id="section_2">
+			<h2>基本運算</h2>
+			<p>
+				a = 10, b = 5, c = 3, d = "3"，做出所有的算術、比較、邏輯運算。
+			</p>
+<pre><code>
+	&lt;script&gt;
+		let a = 10;
+		let b = 5;
+		let c = 3;
+		let d = "3";
+		document.write(`a + b = ${a + b}`);
+		document.write(`a - b = ${a - b}`);
+		document.write(`a * b = ${a * b}`);
+		document.write(`a / b = ${a / b}`);
+		document.write(`a % b = ${a % b}`);
+		document.write(`a > b = ${a > b}`);
+		document.write(`a &lt; b = ${a &lt; b}`);
+		document.write(`a >= b = ${a >= b}`);
+		document.write(`a &lt;= b = ${a &lt;= b}`);
+		document.write(`c == d = ${c == d}`);
+		document.write(`c === d = ${c === d}`);
+		document.write(`(a > b) && (b &lt; c) = ${(a > b) && (b &lt; c)}`);
+		document.write(`(a > b) || (b &lt; c) = ${(a > b) || (b &lt; c)}`);
+		document.write(`(a > b) && !(b &lt; c) = ${(a > b) && !(b &lt; c)}`);
+	&lt;/script&gt;
+</code></pre>
+			<script>
+				let a = 10;
+				let b = 5;
+				let c = 3;
+				let d = "3";
+				document.write(`a + b = ${a + b}<br />`);
+				document.write(`a - b = ${a - b}<br />`);
+				document.write(`a * b = ${a * b}<br />`);
+				document.write(`a / b = ${a / b}<br />`);
+				document.write(`a % b = ${a % b}<br />`);
+				document.write(`a > b = ${a > b}<br />`);
+				document.write(`a < b = ${a < b}<br />`);
+				document.write(`a >= b = ${a >= b}<br />`);
+				document.write(`a <= b = ${a <= b}<br />`);
+				document.write(`c == d = ${c == d}<br />`);
+				document.write(`c === d = ${c === d}<br />`);
+				document.write(`(a > b) && (b < c) = ${(a > b) && (b < c)}<br />`);
+				document.write(`(a > b) || (b < c) = ${(a > b) || (b < c)}<br />`);
+				document.write(`(a > b) && !(b < c) = ${(a > b) && !(b < c)}`);
+			</script>
+		</section>
+		<p>
+		<section id="section_3">
+			<h2>條件判斷(一)：if...else...</h2>
+<pre><code>
+	您的年齡：&lt;input type="number" id="age" placeholder="請輸入年齡"&gt;
+	&lt;button id="ageBtn"&gt;送出&lt;/button&gt;
+	&lt;div id="ageAnswer"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		document.getElementById('ageBtn').addEventListener('click', function() {
+			let age = Number(document.getElementById('age').value);
+			let ageAnswer = document.getElementById('ageAnswer');
+			
+			if (isNaN(age) || age &lt;= 0) {
+				ageAnswer.textContent = "請輸入有效的年齡";
+			} else if (age >= 18) {
+				ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
+			} else {
+				ageAnswer.textContent = `您的年齡 ${age} 歲，未成年。`;
+			}
+		});
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				您的年齡：<input type="number" id="age" placeholder="請輸入年齡">
+				<button id="ageBtn">送出</button>
+				<div id="ageAnswer"></div>
+			</p>
+			<script>
+				document.getElementById('ageBtn').addEventListener('click', function() {
+					let age = Number(document.getElementById('age').value);
+					let ageAnswer = document.getElementById('ageAnswer');
+					if (isNaN(age) || age <= 0) {
+						ageAnswer.textContent = "請輸入有效的年齡";
+					} else if (age >= 18) {
+						ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
+					} else {
+						ageAnswer.textContent = `您的年齡 ${age} 歲，未成年。`;
+					}
+				});
+			</script>
+		</section>
+
+		<sectiopn id="section_4">
+			<h2>條件判斷(二)：switch</h2>
+			<p>用switch判斷今天是星期幾。</p>
+<pre><code>
+	&lt;div id="showToday"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function day() {
+			let today = "";
+			let d = new Date().getDay();
+			switch (d) {
+				case 0:
+					today = '星期日';
+					break;
+				case 1:
+					today = '星期一';
+					break;
+				case 2:
+					today =	'星期二';
+					break;
+				case 3:
+					today = '星期三';
+					break;
+				case 4:
+					today = '星期四';
+					break;
+				case 5:
+					today = '星期五';
+					break;
+				case 6:
+					today = '星期六';
+					break;
+						}
+		document.getElementById('showToday').textContent = `今天是${today}`;	
+		};
+		day();
+	&lt;/script&gt;
+</code></pre>
+			<p><div id="showToday"></div></p>
+			<script>
+				function day() {
+					let today = "";
+					let d = new Date().getDay();
+					switch (d) {
+						case 0:
+							today = '星期日';
+							break;
+						case 1:
+							today = '星期一';
+							break;
+						case 2:
+							today =	'星期二';
+							break;
+						case 3:
+							today = '星期三';
+							break;
+						case 4:
+							today = '星期四';
+							break;
+						case 5:
+							today = '星期五';
+							break;
+						case 6:
+							today = '星期六';
+							break;
+					}
+				document.getElementById('showToday').textContent = `今天是${today}`;	
+				};
+				day();
+			</script>
+		</sectiopn>
+
+		<section id="section_5">
+			<h2>迴圈(一)：for</h2>
+			<p>計算1到10之間的奇數和。</p>
+<pre><code>
+	&lt;script&gt;
+		let num = 0;
+		for (let i = 1; i &lt;= 10; i += 2) {
+			num = num + i;
+		}
+		document.write(`1到10之間的奇數和 = ${num}`);
+	&lt;/script>&gt;
+</code></pre>
+			<script>
+				let num = 0;
+				for (let i = 1; i <= 10; i += 2) {
+					num = num + i;
+				}
+				document.write(`1到10之間的奇數和 = ${num}`);
+			</script>
+		</section>
+		<p>
+		<section id="section_6">
+			<h2>迴圈(二)：while</h2>
+			<p>計算1到100之間的偶數和。</p>
+<pre><code>
+	&lt;script&gt;
+		let i = 2;
+		let j = 0;
+		while (i &lt;= 100) {
+			j = j + i;
+			i += 2;	
+		}
+		document.write(`1到100之間的偶數和 = ${j}`);
+	&lt;/script&gt;
+</section>
+</code></pre>
+			<script>
+				let i = 2;
+				let j = 0;
+				while (i <= 100) {
+					j = j + i;
+					i += 2;	
+				}
+				document.write(`1到100之間的偶數和 = ${j}`);
+			</script>
+		</section>
+		<p>
+		<section id="section_7">
+			<h2>迴圈(三)：do...while...</h2>
+			<p>計算1~100之間的奇數和。</p>
+<pre><code>
+	&lt;div id="dowhile"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		let x = 1;
+		let y = 0;
+		do {
+			y += x;
+			x += 2;
+		} while (x &lt;= 100);
+		document.getElementById(`dowhile`).innerHTML = `1到100之間的奇數和 = ${y}`;
+	&lt;/script&gt;
+</code></pre>
+			<div id="dowhile"></div>
+			<script>
+				let x = 1;
+				let y = 0;
+				do {
+					y += x;
+					x += 2;
+				} while (x <= 100);
+				document.getElementById(`dowhile`).innerHTML = `1到100之間的奇數和 = ${y}`;
+			</script>
+		</section>
+		<p>
+		<section id="section_8">
+			<h2>函式：function</h2>
+			<p>定義一個函式square(num)，輸入一個數字，回傳它的平方值。</p>
+<pre><code>
+	請輸入數字：&lt;input id="fn_1" type="number"&gt;
+	&lt;button id="fn_1_Btn" onclick="fn_1_Btn()"&gt;送出&lt;/button&gt;&lt;br /&gt;
+	&lt;div id="fn_1_Answer"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function square(num) {
+			return num ** 2;
+		}
+
+		function fn_1_Btn() {
+			if (document.getElementById('fn_1').value === "") {
+				return document.getElementById('fn_1_Answer').innerHTML = '請輸入數字！';
+			}
+			let fn_1 = Number(document.getElementById('fn_1').value);
+			let r = square(fn_1);
+			document.getElementById('fn_1_Answer').innerHTML = `${fn_1}的平方 = ${r}`;
+		}
+	&lt;/script&gt;
+</code></pre>
+			請輸入數字：<input id="fn_1" type="number">
+			<button id="fn_1_Btn" onclick="fn_1_Btn()">送出</button><br />
+			<div id="fn_1_Answer"></div>
+			<script>
+				function square(num) {
+					return num ** 2;
+				}
+
+				function fn_1_Btn() {
+					if (document.getElementById('fn_1').value === "") {
+						return document.getElementById('fn_1_Answer').innerHTML = '請輸入數字！';
+					}
+					let fn_1 = Number(document.getElementById('fn_1').value);
+					let r = square(fn_1);
+					document.getElementById('fn_1_Answer').innerHTML = `${fn_1}的平方 = ${r}`;
+				}
+			</script>
+		</section>
+		<p>
+		<section id="section_9">
+			<h2>計算三角形面積(單位：公分)</h2>
+			<p>公式：(底 * 高) / 2</p>
+<pre><code>
+	底&lt;input id="triangleBase" type="number" min="0"&gt; * 高&lt;input id="triangleHeight" type="number" min="0"&gt; / 2 = &lt;span id="triangleAnswer"&gt;&lt;/span&gt;&lt;br /&gt;
+	&lt;button id="triangleBtn" onclick="triangleBtn()"&gt;計算&lt;/button&gt;
+	&lt;script&gt;
+		function triangle(a, b) {
+			return (a * b) / 2;
+		}
+
+		function triangleBtn() {
+			let triangleBase = Number(document.getElementById('triangleBase').value);
+			let triangleHeight = Number(document.getElementById('triangleHeight').value);
+			let r = triangle(triangleBase, triangleHeight);
+			if (triangleBase &lt;= 0 || triangleHeight &lt;= 0) {
+				document.getElementById('triangleAnswer').innerHTML = '請輸入大於 0 的數值！';
+				return;
+			}
+			document.getElementById('triangleAnswer').innerHTML = `${r} 平方公分`;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				底<input id="triangleBase" type="number" min="0"> * 高<input id="triangleHeight" type="number" min="0"> / 2 = <span id="triangleAnswer"></span><br />
+				<button id="triangleBtn" onclick="triangleBtn()">計算</button>
+			</p>
+			<script>
+				function triangle(a, b) {
+					return (a * b) / 2;
+				}
+
+				function triangleBtn() {
+					let triangleBase = Number(document.getElementById('triangleBase').value);
+					let triangleHeight = Number(document.getElementById('triangleHeight').value);
+					let r = triangle(triangleBase, triangleHeight);
+					if (triangleBase <= 0 || triangleHeight <= 0) {
+						document.getElementById('triangleAnswer').innerHTML = '請輸入大於 0 的數值！';
+						return;
+					}
+					document.getElementById('triangleAnswer').innerHTML = `${r} 平方公分`;
+				}
+			</script>
+		</section>
+
+		<section id="section_10">
+			<h2>攝氏溫度轉換華氏溫度</h2>
+			<p>公式：華氏(℉) = 攝氏(℃) × 9 / 5 + 32</p>
+<pre><code>
+	攝氏&lt;input id="temperatureC" type="number"&gt;℃ = &lt;span id="temperatureF"&gt;&lt;/span&gt;&lt;br /&gt;
+	&lt;button id="temperatureBtn" onclick="temperatureChg()"&gt;轉換&lt;/button&lt;
+	&lt;script&gt;
+		function temperature(celsius) {
+			return celsius * 9 / 5 + 32;
+		}
+
+		function temperatureChg() {
+			if (document.getElementById('temperatureC').value === "") {
+				return document.getElementById('temperatureF').innerHTML = '請輸入攝氏溫度！';
+			}
+			let temperatureC = Number(document.getElementById('temperatureC').value);
+			let cf = temperature(temperatureC);
+			document.getElementById('temperatureF').innerHTML = `華氏 ${cf} ℉`;
+		}
+	&lt;/script&gt;
+</code></pre>
+			攝氏<input id="temperatureC" type="number">℃ = <span id="temperatureF"></span><br />
+			<button id="temperatureBtn" onclick="temperatureChg()">轉換</button>
+			<script>
+				function temperature(celsius) {
+					return celsius * 9 / 5 + 32;
+				}
+
+				function temperatureChg() {
+					if (document.getElementById('temperatureC').value === "") {
+						return document.getElementById('temperatureF').innerHTML = '請輸入攝氏溫度！';
+					}
+					let temperatureC = Number(document.getElementById('temperatureC').value);
+					let cf = temperature(temperatureC);
+					document.getElementById('temperatureF').innerHTML = `華氏 ${cf} ℉`;
+				}
+			</script>
+		</section>
+		<p>
+		<section id="section_11">
+			<h2>華氏溫度轉換攝氏溫度</h2>
+			<p>公式：攝氏(℃) = (華氏(℉) - 32) * 5 / 9</p>
+<pre><code>
+	華氏&lt;input id="tempF" type="number"&gt;℉ = &lt;span id="tempC"&gt;&lt;/span&gt;&lt;br /&gt;
+	&lt;button id="tempBtn" onclick="tempChg()"&gt;轉換&lt;/button&gt;
+	&lt;script&gt;
+		function temp(fahrenheit) {
+			let t = (fahrenheit - 32) * 5 / 9;
+			return t.toFixed(1);
+		}
+
+		function tempChg() {
+			let tempF = Number(document.getElementById('tempF').value);
+			let fc = temp(tempF);
+			document.getElementById('tempC').innerHTML = `攝氏 ${fc} ℃`;
+		}
+	&lt;/script&gt;
+</code></pre>
+			華氏<input id="tempF" type="number">℉ = <span id="tempC"></span><br />
+			<button id="tempBtn" onclick="tempChg()">轉換</button>
+			<script>
+				function temp(fahrenheit) {
+					let t = (fahrenheit - 32) * 5 / 9;
+					return t.toFixed(1);
+				}
+
+				function tempChg() {
+					if (document.getElementById('tempF').value === "") {
+						return document.getElementById('tempC').innerHTML = '請輸入華氏溫度！';
+					}
+					let tempF = Number(document.getElementById('tempF').value);
+					let fc = temp(tempF);
+					document.getElementById('tempC').innerHTML = `攝氏 ${fc} ℃`;
+				}
+			</script>
+		</section>
+		<p>
+		<section id="section_12">
+			<h2>判斷正數、負數或零</h2>
+<pre><code>
+	請輸入數字(正數、負數或0)：&lt;input id="inputNumber" type="number"&gt;
+	&lt;button id="numberBtn" onclick="checkBtn()"&gt;判斷&lt;/button&gt;&nbsp;&lt;span id="numberAnswer"&gt;&lt;/span&gt;
+	&lt;script&gt;
+		function checkNumber(n) {
+			if (n > 0) {
+				return `您輸入的數字是${n}，這是正數！`;
+			} else if (n &lt; 0) {
+				return `您輸入的數字是${n}，這是負數！`;
+			} else {
+				return `您輸入的數字是${n}，這是0！`;
+			}
+		}
+
+		function checkBtn() {
+			if (document.getElementById('inputNumber').value === "") {
+				return document.getElementById('numberAnswer').innerHTML = '請輸入數字！';
+			}
+			let inputNumber = Number(document.getElementById('inputNumber').value);
+			let ans = checkNumber(inputNumber);
+			document.getElementById('numberAnswer').innerHTML = ans;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				請輸入數字(正數、負數或0)：<input id="inputNumber" type="number">
+				<button id="numberBtn" onclick="checkBtn()">判斷</button>&nbsp;<span id="numberAnswer"></span>
+			</p>
+			<script>
+				function checkNumber(n) {
+					if (n > 0) {
+						return `您輸入的數字是${n}，這是正數！`;
+					} else if (n < 0) {
+						return `您輸入的數字是${n}，這是負數！`;
+					} else {
+						return `您輸入的數字是${n}，這是0！`;
+					}
+				}
+
+				function checkBtn() {
+					if (document.getElementById('inputNumber').value === "") {
+						return document.getElementById('numberAnswer').innerHTML = '請輸入數字！';
+					}
+					let inputNumber = Number(document.getElementById('inputNumber').value);
+					let ans = checkNumber(inputNumber);
+					document.getElementById('numberAnswer').innerHTML = ans;
+				}
+			</script>
+		</section>
+
+		<section id="section_13">
+			<h2>判斷數字是奇數或偶數</h2>
+<pre><code>
+	請輸入數字：&lt;input id="inputNum" type="number"&gt;
+	&lt;button id="chkBtn" onclick="chkBtn()"&gt;判斷&lt;/button&gt;&nbsp;&lt;span id="numAnswer"&gt;&lt;/span&gt;
+	&lt;script&gt;
+		function isEven(n) {
+			return n % 2 === 0;
+		}
+
+		function chkBtn() {
+			let inputVal = document.getElementById('inputNum').value;
+			let inputNum = Number(inputVal);
+			let msg = "";
+			if (inputVal === "") {
+				msg = '請輸入數字！';
+			} else if (isEven(inputNum)) {
+				msg = `您輸入的數字是${inputNum}，這是偶數。`;
+			} else {
+				msg = `您輸入的數字是${inputNum}，這是奇數。`;
+			}
+			document.getElementById('numAnswer').innerHTML = msg;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				請輸入數字：<input id="inputNum" type="number">
+				<button id="chkBtn" onclick="chkBtn()">判斷</button>&nbsp;<span id="numAnswer"></span>
+			</p>
+			<script>
+				function isEven(n) {
+					return n % 2 === 0;
+				}
+
+				function chkBtn() {
+					let inputVal = document.getElementById('inputNum').value;
+					let inputNum = Number(inputVal);
+					let msg = "";
+					if (inputVal === "") {
+						msg = '請輸入數字！';
+					} else if (isEven(inputNum)) {
+						msg = `您輸入的數字是${inputNum}，這是偶數。`;
+					} else {
+						msg = `您輸入的數字是${inputNum}，這是奇數。`;
+					}
+					document.getElementById('numAnswer').innerHTML = msg;
+				}
+			</script>
+		</section>
+
+		<section id="section_14">
+			<h2>判斷三角形的類型（等邊、等腰、不等邊）</h2>
+<pre><code>
+	&lt;p&gt;請輸入三角形的三邊長度&lt;/p&gt;
+	&lt;p&gt;
+		A：&lt;input id="sideA" type="number" min="1"&gt;&lt;br /&gt;
+		B：&lt;input id="sideB" type="number" min="1"&gt;&lt;br /&gt;
+		C：&lt;input id="sideC" type="number" min="1"&gt;&lt;br /&gt;
+		&lt;button id="checkTriangle" onclick="checkTriangle()"&gt;判斷&lt;/button&gt;
+	&lt;/p&gt;
+	&lt;p id="triangleAns"&gt;&lt;/p&gt;
+	&lt;script&gt;
+		function triangleType(a, b, c) {
+			if(a === b && b === c) {
+				return '等邊三角形';
+			} else if (a === b || b === c || a === c) {
+				return '等腰三角形';
+			} else {
+				return '不等邊三角形';
+			}
+		}
+
+		function checkTriangle() {
+			let aVal = document.getElementById('sideA').value;
+			let bVal = document.getElementById('sideB').value;
+			let cVal = document.getElementById('sideC').value;
+			let aNum = Number(aVal);
+			let bNum = Number(bVal);
+			let cNum = Number(cVal);
+			let ans = "";
+			if (aVal === "" || bVal === "" || cVal === "") {
+				ans = "請輸入三邊的數值！";
+			} else if (aNum &lt;= 0 || bNum &lt;= 0 || cNum &lt;= 0) {
+				ans = "三邊邊長必須大於0！";
+			} else if (aNum + bNum &lt;= cNum || aNum + cNum &lt;= bNum || bNum + cNum &lt;= aNum) {
+				ans = "這三邊無法構成三角形！";
+			} else {
+				ans = triangleType(aNum, bNum, cNum);
+			}
+			document.getElementById('triangleAns').innerHTML = ans;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>請輸入三角形的三邊長度</p>
+			<p>
+				A：<input id="sideA" type="number" min="1"><br />
+				B：<input id="sideB" type="number" min="1"><br />
+				C：<input id="sideC" type="number" min="1"><br />
+				<button id="checkTriangle" onclick="checkTriangle()">判斷</button>
+			</p>
+			<p id="triangleAns"></p>
+			<script>
+				function triangleType(a, b, c) {
+					if(a === b && b === c) {
+						return '等邊三角形';
+					} else if (a === b || b === c || a === c) {
+						return '等腰三角形';
+					} else {
+						return '不等邊三角形';
+					}
+				}
+
+				function checkTriangle() {
+					let aVal = document.getElementById('sideA').value;
+					let bVal = document.getElementById('sideB').value;
+					let cVal = document.getElementById('sideC').value;
+					let aNum = Number(aVal);
+					let bNum = Number(bVal);
+					let cNum = Number(cVal);
+					let ans = "";
+					if (aVal === "" || bVal === "" || cVal === "") {
+						ans = "請輸入三邊的數值！";
+					} else if (aNum <= 0 || bNum <= 0 || cNum <= 0) {
+						ans = "三邊邊長必須大於0！";
+					} else if (aNum + bNum <= cNum || aNum + cNum <= bNum || bNum + cNum <= aNum) {
+						ans = "這三邊無法構成三角形！";
+					} else {
+						ans = triangleType(aNum, bNum, cNum);
+					}
+					document.getElementById('triangleAns').innerHTML = ans;
+				}
+			</script>
+		</section>
+
+		<section id="section_15">
+			<h2>BMI 計算機</h2>
+			<p>公式：BMI = 體重(kg) / 身高(m<sup>2</sup>)</p>
+<pre><code>
+	&lt;p&gt;
+		請輸入您的身高、體重。&lt;br /&gt;
+		身高：&lt;input id="cm" type="number" min="1"&gt;公分(cm)，體重：&lt;input id="kg" type="number" min="1"&gt;公斤(kg)&nbsp;
+		&lt;button id="bmiBtn" onclick="bmiBtn()"&gt;計算&lt;/button&gt;&lt;br /&gt;
+		&lt;span id="bmiResult"&gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;script&gt;
+		function bmi(cm, kg) {
+			let m = cm / 100;
+			let bmi = kg / (m ** 2);
+			return bmi.toFixed(1);
+		}
+
+		function bmiBtn() {
+			let cmVal = document.getElementById('cm').value;
+			let kgVal = document.getElementById('kg').value;
+			let cmNum = Number(cmVal);
+			let kgNum = Number(kgVal);
+			let result = document.getElementById('bmiResult');
+			if (cmVal === "" || kgVal === "") {
+				result.innerHTML = '請輸入完整資料！';
+			} else if (cmNum &lt;= 0 || kgNum &lt;= 0) {
+				result.innerHTML = '請輸入大於0的數值！';
+			} else {
+				let bmiVal = Number(bmi(cmNum, kgNum));
+				let msg = "";
+				if (bmiVal &lt; 18.5) {
+					msg = `您的BMI值是${bmiVal}，過輕！`;
+				} else if (bmiVal &lt; 24) {
+					msg = `您的BMI值是${bmiVal}，正常！`;
+				} else if (bmiVal &lt; 27) {
+					msg = `您的BMI值是${bmiVal}，過重！`;
+				} else {
+					msg = `您的BMI值是${bmiVal}，肥胖！`;
+				}
+				result.innerHTML = msg;
+			}
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				請輸入您的身高、體重。<br />
+				身高：<input id="cm" type="number" min="1">公分(cm)，體重：<input id="kg" type="number" min="1">公斤(kg)&nbsp;
+				<button id="bmiBtn" onclick="bmiBtn()">計算</button><br />
+				<span id="bmiResult"></span>
+			</p>
+			<script>
+				function bmi(cm, kg) {
+					let m = cm / 100;
+					let bmi = kg / (m ** 2);
+					return bmi.toFixed(1);
+				}
+
+				function bmiBtn() {
+					let cmVal = document.getElementById('cm').value;
+					let kgVal = document.getElementById('kg').value;
+					let cmNum = Number(cmVal);
+					let kgNum = Number(kgVal);
+					let result = document.getElementById('bmiResult');
+					if (cmVal === "" || kgVal === "") {
+						result.innerHTML = '請輸入完整資料！';
+					} else if (cmNum <= 0 || kgNum <= 0) {
+						result.innerHTML = '請輸入大於0的數值！';
+					} else {
+						let bmiVal = Number(bmi(cmNum, kgNum));
+						let msg = "";
+						if (bmiVal < 18.5) {
+							msg = `您的BMI值是${bmiVal}，過輕！`;
+						} else if (bmiVal < 24) {
+							msg = `您的BMI值是${bmiVal}，正常！`;
+						} else if (bmiVal < 27) {
+							msg = `您的BMI值是${bmiVal}，過重！`;
+						} else {
+							msg = `您的BMI值是${bmiVal}，肥胖！`;
+						}
+						result.innerHTML = msg;
+					}
+				}
+			</script>
+		</section>
+
+		<section id="section_16">
+			<h2>簡易計算機</h2>
+<pre><code>
+	&lt;p&gt;
+		數字1：&lt;input id="num1" type="number"&gt;
+		&lt;select id="operator"&gt;
+			&lt;option value="+"&gt;+ 加&lt;/option&gt;
+			&lt;option value="-"&gt;- 減&lt;/option&gt;
+			&lt;option value="*"&gt;* 乘&lt;/option&gt;
+			&lt;option value="/"&gt;/ 除&lt;/option&gt;
+		&lt;/select&gt;
+		數字2：&lt;input id="num2" type="number"&gt;
+		&lt;button id="calc" onclick="calc()"&gt;計算&lt;/button&gt;
+		&lt;span id="calcResult"&gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;script&gt;
+		function calc() {
+			let num1 = Number(document.getElementById('num1').value);
+			let num2 = Number(document.getElementById('num2').value);
+			let op = document.getElementById('operator').value;
+			let r = "";
+			if (isNaN(num1) || isNaN(num2)) {
+				r = '請輸入數字！';
+			} else {
+				switch (op) {
+					case "+":
+						r = num1 + num2;
+						break;
+					case "-":
+						r = num1 - num2;
+						break;
+					case "*":
+						r = num1 * num2;
+						break;
+					case "/":
+						r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2)
+						break;
+					default:
+						r = '未知的運算！';
+				}
+				if (!isNaN(r)) {
+					r = `計算結果 = ${r}`;
+				}
+			}
+			document.getElementById('calcResult').innerHTML = r;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				數字1：<input id="num1" type="number">
+				<select id="operator">
+					<option value="+">+ 加</option>
+					<option value="-">- 減</option>
+					<option value="*">* 乘</option>
+					<option value="/">/ 除</option>
+				</select>
+				數字2：<input id="num2" type="number">
+				<button id="calc" onclick="calc()">計算</button>
+				<span id="calcResult"></span>
+			</p>
+			<script>
+				function calc() {
+					let num1 = Number(document.getElementById('num1').value);
+					let num2 = Number(document.getElementById('num2').value);
+					let op = document.getElementById('operator').value;
+					let r = "";
+					if (isNaN(num1) || isNaN(num2)) {
+						r = '請輸入數字！';
+					} else {
+						switch (op) {
+							case "+":
+								r = num1 + num2;
+								break;
+							case "-":
+								r = num1 - num2;
+								break;
+							case "*":
+								r = num1 * num2;
+								break;
+							case "/":
+								r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2)
+								break;
+							default:
+								r = '未知的運算！';
+						}
+						if (!isNaN(r)) {
+							r = `計算結果 = ${r}`;
+						}
+					}
+					document.getElementById('calcResult').innerHTML = r;
+				}
+			</script>
+		</section>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>

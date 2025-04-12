@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<title>Web Design Hub</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+    <style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+        .btn_chgcolor {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+		pre {
+			background-color: black; color: yellow;
+		}
+    </style>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+
+	<script>
+		window.onload = function () {
+			let hash = window.location.hash; // 取得 URL 的 #錨點
+			if (hash) {
+				document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+			}
+		};
+	</script>
+
+	<div id="header"></div>
+	<main>
+		<section>
+        	<h2 id="section1">改變按鈕顏色</h2>
+        	<ol>
+            	<li>建立一個 HTML 按鈕</li>
+            	<li>用JavaScript讓它每次點擊時，變換不同顏色</li>
+        	</ol>
+<pre><code>
+	&lt;button id="btn_chgcolor" class="btn_chgcolor"&gt;點擊變換顏色&lt;/button&gt;
+	&lt;script&gt;
+		let a = document.getElementById('btn_chgcolor');
+	
+		// 顏色選項
+		const colors = [
+			{ background: 'red', color: 'yellow' },
+			{ background: 'orange', color: 'red' },
+			{ background: 'yellow', color: 'black' },
+			{ background: 'green', color: 'white' },
+			{ background: 'blue', color: 'yellow' },
+			{ background: 'indigo', color: 'orange' },
+			{ background: 'purple', color: 'white' }
+		];
+	
+		// 顏色隨機變換
+		function changeColor() {
+			const randomIndex = Math.floor(Math.random() * colors.length);
+			const newColor = colors[randomIndex];
+			this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;
+		   }
+
+		// 綁定事件
+		a.addEventListener('click', changeColor);
+	&lt;/script&gt;
+</code></pre>
+        	<button id="btn_chgcolor" class="btn_chgcolor">點擊變換顏色</button>
+        	<script>
+           		let a = document.getElementById('btn_chgcolor');
+            
+            	// 顏色選項
+            	const colors = [
+                	{ background: 'red', color: 'yellow' },
+                	{ background: 'orange', color: 'red' },
+                	{ background: 'yellow', color: 'black' },
+					{ background: 'green', color: 'white' },
+					{ background: 'blue', color: 'yellow' },
+					{ background: 'indigo', color: 'orange' },
+					{ background: 'purple', color: 'white' }
+            	];
+            
+            	// 顏色隨機變換
+            	function changeColor() {
+                	const randomIndex = Math.floor(Math.random() * colors.length);
+                	const newColor = colors[randomIndex];
+                	this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;
+           		}
+        
+            	// 綁定事件
+            	a.addEventListener('click', changeColor);
+        	</script>
+			<p>
+			<h3>程式說明</h3>
+			<p style="background-color: black; color: yellow;">
+				const colors = [<br />
+				&emsp;{ background: 'red', color: 'yellow' },<br />
+				&emsp;{ background: 'orange', color: 'red' },<br />
+				&emsp;{ background: 'yellow', color: 'black' },<br />
+				&emsp;{ background: 'green', color: 'white' },<br />
+				&emsp;{ background: 'blue', color: 'yellow' },<br />
+				&emsp;{ background: 'indigo', color: 'orange' },<br />
+				&emsp;{ background: 'purple', color: 'white' }<br />
+				];<br />
+			</p>
+			<p>
+				這一行定義了一個 colors 陣列，其中包含了七個顏色物件。每個物件有兩個屬性：
+				background：背景顏色。
+				color：文字顏色。
+				這樣我們就有七個顏色組合可以隨機選擇。
+			</p>
+			<p style="background-color: black; color: yellow;">
+				function changeColor() {<br />
+				&emsp;const randomIndex = Math.floor(Math.random() * colors.length);<br />
+				&emsp;const newColor = colors[randomIndex];<br />
+				&emsp;this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;<br />
+				}<br />
+			</p>
+			<p>這個函式的作用是隨機選擇一組顏色，然後把這個顏色設定到按鈕上。</p>
+			<p style="background-color: black; color: yellow;">
+				const randomIndex = Math.floor(Math.random() * colors.length);
+			</p>
+			<p>
+				<ol>
+					<li>Math.random()：</li>
+					<ul>
+						<li>這個函式會回傳一個介於0（包含）到1（不包含）之間的隨機小數，例如：0.25、0.78、0.99 等。</li>
+					</ul>
+					<li>Math.random() * colors.length：</li>
+					<ul>
+						<li>colors.length 代表陣列的長度，在這裡 colors.length 是 7（因為我們有七組顏色）。</li>
+						<li>Math.random() * 7 會產生 0 ~ 6.9999 之間的數字，像 1.45、0.89、6.73。</li>
+					</ul>
+					<li>Math.floor(...)：</li>
+					<ul>
+						<li>Math.floor() 會向下取整，確保我們得到的是 0, 1, 2, 3, 4, 5, 或 6（這些是 colors 陣列的索引）。</li>
+						<li>
+							例如：<br />
+							Math.floor(1.45) → 1<br />
+							Math.floor(2.73) → 2<br />
+							Math.floor(6.89) → 6	
+						</li>
+					</ul>
+					<li>這樣，我們就能確保 randomIndex 是 0、1、2、3、4、5 或 6，對應 colors 陣列的索引。</li>
+				</ol>
+			</p>
+			<p style="background-color: black; color: yellow;">
+				const newColor = colors[randomIndex];
+			</p>
+			<p>
+				<ol>
+					<li>這一行是從 colors 陣列中取出隨機的顏色組合。</li>
+					<li>
+						randomIndex 可能是 0、1、2、3、4、5或 6，所以 colors[randomIndex] 會回傳對應的物件：<br />
+						如果 randomIndex === 0，則 newColor = { background: 'red', color: 'yellow' }<br />
+						如果 randomIndex === 1，則 newColor = { background: 'orange', color: 'red' }<br />
+						如果 randomIndex === 2，則 newColor = { background: 'yellow', color: 'black' }<br />
+						如果 randomIndex === 3，則 newColor = { background: 'green', color: 'white' }<br />
+						如果 randomIndex === 4，則 newColor = { background: 'blue', color: 'yellow' }<br />
+						如果 randomIndex === 5，則 newColor = { background: 'indigo', color: 'orange' }<br />
+						如果 randomIndex === 6，則 newColor = { background: 'purple', color: 'white' }
+					</li>
+					<li>所以 newColor 變數會儲存這次隨機選到的顏色組合。</li>
+				</ol>
+			</p>
+			<p style="background-color: black; color: yellow;">
+				this.style.cssText = `background-color: ${newColor.background}; color: ${newColor.color}`;
+			</p>
+			<p>
+				<ol>
+					<li>這一行是改變按鈕的顏色，讓它變成 newColor 指定的樣式。</li>
+					<li>this 代表被點擊的按鈕（因為我們用 addEventListener 綁定函式）。</li>
+					<li>style.cssText 允許一次設定多個 CSS 樣式。</li>
+				</ol>
+			</p>
+			<p>
+				整體函式流程：
+				<ol>
+					<li>產生 randomIndex，確保它是 0, 1, 2, 3, 4, 5 或 6。</li>
+					<li>用這個 randomIndex 從 colors 陣列中選出一組顏色組合。</li>
+					<li>把這組顏色套用到按鈕上，改變 background-color 和 color。</li>
+				</ol>
+			</p>
+			<p>
+				完整程式流程，假設現在點擊一次按鈕：
+				<ol>
+					<li>Math.random() 產生 0.78</li>
+					<li>Math.floor(0.78 * 6) = Math.floor(4.68) = 4</li>
+					<li>randomIndex = 4</li>
+					<li>newColor = colors[4] = { background: 'blue', color: 'yellow' }</li>
+					<li>this.style.cssText = "background-color: blue; color: yellow";</li>
+					<li>按鈕變成藍底黃字</li>
+				</ol>
+				顏色可能會不同，因為 randomIndex 每次都會變化。
+			</p>
+		</section>
+
+		<section>
+			<h2 id="section2">改變按鈕顏色(讓顏色不重複上一次的顏色)</h2>
+<pre><code>
+	&lt;button id="btn_chgcolor1" class="btn_chgcolor"&gt;點擊變換顏色&lt;/button&gt;
+	&lt;script&gt;
+		let b = document.getElementById('btn_chgcolor1');
+
+		const colors1 = [
+			{ background: 'red', color: 'yellow' },
+			{ background: 'orange', color: 'red' },
+			{ background: 'yellow', color: 'black' },
+			{ background: 'green', color: 'white' },
+			{ background: 'blue', color: 'yellow' },
+			{ background: 'indigo', color: 'orange' },
+			{ background: 'purple', color: 'white' }
+		];
+
+		let lastIndex = -1;
+
+		function changeColor1() {
+			let randomIndex1;
+			do {
+				randomIndex1 = Math.floor(Math.random() * colors1.length);
+			} while (randomIndex1 === lastIndex);
+			lastIndex = randomIndex1;
+			const newColor1 = colors1[randomIndex1];
+			this.style.cssText = `background-color: ${newColor1.background}; color: ${newColor1.color}`;
+		}
+
+		b.addEventListener('click', changeColor1);
+	&lt;/script&gt;
+</code></pre>
+			<button id="btn_chgcolor1" class="btn_chgcolor">點擊變換顏色</button>
+			<script>
+				let b = document.getElementById('btn_chgcolor1');
+
+				const colors1 = [
+                	{ background: 'red', color: 'yellow' },
+                	{ background: 'orange', color: 'red' },
+                	{ background: 'yellow', color: 'black' },
+					{ background: 'green', color: 'white' },
+					{ background: 'blue', color: 'yellow' },
+					{ background: 'indigo', color: 'orange' },
+					{ background: 'purple', color: 'white' }
+            	];
+
+				let lastIndex = -1;
+
+				function changeColor1() {
+					let randomIndex1;
+					do {
+						randomIndex1 = Math.floor(Math.random() * colors1.length);
+					} while (randomIndex1 === lastIndex);
+					lastIndex = randomIndex1;
+					const newColor1 = colors1[randomIndex1];
+					this.style.cssText = `background-color: ${newColor1.background}; color: ${newColor1.color}`;
+				}
+
+				b.addEventListener('click', changeColor1);
+			</script>
+			<p>
+			<h3>程式說明</h3>
+			<p style="background-color: black; color: yellow;">
+				let lastIndex = -1;
+			</p>
+			<p>
+				<ol>
+					<li>lastIndex變數是用來記錄上一次選擇的顏色索引。</li>
+					<li>初始值設為 -1，代表「還沒選過」。</li>
+				</ol>
+			</p>
+			<p style="background-color: black; color: yellow;">
+				do {<br />
+				&emsp;randomIndex1 = Math.floor(Math.random() * colors1.length);<br />
+				} while (randomIndex1 === lastIndex);
+			</p>
+			<p>
+				<ol>
+					<li>do...while 會先執行一次隨機選擇。</li>
+					<li>如果 randomIndex1 和 lastIndex 相同，就再選一次，直到不相同為止。</li>
+				</ol>
+			</p>
+			<p style="background-color: black; color: yellow;">
+				lastIndex = randomIndex1;
+			</p>
+			<p>
+				更新lastIndex，這樣下一次點擊時，lastIndex 會記得上一次的顏色，確保新選擇的顏色不會跟上次一樣。
+			</p>
+		</section>
+
+		<section>
+			<h2 id="section3">條件判斷(一) 👉🏻 if</h2>
+			<p>
+				<ol>
+					<li>如果程式需要根據條件執行不同的動作，就用 if。</li>
+					<li>只在特定條件發生時執行。</li>
+					<li>只做一次判斷，不需要重複執行。</li>
+				</ol>
+			</p>
+			<h3>如果按鈕是紅色，就變黃，否則變綠。</h3>
+<pre><code>
+	&lt;button id="btn_chgcolor2" class="btn_chgcolor" style="background-color: red; color: yellow;"&gt;點擊變換顏色&lt;/button&gt;
+	&lt;script&gt;
+		let c = document.getElementById('btn_chgcolor2');
+
+		c.addEventListener('click', function () {
+			if (this.style.backgroundColor === 'red') {
+				this.style.backgroundColor = 'yellow';
+				this.style.color = 'black';
+			} else if (this.style.backgroundColor === 'yellow') {
+				this.style.backgroundColor = 'green';
+				this.style.color = 'white';
+			} else {
+				this.style.backgroundColor = 'red';
+				this.style.color = 'yellow';
+			}
+		});
+	&lt;/script&gt;
+</code></pre>
+			<button id="btn_chgcolor2" class="btn_chgcolor" style="background-color: red; color: yellow;">點擊變換顏色</button>
+			<script>
+				let c = document.getElementById('btn_chgcolor2');
+
+				c.addEventListener('click', function () {
+    				if (this.style.backgroundColor === 'red') {
+        				this.style.backgroundColor = 'yellow';
+        				this.style.color = 'black';
+    				} else if (this.style.backgroundColor === 'yellow') {
+        				this.style.backgroundColor = 'green';
+        				this.style.color = 'white';
+    				} else {
+						this.style.backgroundColor = 'red';
+						this.style.color = 'yellow';
+					}
+				});
+			</script>
+			<p>
+		</section>
+
+		<section>
+			<h2 id="section4">算術運算</h2>
+<pre><code>
+	&lt;input type="number" id="num1" placeholder="輸入第一個數字"&gt; +
+	&lt;input type="number" id="num2" placeholder="輸入第二個數字"&gt;
+	&lt;button id="plusBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result1"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('plusBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num1').value);
+			let num2 = Number(document.getElementById('num2').value);
+			let plus = num1 + num2;
+			document.getElementById('result1').textContent = plus;
+		});
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num1" placeholder="輸入第一個數字"> +
+    			<input type="number" id="num2" placeholder="輸入第二個數字">
+    			<button id="plusBtn">計算</button>
+    			<p>答案：<span id="result1"></span></p>
+			</p>
+			<script>
+				document.getElementById('plusBtn').addEventListener('click', function() {
+            		let num1 = Number(document.getElementById('num1').value);
+            		let num2 = Number(document.getElementById('num2').value);
+            		let plus = num1 + num2;
+            		document.getElementById('result1').textContent = plus;
+        		});
+			</script>
+
+<pre><code>
+	&lt;input type="number" id="num3" placeholder="輸入第一個數字"&gt; -
+	&lt;input type="number" id="num4" placeholder="輸入第二個數字"&gt;
+	&lt;button id="minusBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result2"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('minusBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num3').value);
+			let num2 = Number(document.getElementById('num4').value);
+			let minus = num1 - num2;
+			document.getElementById('result2').textContent = minus;
+		})
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num3" placeholder="輸入第一個數字"> -
+				<input type="number" id="num4" placeholder="輸入第二個數字">
+				<button id="minusBtn">計算</button>
+				<p>答案：<span id="result2"></span></p>
+			</p>
+			<script>
+				document.getElementById('minusBtn').addEventListener('click', function() {
+					let num1 = Number(document.getElementById('num3').value);
+					let num2 = Number(document.getElementById('num4').value);
+					let minus = num1 - num2;
+					document.getElementById('result2').textContent = minus;
+				})
+			</script>
+
+<pre><code>
+	&lt;input type="number" id="num5" placeholder="輸入第一個數字"&gt; *
+	&lt;input type="number" id="num6" placeholder="輸入第二個數字"&gt;
+	&lt;button id="timesBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result3"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('timesBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num5').value);
+			let num2 = Number(document.getElementById('num6').value);
+			let times = num1 * num2;
+			document.getElementById('result3').textContent = times;
+		});
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num5" placeholder="輸入第一個數字"> *
+				<input type="number" id="num6" placeholder="輸入第二個數字">;
+				<button id="timesBtn">計算</button>
+				<p>答案：<span id="result3"></span></p>
+			</p>
+			<script>
+					document.getElementById('timesBtn').addEventListener('click', function() {
+						let num1 = Number(document.getElementById('num5').value);
+						let num2 = Number(document.getElementById('num6').value);
+						let times = num1 * num2;
+						document.getElementById('result3').textContent = times;
+					});
+			</script>
+
+<pre><code>
+	&lt;input type="number" id="num7" placeholder="輸入第一個數字"&gt; /
+	&lt;input type="number" id="num8" placeholder="輸入第二個數字"&gt;
+	&lt;button id="dividedBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result4"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('dividedBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num7').value);
+			let num2 = Number(document.getElementById('num8').value);
+			let divided = num1 / num2;
+			document.getElementById('result4').textContent = divided;
+		})
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num7" placeholder="輸入第一個數字"> /
+				<input type="number" id="num8" placeholder="輸入第二個數字">
+				<button id="dividedBtn">計算</button>
+				<p>答案：<span id="result4"></span></p>
+			</p>
+			<script>
+				document.getElementById('dividedBtn').addEventListener('click', function() {
+					let num1 = Number(document.getElementById('num7').value);
+					let num2 = Number(document.getElementById('num8').value);
+					let divided = num1 / num2;
+					document.getElementById('result4').textContent = divided;
+				})
+			</script>
+
+<pre><code>
+	&lt;input type="number" id="num9" placeholder="輸入第一個數字"&gt; %
+	&lt;input type="number" id="num10" placeholder="輸入第二個數字"&gt;
+	&lt;button id="remainderdBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result5"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('remainderdBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num9').value);
+			let num2 = Number(document.getElementById('num10').value);
+			let remainder = num1 % num2;
+			document.getElementById('result5').textContent = remainder;
+		})
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num9" placeholder="輸入第一個數字"> %
+				<input type="number" id="num10" placeholder="輸入第二個數字">
+				<button id="remainderdBtn">計算</button>
+				<p>答案：<span id="result5"></span></p>
+			</p>
+			<script>
+				document.getElementById('remainderdBtn').addEventListener('click', function() {
+					let num1 = Number(document.getElementById('num9').value);
+					let num2 = Number(document.getElementById('num10').value);
+					let remainder = num1 % num2;
+					document.getElementById('result5').textContent = remainder;
+				})
+			</script>
+
+<pre><code>
+	&lt;input type="number" id="num11" placeholder="輸入第一個數字"&gt; **
+	&lt;input type="number" id="num12" placeholder="輸入第二個數字"&gt;
+	&lt;button id="nthpowerBtn"&gt;計算&lt;/button&gt;
+	&lt;p&gt;答案：&lt;span id="result6"&gt;&lt;/span&gt;&lt;/p&gt;
+	&lt;script&gt;
+		document.getElementById('nthpowerBtn').addEventListener('click', function() {
+			let num1 = Number(document.getElementById('num11').value);
+			let num2 = Number(document.getElementById('num12').value);
+			let nthpower = num1 ** num2;
+			document.getElementById('result6').textContent = nthpower;
+		})
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				<input type="number" id="num11" placeholder="輸入第一個數字"> **
+				<input type="number" id="num12" placeholder="輸入第二個數字">
+				<button id="nthpowerBtn">計算</button>
+				<p>答案：<span id="result6"></span></p>
+			</p>
+			<script>
+				document.getElementById('nthpowerBtn').addEventListener('click', function() {
+					let num1 = Number(document.getElementById('num11').value);
+					let num2 = Number(document.getElementById('num12').value);
+					let nthpower = num1 ** num2;
+					document.getElementById('result6').textContent = nthpower;
+				})
+			</script>
+		</section>
+
+		<section>
+			<h2 id="section5">條件判斷(二) 👉🏻 if、switch</h2>
+<pre><code>
+	您的年齡：&lt;input type="number" id="age" placeholder="請輸入年齡"&gt;
+	&lt;button id="ageBtn"&gt;送出&lt;/button&gt;
+	&lt;div id="ageAnswer"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		document.getElementById('ageBtn').addEventListener('click', function() {
+			let age = Number(document.getElementById('age').value);
+			let ageAnswer = document.getElementById('ageAnswer');
+
+			if (isNaN(age) || age &lt;= 0) {
+				ageAnswer.textContent = "請輸入有效的年齡";
+			} else if (age >= 18) {
+				ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
+		   	} else {
+				ageAnswer.textContent = `您的年齡 ${age} 歲，未成年。`;
+			}
+		});
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				您的年齡：<input type="number" id="age" placeholder="請輸入年齡">
+				<button id="ageBtn">送出</button>
+				<div id="ageAnswer"></div>
+			</p>
+			<script>
+   				document.getElementById('ageBtn').addEventListener('click', function() {
+        			let age = Number(document.getElementById('age').value);
+        			let ageAnswer = document.getElementById('ageAnswer');
+
+        			if (isNaN(age) || age <= 0) {
+           			 	ageAnswer.textContent = "請輸入有效的年齡";
+        			} else if (age >= 18) {
+            			ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
+       				} else {
+            			ageAnswer.textContent = `您的年齡 ${age} 歲，未成年。`;
+        			}
+    			});
+			</script>
+<pre><code>
+	&lt;div id="showToday"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function day() {
+			let today = "";
+			let d = new Date().getDay();
+			switch (d) {
+				case 0:
+					today = '星期日';
+					break;
+				case 1:
+					today = '星期一';
+					break;
+				case 2:
+					today =	'星期二';
+					break;
+				case 3:
+					today = '星期三';
+					break;
+				case 4:
+					today = '星期四';
+					break;
+				case 5:
+					today = '星期五';
+					break;
+				case 6:
+					today = '星期六';
+					break;
+			}
+		document.getElementById('showToday').textContent = `今天是${today}`;	
+		};
+		day();
+	&lt;/script&gt;
+</code></pre>
+			<p><div id="showToday"></div></p>
+			<script>
+				function day() {
+					let today = "";
+					let d = new Date().getDay();
+					switch (d) {
+						case 0:
+							today = '星期日';
+							break;
+						case 1:
+							today = '星期一';
+							break;
+						case 2:
+							today =	'星期二';
+							break;
+						case 3:
+							today = '星期三';
+							break;
+						case 4:
+							today = '星期四';
+							break;
+						case 5:
+							today = '星期五';
+							break;
+						case 6:
+							today = '星期六';
+							break;
+					}
+				document.getElementById('showToday').textContent = `今天是${today}`;	
+				};
+				day();
+			</script>
+		</section>
+
+		<section>
+			<h2 id="section6">顯示現在時間與日期</h2>
+<pre><code>
+	&lt;div id="showTime"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function showTime() {
+			let now = new Date();
+			let hours = now.getHours().toString().padStart(2, '0');
+			let minutes = now.getMinutes().toString().padStart(2, '0');
+			let seconds = now.getSeconds().toString().padStart(2, '0');
+			document.getElementById('showTime').textContent = `現在時間：${hours}:${minutes}:${seconds}`
+		}
+		setInterval(showTime, 1000);
+		showTime();
+	&lt;/script&gt;
+</code></pre>
+			<div id="showTime"></div>
+			<script>
+				function showTime() {
+					let now = new Date();
+					let hours = now.getHours().toString().padStart(2, '0');
+					let minutes = now.getMinutes().toString().padStart(2, '0');
+					let seconds = now.getSeconds().toString().padStart(2, '0');
+					document.getElementById('showTime').textContent = `現在時間：${hours}:${minutes}:${seconds}`
+				}
+				setInterval(showTime, 1000);
+				showTime();
+			</script>
+
+<pre><code>
+	&lt;div id="showDate"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function showDate() {
+			let now = new Date();
+			let year = now.getFullYear();
+			let month = (now.getMonth() + 1).toString().padStart(2, '0');
+			let day = now.getDate().toString().padStart(2, '0');
+			document.getElementById('showDate').textContent = `今天日期：${year}-${month}-${day}`
+		}
+		showDate();
+	&lt;/script&gt;
+</code></pre>
+			<div id="showDate"></div>
+			<script>
+				function showDate() {
+					let now = new Date();
+					let year = now.getFullYear();
+					let month = (now.getMonth() + 1).toString().padStart(2, '0');
+					let day = now.getDate().toString().padStart(2, '0');
+					document.getElementById('showDate').textContent = `今天日期：${year}-${month}-${day}`
+				}
+				showDate();
+			</script>
+		</section>
+		<p>
+		<section>
+			<h2 id="section7">綜合實作-顯示年月日、星期幾和現在時間</h2>
+<pre><code>
+	&lt;div id="showFullToday"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function showFullToday() {
+			let now = new Date();
+			let year = now.getFullYear() - 1911;
+			let month = (now.getMonth() + 1).toString().padStart(2, '0');1
+			let day = now.getDate().toString().padStart(2, '0');
+			let hours = now.getHours().toString().padStart(2, '0');
+			let minutes = now.getMinutes().toString().padStart(2, '0');
+			let seconds = now.getSeconds().toString().padStart(2, '0');
+			let weekday = "";
+			let d = now.getDay();
+			switch (d) {
+				case 0:
+					weekday = '星期日';
+					break;
+				case 1:
+					weekday = '星期一';
+					break;
+				case 2:
+					weekday = '星期二';
+					break;
+				case 3:
+					weekday = '星期三';
+					break;
+				case 4:
+					weekday = '星期四';
+					break;
+				case 5:
+					weekday = '星期五';
+					break;
+				case 6:
+					weekday = '星期六';
+					break;
+				default:
+					weekday = '發生錯誤！'
+			}
+			let t = document.getElementById('showFullToday');
+			t.textContent =	`今天是民國 ${year} 年 ${month} 月 ${day} 日，${weekday}，現在時間：${hours}:${minutes}:${seconds}`;
+		}
+
+		setInterval(showFullToday, 1000);
+	&lt;/script&gt;
+</code></pre>
+			<div id="showFullToday"></div>
+			<script>
+				function showFullToday() {
+					let now = new Date();
+					let year = now.getFullYear() - 1911;
+					let month = (now.getMonth() + 1).toString().padStart(2, '0');1
+					let day = now.getDate().toString().padStart(2, '0');
+					let hours = now.getHours().toString().padStart(2, '0');
+					let minutes = now.getMinutes().toString().padStart(2, '0');
+					let seconds = now.getSeconds().toString().padStart(2, '0');
+					let weekday = "";
+					let d = now.getDay();
+					switch (d) {
+						case 0:
+							weekday = '星期日';
+							break;
+						case 1:
+							weekday = '星期一';
+							break;
+						case 2:
+							weekday = '星期二';
+							break;
+						case 3:
+							weekday = '星期三';
+							break;
+						case 4:
+							weekday = '星期四';
+							break;
+						case 5:
+							weekday = '星期五';
+							break;
+						case 6:
+							weekday = '星期六';
+							break;
+						default:
+							weekday = '發生錯誤！'
+					}
+					let t = document.getElementById('showFullToday');
+					t.textContent =	`今天是民國 ${year} 年 ${month} 月 ${day} 日，${weekday}，現在時間：${hours}:${minutes}:${seconds}`;
+				}
+
+				setInterval(showFullToday, 1000);
+			</script>
+		</section>
+		<p>
+		<section>
+			<h2 id="section8">用for迴圈印出1到n的平方數</h2>
+<pre><code>
+	計算 1 到 &lt;input id="inputNum" type="number" min="1" placeholder="請輸入數字"&gt;的平方數。
+	&lt;button id="count" onclick="square()"&gt;計算&lt;/button&gt;
+	&lt;div id="square"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function square() {
+			let n = Number(document.getElementById('inputNum').value);
+			let r = ""; 
+			for (let i = 1; i <= n; i++) {
+				r += `${i} 的平方是 ${i * i}。<br>`;
+			}
+			document.getElementById('square').innerHTML = r;
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				計算 1 到 <input id="inputNum" type="number" min="1" placeholder="請輸入數字">的平方數。
+				<button id="count" onclick="square()">計算</button><br />
+				<div id="square"></div>
+			</p>
+			<script>
+    			function square() {
+        			let n = Number(document.getElementById('inputNum').value);
+        			let r = ""; 
+        			for (let i = 1; i <= n; i++) {
+            			r += `${i} 的平方是 ${i * i}。<br>`;
+        			}
+        			document.getElementById('square').innerHTML = r;
+				}
+			</script>
+		</section>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>

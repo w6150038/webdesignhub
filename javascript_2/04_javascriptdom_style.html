@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>改變元素樣式</title>
+        <style>
+            table {
+                background-color: #F6FEAA;
+                border-collapse: collapse;
+            }
+
+            th {
+                background-color: #118aB2;
+                color: white;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .colorbtn {
+                width: 50px;
+                height: 40px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function tableWidth(w) {
+                let table = document.getElementById('myTable');
+                table.style.width = w;
+            }
+            function chgTableColor(col) {
+                let table = document.getElementById('myTable');
+                table.style.backgroundColor = col;
+            }
+        </script>
+        <table id="myTable" border="1" cellspacing="2" cellpadding="2">
+            <tr id="tr1">
+                <th>國文</th>
+                <th>英文</th>
+                <th>數學</th>
+            </tr>
+            <tr id="tr2">
+                <td>90</td>
+                <td>60</td>
+                <td>80</td>
+            </tr>
+            <tr id="tr3">
+                <td>60</td>
+                <td>85</td>
+                <td>83</td>
+            </tr>
+        </table>
+        <p>
+            改變表格寬度<br />
+            <button onclick="tableWidth('200px')">寬度200px</button>&emsp;
+            <button onclick="tableWidth('300px')">寬度300px</button>
+            <p>
+            <hr>
+            改變背景顏色<br />
+            <button class="colorbtn" onclick="chgTableColor('#C7DFC5')" style="background-color: #C7DFC5"></button>
+            <button class="colorbtn" onclick="chgTableColor('#C1DBE3')" style="background-color: #C1DBE3"></button>
+            <button class="colorbtn" onclick="chgTableColor('#CEBACF')" style="background-color: #CEBACF"></button>
+            <button class="colorbtn" onclick="chgTableColor('#EBD2B4')" style="background-color: #EBD2B4"></button>
+        </p>
+    </body>
+</html>

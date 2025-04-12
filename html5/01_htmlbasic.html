@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="認識html5">
+	<meta name="author" content="王群銘">
+	<title>認識HTML5</title>
+	<style type="text/css">
+		* {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+	<h2>HTML5介紹</h2>
+	<ul>
+		<li>HTML(HyperText Markkup Language)：超文件標記語言。</li>
+		<li>HTML標記不分大小寫，必須由「&lt;」與「&gt;」符號括住，分為圍堵標記(Container Tags)與單一標記(Single Tag)。</li>
+		<li>圍堵標記是利用起始標記(Start Tag)與終止標記(End Tag)將文字圍住，終止標記前會加上一個斜線「/」。</li>
+		<li>單一標記只有起始標記而沒有終止標記。</li>
+		<li>HTML5第一行一定要有宣告，語法為：&lt;!DOCTYPE html&gt;。</li>
+		<li>語系與編碼：
+			<ol>
+				<li>放在&lt;head&gt;&lt;/head&gt;裡。</li>
+				<li>&lt;html lang="zh-Hant-TW"&gt;：網頁內容使用繁體中文。</li>
+				<li>&lt;meta charset="big-5"&gt;或&lt;meta charset="utf-8"&gt;：網頁編碼使用big5或utf-8。</li>
+			</ol>
+		</li>
+		<li>Viewport宣告：
+			<ol>
+				<li>為了自適應網頁(RWD)所加入的宣告。</li>
+				<li>目的是告訴瀏覽器、行動裝置的寬度及高度，頁面畫面與字體比例，使用者是否可以透過平移(Scroll)和縮放(Zoom)來瀏覽整個頁面。</li>
+				<li>語法：&lt;meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0"&gt;</li>
+				<li>參數：
+					<ol>
+						<li>width：控制寬度，可輸入「device-width」，表示寬度隨著設備寬度自動調整。</li>
+						<li>height：控制高度，可輸入「device-height」。</li>
+						<li>user-scalable：是否允許使用者手動縮放，可輸入0或1，也可輸入yes或no。</li>
+						<li>initial-scale： 初始縮放比例，最小0.25，最大5。</li>
+						<li>maximum-scale：允許使用者縮放的最大比例，最小0.25，最大5。</li>
+						<li>minimum-scale：允許使用者縮放的最小比例，最小0.25，最大5。</li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<table border="1">
+				<tr>
+					<th>標記名稱</th>
+					<th>語法</th>
+					<th>說明</th>
+				</tr>
+				<tr>
+					<td>&lt;html&gt;</td>
+					<td>&lt;html&gt;...&lt;/html&gt;</td>
+					<td>網頁的開始與結束。</td>
+				</tr>
+				<tr>
+					<td>&lt;head&gt;</td>
+					<td>&lt;head&gt;...&lt;/head&gt;</td>
+					<td>放置網頁相關資訊。</td>
+				</tr>
+				<tr>
+					<td>&lt;title&gt;</td>
+					<td>&lt;title&gt;...&lt;/title&gt;</td>
+					<td>網頁標題，會顯示在瀏覽器標題列。</td>
+				</tr>
+				<tr>
+					<td>&lt;meta&gt;</td>
+					<td>&lt;meta...&gt;</td>
+					<td>描述網頁，有利於搜尋引擎能快速找到網站。</td>
+				</tr>
+				<tr>
+					<td>&lt;body&gt;</td>
+					<td>&lt;body&gt;...&lt;/body&gt;</td>
+					<td>網頁的內容。</td>
+				</tr>
+				</table>
+		<li>有些標記可以加上屬性(Attributes)，來改變其在網頁呈現的方式，如果超過一個以上的屬性，則以空白隔開不同的屬性。<br />
+			&lt;起始標記 屬性名稱1="設定值1"&nbsp;屬性名稱2="設定值2"……&gt;&nbsp;以此類推。<br />
+			例如：&lt;html lang="zh-tw"&gt;、&lt;meta charset="utf-8" name="keywords" content="HTML, CSS, JavaScript"&gt;
+		</li>
+	</ul>
+
+	<h2>HTML5結構化語法架構</h2>
+	<p style="background-color: black; color: yellow;">
+	&lt;!DOCTYPE html&gt;<br />
+	&lt;html&gt;<br />
+	&nbsp;&nbsp;&lt;head&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;網站標題&lt;/title&gt;<br />
+	&nbsp;&nbsp;&lt;/head&gt;<br />
+	&lt;body&gt;<br />
+	&nbsp;&nbsp;&lt;header&gt;網站主題&lt;/header&gt;<br />
+	&nbsp;&nbsp;&lt;nav&gt;連結選單&lt;/nav&gt;<br />
+	&nbsp;&nbsp;&lt;article&gt;<br />
+	&nbsp;&nbsp;主內容<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;section&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;章節段落<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br />
+	&nbsp;&nbsp;&lt;/article&gt;<br />
+	&nbsp;&nbsp;&lt;aside&gt;側邊欄&lt;/aside&gt;<br />
+	&nbsp;&nbsp;&lt;footer&gt;頁尾&lt;/footer&gt;<br />
+	&lt;/body&gt;<br />
+	&lt;/html&gt;
+	</p>
+	<table border="1">
+		<tr>
+			<th>標記名稱</th>
+			<th>說明</th>
+		</tr>
+		<tr>
+			<td>&lt;header&gt;</td>
+			<td>顯示網站名稱、主題或主要資訊。</td>
+		</tr>
+		<tr>
+			<td>&lt;nav&gt;</td>
+			<td>連結選單。</td>
+		</tr>
+		<tr>
+			<td>&lt;aside&gt;</td>
+			<td>側邊欄。</td>
+		</tr>
+		<tr>
+			<td>&lt;main&gt;</td>
+			<td>網頁主要內容，每個頁面只能有一個&lt;main&gt;。</td>
+		</tr>
+		<tr>
+			<td>&lt;article&gt;</td>
+			<td>定義主內容區。</td>
+		</tr>
+		<tr>
+			<td>&lt;section&gt;</td>
+			<td>章節或段落。</td>
+		</tr>
+		<tr>
+			<td>&lt;footer&gt;</td>
+			<td>置於頁尾，顯示版權宣告、公司聯絡資訊或作者資訊。</td>
+		</tr>
+		<tr>
+			<td>&lt;figure&gt;</td>
+			<td>指定獨立的內容，例如圖片、圖表，可以使用&lt;figcaption&gt;標記定義標題。</td>
+		</tr>
+		<tr>
+			<td>&lt;mark&gt;</td>
+			<td>凸顯強調的文字。</td>
+		</tr>
+	</table>
+	</main>
+	<div id="footer"></div>
+</body>
+</html>

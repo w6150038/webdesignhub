@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<title>Web Design Hub</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+	<link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        function loadComponent(id, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(content => {
+                    document.getElementById(id).innerHTML = content;
+                })
+                .catch(error => console.error(`無法載入 ${file}`, error));
+        }
+
+        loadComponent("header", "header.html");
+        loadComponent("footer", "footer.html");
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const itemsPerPage = 10; // 每頁顯示 10 筆資料
+        let currentPage = 1; // 當前頁數
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const totalPages = Math.ceil(timelineItems.length / itemsPerPage);
+        const paginationContainer = document.getElementById("pagination"); // 分頁按鈕容器
+
+        function showPage(page) {
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+
+          // 顯示當前頁的日誌，隱藏其他的
+          timelineItems.forEach((item, index) => {
+            item.style.display = index >= startIndex && index < endIndex ? "block" : "none";
+          });
+
+          // 更新頁碼按鈕的高亮效果
+          document.querySelectorAll("#pagination button").forEach((btn, index) => {
+            btn.classList.toggle("active", index + 1 === page);
+          });
+        }
+
+      function createPagination() {
+        paginationContainer.innerHTML = ""; // 先清空舊的按鈕
+
+        for (let i = 1; i <= totalPages; i++) {
+          const button = document.createElement("button");
+          button.textContent = i;
+          button.addEventListener("click", () => {
+            currentPage = i;
+            showPage(currentPage);
+          });
+          paginationContainer.appendChild(button);
+        }
+      }
+
+        // 初始化分頁
+        createPagination();
+        showPage(currentPage);
+      });
+    </script>
+
+    <div id="header"></div>
+    <main>
+      <h2>📖學習日誌</h2>
+      <section class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-12</div>
+          <div class="timeline-content">
+            <h3>🟰簡易計算機</h3>
+            <p>如何做出簡易計算機？</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_16">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-11</div>
+          <div class="timeline-content">
+            <h3>🏋️‍♂️BMI計算機</h3>
+            <p>您的體重肥胖嗎？快來測量您的BMI吧！</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_15">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-10</div>
+          <div class="timeline-content">
+            <h3>🔺判斷三角形的類型（等邊、等腰、不等邊）</h3>
+            <p>等邊？等腰？不等邊？</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_14">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-10</div>
+          <div class="timeline-content">
+            <h3>🔢判斷數字是奇數或偶數</h3>
+            <p>輸入數字判斷是奇數還是偶數。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_13">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-10</div>
+          <div class="timeline-content">
+            <h3>🔢判斷正數、負數或零</h3>
+            <p>輸入數字判斷這是正數、負數還是零。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_12">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-09</div>
+          <div class="timeline-content">
+            <h3>🌡攝氏溫度與華氏溫度的轉換</h3>
+            <p>攝氏30℃是華氏幾℉？華氏0℉是攝氏幾℃？</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_10">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-09</div>
+          <div class="timeline-content">
+            <h3>📐計算三角形面積</h3>
+            <p>如何寫出計算三角形面積的程式？</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_9">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-08</div>
+          <div class="timeline-content">
+            <h3>🟢函式：function</h3>
+            <p>定義一個函式square(num)，輸入一個數字，回傳它的平方值。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_8">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-06</div>
+          <div class="timeline-content">
+            <h3>🔄迴圈(三)：do...while...</h3>
+            <p>用do...while...迴圈計算1到100之間的奇數和。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_7">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-05</div>
+          <div class="timeline-content">
+            <h3>🔄迴圈(二)：while</h3>
+            <p>用while迴圈計算1到100之間的偶數和。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_6">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-04</div>
+          <div class="timeline-content">
+            <h3>🔄迴圈(一)：for</h3>
+            <p>用for迴圈計算1到10之間的奇數和。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_5">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-03</div>
+          <div class="timeline-content">
+            <h3>📌條件判斷(二)：switch</h3>
+            <p>用switch判斷今天是星期幾📆。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_4">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-02</div>
+          <div class="timeline-content">
+            <h3>📌條件判斷(一)：if...else...</h3>
+            <p>用if判斷年齡是否成年👩‍🦱🧑。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_3">查看實作</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025-04-01</div>
+          <div class="timeline-content">
+            <h3>📝變數與常數、基本運算</h3>
+            <p>先了解一下變數、常數以及要如何做出基本的運算。</p>
+            <a class="a_btn" href="chatgpt/01_jsbasic.html#section_1">查看實作</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分頁按鈕 -->
+      <div id="pagination"></div>
+    </main>
+    <div id="footer"></div>
+</body>
+</html>

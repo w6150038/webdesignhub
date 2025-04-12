@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="css語法">
+	<meta name="author" content="王群銘">
+	<title>background-color</title>
+	<style type="text/css">
+		.pixel {
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            background-repeat: no-repeat;
+            background-image: url(../images/css3.png);
+            background-size: 400px 400px
+        }
+        .percentage{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            background-repeat: no-repeat;
+            background-image: url(../images/css3.png);
+            background-size: 50% 50%;
+        }
+        .cover{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            background-repeat: no-repeat;
+            background-image: url(../images/css3.png);
+            background-size: cover;
+        }
+        .contain{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            background-repeat: no-repeat;
+            background-image: url(../images/css3.png);
+            background-size: contain;
+        }
+	</style>
+</head>
+<body>
+    <p>設定div容器大小：300px*300px</p>
+    <p>圖片大小：512px*512px</p>
+    <p>1.background-size: 400px 400px，設定圖片大小400px*400px，所以圖片會超出div元件容器。</p><div class="pixel"></div>
+    <p>2.background-size: 50% 50%，設定圖片大小50%*50%(512*50%=256px)，小於div元件容器，但不會填滿。</p><div class="percentage"></div>
+    <p>3.background-size: cover，原始圖片大小512px大於div元件容器300px，所以會填滿div元件容器；如果圖片大小小於div元件容器的話，會填滿容器，圖片就會失真。</p><div class="cover"></div>
+    <p>4.background-size: contain，原始圖片大小512px大於div元件容器300px，所以會將圖片縮小填滿div元件容器。</p><div class="contain"></div>
+</body>
+</html>

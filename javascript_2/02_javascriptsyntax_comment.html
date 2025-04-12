@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>註解文字</title>
+        <script>
+            const cal = () => {
+                /*
+                函數功能：計算x+y，並顯示計算結果
+                撰寫者：王群銘
+                日期：20250218
+                */
+                let x, y;   //宣告x，y變數
+                x = 2;
+                y = 3;
+                //輸出x+y的結果
+                document.getElementById("message").innerHTML = (`x + y = ${x + y}`);
+            };
+            //網頁載入時執行計算x+y，傳回cal的值
+            window.onload = cal;
+        </script>
+    </head>
+    <body>
+        <div id="message"></div>
+    </body>
+</html>

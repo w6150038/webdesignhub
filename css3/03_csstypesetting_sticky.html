@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="css排版">
+	<meta name="author" content="王群銘">
+	<title>sticky</title>
+	<style type="text/css">
+        * {font-size: 25px;}
+
+		.box1 {
+            width: 300px;
+            height: 50px;
+            background: #FF023F;
+            color: white;
+            margin: 10px;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 50px;
+            background: #3BCEAC;
+            color: white;
+            margin: 10px;
+        }
+
+        #three {
+            position: -webkit-sticky;  /*Safari瀏覽器*/
+            position: sticky;
+            top: 10px;
+            border: 5px solid #000000;
+            background: #540D6E;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1" id="three">sticky</div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="css語法">
+	<meta name="author" content="王群銘">
+	<title>background-position</title>
+	<style type="text/css">
+		td {background-image: url(../images/music.png); /*表格背景圖*/
+            background-repeat: no-repeat;            /*表格背景圖不重複*/
+            text-align: center;                      /*表格文字水平置中*/
+            vertical-align: bottom;                  /*表格文字垂直靠下*/
+        }
+        font {font-size: 16pt;}
+	</style>
+</head>
+<body>
+   <table width="500" height="500" border="1" align="center">
+    <tr>
+        <td style="background-position: left top"><font>left top</font></td> <!--圖片位置：左上-->
+        <td style="background-position: center top"><font>center top</font></td> <!--圖片位置：中上-->
+        <td style="background-position: right top"><font>right top</font></td> <!--圖片位置：右上-->
+    </tr>
+    <tr>
+        <td style="background-position: left center"><font>left center</font></td> <!--圖片位置：左中-->
+        <td style="background-position: center center"><font>center center</font></td> <!--圖片位置：中中-->
+        <td style="background-position: right center"><font>right center</font></td> <!--圖片位置：右中-->
+    </tr>
+    <tr>
+        <td style="background-position: left bottom"><font>left bottom</font></td> <!--圖片位置：左下-->
+        <td style="background-position: center bottom"><font>center bottom</font></td> <!--圖片位置：中下-->
+        <td style="background-position: right bottom"><font>right bottom</font></td> <!--圖片位置：右下-->
+    </tr>
+    </table>
+</body>
+</html>

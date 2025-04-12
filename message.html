@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript"">
+	<meta name="description" content="留言板">
+	<meta name="author" content="王群銘">
+	<title>留言板</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+        .form-table {
+            border: 0px;
+            width: 800px;
+            height: 300px;
+        }
+    
+        .form-table-tr {
+            border: 0px;
+            height: 50px;
+        }
+    
+        .form-table-tr-th {
+            border: 0px;
+            text-align: right;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+    
+        .form-table-tr-td {
+            border: 0px;
+            vertical-align: middle;
+        }
+    
+        .input-text {
+            width: 300px;
+            height: 30px;
+            font-size: 20px;
+        }
+    
+        .textarea-text {
+            font-size: 20px;
+        }
+    
+        .btn-center {
+            text-align: center;
+            word-spacing: 20px;
+            padding: 10px;
+        }
+    
+        .btn {
+            line-height: 30px;
+            text-align: center;
+            background-color: rgb(68, 150, 68);
+            color: #eee;
+            font-weight: bolder;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    
+        .btn:hover {
+            color: gray;
+            background-color: #bad893;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function loadComponent(id, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(content => {
+                    document.getElementById(id).innerHTML = content;
+                })
+                .catch(error => console.error(`無法載入 ${file}`, error));
+        }
+
+        loadComponent("header", "header.html");
+        loadComponent("footer", "footer.html");
+    </script>
+    <div id="header"></div>
+    <main>
+        <center>
+            <form method="post" action="" name="message" class="form-message" onsubmit="return false;">
+                <table class="form-table">
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="name">姓名：</label></th>
+                        <td class="form-table-tr-td"><input class="input-text" type="text" name="name" id="name"></td>
+                    </tr>
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="gender">性別：</label></th>
+			            <td class="form-table-tr-td">
+                            <input type="radio" name="gender" id="gender1">
+                            <label class="input-text" for="gender1">先生</label>
+                            <input type="radio" name="gender" id="gender2">
+                            <label class="input-text" for="gender2">小姐</label>
+                        </td>                        
+                    </tr>
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="tel">聯絡電話：</label></th>
+                        <td class="form-table-tr-td"><input class="input-text" type="text" name="tel" id="tel"></td>
+                    </tr>
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="email">E-mail：</label></th>
+                        <td class="form-table-tr-td"><input class="input-text" type="text" name="email" id="email"></td>
+                    </tr>
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="title">主旨：</label></th>
+                        <td class="form-table-tr-td"><input class="input-text" type="text" name="title" id="title"></td>
+                    </tr>
+                    <tr class="form-table-tr">
+                        <th class="form-table-tr-th"><label for="memo">留言內容：</label></th>
+                        <td class="form-table-tr-td"><textarea class="textarea-text" name="memo" id="memo" cols="30" rows="7" wrap="hard"></textarea></td>
+                    </tr>
+                    <tr class="form-table-tr">
+                        <td colspan="2" class="form-table-tr-td btn-center">
+                            <button class="btn" id="submitbtn" type="submit" name="submitbtn">確定送出</button>
+                            <button class="btn" id="resetbtn" type="reset" name="resetbtn">取消重填</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </main>
+    <div id="footer"></div>
+    
+    <script>
+        let submitbtn = document.getElementById('submitbtn');
+        submitbtn.onclick = function() {
+            alert('感謝您的留言！');
+        }
+    </script>
+</body>
+</html>

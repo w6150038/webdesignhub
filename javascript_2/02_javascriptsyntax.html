@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="JavaScript語法">
+	<meta name="author" content="王群銘">
+	<title>JavaScript語法</title>
+	<style type="text/css">
+        * {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+    </style>
+</head>
+<body>
+	<script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+    <h2>JavaScript語法架構</h2>
+    <ul>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script type="text/javascript"&gt;<br />
+			&emsp;JavaScript程式碼;<br />
+			&lt;/script&gt;
+			</p>
+		</li>
+		<li>
+			<p>
+				利用JavaScript將文字「JavaScript好簡單」顯示在&lt;div&gt;元件，因為瀏覽器顯示網頁會先解析
+				HTML、CSS、JavaScript並建立相對應的DOM樹，如果想要利用JavaScript來操控HTML文件，就必須等到
+				DOM樹完整渲染，否則會出現元件不存在的錯誤訊息。
+			</p>
+			<p style="background-color: black; color: yellow;">
+			&lt;!DOCTYPE html&gt;<br />
+			&lt;html&gt;<br />
+			&lt;head&gt;<br />
+			&lt;meta charset="utf-8"&gt;<br />
+			&lt;script&gt;<br />
+			&emsp;window.onload = (event) => {<br />
+			&emsp;&emsp;document.getElementById("message").innerHTML = "JavaScript好簡單！";<br />
+			&emsp;}<br />
+			&lt;/script&gt;<br />
+			&lt;/head&gt;<br />
+			&lt;body&gt;<br />
+			&emsp;&lt;div id="message"&gt;&lt;/div&gt;<br />
+			&lt;/body&gt;<br />
+			&lt;/html&gt;<br />
+			</p>
+			<a href="02_javascriptsyntax_hellojs.html" target="_blank">顯示結果</a>
+		</li>
+		<li>window.onload：當網頁所有資源加載完成時會觸發load事件，因此，想要存取網頁元件時，可以加上此方法確保網頁資源全部載入完成，DOM樹可被讀取。</li>
+		<li>如果只將「document.getElementById("message").innerHTML = "JavaScript好簡單！";」寫在&lt;head&gt;裡，會出現錯誤訊息。</li>
+		<li>
+			若將JavaScript程式寫在&lt;/html&gt;下方，是指上面的DOM樹都已經渲染完成，就不需要使用window.onload()方法了，例如：<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;!DOCTYPE html&gt;<br />
+			&lt;html&gt;<br />
+			&lt;head&gt;<br />
+			&emsp;&lt;meta charset="utf-8"&gt;<br />
+			&lt;/head&gt;<br />
+			&lt;body&gt;<br />
+			&emsp;&lt;div id="message"&gt;&lt;/div&gt;<br />
+			&lt;/body&gt;<br />
+			&lt;/html&gt;<br />
+			&lt;script&gt;<br />
+			&emsp;document.getElementById("message").innerHTML = "JavaScript好簡單！";<br />
+			&lt;/script&gt;<br />
+			</p>
+		</li>
+		<li>window的load事件也可以用「事件處理程序addEventListener()」來註冊監聽，例如：<br />
+			<p style="background-color: black; color: yellow;">
+			window.addEventListener("load", (event)) => {<br />
+			&emsp;程式敘述;<br />
+			}
+			</p>
+		</li>
+	</ul>
+
+	<h2>連結外部JS檔案</h2>
+	<p>
+		在&lt;head&gt;標記裡載入js檔案，語法：<br />
+		<p style="background-color: black; color: yellow;">
+		&emsp;&lt;head&gt;<br />
+		&emsp;&emsp;&lt;script src="檔案.js"&gt;&lt;/script&gt;<br />
+		&emsp;&lt;/head&gt;
+		</p>
+	</p>
+	<h2>瀏覽器的Cache(快取)</h2>
+	<ul>
+		<li>可加快網頁載入速度，減少伺服器負擔。</li>
+		<li>若有修改網頁，但使用者快取時間還未到期時，瀏覽器只會顯示暫存的舊資料，除非使用者手動清除快取。</li>
+		<li>
+			為避免使用者瀏覽舊資料，建議可在修改CSS檔、JS檔或圖檔之後，將連結的檔名後方加上問號?以及字串(版號)，例如：<br />
+			&lt;script src="檔案.js?20250218"&gt;&lt;/script&gt;
+		</li>
+	</ul>
+
+	<h2>JavaScript註解符號</h2>
+	<ul>
+		<li>程式區塊註解包含簡短的描述、撰寫者及最後修改日期。</li>
+		<li>函數(function)註解包含功能、參數及傳回值。</li>
+		<li>
+			單行註解：用雙斜線//<br/>
+			多行註解：用斜線加星號/*註解文字*/
+		</li>
+		<li>註解符號中間不能有空白。</li>
+		<li><a href="02_javascriptsyntax_comment.html" target="_blank">顯示結果</a></li>
+	</ul>
+
+	<h2>資料型態(Data Type)</h2>
+	<ul>
+		<li>資料型態：字串(String)、數字(Number)、布林(Boolean)、undefined(未定義)和Null(空值)。</li>
+		<li>物件型態：物件(Object)、Synbol(符號)。</li>
+	</ul>
+	<h3>數值(Number與BigInt)</h3>
+	<ul>
+		<li>Number是數值型態的物件，包含整數(integer)與浮點數(float)。</li>
+		<li>
+			Number.MAX_SAFE_INTEGER屬性可以取得最大安全整數值，例如：<br />
+			<span>取一個變數為a的最大安全整數值。</span><br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;const a = Number.MAX_SAFE_INTEGER;<br />
+			&emsp;document.write(`取得結果為：${a}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				const a = Number.MAX_SAFE_INTEGER;
+				document.write(`取得結果為：${a}`);
+			</script>
+		</li>
+		<li>當數值超出最大安全整數時，會發生精確度誤差的情況，這時候可以使用BigInt型態執行整數運算。</li>
+		<li>要將數值定義為BigInt型態，只要在數值後面加上n，例如：9007199254740991n。</li>
+		<li>
+			<p>
+			以下程式得到結果因為超出最大安全整數，所以計算會有錯誤：<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;//建立一組函式bignumadd，參數為a和b，並宣告result1為整數0，result1 = a + b。<br />
+			&emsp;function bignumadd(a, b) {<br />
+			&emsp;&emsp;let result1 = 0;<br />
+			&emsp;&emsp;result1 = a + b;<br />
+			&emsp;&emsp;return result1;<br />
+			&emsp;}<br />
+			&emsp;//計算bignumadd裡的a, b兩個參數的值，並將結果傳給r。<br />
+			&emsp;const r = bignumadd(9007199254740991, 9007199254740996);<br />
+			&emsp;document.write(`r = ${r}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				//建立一組函式bignumadd，參數為a和b，並宣告result1為整數0，result1 = a + b。
+				function bignumadd(a, b) {
+					let result1 = 0;
+					result1 = a + b;
+					return result1;
+				}
+				//計算bignumadd裡的a, b兩個參數的值，並將結果傳給r。
+				const r = bignumadd(9007199254740991, 9007199254740996);
+				document.write(`r = ${r}<br />`);
+				document.write(`其實正確結果為：18014398509481987`);
+			</script>
+			</p>
+			<p>
+			以下程式才是正確的計算結果：<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;//建立一組函式bigintadd，參數為a和b，並宣告result2為整數0，result2 = a + b。<br />
+			&emsp;function bigintadd(a, b) {<br />
+			&emsp;&emsp;let result2 = 0;<br />
+			&emsp;&emsp;result2 = a + b;<br />
+			&emsp;&emsp;return result2;<br />
+			&emsp;}<br />
+			&emsp;//計算bigintadd裡的a, b兩個參數的值，並將數字結尾加上n，轉換為BigInt型態，然後將結果傳給c。<br />
+			&emsp;const c = bigintadd(9007199254740991n, 9007199254740996n);<br />
+			&emsp;document.write(`c = ${c}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				//建立一組函式bigintadd，參數為a和b，並宣告result2為整數0，result2 = a + b。
+				function bigintadd(a, b) {
+					let result2 = 0;
+					result2 = a + b;
+					return result2;
+				}
+				//計算bigintadd裡的a, b兩個參數的值，並將數字結尾加上n，轉換為BigInt型態，然後將結果傳給c。
+				const c = bigintadd(9007199254740991n, 9007199254740996n);
+				document.write(`c = ${c}`);
+			</script>
+			</p>
+		</li>
+		<li>
+			<p>
+			根據IEEE 754標準的浮點數表示小數點也會有精確度誤差的問題，必須使用toFixed()函數強制取得小數點的指定位數。<br />
+			以下程式的小數點因為是浮點數，電腦計算時只認識0和1，再將十進位轉換成二進位計算，所以會產生誤差：<br >
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;var d =  0.58 + 0.3;<br />
+			&emsp;docment.write(`d的結果為：${d}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				var d = 0.58 + 0.3;
+				document.write(`d的結果為：${d}<br />`);
+				document.write("其實正確結果為：0.88");
+			</script>
+			</p>
+			<p>
+			使用toFixed()函數可強制取到小數點的指定位數。<br />
+			語法：變數.toFixed(小數點位數)，例如：<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;var e =  0.58 + 0.3;<br />
+			&emsp;docment.write(`e的結果為：${e.toFixed(2)}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				var e = 0.58 + 0.3;
+				document.write(`e的結果為：${e.toFixed(2)}`);
+			</script>
+			</p>
+		</li>
+	</ul>
+	<h3>字串(String)</h3>
+	<ul>
+		<li>用一對雙引號("")、單引號('')或反引號(``)框住字元，不輸入任何字元就稱為空字串。</li>
+		<li>length是字串物件的屬性，用來取得字串的長度。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;var mystring = "Hello, World!";<br />
+			&emsp;document.write(`${mystring}`);<br />
+			&emsp;document.write(`「Hello, World!」的字元長度：${mystring.length}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				var mystring = `Hello, World!`;
+				document.write(`${mystring}<br />`);
+				document.write(`「Hello, World!」的字元長度：${mystring.length}`);
+			</script>
+		</li>
+	</ul>
+	<h3>布林(boolean)</h3>
+	<ul>
+		<li>布林型態的值只有true(1)與false(0)，任何值都可以被轉換成布林值。</li>
+		<li>false、0、空字串、NaN、null及undefined都會成為false(0)，其他的值都會成為true(1)。</li>
+		<li>可以利用Boolean()函數將值轉換成布林值，但JavaScript會自己進行布林轉換，所以很少會需要用到Boolean()函數。</li>
+	</ul>
+	<h3>未定義(Undefined)</h3>
+	<ul>
+		<li>是指變數沒有被宣告或是有宣告變數，但尚未指定變數的值。</li>
+		<li>typeof：是用來判斷變數的型態。</li>
+		<li>三個等號(===)：是嚴格相等，用來比較左右兩邊是否相等。</li>
+		<li>
+			設定變數x，但未指定x的值，則會顯示undefined，另外用typeof判斷變數x的型態是否為undefined，是的話傳回true，否的話傳回false。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;let x;<br />
+			&emsp;document.write(`變數x沒有指定值，所以會傳回undefined：x = ${x}`);<br />
+			&emsp;document.write(`判斷變數x是否為undefined，結果為：`);<br />
+			&emsp;document.write(typeof x === `undefined`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				let x;
+				document.write(`變數x沒有指定值，所以會傳回undefined：x = ${x}<br />`);
+				document.write(`判斷變數x是否為undefined，結果為：`);
+				document.write(typeof x === `undefined`);
+			</script>
+		</li>
+	</ul>
+	<h3>空值(Null)</h3>
+	<ul>
+		<li>當想要將某個變數的值清除，可以使用「變數 = null」來清除。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;let y = 2;<br />
+			&emsp;document.write(`y = ${y}`);<br />
+			&emsp;y = null;<br />
+			&emsp;document.write(`y的值被清除後，得到的結果是：${y}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				let y = 2;
+				document.write(`y = ${y}<br />`);
+				y = null;
+				document.write(`y的值被清除後，得到的結果是：${y}`);
+			</script>
+		</li>
+	</ul>
+	<h3>無效的數字(NaN)</h3>
+	<ul>
+		<li>如果碰到無意義的運算，例如0 / 0，也會傳回NaN。</li>
+		<li>isNaN()函數是用來檢查是否為無效的數字，是的話傳回true，否的話傳回false。</li>
+		<li>
+			進行運算時的運算元資料型態無法轉換為數字，就會傳回NaN；Number()函數是將物件轉換為數字，例如：<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;let i = `a`;<br />
+			&emsp;j = Number(i);<br />
+			&emsp;document.write(`得到的結果：j = ${j}，`);<br />
+			&emsp;if (isNaN(j)) {<br />
+			&emsp;&emsp;document.write(`j是無效的數字。`);<br />
+			&emsp;} else {<br />
+			&emsp;&emsp;document.write(`j不是無效的數字。`);<br />
+			&emsp;}<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				let i = `a`;
+				j = Number(i);
+				document.write(`得到的結果：j = ${j}，`);
+				if (isNaN(j)) {
+					document.write(`j是無效的數字。`);
+				} else {
+					document.write(`j不是無效的數字。`);
+				}
+			</script>
+		</li>
+	</ul>
+	<h3>無限大(infinity)</h3>
+	<ul>
+		<li>isFinite()函數是用來檢查是否為無限大，也就是是否為有限數值。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;document.write(`2 / 1是否為無限大：${isFinite(2 / 1)}`);<br />
+			&emsp;document.write(`2 / 0是否為無限大：${isFinite(2 / 0)}`);<br />
+			&emsp;document.write(`-1 / 0是否為無限大：${isFinite(-1 / 0)}`);<br />
+			&emsp;document.write(`-2 / 1是否為無限大：${isFinite(-2 / 1)}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				document.write(`2 / 1是否為無限大：${isFinite(2 / 1)}<br />`);
+				document.write(`2 / 0是否為無限大：${isFinite(2 / 0)}<br />`);
+				document.write(`-1 / 0是否為無限大：${isFinite(-1 / 0)}<br />`);
+				document.write(`-2 / 1是否為無限大：${isFinite(-22 / 1)}<br />`);
+			</script>
+		</li>
+	</ul>
+	<h3>物件(Object)</h3>
+	<p>
+		物件型態種類：function(函數)、Object(物件)、Array(陣列)、Date(日期)等等，
+		例如：{age:'17'}(物件)、[1, 2, 3](陣列)、function a(){...}(函數)、new Date()(日期)。
+	</p>
+	<h3>符號(Symbol)</h3>
+	<ul>
+		<li>symbol()：內部會建立一個獨特的識別id ，兩個相同值的Symbol是不同的，且無法透過Symbol.keyFor()找到。</li>
+		<li>Symbol.for()：一樣都會生成新的Symbol，但兩個相同值的Symbol會是相同的識別id，且可以透過Symbol.keyFor()找到。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;let aa1 = Symbol(`s`);<br />
+			&emsp;let aa2 = Symbol(`s`);<br />
+			&emsp;let bb1 = Symbol.for(`k`);<br />
+			&emsp;let bb2 = Symbol.for(`k`);<br />
+			&emsp;document.write(`aa1的符號是否跟aa2相同？${aa1 === aa2}`);<br />
+			&emsp;document.write(`bb1的符號是否跟bb2相同？${bb1 === bb2}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				let aa1 = Symbol(`s`);
+				let aa2 = Symbol(`s`);
+				let bb1 = Symbol.for(`k`);
+				let bb2 = Symbol.for(`k`);
+				document.write(`aa1的符號是否跟aa2相同？${aa1 === aa2}<br />`);
+				document.write(`bb1的符號是否跟bb2相同？${bb1 === bb2}`);
+			</script>
+		</li>
+	</ul>
+
+	<h2>變數宣告與作用範圍</h2>
+	<ul>
+		<li>JavaScript屬於動態語言，變數不須宣告型態，使用上更具有彈性。</li>
+		<li>JavaScript會在變數宣告與使用時動態配置記憶體，並具有回收記憶體的機制(Garbage Collection，簡稱GC)。</li>
+		<li>JavaScript的GC機制無法由程式去控制回收，而是經過一段時間後自動尋找不需要使用的物件，釋放記憶體。</li>
+		<li>當變數的作用範圍結束，就不需要使用了，這時候GC就會將記憶體釋放。</li>
+	</ul>
+
+	<h2>宣告變數分配記憶體</h2>
+	<ul>
+		<li>
+			var a = 123;	//分配記憶體給數字<br />
+			var b = 'hello';	//分配記憶體給字串<br />
+			var obj = {a: 1, b: 'h1'};	//分配記憶體給物件<br />
+			var arr = [1, 'h1'];	//分配記憶體給陣列<br />
+			var d = new Date()	//分配記憶體給日期物件<br />
+			var x = document.createElement('div');	//分配記憶體給DOM物件
+		</li>
+		<li>var和let都是用來宣告變數，差別在於變數的作用域；const是用來宣告常數。</li>
+	</ul>
+
+	<h2>var宣告變數</h2>
+	<ul>
+		<li>
+			使用var宣告變數包含「宣告」與「初始化」，所謂「初始化」是給變數一個初始值，可以先宣告變數後再指定初始值，也可以宣告一併初始化。	
+		</li>
+		<li>宣告變數：var name;</li>
+		<li>同一行可以宣告多個變數，以逗號,隔開：var name, score;</li>
+		<li>宣告變數並初始化：var name = "Daniel", score = 75, flag = "true";</li>
+		<li>
+			宣告變數時不需要加上型態，JavaScript會自動轉換，例如：<br />
+			var v1;<br />
+			v1 = 123;	//變數v1的內容為數值123<br />
+			v1 = "hello"	//變數v1的內容為字串hello
+		</li>
+		<li>JavaScript允許字串相加，當字串內容為數值時，使用加號+相連，運算結果仍為「字串」。</li>
+		<li>當字串內容為數值，使用減號-、乘號*、除號/相連時，運算結果為「數值」。</li>
+		<li>當宣告變數的初始值為null時，乘以任何數值的結果皆為0。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;//宣告x4到x6的變數為字串，字串內容為數值；x7為null<br />
+			&emsp;var x4 = "5", x5 = "3", x6 = "1", x7 = null;<br />
+			&emsp;ab1 = x4 + x5 + x6;<br />
+			&emsp;ab2 = x4 - x5 - x6;<br />
+			&emsp;ab3 = x7 * 55;<br />
+			&emsp;document.write(`變數裡的字串內容為數值時，相加仍是字串：x4 + x5 + x6 = ${ab1}`);<br />
+			&emsp;document.write(`變數裡的字串內容為數值時，相減則為數值：x4 - x5 - x6 = ${ab2}`);<br />
+			&emsp;document.write(`變數裡的內容為null時，乘上任何數值皆為0：x7 * 55 = ${ab3}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				//宣告x4到x6的變數為字串，字串內容為數值；x7為null
+				var x4 = "5", x5 = "3", x6 = "1", x7 = null;
+				ab1 = x4 + x5 + x6;
+				ab2 = x4 - x5 - x6;
+				ab3 = x7 * 55;
+				document.write(`變數裡的字串內容為數值時，相加仍是字串：x4 + x5 + x6 = ${ab1}<br />`);
+				document.write(`變數裡的字串內容為數值時，相減則為數值：x4 - x5 - x6 = ${ab2}<br />`);
+				document.write(`變數裡的內容為null時，乘上任何數值皆為0：x7 * 55 = ${ab3}`);
+			</script>
+		</li>
+		<li>沒有初始值的變數使用前必須先宣告，否則會出現ReferenceError錯誤。</li>
+	</ul>
+
+	<h2>var宣告變數的作用域</h2>
+	<p>
+	<h3>全域變數(Global Variables)</h3>
+	<ul>
+		<li>是指存活在整個程式，任何地方都可以使用這個變數，直到整個程式執行結束。</li>
+		<li>變數可以不宣告直接給初始值，例如：y1 = 5，因此省略宣告的變數都會被視為全域變數。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;//宣告y1的變數為2，這是全域變數。<br />
+			&emsp;var y1 = 2;<br />
+			&emsp;//定義cal2函式<br />
+			&emsp;function cal2() {<br />
+			&emsp;&emsp;//因為cal2函式裡的y1及y2沒有宣告，仍然是屬於全域變數，所以y1的值變為5。<br />
+			&emsp;&emsp;y1 = 5, y2 = 1;<br />
+			&emsp;&emsp;document.write(`y1 + y2 = ${y1 + y2}`);<br />
+			&emsp;}<br />
+			&emsp;//執行cal2函式<br />
+			&emsp;cal2();<br />
+			&emsp;document.write(`y1 = ${y1}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				//宣告y1的變數為2，這是全域變數。
+				var y1 = 2;
+				//定義cal2函式
+				function cal2() {
+					//因為cal2函式裡的y1及y2沒有宣告，仍然是屬於全域變數，所以y1的值變為5。
+					y1 = 5, y2 = 1;
+					document.write(`y1 + y2 = ${y1 + y2}<br />`);
+				}
+				//執行cal2函式
+				cal2();
+				document.write(`y1 = ${y1}`);
+			</script>
+		</li>
+	</ul>
+	<h3>區域變數(Local Variables)</h3>
+	<ul>
+		<li>
+			只能存活在一個固定的區域範圍，例如函式(Function)裡面宣告的變數就只能夠在這個函式裡面使用，當函式執行
+			完成並返回後，變數就會失效。
+		</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script:&gt;<br />
+			&emsp;//宣告x8的變數為2，這是全域變數。<br />
+			&emsp;var x8 = 2;<br />
+			&emsp;//定義cal1函式<br />
+			&emsp;function cal1() {<br />
+			&emsp;&emsp;//宣告cal1函式裡的x8的變數為5，x9的變數為1，兩者皆為區域變數。<br />
+			&emsp;&emsp;var x8 = 5; x9 = 1;<br />
+			&emsp;&emsp;document.write(`x8 + x9 = ${x8 + x9}`);<br />
+			&emsp;}<br />
+			&emsp;//執行cal1函式<br />
+			&emsp;cal1();<br />
+			&emsp;document.write(`x8 = ${x8}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				//宣告x8的變式為2，這是全域變數。
+				var x8 = 2;
+				//定義cal1函式
+				function cal1() {
+					//宣告cal1函式裡的x8的變數為5，x9的變數為1，兩者皆為區域變數。
+					var x8 = 5; x9 = 1;
+					document.write(`x8 + x9 = ${x8 + x9}<br />`);
+				}
+				//執行cal1函式
+				cal1();
+				document.write(`x8 = ${x8}`);
+			</script>
+		</li>
+	</ul>
+
+	<h2>let宣告變數</h2>
+	<ul>
+		<li>let宣告方式與var宣告相同。</li>
+		<li>let宣告語法的區塊作用域，在區塊內屬於區域變數，區塊以外屬於全域變數。</li>
+		<li>let宣告是比較嚴謹的宣告方式，同一區塊不可以重覆宣告同名變數。</li>
+		<li>let宣告與const宣告尚未初始化前皆不能操作，這一段時間稱為「暫時死區」(Temporal Dead Zone，簡稱TDZ)。</li>
+		<li>下面程式裡，變數d3是在區塊內以let宣告，因為變數d3只存在區塊內，當第9行使用變數d3時就會出現d3未定義的錯誤訊息。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script;&gt;<br />
+			&emsp;var c1 = 5; c2 = 0;<br />
+			&emsp;let d1 = 2; d2 = 0;<br />
+			&emsp;{<br />
+			&emsp;&emsp;var c3 = c1 + c2;<br />
+			&emsp;&emsp;let d3 = d1 + d2;<br />
+			&emsp;}<br />
+			&emsp;console.log(`c3 = ${c3}`);<br />
+			&emsp;console.log(`d3 = ${d3}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				var c1 = 5; c2 = 0;
+				let d1 = 2; d2 = 0;
+				{
+					var c3 = c1 + c2;
+					let d3 = d1 + d2;
+				}
+				console.log(`c3 = ${c3}`);
+				console.log(`d3 = ${d3}`);
+			</script>
+		</li>
+	</ul>
+
+	<h2>const宣告常數</h2>
+	<ul>
+		<li>常數不能重覆宣告，必須指定初始值，之後也不能再變更它的值。</li>
+		<li>下面程式裡，第2行e1已經宣告常數，因此第4行再變更e1的值會出現錯誤。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;const e1 = 10;<br />
+			&emsp;//第2行e1已經宣告常數，因此第4行再變更e1的值會出現錯誤。<br />
+			&emsp;e1 = 15;<br />
+			&emsp;console.log(`e1 = ${e1}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				const e1 = 10;
+				//第2行e1已經宣告常數，因此第4行再變更e1的值會出現錯誤。
+				e1 = 15;
+				console.log(`e1 = ${e1}`);
+			</script>
+		</li>
+	</ul>
+	
+	<h2>變數名稱的限制</h2>
+	<ul>
+		<li>第一個字元必須是字母(大小寫皆可)或是底線_，之後的字元可以是數字、字母或底線。</li>
+		<li>區分大小寫，var ABC不等於var abc。</li>
+		<li>不能使用保留字。</li>
+		<li>
+			<caption>JavaScript保留字</caption>
+			<table border="1">
+				<tr>
+					<td>abstract</td>
+					<td>boolean</td>
+					<td>break</td>
+					<td>byte</td>
+					<td>case</td>
+				</tr>
+				<tr>
+					<td>catch</td>
+					<td>char</td>
+					<td>class</td>
+					<td>const</td>
+					<td>continue</td>
+				</tr>
+				<tr>
+					<td>default</td>
+					<td>do</td>
+					<td>double</td>
+					<td>else</td>
+					<td>extends</td>
+				</tr>
+				<tr>
+					<td>false</td>
+					<td>final</td>
+					<td>finally</td>
+					<td>float</td>
+					<td>for</td>
+				</tr>
+				<tr>
+					<td>function</td>
+					<td>goto</td>
+					<td>if</td>
+					<td>implements</td>
+					<td>import</td>
+				</tr>
+				<tr>
+					<td>in</td>
+					<td>instanceof</td>
+					<td>int</td>
+					<td>interface</td>
+					<td>long</td>
+				</tr>
+				<tr>
+					<td>native</td>
+					<td>new</td>
+					<td>null</td>
+					<td>package</td>
+					<td>private</td>
+				</tr>
+				<tr>
+					<td>protected</td>
+					<td>public</td>
+					<td>return</td>
+					<td>short</td>
+					<td>static</td>
+				</tr>
+				<tr>
+					<td>super</td>
+					<td>switch</td>
+					<td>synchronized</td>
+					<td>this</td>
+					<td>throw</td>
+				</tr>
+				<tr>
+					<td>throws</td>
+					<td>transient</td>
+					<td>true</td>
+					<td>try</td>
+					<td>var</td>
+				</tr>
+				<tr>
+					<td>void</td>
+					<td>while</td>
+					<td>with</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+
+	<h2>強制轉換型態</h2>
+	<ul>
+		<li>JavaScript具有自動轉換資料型態(Coercion)的特性。</li>
+		<li>
+			下面程式裡，f2是字串，所以f3得到的結果是"35"，資料型態是字串。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;let f1 = 3; f2 = "5";<br />
+			&emsp;let f3 = f1 + f2;<br />
+			&emsp;document.write(`f1 + f2 = ${f3}`);<br />
+			&emsp;document.write(`f3的資料型態是：${typeof f3}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				let f1 = 3; f2 = "5";
+				let f3 = f1 + f2;
+				document.write(`f1 + f2 = ${f3}<br />`);
+				document.write(`f3的資料型態是：${typeof f3}`);
+			</script>
+		</li>
+		<li>
+			下面程式裡，k1是數字，k2卻輸入成字串，這樣真的會差很多。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;function billing(k1, k2) {<br />
+			&emsp;&emsp;k3 = k1 + k2;<br />
+			&emsp;}<br />
+			&emsp;billing(10, "15");<br />
+			&emsp;document.write(`您的費用是：${k3}元`);<br />
+			&emsp;document.write(`k3的資料型態變成：${typeof k3}`)<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				function billing(k1, k2) {
+					k3 = k1 + k2;
+				}
+				billing(10, "15");
+				document.write(`您的費用是：${k3}元<br />`);
+				document.write(`k3的資料型態變成：${typeof k3}`);
+			</script>
+		</li>
+		<li>
+			撰寫程式時要防範強制轉換型態可能帶來的錯誤，因此上面的程式碼可以先寫好檢查傳入的引數是否為數字。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;function billing(k4, k5) {<br />
+			&emsp;&emsp;if(typeof(k4, k5) === "number") {<br />
+			&emsp;&emsp;&emsp;k6 = k4 + k5;<br />
+			&emsp;&emsp;} else {<br />
+			&emsp;&emsp;&emsp;document.write(`請輸入數字！`)<br />
+			&emsp;&emsp;}<br />
+			&emsp;}<br />
+			&emsp;billing(10, 15);<br />
+			&emsp;document.write(`您的費用是：${k6}元`);<br />
+			&emsp;document.write(`k6的資料型態是：${typeof k6}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				function billing(k4, k5) {
+					if(typeof(k4, k5) === "number") {
+						k6 = k4 + k5;
+					} else {
+						document.write(`請輸入數字！`)
+					}
+				}
+				billing(10, 15);
+				document.write(`您的費用是：${k6}元<br />`);
+				document.write(`k6的資料型態是：${typeof k6}`);
+			</script>
+		</li>
+	</ul>
+
+	<h2>轉換資料型態的內建函數</h2>
+	<p>
+	<h3>parseInt()：將文字轉換為整數</h3>
+	<ul>
+		<li>由字串最左邊開始轉換，一直轉換到字串結束或遇到非數字字元為止，如果字串無法轉為數值，則會傳回NaN。</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;f3 = parseInt("35");<br />
+			&emsp;f4 = parseInt("55.87");<br />
+			&emsp;f5 = parseInt("3天");<br />
+			&emsp;f6 = parseInt("page 2");<br />
+			&emsp;document.write(`f3 = ${f3}`);<br />
+			&emsp;document.write(`f4 = ${f4}`);<br />
+			&emsp;document.write(`f5 = ${f5}`);<br />
+			&emsp;document.write(`f6 = ${f6}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				f3 = parseInt("35");
+				f4 = parseInt("55.87");
+				f5 = parseInt("3天");
+				f6 = parseInt("page 2");
+				document.write(`f3 = ${f3}<br />`);
+				document.write(`f4 = ${f4}<br />`);
+				document.write(`f5 = ${f5}<br />`);
+				document.write(`f6 = ${f6}`);
+			</script>
+		</li>
+	</ul>
+	<h3>parseFloat()：將文字轉換為浮點數</h3>
+	<ul>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;f7 = parseFloat("35.345");<br />
+			&emsp;f8 = parseFloat("55.87");<br />
+			&emsp;document.write(`f7 = ${f7}`);<br />
+			&emsp;document.write(`f8 = ${f8}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				f7 = parseFloat("35.345");
+				f8 = parseFloat("55.87");
+				document.write(`f7 = ${f7}<br />`);
+				document.write(`f8 = ${f8}`);
+			</script>
+		</li>
+	</ul>
+	<h3>Number()：將物件或字串轉換為數值</h3>
+	<ul>
+		<li>若物件或字串無法轉換為數值，則會傳回NaN。</li>
+		<li>
+			Date()物件是以世界標準時間(UTC)1970年1月1日開始的亳秒數值來儲存時間，因此當使用Number()將Date()物件
+			轉換為數值就會得到1970年1月1日到程式執行當下的亳秒數。
+		</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;f9 = Number("10a");<br />
+			&emsp;f10 = Number("11.5");<br />
+			&emsp;f11 = Number("0x10");<br />
+			&emsp;f12 = Number(true);<br />
+			&emsp;f13 = Number(new Date());<br />
+			&emsp;document.write(`f9 = ${f9}`);<br />
+			&emsp;document.write(`f10 = ${f10}`);<br />
+			&emsp;document.write(`f11 = ${f11}`);<br />
+			&emsp;document.write(`f12 = ${f12}`);<br />
+			&emsp;document.write(`f13 = ${f13}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				f9 = Number("10a");
+				f10 = Number("11.5");
+				f11 = Number("0x10");
+				f12 = Number(true);
+				f13 = Number(new Date());
+				document.write(`f9 = ${f9}<br />`);
+				document.write(`f10 = ${f10}<br />`);
+				document.write(`f11 = ${f11}<br />`);
+				document.write(`f12 = ${f12}<br />`);
+				document.write(`f13 = ${f13}`);
+			</script>
+		</li>
+	</ul>
+	<h3>typeof：傳回資料型態</h3>
+	<ul>
+		<li>
+			typeof: 資料<br />
+			typeof: (資料)<br />
+			以上兩種方式都可以使用。
+		</li>
+		<li>
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;f14 = "Daniel";<br />
+			&emsp;f15 = 123;<br />
+			&emsp;f16 = null;<br />
+			&emsp;f17 = NaN;<br />
+			&emsp;document.write(`f14的資料型態是：${typeof f14}`);<br />
+			&emsp;document.write(`f15的資料型態是：${typeof f15}`);<br />
+			&emsp;document.write(`f16的資料型態是：${typeof f16}`);<br />
+			&emsp;document.write(`f17的資料型態是：${typeof f17}`);<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				f14 = "Daniel";
+				f15 = 123;
+				f16 = null;
+				f17 = NaN;
+				document.write(`f14的資料型態是：${typeof f14}<br />`);
+				document.write(`f15的資料型態是：${typeof f15}<br />`);
+				document.write(`f16的資料型態是：${typeof f16}<br />`);
+				document.write(`f17的資料型態是：${typeof f17}`);
+			</script>
+		</li>
+		<li>
+			typeof帶入任何資料都會傳回「字串」，如果是尚未宣告的變數會傳回「undefined」。<br />
+			<p style="background-color: black; color: yellow;">
+			&lt;script&gt;<br />
+			&emsp;document.write(`傳回字串undefined：${typeof f18}`);<br />
+			&emsp;document.write(`傳回undefined：${f18}`);<br />
+			&emsp;var f18;<br />
+			&lt;/script&gt;<br />
+			</p>
+			<script>
+				document.write(`傳回字串undefined：${typeof f18}<br />`);
+				document.write(`傳回undefined：${f18}`);
+				var f18;
+			</script>
+		</li>
+	</ul>
+</main>
+<div id="footer"></div>
+</body>
+</html>

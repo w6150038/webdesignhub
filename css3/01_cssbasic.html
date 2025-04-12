@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="html5, 網頁設計, css, javascript">
+	<meta name="description" content="認識css">
+	<meta name="author" content="王群銘">
+	<title>認識CSS</title>
+	<style type="text/css">
+		* {
+    		box-sizing: border-box;
+		}
+			
+		html {
+    		height: 100%;
+    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
+    		background-color: #eeeeee;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+    		min-height: 100%;
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		header {
+			position: fixed;
+    	    top: 0;
+    		width: 100%;
+			display: flex;
+    		flex-direction: column;
+    		background: rgb(16,34,46);
+    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
+		}
+
+		.header-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: space-around;
+    		align-items: flex-start;
+		}
+
+		.header-logo {
+    		width: 180px;
+    		margin-top: 10px;
+    		border-radius: 8px;
+		}
+
+		.hc1 {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: flex-end;
+    		align-items: flex-start;
+    		font-family: 'Courier New', Courier, monospace;
+    		font-weight: bold;
+    		font-size: 20px;
+    		color: orange;
+    		font-style: italic;
+    		padding-top: 50px;
+		}
+
+		.hc1_2 {
+    		position: relative;
+    		left: 50px;
+		}
+
+		.hc2 {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: flex-start;
+    		align-items: flex-end;
+    		padding-top: 60px;
+		}
+
+		.html {
+    		background-color:green;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.css {
+    		background-color:blue;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.script {
+    		background-color:orange;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.strap {
+    		background-color:purple;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.pwa {
+    		background-color:red;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.frame {
+    		background-color: brown;
+    		color: white;
+    		border-radius: 3px;
+    		font-size: 20px;
+    		font-weight: bold;
+    		font-family:'Franklin Gothic Medium';
+		}
+
+		.dot {
+    		font-size: 20px;
+    		color: white;
+		}
+
+		nav {
+    		background-color: #264653;
+    		padding: 0;
+			margin: 0;
+		}
+
+		.nav-ul {
+    		list-style: none;
+    		padding: 0;
+    		margin: 0;
+    		display: flex;
+		}
+
+		.nav-ul li {
+    		position: relative;
+    		margin-right: 20px;
+			list-style: none;
+		}
+
+		.nav-ul li a {
+    		text-decoration: none;
+    		color: white;
+    		padding: 10px 15px;
+    		display: block;
+			overflow: hidden;
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.nav-ul li a::after {
+			content: "";
+    		position: absolute;
+    		left: -100%;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgb(239, 159, 12);
+    		transition: left 0.3s ease-in-out;
+    		z-index: -1;
+		}
+
+		.nav-ul li a:hover {
+    		background-color: #365c6b;
+		}
+
+		.nav-ul li a:hover::after {
+			left: 0;
+		}
+
+		/* 下拉選單 */
+		.dropdown-menu {
+    		display: none;
+    		position: absolute;
+    		top: 100%;
+    		left: 0;
+    		background-color: #436d7e;
+    		min-width: 150px;
+    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		}
+
+		.dropdown-menu li {
+    		margin: 0;
+		}
+
+		.dropdown-menu a {
+    		color: white;
+    		padding: 10px;
+    		display: block;
+		}
+
+		.dropdown-menu a:hover {
+    		background-color: #264653;
+		}
+
+		/* 滑鼠懸停時顯示下拉選單 */
+		.dropdown:hover .dropdown-menu {
+    		display: block;
+			margin: 0;
+			padding: 0;
+		}
+
+		footer {
+    		background-color: #436d7e;
+    		color: white;
+    		font-size: 1rem;
+    		font-weight: bold;
+    		height: 40px;
+			text-align: center;
+		}
+
+		main {
+    		margin: 0 auto;
+    		padding: 10px;
+			margin-top: 130px;
+			margin-left: 80px;
+			margin-right: 80px;
+			height: auto;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #5681df;
+			text-shadow:3px 5px 10px #219B9D;
+			display: inline;
+		}
+
+		table {
+			width: 800px;
+			text-align: center;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		tr, th, td {
+			width: 800px;
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: gray;
+			color: white;
+		}
+
+		tr:nth-of-type(2n+1) {
+			background-color: rgb(172, 235, 172);;
+		}
+
+		tr:hover {
+			background-color: #7dc9e7;
+		}
+
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+
+		a:hover{color:black; background-color:rgb(187, 187, 250);}
+	</style>
+</head>
+<body>
+	<script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+	<div id="header"></div>
+	<main>
+<h2>CSS介紹</h2>
+<p>
+CSS：串接樣式表(Cascading Style Sheet)，簡稱CSS樣式表。
+
+<h2>CSS基本格式</h2>
+	<ul>
+		<li>CSS樣式表是由選擇器(selector)與樣式規則(rule)組成。</li>
+		<li>CSS套用目標可以是HTML標記、class屬性或id屬性。</li>
+		<li>語法：<br/>
+			h1, p {<br />
+			&emsp;font-size: 12px;<br />
+			&emsp;line-height: 16px;<br />
+			&emsp;border: 1px #336699 solid;<br />
+			}<br />
+			說明：<br />
+			h1, p是選擇器，如果有兩個以上的選擇器，以逗號,隔開。<br />
+			font-size: 12px;是樣式規則，font-size是屬性，12px是設定值。一個選擇器裡可以設定多種不同的樣式規則，以分號;隔開；一個屬性裡可以有多個設定值，以空白隔開。<br />
+		</li>
+		<li>CSS樣式註解文字：/*註解文字*/</li>
+	</ul>
+
+<h2>宣告CSS</h2>
+<ul>
+	<li>行內宣告(Inline)
+		<ol>
+			<li>將CSS樣式寫在HTML標記裡。</li>
+			<li>
+				語法：<br />
+				&lt;h2 style="color: red; font-family: Broadway BT; border: 3px #336699 solid;"&gt;行內宣告&lt;/h2&gt;<br />
+				顯示結果：
+				<h2 style="color:red; font-family: Broadway BT; border: 3px #336699 solid;">行內宣告</h2>
+			</li>
+		</ol>
+	</li>
+	<li>內嵌宣告(Embedding)
+		<ol>
+			<li>將CSS樣式放在&lt;head&gt;&lt;/head&gt;標記裡，並且以&lt;style type="text/css"&gt;...&lt;/style&gt;標記宣告。</li>
+			<li>只能套用本身的網頁。</li>
+			<li>
+				語法：<br />
+				&lt;html&gt;<br />
+				&lt;head&gt;<br />
+				&emsp;&lt;style type="text/css"&gt;<br />
+				&emsp;&emsp;h2 {<br/>
+				&emsp;&emsp;&emsp;color: red;<br />
+				&emsp;&emsp;&emsp;font-family: Broadway BT;<br />
+				&emsp;&emsp;&emsp;font-weight: bold;<br />
+				&emsp;&emsp;}<br />
+				&emsp;&emsp;h3 {<br/>
+				&emsp;&emsp;&emsp;color: #0000CC;<br />
+				&emsp;&emsp;&emsp;font-family: ParkAvenue BT;<br />
+				&emsp;&emsp;&emsp;font-weight: bold;<br />
+				&emsp;&emsp;}<br />
+				&emsp;&lt;/style&gt;<br />
+				&lt;/head&gt;<br />
+				&lt;body&gt;<br />
+				&emsp;&emsp;&lt;h2&gt;內嵌宣告h2標記&lt;/h2&gt;<br />
+				&emsp;&emsp;&lt;h3&gt;內嵌宣告h3標記&lt;/h3&gt;<br />
+				&lt;/body&gt;<br />
+				&lt;/html&gt;<br />
+				<a href="01_cssbasic_embedding.html" target="_blank">內嵌宣告</a>
+			</li>
+		</ol>
+	</li>
+	<li>連結外部樣式檔(Linking)
+		<ol>
+			<li>直接用編輯器寫CSS樣式規則，可省略&lt;style&gt;&lt;/style&gt;標記，並存檔成.css檔名。</li>
+			<li>在head標記裡呼叫.css樣式檔。</li>
+			<li>語法：&lt;link rel="stylesheet" type="text/css" href="檔名.css"&gt;</li>
+			<li>當一個HTML文件同時套用了三種宣告方式，並有重複樣式時，優先順序為「行內宣告」>「內嵌宣告」>「連結外部樣式檔」。</li>
+			<li>連結外部樣式檔除了連結本地伺服器.css檔，也可以連結CDN節點。</li>
+			<li>Bootstrap官網可查詢到CDN連結，只要在href帶入CDN連結網址即可。</li>
+			<li>CDN：內容傳遞網路(Content Delivery Network)，是一種在網路上傳輸的快取機制，透過分散在全球不同節點的CDN服務，能夠達到有效分流，加快資源傳輸的速度，讓使用者可以就近取得所需的資源。</li>
+		</ol>
+	</li>
+</ul>
+
+<h2>CSS選擇器</h2>
+<ul>
+	<li>標記名稱選擇器(Element)：<br />
+		使用此選擇器可以將html文件裡「所有相同的標記」都套用同一種樣式。<br />
+		div {font-size: 16px; color: #FFFFFF;}<br />
+		上述語法表示將HTML文件裡「所有的div標記」都套用到{}內的樣式。
+	</li>
+	<li>通用選擇器(*)：<br />
+		* {font-size: 16px; color: #FF0000;}<br />
+		上述語法表示將HTML文件裡「所有的標記」都套用到{}內的樣式。
+	</li>
+	<li>class選擇器：
+		<ol>
+			<li>在HTML標記加入class屬性，屬性名稱不要使用HTML標記名稱。<br />
+				語法：&lt;標記名稱 class="class名稱"&gt;<br />
+				例如：&lt;font class="txt"&gt;<br />
+			</li>
+			<li>
+				在CSS樣式裡加入class選擇器。<br />
+				語法：.class屬性名稱{樣式規則1; 樣式規則2;...}<br />
+				例如：.txt {font-size: 16px; color: #FFFFFF; font-weight: bold;}
+			</li>
+			<li>
+				如果有多個標記名稱指定相同class名稱，但只希望在某一個標記裡套用class選擇器的樣式，則可以在class選擇器前加上標記名稱。<br />
+				語法：標記名稱.class屬性名稱{樣式規則1; 樣式規則2;...}<br />
+				例如：font.txt {font-size: 16px; color: #FFFFFF; font-weight: bold;}
+			</li>
+		</ol>
+	</li>
+	<li>id選擇器：
+		<ol>
+			<li>HTML標記裡的id屬性名稱是用來辯識元件用的，就像身份證一樣，通常是配合由JavaScript語法來控制HTML元件時，利用id名稱來取用HTML元件屬性，因此id名稱在同一份HTML文件裡只能是唯一的，不能重複。</li>
+			<li>不要使用HTML標記當作id名稱。</li>
+			<li>
+				語法：#id屬性名稱{樣式規則1; 樣式規則2;...}<br />
+				例如：<br />
+				&emsp;&emsp;&lt;html&gt;<br />
+				&emsp;&emsp;&lt;head&gt;<br />
+				&emsp;&emsp;&lt;title&gt;使用id選擇器&lt;/title&gt;<br />
+				&emsp;&emsp;&lt;style type="text/css"&gt;<br />
+				&emsp;&emsp;&emsp;#font_style {<br />
+				&emsp;&emsp;&emsp;&emsp;font-size: 24px;<br />
+				&emsp;&emsp;&emsp;&emsp;color: red;<br />
+				&emsp;&emsp;&emsp;&emsp;font-family: Broadway BT;<br />
+				&emsp;&emsp;&emsp;&emsp;font-weight: bold;<br />
+				&emsp;&emsp;&emsp;&emsp;border: 1px #336699 solid;<br />
+				&emsp;&emsp;&emsp;}<br />
+				&emsp;&emsp;&lt;/style&gt;<br />
+				&emsp;&emsp;&lt;/head&gt;<br />
+				&emsp;&emsp;&lt;body&gt;<br />
+				&emsp;&emsp;&emsp;&lt;font id="font_style"&gt;使用id選擇器&lt;/font&gt;<br />
+				&emsp;&emsp;&lt;/body&gt;<br />
+				&emsp;&emsp;&lt;/html&gt;<br />
+				<a href="01_cssbasic_idselector.html" target="_blank">id選擇器</a>
+			</li>
+		</ol>
+	</li>
+	<li>屬性選擇器：<br>
+		<ul>
+			<li>用來篩選HTML標記裡的屬性。</li>
+			<li>
+				語法：HTML標記名稱[HTML標記屬性]{CSS樣式規則1; CSS樣式規則2;...}<br />
+				例如：指定超連結標記&lt;a&gt;的背景顏色為藍色，但只套用在有target屬性的元件。<br />
+				語法：a[target="設定值"]{background-color: blue;}
+			</li>
+			<li>屬性選擇器的篩選方式有6種：
+				<table border="1">
+					<tr>
+						<td>[attribute="value"]</td>
+						<td>屬性值等於value</td>
+					</tr>
+					<tr>
+						<td>[attribute~="value"]</td>
+						<td>屬性值包含完整value</td>
+					</tr>
+					<tr>
+						<td>[attribute|="value"]</td>
+						<td>屬性值等於value或以value-開頭</td>
+					</tr>
+					<tr>
+						<td>[attribute^="value"]</td>
+						<td>屬性值開頭有value</td>
+					</tr>
+					<tr>
+						<td>[attribute$="value"]</td>
+						<td>屬性值結尾有value</td>
+					</tr>
+					<tr>
+						<td>[attribute*="value"]</td>
+						<td>屬性值裡面有出現value</td>
+					</tr>
+				</table>
+			</li>
+			<li>反向選擇：<br />
+				如果整份HTML文件中除了&lt;p&gt;標記以外，其他標記都要套用同一種樣式，就可以使用反向選擇。<br />
+				:not(p){color: red;}
+			</li>
+		</ul>
+	</li>
+	<li>虛擬類別選擇器(偽選擇器)(:)：</li>
+	<ol>
+		<li>
+			連結虛擬類別：依據超連結元素的狀態來選取物件。<br />
+			<table border="1" width="500">
+				<tr align="center">
+					<th>選擇器</th>
+					<th>說明</th>
+				</tr>
+				<tr align="center">
+					<td>:link</td>
+					<td>未訪問過的連結</td>
+				</tr>
+				<tr align="center">
+					<td>:visited</td>
+					<td>已訪問過的連結</td>
+				</tr>
+				<tr align="center">
+					<td>:hover</td>
+					<td>滑鼠游標碰到元素</td>
+				</tr>
+				<tr align="center">
+					<td>:active</td>
+					<td>被按下滑鼠左鍵的元素</td>
+				</tr>
+				<tr align="center">
+					<td>:focus</td>
+					<td>取得焦點的元素</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			結構性虛擬類別：依照元素的特性來選擇特定子元素。<br />
+			<table border="1" width="500">
+				<tr align="center">
+					<th>選擇器</th>
+					<th>說明</th>
+				</tr>
+				<tr align="center">
+					<td>p:first-child</td>
+					<td>找到p兄弟元素的第1個元素(所有元素)</td>
+				</tr>
+				<tr align="center">
+					<td>p:last-child</td>
+					<td>找到p兄弟元素的最後第1個元(所有元素)</td>
+				</tr>
+				<tr align="center">
+					<td>
+						p:nth-child(n)<br />
+						p:nth-child(odd)
+					</td>
+					<td>
+						(n)找第n個元素<br />
+						(odd)找奇數元素
+					</td>
+				</tr>
+				<tr align="center">
+					<td>
+						p:nth-child(even)
+					</td>
+					<td>
+						(even)找偶數元素<br />
+						找所有元素
+					</td>
+				</tr>
+				<tr align="center">
+					<td>p:first-of-type</td>
+					<td>找到p兄弟元素的第1個元素(只找同類元素)</td>
+				</tr>
+				<tr align="center">
+					<td>p:last-of-type</td>
+					<td>找到p兄弟元素的最後第1個元(只找同類元素)</td>
+				</tr>
+				<tr align="center">
+					<td>p:nth-of-type(n)</td>
+					<td>(n)找第n個元素，同樣可輸入odd或even找奇偶數元素(只找同類元素)</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			UI(User Interface使用者介面)狀態虛擬類別：網頁元素在瀏覽器呈現的狀態。<br />
+			<table border="1" width="500">
+				<tr align="center">
+					<th>選擇器</th>
+					<th>說明</th>
+				</tr>
+				<tr align="center">
+					<td>E:enabled</td>
+					<td>UI啟用的元素</td>
+				</tr>
+				<tr align="center">
+					<td>E:disabled</td>
+					<td>UI禁用的元素</td>
+				</tr>
+				<tr align="center">
+					<td>E:checked</td>
+					<td>UI被選取的元素</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			目標虛擬類別<br />
+			<table border="1" width="500">
+				<tr align="center">
+					<th>選擇器</th>
+					<th>說明</th>
+				</tr>
+				<tr align="center">
+					<td>:target</td>
+					<td>錨點的目標元素</td>
+				</tr>
+			</table>
+		</li>
+	</ol>
+	<li>
+		當CSS選擇器的樣式設定有衝突時，會採用優先權高的選擇器模式。<br />
+		ID選擇器 > Class選擇器 > Element標記名稱選擇器 > *通用選撫器
+	</li>
+	<li>
+		屬性選擇器、偽選擇器與class選擇器權重相同，當選擇器權重相同時，後者會覆蓋前者，但是當選擇器的設定值有宣告「!important」時，就會以此設定為優先。<br />
+		&lt;style type="text/css"&gt;<br />
+		&emsp;.ex1 {color: blue !important;}<br />
+		&emsp;.ex1 {color: red;}<br />
+		&lt;/style&gt;<br />
+		照理說，後者會覆蓋前者，顏色應該是紅色，但前者宣告了「!important」，具有更高的優先權，所以顏色為藍色。
+	</li>
+</ul>
+
+<h2>CSS度量單位</h2>
+<ul>
+	<li>絕對單位：
+		<ol>
+			<li>pixels(px)、point(pt)、公分(cm)、英寸(in)、公釐(mm)。</li>
+			<li>不會隨著外層物件的單位變動，譬如12px就會固定以12px呈現。</li>
+			<li>pixcel(px)是螢幕上的一個點，會與螢幕解析度有絕對關係。</li>
+		</ol>
+	</li>
+	<li>相對單位：
+		<ol>
+			<li>倍數(em)、倍數(rem)、百分比(%)。</li>
+			<li>會隨著外層物件的單位變動，</li>
+			<li>
+				&lt;style type="text/css"&gt;<br />
+				&emsp;body {<br />
+				&emsp;&emsp;font-size: 12px;<br />
+				&emsp;}<br />
+				&emsp;h1 {<br />
+				&emsp;&emsp;font-size: 2em;&emsp;//body裡font-size: 12px的2倍，所以是24px。<br />
+				&emsp;}<br />
+				&lt;/style&gt;
+			</li>
+		</ol>
+	</li>
+	<li>一般瀏覽器預設的font-size是16px，如果上層元件沒有設定單位，則2em就會是16px*2=32px。</li>
+	<li>倍數(rem)只受html影響，</li>
+	<li>
+		&lt;style type="text/css"&gt;<br />
+		&emsp;html {font-size: 30px;}<br />
+		&emsp;div {<br />
+		&emsp;&emsp;font-size: 60px;&emsp;//此設定值單位為px，所以不受html影響。<br />
+		&emsp;}<br />
+		&emsp;h1 {<br />
+		&emsp;&emsp;font-size: 2rem;&emsp;//h1的font-size為html裡font-size: 30px的2倍，所以是60px。<br />
+		&emsp;}<br />
+		&lt;/style&gt;
+	</li>
+</ul>
+
+<h2>CSS顏色表示法</h2>
+<table border="1" width="500">
+	<caption>CSS常用顏色表示法</caption>
+	<tr align="center">
+		<th>語法</th>
+		<th>範例</th>
+		<th>說明</th>
+	</tr>
+	<tr align="center">
+		<td>{color: 顏色名稱}</td>
+		<td>{color: blue}</td>
+		<td>以顏色名稱表示</td>
+	</tr>
+	<tr align="center">
+		<td>{color: #16進位色彩}</td>
+		<td>{color: #6600CC}</td>
+		<td>16進位色彩(HEX color)</td>
+	</tr>
+	<tr align="center">
+		<td>{color: rgba(R.G.B.a)}</td>
+		<td>{color: rgba(255.0.0.3)}</td>
+		<td>RGBA色彩</td>
+	</tr>
+</table>
+<p>
+<table border="1" width="500">
+	<caption>CSS常見顏色名稱</caption>
+	<tr align="center">
+		<td>black(黑色)</td>
+		<td>blue(藍色)</td>
+		<td>gray(灰色)</td>
+		<td>green(綠色)</td>
+		<td>olive(橄欖色)</td>
+	</tr>
+	<tr align="center">
+		<td>purple(紫色)</td>
+		<td>red(紅色)</td>
+		<td>silver(銀色)</td>
+		<td>white(白色)</td>
+		<td>yellow(黃色)</td>
+	</tr>
+</table>
+
+<ul>
+	<li>16進位色彩(HEX色彩)：由「#」加上6個數字表示，前兩碼代表RGB色彩中的R，中間兩碼代表RGB色彩中的G，後兩碼代表RGB色彩中的B。</li>
+	<li>最小值是0，最大值是F。</li>
+	<li>RGBA色彩(Red-Green-Blue-Alpha)：RGB三個顏色的強度為0到255之間的整數，或0%到100%；Alpha是指顏色的不透明度，0是完全透明，1是完全不透明。</li>
+</ul>
+</main>
+<div id="footer"></div>
+</body>
+</html>
