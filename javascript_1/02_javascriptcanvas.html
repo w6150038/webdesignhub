@@ -267,6 +267,71 @@
 		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
 
 		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+		@media (max-width: 768px) {
+  /* 調整 Header 區域 */
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .header-logo {
+    width: 140px;
+    margin: 0 auto;
+  }
+  .hc1 {
+    align-items: center;
+    padding-top: 20px;
+    text-align: center;
+  }
+  .hc1_2 {
+    left: 0;
+  }
+  .hc2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 20px;
+  }
+  
+  /* 調整主要內容 */
+  main {
+    margin: 130px 20px 20px 20px;
+    padding: 10px;
+  }
+  
+  /* 表格寬度自適應處理 */
+  table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+  tr, th, td {
+    width: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 導覽選單改成垂直排列 */
+  .nav-ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-ul li {
+    margin: 5px 0;
+  }
+  .nav-ul li a {
+    text-align: center;
+  }
+  
+  /* 標題與其他文字調整 */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.3em;
+  }
+}
+
     </style>
 </head>
 <body>

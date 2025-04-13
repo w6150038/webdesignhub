@@ -273,6 +273,109 @@
         a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
 
 		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+         /* 平板版 (螢幕寬度小於 768px) */
+    @media screen and (max-width: 768px) {
+        /* 全站縮小字體與間距 */
+        * {
+            font-size: 20px;
+        }
+        
+        main {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        table, tr, th, td {
+            width: 100%;
+            font-size: 14px;
+        }
+        
+        /* 調整 .calc 區塊寬度 */
+        .calc {
+            width: calc(100% - 200px);
+        }
+        
+        /* 導覽列調整：改為垂直排列 */
+        .nav-ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-ul li {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        
+        /* header 內容置中顯示 */
+        .header-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header-logo {
+            width: 140px;
+        }
+        
+        .hc1 {
+            font-size: 18px;
+            padding-top: 20px;
+            align-items: center;
+        }
+        
+        .hc2 {
+            padding-top: 30px;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    /* 手機版 (螢幕寬度小於 480px) */
+    @media screen and (max-width: 480px) {
+        * {
+            font-size: 16px;
+        }
+        
+        main {
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 5px;
+        }
+        
+        table, tr, th, td {
+            width: 100%;
+            font-size: 12px;
+        }
+        
+        .calc {
+            width: calc(100% - 100px);
+        }
+        
+        .nav-ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-ul li {
+            margin: 5px 0;
+        }
+        
+        .header-logo {
+            width: 120px;
+        }
+        
+        .hc1 {
+            font-size: 16px;
+        }
+        
+        .hc2 {
+            font-size: 16px;
+        }
+        
+        footer {
+            font-size: 0.8rem;
+        }
+    }
 	</style>
 </head>
 <body>

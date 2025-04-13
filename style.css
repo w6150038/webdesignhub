@@ -291,4 +291,72 @@ h2 {
     color: black;
     font-weight: bold;
 }
+
+/* 手機（最大寬度 600px） */
+@media (max-width: 600px) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .hc1, .hc2 {
+      padding-top: 20px;
+      align-items: center;
+    }
+  
+    .hc1_2 {
+      left: 0;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav li {
+      margin: 10px 0;
+    }
+  
+    .timeline-content {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .a_btn {
+      width: 80%;
+      max-width: 150px;
+      margin: auto;
+    }
+  
+    .header-slogan {
+      font-size: 16px;
+    }
+  }
+  
+  /* 平板（601px 到 1024px） */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .hc1, .hc2 {
+      padding-top: 30px;
+      align-items: center;
+    }
+  
+    .timeline-content {
+      width: 45%;
+    }
+  
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    nav li {
+      margin: 10px;
+    }
+  }
   

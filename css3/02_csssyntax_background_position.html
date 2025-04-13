@@ -14,6 +14,30 @@
             vertical-align: bottom;                  /*表格文字垂直靠下*/
         }
         font {font-size: 16pt;}
+
+        @media screen and (max-width: 768px) {
+        td {
+            font-size: 14pt;
+            padding: 8px;
+            background-size: contain;   /* 小螢幕上改為等比例縮放圖片 */
+        }
+
+        font {
+            font-size: 14pt;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        td {
+            font-size: 12pt;
+            padding: 6px;
+            background-size: contain;
+        }
+
+        font {
+            font-size: 12pt;
+        }
+    }
 	</style>
 </head>
 <body>

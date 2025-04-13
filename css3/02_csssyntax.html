@@ -267,6 +267,75 @@
 		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
 
 		a:hover{color:black; background-color:rgb(187, 187, 250);}
+
+		/* RWD 相關樣式 */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hc1 {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    .hc2 {
+        padding-top: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-ul {
+        flex-direction: column;
+    }
+
+    .nav-ul li {
+        margin-right: 0;
+    }
+
+    main {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        width: 120px;
+    }
+
+    .hc1 {
+        font-size: 16px;
+        padding-top: 10px;
+    }
+
+    .hc2 {
+        font-size: 16px;
+    }
+
+    .html, .css, .script, .strap, .pwa, .frame {
+        font-size: 16px;
+    }
+
+    main {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
 	</style>
 </head>
 <body>

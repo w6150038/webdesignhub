@@ -1137,6 +1137,117 @@
 			margin: 5px;
 			padding: 5px;
 		}
+
+		/* 平板版：螢幕寬度小於 768px */
+@media screen and (max-width: 768px) {
+    /* 全站字體縮小 */
+    * {
+        font-size: 20px;
+    }
+    
+    /* 主內容區域左右邊距縮小 */
+    main {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    /* 表格及其他固定寬度元素調整 */
+    table,
+    tr,
+    th,
+    td {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* .calc 區塊依據螢幕縮小 */
+    .calc {
+        width: calc(100% - 200px);
+    }
+    
+    /* Header 區域調整 */
+    .header-logo {
+        width: 140px;
+    }
+    .hc1 {
+        font-size: 18px;
+        padding-top: 20px;
+        align-items: center;
+    }
+    .hc2 {
+        padding-top: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* 導覽列改為垂直排列 */
+    .nav-ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    /* Flex 相關容器調整 (如有必要，可微調各 flex 容器的寬度) */
+    .flex-direction-row,
+    .flex-direction-row-reverse,
+    .flex-direction-column,
+    .flex-direction-column-reverse {
+        width: 100%;
+    }
+}
+
+/* 手機版：螢幕寬度小於 480px */
+@media screen and (max-width: 480px) {
+    * {
+        font-size: 16px;
+    }
+    
+    main {
+        margin: 10px;
+        padding: 5px;
+    }
+    
+    table,
+    tr,
+    th,
+    td {
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .calc {
+        width: calc(100% - 100px);
+    }
+    
+    .header-logo {
+        width: 120px;
+    }
+    
+    .hc1,
+    .hc2 {
+        font-size: 16px;
+    }
+    
+    .nav-ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-ul li {
+        margin: 5px 0;
+    }
+    
+    /* 如果有較複雜的 flex 排列容器，建議也調整寬度讓元素置中 */
+    .flex-direction-row,
+    .flex-direction-row-reverse,
+    .flex-direction-column,
+    .flex-direction-column-reverse {
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body>

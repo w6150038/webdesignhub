@@ -18,6 +18,25 @@
             border-radius: 20px 10px;
             text-align: center;
         }
+
+        /* RWD: 當螢幕寬度小於 768px 時 */
+    @media (max-width: 768px) {
+        div {
+            width: 150px;  /* 調整 div 寬度 */
+            height: 40px;  /* 調整 div 高度 */
+            border-width: 4px;  /* 調整邊框寬度 */
+        }
+    }
+
+    /* RWD: 當螢幕寬度小於 480px 時 */
+    @media (max-width: 480px) {
+        div {
+            width: 120px;  /* 調整 div 寬度 */
+            height: 30px;  /* 調整 div 高度 */
+            border-width: 3px;  /* 調整邊框寬度 */
+            font-size: 12px;  /* 調整字體大小 */
+        }
+    }
     </style>
 </head>
 <body>

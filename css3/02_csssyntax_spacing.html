@@ -10,6 +10,28 @@
 	<style type="text/css">
 		.f1{letter-spacing:10px;}
         .f2{word-spacing:10px;}
+
+		/* RWD：平板螢幕以下 */
+		@media screen and (max-width: 768px) {
+        .f1 {
+            letter-spacing: 6px;
+        }
+
+        .f2 {
+            word-spacing: 6px;
+        }
+    }
+
+    /* RWD：手機螢幕 */
+    @media screen and (max-width: 480px) {
+        .f1 {
+            letter-spacing: 3px;
+        }
+
+        .f2 {
+            word-spacing: 3px;
+        }
+    }
 	</style>
 </head>
 <body>

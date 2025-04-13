@@ -474,6 +474,163 @@
             transform: rotateZ(90deg);
         }
         
+        /* 平板版 (螢幕寬度小於 768px) */
+@media screen and (max-width: 768px) {
+    /* 全站字體縮小 */
+    * {
+        font-size: 20px;
+    }
+    
+    /* Main 區域：縮小左右邊距 */
+    main {
+        margin-left: 20px;
+        margin-right: 20px;
+        /* 調整上邊距視 Header 高度及內容而定 */
+        margin-top: 150px;
+        padding: 10px;
+    }
+    
+    /* Header 調整：Logo 寬度縮小，容器改為垂直排列 */
+    .header-logo {
+        width: 140px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* 導覽列調整：改為垂直排列，並縮小間距 */
+    .nav-ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    /* 調整表格（若有使用固定寬度表格，改用100%寬度） */
+    table, tr, th, td {
+        width: 100%;
+        font-size: 14px;
+    }
+    
+    /* 卡片容器與卡片調整 */
+    .card-container {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .card {
+        width: 200px;
+        min-width: 200px;
+        height: 400px;
+        min-height: 350px;
+    }
+    
+    /* 調整部分固定寬度的盒子 */
+    .box1 {
+        width: 120px;
+        margin: 15px;
+    }
+    
+    .box2 {
+        width: 150px;
+        margin: 15px;
+    }
+    
+    /* Flex 容器：如有設定固定寬度，強制設定為100% */
+    .flex-direction-row,
+    .flex-direction-row-reverse,
+    .flex-direction-column,
+    .flex-direction-column-reverse {
+        width: 100%;
+    }
+    
+    /* 如有特殊容器例如 .calc 之類，依照需要縮小寬度 */
+    .calc {
+        width: calc(100% - 200px);
+    }
+}
+
+/* 手機版 (螢幕寬度小於 480px) */
+@media screen and (max-width: 480px) {
+    /* 全站字體進一步縮小 */
+    * {
+        font-size: 16px;
+    }
+    
+    main {
+        margin: 10px;
+        padding: 5px;
+        margin-top: 120px;
+    }
+    
+    /* Header 調整：Logo 更小 */
+    .header-logo {
+        width: 120px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* 導覽列：依舊保持垂直排列 */
+    .nav-ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-ul li {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    table, tr, th, td {
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .card-container {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .card {
+        width: 180px;
+        min-width: 180px;
+        height: 350px;
+        min-height: 300px;
+    }
+    
+    .calc {
+        width: calc(100% - 100px);
+    }
+    
+    /* Flex 容器設定 */
+    .flex-direction-row,
+    .flex-direction-row-reverse,
+    .flex-direction-column,
+    .flex-direction-column-reverse {
+        width: 100%;
+    }
+    
+    /* 調整部分盒子 */
+    .box1 {
+        width: 100px;
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .box2 {
+        width: 120px;
+        margin: 10px;
+        padding: 8px;
+    }
+}
     </style>
 </head>
 <body>

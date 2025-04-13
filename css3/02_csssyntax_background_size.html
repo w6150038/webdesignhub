@@ -40,6 +40,32 @@
             background-image: url(../images/css3.png);
             background-size: contain;
         }
+
+        /* RWD：平板螢幕 */
+    @media screen and (max-width: 768px) {
+        .pixel, .percentage, .cover, .contain {
+            width: 80%;
+            height: auto;
+            aspect-ratio: 1 / 1; /* 保持正方形 */
+        }
+    }
+
+    /* RWD：手機螢幕 */
+    @media screen and (max-width: 480px) {
+        .pixel, .percentage, .cover, .contain {
+            width: 95%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+        }
+
+        .pixel {
+            background-size: 100% 100%; /* 避免圖片太大被截掉 */
+        }
+
+        .percentage {
+            background-size: 70% 70%; /* 稍微大一點比例 */
+        }
+    }
 	</style>
 </head>
 <body>

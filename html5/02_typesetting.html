@@ -263,6 +263,70 @@
 		tr:hover {
 			background-color: #7dc9e7;
 		}
+
+		/* ...你原本的 CSS 全部保留... */
+
+@media (max-width: 768px) {
+	.header-container {
+		flex-direction: column;
+		align-items: center;
+		padding: 10px;
+	}
+
+	.header-logo {
+		width: 140px;
+		margin: 0 auto;
+	}
+
+	.hc1 {
+		align-items: center;
+		padding-top: 20px;
+		text-align: center;
+	}
+
+	.hc1_2 {
+		left: 0;
+	}
+
+	.hc2 {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 8px;
+		padding-top: 20px;
+	}
+
+	main {
+		margin: 130px 20px 20px 20px;
+		padding: 10px;
+	}
+
+	table {
+		width: 100%;
+		overflow-x: auto;
+		display: block;
+	}
+
+	tr, th, td {
+		width: auto;
+		white-space: nowrap;
+	}
+}
+
+@media (max-width: 480px) {
+	.nav-ul {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.nav-ul li {
+		margin: 5px 0;
+	}
+
+	.nav-ul li a {
+		text-align: center;
+	}
+}
 	</style>
 </head>
 <body>

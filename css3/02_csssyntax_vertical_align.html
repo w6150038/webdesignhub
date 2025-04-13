@@ -15,6 +15,38 @@
         .v_top{vertical-align:top; font-size:0.5em; color:darkorange;}
         .v_middle{vertical-align:middle; font-size:0.5em; color:darkorange;}
         .v_bottom{vertical-align:bottom; font-size:0.5em; color:darkorange;}
+
+        /* RWD：平板螢幕以下 */
+    @media screen and (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .v_baseline,
+        .v_super,
+        .v_sub,
+        .v_top,
+        .v_middle,
+        .v_bottom {
+            font-size: 0.6em;
+        }
+    }
+
+    /* RWD：手機螢幕 */
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 20px;
+        }
+
+        .v_baseline,
+        .v_super,
+        .v_sub,
+        .v_top,
+        .v_middle,
+        .v_bottom {
+            font-size: 0.7em;
+        }
+    }
 	</style>
 </head>
 <body>

@@ -21,6 +21,30 @@
             left: 150px;
             font-weight: bolder;
         }
+
+        /* 平板尺寸 (螢幕寬度小於 768px) 調整 */
+    @media (max-width: 768px) {
+        #layer1 {
+            top: 30px;
+            left: 50px;
+        }
+        #layer2 {
+            top: 150px;
+            left: 80px;
+        }
+    }
+    
+    /* 手機尺寸 (螢幕寬度小於 480px) 調整 */
+    @media (max-width: 480px) {
+        #layer1 {
+            top: 20px;
+            left: 20px;
+        }
+        #layer2 {
+            top: 120px;
+            left: 40px;
+        }
+    }
     </style>
 </head>
 <body>

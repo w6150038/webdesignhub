@@ -33,6 +33,34 @@
             border: 5px solid #000000;
             background: #540D6E;
         }
+
+        /* 平板尺寸 (螢幕寬度小於 768px) */
+    @media (max-width: 768px) {
+        * {
+            font-size: 20px;
+        }
+        .box1, .box2 {
+            width: 90%;  /* 使用百分比寬度方便自適應 */
+            margin: 8px auto; /* 置中並縮小外邊距 */
+        }
+        #three {
+            top: 8px;  /* 調整 sticky 偏移 */
+        }
+    }
+
+    /* 手機尺寸 (螢幕寬度小於 480px) */
+    @media (max-width: 480px) {
+        * {
+            font-size: 16px;
+        }
+        .box1, .box2 {
+            width: 100%;  /* 充滿父容器寬度 */
+            margin: 5px auto;
+        }
+        #three {
+            top: 5px;
+        }
+    }
     </style>
 </head>
 <body>
