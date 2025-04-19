@@ -8,7 +8,9 @@
 	<meta name="author" content="王群銘">
 	<title>calc</title>
 	<style type="text/css">
-       * {text-align: center;}
+       * {
+        text-align: center;
+        }
        .box {
         height: 300px;
         line-height: 300px;
@@ -28,31 +30,6 @@
         margin: 0 auto;
         background: #C7DFC5;
        }
-
-       /* RWD: 當螢幕寬度小於 768px 時 */
-    @media (max-width: 768px) {
-        #one, #two {
-            width: 100%; /* 讓 #one 和 #two 在小螢幕上各佔滿一行 */
-            float: none; /* 取消浮動 */
-            margin: 10px 0; /* 加一些上下間距 */
-        }
-
-        #three {
-            width: 100%; /* #three 佔滿整個寬度 */
-            margin: 10px 0; /* 加一些上下間距 */
-        }
-    }
-
-    /* RWD: 當螢幕寬度小於 480px 時 */
-    @media (max-width: 480px) {
-        #one, #two {
-            width: 100%; /* 在更小螢幕上，#one 和 #two 也會各佔滿一行 */
-        }
-
-        #three {
-            width: 100%; /* #three 仍佔滿整個寬度 */
-        }
-    }
     </style>
 </head>
 <body>

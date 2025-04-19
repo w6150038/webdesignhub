@@ -6,281 +6,10 @@
 	<meta name="keywords" content="web, design, html, css, javascript">
 	<meta name="description" content="歡迎光臨Web Design Hub">
 	<meta name="author" content="王群銘">
+	<link rel="stylesheet" href="style.css">
 	<title>第1週：JavaScript基礎語法</title>
 	<link rel="shortcut icon" href="icon檔案"/>
     <link rel="bookmark" href="icon檔案"/>
-    <style type="text/css">
-        * {
-    		box-sizing: border-box;
-		}
-			
-		html {
-    		height: 100%;
-    		font-family:"Microsoft JhengHei", Arial, Helvetica, sans-serif, "微軟正黑體";
-    		background-color: #eeeeee;
-		}
-
-		body {
-			margin: 0;
-			padding: 0;
-    		min-height: 100%;
-    		display: flex;
-    		flex-direction: column;
-		}
-
-		header {
-			position: fixed;
-    	    top: 0;
-    		width: 100%;
-			display: flex;
-    		flex-direction: column;
-    		background: rgb(16,34,46);
-    		background: linear-gradient(90deg, rgba(16,34,46,1) 13%, rgba(67,109,126,1) 99%);
-		}
-
-		.header-container {
-    		display: flex;
-    		flex-direction: row;
-    		justify-content: space-around;
-    		align-items: flex-start;
-		}
-
-		.header-logo {
-    		width: 180px;
-    		margin-top: 10px;
-    		border-radius: 8px;
-		}
-
-		.hc1 {
-    		display: flex;
-    		flex-direction: column;
-    		justify-content: flex-end;
-    		align-items: flex-start;
-    		font-family: 'Courier New', Courier, monospace;
-    		font-weight: bold;
-    		font-size: 20px;
-    		color: orange;
-    		font-style: italic;
-    		padding-top: 50px;
-		}
-
-		.hc1_2 {
-    		position: relative;
-    		left: 50px;
-		}
-
-		.hc2 {
-    		display: flex;
-    		flex-direction: row;
-    		justify-content: flex-start;
-    		align-items: flex-end;
-    		padding-top: 60px;
-		}
-
-		.html {
-    		background-color:green;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.css {
-    		background-color:blue;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.script {
-    		background-color:orange;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.strap {
-    		background-color:purple;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.pwa {
-    		background-color:red;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.frame {
-    		background-color: brown;
-    		color: white;
-    		border-radius: 3px;
-    		font-size: 20px;
-    		font-weight: bold;
-    		font-family:'Franklin Gothic Medium';
-		}
-
-		.dot {
-    		font-size: 20px;
-    		color: white;
-		}
-
-		nav {
-    		background-color: #264653;
-    		padding: 0;
-			margin: 0;
-		}
-
-		.nav-ul {
-    		list-style: none;
-    		padding: 0;
-    		margin: 0;
-    		display: flex;
-		}
-
-		.nav-ul li {
-    		position: relative;
-    		margin-right: 20px;
-			list-style: none;
-		}
-
-		.nav-ul li a {
-    		text-decoration: none;
-    		color: white;
-    		padding: 10px 15px;
-    		display: block;
-			overflow: hidden;
-    		position: relative;
-    		z-index: 1;
-		}
-
-		.nav-ul li a::after {
-			content: "";
-    		position: absolute;
-    		left: -100%;
-    		top: 0;
-    		width: 100%;
-    		height: 100%;
-    		background-color: rgb(239, 159, 12);
-    		transition: left 0.3s ease-in-out;
-    		z-index: -1;
-		}
-
-		.nav-ul li a:hover {
-    		background-color: #365c6b;
-		}
-
-		.nav-ul li a:hover::after {
-			left: 0;
-		}
-
-		/* 下拉選單 */
-		.dropdown-menu {
-    		display: none;
-    		position: absolute;
-    		top: 100%;
-    		left: 0;
-    		background-color: #436d7e;
-    		min-width: 150px;
-    		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-		}
-
-		.dropdown-menu li {
-    		margin: 0;
-		}
-
-		.dropdown-menu a {
-    		color: white;
-    		padding: 10px;
-    		display: block;
-		}
-
-		.dropdown-menu a:hover {
-    		background-color: #264653;
-		}
-
-		/* 滑鼠懸停時顯示下拉選單 */
-		.dropdown:hover .dropdown-menu {
-    		display: block;
-			margin: 0;
-			padding: 0;
-		}
-
-		footer {
-    		background-color: #436d7e;
-    		color: white;
-    		font-size: 1rem;
-    		font-weight: bold;
-    		height: 40px;
-			text-align: center;
-		}
-
-		main {
-    		margin: 0 auto;
-    		padding: 10px;
-			margin-top: 130px;
-			margin-left: 80px;
-			margin-right: 80px;
-			height: auto;
-		}
-
-		h1, h2, h3, h4, h5, h6 {
-			color: #5681df;
-			text-shadow:3px 5px 10px #219B9D;
-			display: inline;
-		}
-
-		table {
-			width: 800px;
-			text-align: center;
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-
-		tr, th, td {
-			width: 800px;
-			border: 1px solid black;
-		}
-
-		th {
-			background-color: gray;
-			color: white;
-		}
-
-		tr:nth-of-type(2n+1) {
-			background-color: rgb(172, 235, 172);;
-		}
-
-		tr:hover {
-			background-color: #7dc9e7;
-		}
-
-		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
-
-		a:hover{color:black; background-color:rgb(187, 187, 250);}
-
-        .btn_chgcolor {
-            background-color: black;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-		pre {
-			background-color: black; color: yellow;
-		}
-    </style>
 </head>
 <body>
     <script>
@@ -377,7 +106,7 @@
 		<section id="section_3">
 			<h2>條件判斷(一)：if...else...</h2>
 <pre><code>
-	您的年齡：&lt;input type="number" id="age" placeholder="請輸入年齡"&gt;
+	您的年齡：&lt;input id="age" type="number" placeholder="請輸入年齡"&gt;
 	&lt;button id="ageBtn"&gt;送出&lt;/button&gt;
 	&lt;div id="ageAnswer"&gt;&lt;/div&gt;
 	&lt;script&gt;
@@ -386,7 +115,7 @@
 			let ageAnswer = document.getElementById('ageAnswer');
 			
 			if (isNaN(age) || age &lt;= 0) {
-				ageAnswer.textContent = "請輸入有效的年齡";
+				ageAnswer.textContent = "請輸入有效的年齡！";
 			} else if (age >= 18) {
 				ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
 			} else {
@@ -396,7 +125,7 @@
 	&lt;/script&gt;
 </code></pre>
 			<p>
-				您的年齡：<input type="number" id="age" placeholder="請輸入年齡">
+				您的年齡：<input id="age" type="number" placeholder="請輸入年齡">
 				<button id="ageBtn">送出</button>
 				<div id="ageAnswer"></div>
 			</p>
@@ -405,7 +134,7 @@
 					let age = Number(document.getElementById('age').value);
 					let ageAnswer = document.getElementById('ageAnswer');
 					if (isNaN(age) || age <= 0) {
-						ageAnswer.textContent = "請輸入有效的年齡";
+						ageAnswer.textContent = "請輸入有效的年齡！";
 					} else if (age >= 18) {
 						ageAnswer.textContent = `您的年齡 ${age} 歲，已成年。`;
 					} else {
@@ -447,7 +176,7 @@
 					today = '星期六';
 					break;
 						}
-		document.getElementById('showToday').textContent = `今天是${today}`;	
+			document.getElementById('showToday').textContent = `今天是${today}！`;	
 		};
 		day();
 	&lt;/script&gt;
@@ -480,7 +209,7 @@
 							today = '星期六';
 							break;
 					}
-				document.getElementById('showToday').textContent = `今天是${today}`;	
+					document.getElementById('showToday').textContent = `今天是${today}！`;	
 				};
 				day();
 			</script>
@@ -493,7 +222,7 @@
 	&lt;script&gt;
 		let num = 0;
 		for (let i = 1; i &lt;= 10; i += 2) {
-			num = num + i;
+			num += i;
 		}
 		document.write(`1到10之間的奇數和 = ${num}`);
 	&lt;/script>&gt;
@@ -501,7 +230,7 @@
 			<script>
 				let num = 0;
 				for (let i = 1; i <= 10; i += 2) {
-					num = num + i;
+					num += i;
 				}
 				document.write(`1到10之間的奇數和 = ${num}`);
 			</script>
@@ -515,7 +244,7 @@
 		let i = 2;
 		let j = 0;
 		while (i &lt;= 100) {
-			j = j + i;
+			j += i;
 			i += 2;	
 		}
 		document.write(`1到100之間的偶數和 = ${j}`);
@@ -526,7 +255,7 @@
 				let i = 2;
 				let j = 0;
 				while (i <= 100) {
-					j = j + i;
+					j += i;
 					i += 2;	
 				}
 				document.write(`1到100之間的偶數和 = ${j}`);
@@ -651,7 +380,7 @@
 			<p>公式：華氏(℉) = 攝氏(℃) × 9 / 5 + 32</p>
 <pre><code>
 	攝氏&lt;input id="temperatureC" type="number"&gt;℃ = &lt;span id="temperatureF"&gt;&lt;/span&gt;&lt;br /&gt;
-	&lt;button id="temperatureBtn" onclick="temperatureChg()"&gt;轉換&lt;/button&lt;
+	&lt;button id="temperatureBtn" onclick="temperatureChg()"&gt;轉換&lt;/button&gt;
 	&lt;script&gt;
 		function temperature(celsius) {
 			return celsius * 9 / 5 + 32;
@@ -663,7 +392,7 @@
 			}
 			let temperatureC = Number(document.getElementById('temperatureC').value);
 			let cf = temperature(temperatureC);
-			document.getElementById('temperatureF').innerHTML = `華氏 ${cf} ℉`;
+			document.getElementById('temperatureF').innerHTML = `華氏${cf}℉`;
 		}
 	&lt;/script&gt;
 </code></pre>
@@ -680,7 +409,7 @@
 					}
 					let temperatureC = Number(document.getElementById('temperatureC').value);
 					let cf = temperature(temperatureC);
-					document.getElementById('temperatureF').innerHTML = `華氏 ${cf} ℉`;
+					document.getElementById('temperatureF').innerHTML = `華氏${cf}℉`;
 				}
 			</script>
 		</section>
@@ -700,7 +429,7 @@
 		function tempChg() {
 			let tempF = Number(document.getElementById('tempF').value);
 			let fc = temp(tempF);
-			document.getElementById('tempC').innerHTML = `攝氏 ${fc} ℃`;
+			document.getElementById('tempC').innerHTML = `攝氏${fc}℃`;
 		}
 	&lt;/script&gt;
 </code></pre>
@@ -718,7 +447,7 @@
 					}
 					let tempF = Number(document.getElementById('tempF').value);
 					let fc = temp(tempF);
-					document.getElementById('tempC').innerHTML = `攝氏 ${fc} ℃`;
+					document.getElementById('tempC').innerHTML = `攝氏${fc}℃`;
 				}
 			</script>
 		</section>
@@ -726,7 +455,7 @@
 		<section id="section_12">
 			<h2>判斷正數、負數或零</h2>
 <pre><code>
-	請輸入數字(正數、負數或0)：&lt;input id="inputNumber" type="number"&gt;
+	請輸入數字：&lt;input id="inputNumber" type="number" placeholder="正數、負數或0"&gt;
 	&lt;button id="numberBtn" onclick="checkBtn()"&gt;判斷&lt;/button&gt;&nbsp;&lt;span id="numberAnswer"&gt;&lt;/span&gt;
 	&lt;script&gt;
 		function checkNumber(n) {
@@ -750,7 +479,7 @@
 	&lt;/script&gt;
 </code></pre>
 			<p>
-				請輸入數字(正數、負數或0)：<input id="inputNumber" type="number">
+				請輸入數字：<input id="inputNumber" type="number" placeholder="正數、負數或0">
 				<button id="numberBtn" onclick="checkBtn()">判斷</button>&nbsp;<span id="numberAnswer"></span>
 			</p>
 			<script>
@@ -838,7 +567,7 @@
 	&lt;p id="triangleAns"&gt;&lt;/p&gt;
 	&lt;script&gt;
 		function triangleType(a, b, c) {
-			if(a === b && b === c) {
+			if (a === b && b === c) {
 				return '等邊三角形';
 			} else if (a === b || b === c || a === c) {
 				return '等腰三角形';
@@ -878,7 +607,7 @@
 			<p id="triangleAns"></p>
 			<script>
 				function triangleType(a, b, c) {
-					if(a === b && b === c) {
+					if (a === b && b === c) {
 						return '等邊三角形';
 					} else if (a === b || b === c || a === c) {
 						return '等腰三角形';
@@ -933,9 +662,9 @@
 			let kgNum = Number(kgVal);
 			let result = document.getElementById('bmiResult');
 			if (cmVal === "" || kgVal === "") {
-				result.innerHTML = '請輸入完整資料！';
+				return result.innerHTML = '請輸入完整資料！';
 			} else if (cmNum &lt;= 0 || kgNum &lt;= 0) {
-				result.innerHTML = '請輸入大於0的數值！';
+				return result.innerHTML = '請輸入大於0的數值！';
 			} else {
 				let bmiVal = Number(bmi(cmNum, kgNum));
 				let msg = "";
@@ -973,9 +702,9 @@
 					let kgNum = Number(kgVal);
 					let result = document.getElementById('bmiResult');
 					if (cmVal === "" || kgVal === "") {
-						result.innerHTML = '請輸入完整資料！';
+						return result.innerHTML = '請輸入完整資料！';
 					} else if (cmNum <= 0 || kgNum <= 0) {
-						result.innerHTML = '請輸入大於0的數值！';
+						return result.innerHTML = '請輸入大於0的數值！';
 					} else {
 						let bmiVal = Number(bmi(cmNum, kgNum));
 						let msg = "";
@@ -1084,6 +813,78 @@
 						}
 					}
 					document.getElementById('calcResult').innerHTML = r;
+				}
+			</script>
+		</section>
+
+		<section id="section_17">
+			<h2>判斷閏年</h2>
+<pre><code>
+	&lt;p&gt;
+		閏年：能被4整除且不能被100整除，或者能被400整除。&lt;br /&gt;
+		公式：(year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+	&lt;/p&gt;
+	請輸入年份：&lt;input id="inputYear" type="number"&gt;&nbsp;&lt;button id="btnYear" onclick="chkLeapYear()"&gt;判斷&lt;/button&gt;&lt;br /&gt;
+	(西元年或民國年，民國年最多為499年。)
+	&lt;p id="LeapYearResult"&gt;&lt;/p&gt;
+	&lt;script&gt;
+		function leapyear(year) {
+			return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+		}
+
+		function chkLeapYear() {
+			let inputYear = document.getElementById('inputYear').value;
+			let year = Number(inputYear);
+			let result = document.getElementById('LeapYearResult');
+			if (isNaN(year) || year &lt;= 0) {
+				return result.innerHTML = '請輸入有效年份！';
+			}
+			//假設民國年最長為499年。
+			let roc = year &lt; 500;
+			//將民國年轉換西元年。
+			let roctoad = roc ? year + 1911 : year;
+			//宣告leap變數，將roctoad變數的值傳回給leapyear函式，去計算是否為閏年。
+			let leap = leapyear(roctoad);
+			//如果輸入民國年最長到499年，就判斷輸入的民國年是否為閏年，否則判斷輸入的西元年是否為閏年。
+			if (roc) {
+				result.innerHTML = `民國${year}年(西元${roctoad}年)是${leap ? '閏年' : '平年'}。`;
+			} else {
+				result.innerHTML = `西元${year}年(民國${roctoad - 1911}年)是${leap ? '閏年' : '平年'}。`
+			}
+		}
+	&lt;/script&gt;
+</code></pre>
+			<p>
+				閏年：能被4整除且不能被100整除，或者能被400整除。<br />
+				公式：(year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+			</p>
+			請輸入年份：<input id="inputYear" type="number">&nbsp;<button id="btnYear" onclick="chkLeapYear()">判斷</button><br />
+			(西元年或民國年，民國年最多為499年。)
+			<p id="LeapYearResult"></p>
+			<script>
+				function leapyear(year) {
+					return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+				}
+
+				function chkLeapYear() {
+					let inputYear = document.getElementById('inputYear').value;
+					let year = Number(inputYear);
+					let result = document.getElementById('LeapYearResult');
+					if (isNaN(year) || year <= 0) {
+						return result.innerHTML = '請輸入有效年份！';
+					}
+					//假設民國年最長為499年。
+					let roc = year < 500;
+					//將民國年轉換西元年。
+					let roctoad = roc ? year + 1911 : year;
+					//宣告leap變數，將roctoad變數的值傳回給leapyear函式，去計算是否為閏年。
+					let leap = leapyear(roctoad);
+					//如果輸入民國年最長到499年，就判斷輸入的民國年是否為閏年，否則判斷輸入的西元年是否為閏年。
+					if (roc) {
+						result.innerHTML = `民國${year}年(西元${roctoad}年)是${leap ? '閏年' : '平年'}。`;
+					} else {
+						result.innerHTML = `西元${year}年(民國${roctoad - 1911}年)是${leap ? '閏年' : '平年'}。`
+					}
 				}
 			</script>
 		</section>

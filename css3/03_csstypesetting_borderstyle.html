@@ -8,8 +8,10 @@
 	<meta name="author" content="王群銘">
 	<title>border-style</title>
 	<style type="text/css">
-		a [target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
-                td {width:100px; height:40px;}
+		a[target="_blank"]{background-color:#789DBC; color:white; font-weight:bold;}
+                td {
+                        width:100px; height:40px;
+                }
                 .solid {
                         border-style:solid;
                         text-align:center;
@@ -66,30 +68,6 @@
                         font-size:20px;
                         font-weight:bold;
                 }
-
-                /* RWD: 當螢幕寬度小於 768px 時 */
-    @media (max-width: 768px) {
-        td {
-            width: 80px;  /* 調整單元格寬度 */
-            height: 35px;  /* 調整單元格高度 */
-        }
-
-        .solid, .dashed, .double, .dotted, .groove, .ridge, .inset, .outset {
-            font-size: 18px;  /* 減小字體大小 */
-        }
-    }
-
-    /* RWD: 當螢幕寬度小於 480px 時 */
-    @media (max-width: 480px) {
-        td {
-            width: 60px;  /* 進一步調整單元格寬度 */
-            height: 30px;  /* 進一步調整單元格高度 */
-        }
-
-        .solid, .dashed, .double, .dotted, .groove, .ridge, .inset, .outset {
-            font-size: 16px;  /* 進一步減小字體大小 */
-        }
-    }
 	</style>
 </head>
 <body>

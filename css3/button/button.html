@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>button</title>
+    <link rel="stylesheet" type="text/css" href="button-style.css">
+</head>
+<body>
+    <a class="button" href="#">button-1</a>
+    <button type="button" class="button">button-2</button>
+    <input type="button" class="button" value="button-3">
+    <p>
+        三種按鈕使用&lt;a href&gt;、&lt;button&gt;與&lt;input type=&quot;button&quot;&gt;標記，
+        class屬性都是button，因此都會套用button.css樣式檔裡面的「.button」樣式。其中&lt;a href&gt;
+        、&lt;button&gt;可以在元素內放置影像，因此會顯示圖案；但&lt;input&gt;標記是空標記，瀏覽器根
+        據type屬性渲染元件，無法在裡面放其他元素，因此在CSS程式碼中的「.button:before」偽元素無作用。
+    </p>
+</body>
+</html>

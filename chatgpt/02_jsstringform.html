@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<link rel="stylesheet" href="style.css">
+	<title>第2週：字串與表單</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+
+	<script>
+		window.onload = function () {
+			let hash = window.location.hash; // 取得 URL 的 #錨點
+			if (hash) {
+				document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+			}
+		};
+	</script>
+
+	<div id="header"></div>
+	<main>
+        <section id="section_1">
+			<h2>字串處理(一)</h2>
+            <p>判斷字串長度、將字串轉換大小寫與字串裡是否包含某個字。</p>
+            <ul>
+                <li>.trim()：移除開頭和結尾的空白，中間空白不會移除。</li>
+                <li>.length：取得字串長度或字數(包含中英文、空格、標點符號)。</li>
+                <li>.toUpperCase()：將整個字串轉為全部大寫。</li>
+                <li>.toLowerCase()：將整個字串轉為全部小寫。</li>
+                <li>.includes()：判斷字串裡是否包含某個字，有區分大小寫。</li>
+            </ul>
+<pre><code>
+    &lt;p&gt;
+        請輸入一句話(中英文皆可)：&lt;br /&gt;
+        &lt;input id="userInput" type="text"&gt;
+        &lt;button onclick="chekkString()"&gt;分析&lt;/button&gt;
+        &lt;p id="stringResult"&gt;&lt;/p&gt;
+    &lt;/p&gt;
+    &lt;script&gt;
+        function chekkString() {
+            let str = document.getElementById('userInput').value;
+            let result = document.getElementById('stringResult');
+            if (str.trim() === '') {
+                return result.innerHTML = '請輸入內容！';
+            }
+            let length = str.length;
+            let upper = str.toUpperCase();
+            let lower = str.toLowerCase();
+            let hasA = str.includes("A") || str.includes("a");
+            result.innerHTML = `
+                原始字串：${str}&lt;br /&gt;
+                字串長度：${length}&lt;br /&gt;
+                全部大寫：${upper}&lt;br /&gt;
+                全部小寫：${lower}&lt;br /&gt;
+                是否包含"A或a"：${hasA}
+            `;
+        }             
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入一句話(中英文皆可)：<br />
+                <input id="userInput" type="text">
+                <button onclick="chekkString()">分析</button>
+                <p id="stringResult"></p>
+            </p>
+            <script>
+                function chekkString() {
+                    let str = document.getElementById('userInput').value;
+                    let result = document.getElementById('stringResult');
+                    if (str.trim() === '') {
+                        return result.innerHTML = '請輸入內容！';
+                    }
+                    let length = str.length;
+                    let upper = str.toUpperCase();
+                    let lower = str.toLowerCase();
+                    let hasA = str.includes("A") || str.includes("a");
+                    result.innerHTML = `
+                        原始字串：${str}<br />
+                        字串長度：${length}<br />
+                        全部大寫：${upper}<br />
+                        全部小寫：${lower}<br />
+                        是否包含"A或a"：${hasA}
+                    `;
+                }             
+            </script>
+		</section>
+
+        <section id="section_2">
+            <h2>字串處理(二)</h2>
+            <ul>
+                <li>.startsWith()：檢查字串是否以某個字開頭。</li>
+                <li>.endsWith()：檢查字串是否以某個字結尾。</li>
+                <li>.indexOf()：找出某個字首次出現的位置。</li>
+                <li>.lastIndexOf()：找出某個字最後一次出現的位置。</li>
+                <li>.slice()：擷取字串的一部分。.slice(start, end)，start是從0開始算，end是結束的位置，但不包含最後一個位置。</li>
+            </ul>
+<pre><code>
+    &lt;p&gt;
+        請輸入一句話(中英文皆可)：
+        &lt;input id="inputStr" type="text" placeholder="例如：I love Javascript."&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        請輸入要查找的字：
+        &lt;input id="searchWord" type="text" placeholder="例如：J"&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        擷取範圍：
+        &lt;input id="startIndex" type="number" placeholder="起始位置，例如：2"&gt; 到
+        &lt;input id="endIndex" type="number" placeholder="結束位置，例如：6"&gt;
+    &lt;/p&gt;
+    &lt;button onclick="analyzeString()"&gt;分析&lt;/button&gt;
+    &lt;p id="resultStr"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function analyzeString() {
+            let str = document.getElementById('inputStr').value;
+            let keyword = document.getElementById('searchWord').value;
+            let start = document.getElementById('startIndex').value;
+            let end = document.getElementById('endIndex').value;
+            let result = document.getElementById('resultStr');
+            if (str.trim() === "") {
+                return result.innerHTML = "請輸入內容！";
+            }
+            let starts = str.startsWith(keyword);
+            let ends = str.endsWith(keyword);
+            let startIndex = str.indexOf(keyword);
+            let endIndex = str.lastIndexOf(keyword);
+            let sliced = str.slice(start, end);
+            result.innerHTML = `
+                原始字串：${str}&lt;br /&gt;
+                查找的字：${keyword}&lt;br /&gt;
+                是否以「${keyword}」開頭：${starts}&lt;br /&gt;
+                是否以「${keyword}」結尾：${ends}&lt;br /&gt;
+                第一次出現的位置：${startIndex}&lt;br /&gt;
+                最後一次出現的位置：${endIndex}&lt;br /&gt;
+                擷取第${start}到第${end}的字串：${sliced}
+            ` 
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入一句話(中英文皆可)：
+                <input id="inputStr" type="text" placeholder="例如：I love Javascript.">
+            </p>
+            <p>
+                請輸入要查找的字：
+                <input id="searchWord" type="text" placeholder="例如：J">
+            </p>
+            <p>
+                擷取範圍：
+                <input id="startIndex" type="number" placeholder="起始位置，例如：2"> 到
+                <input id="endIndex" type="number" placeholder="結束位置，例如：6">
+            </p>
+            <button onclick="analyzeString()">分析</button>
+            <p id="resultStr"></p>
+            <script>
+                function analyzeString() {
+                    let str = document.getElementById('inputStr').value;
+                    let keyword = document.getElementById('searchWord').value;
+                    let start = document.getElementById('startIndex').value;
+                    let end = document.getElementById('endIndex').value;
+                    let result = document.getElementById('resultStr');
+                    if (str.trim() === "") {
+                        return result.innerHTML = "請輸入內容！";
+                    }
+                    let starts = str.startsWith(keyword);
+                    let ends = str.endsWith(keyword);
+                    let startIndex = str.indexOf(keyword);
+                    let endIndex = str.lastIndexOf(keyword);
+                    let sliced = str.slice(start, end);
+                    result.innerHTML = `
+                        原始字串：${str}<br />
+                        查找的字：${keyword}<br />
+                        是否以「${keyword}」開頭：${starts}<br />
+                        是否以「${keyword}」結尾：${ends}<br />
+                        第一次出現的位置：${startIndex}<br />
+                        最後一次出現的位置：${endIndex}<br />
+                        擷取第${start}到第${end}的字串：${sliced}
+                    ` 
+                }
+            </script>
+        </section>
+
+        <section id="section_3">
+            <h2>用for迴圈反轉字串</h2>
+<pre><code>
+    &lt;p&gt;
+        請輸入內容：&lt;input id="inputReverse1" type="text" placeholder="例如：我愛台灣"&gt;
+        &lt;button onclick="reverse1Btn()"&gt;反轉&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="reverse1Result"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function reverseString(s) {
+            let rev = '';
+            for (let i = s.length - 1; i &gt;= 0; i --) {
+                rev += s[i];
+            }
+            return rev;
+        }
+        function reverse1Btn() {
+            let inputReverse = document.getElementById('inputReverse1').value.trim();
+            let result = document.getElementById('reverse1Result');
+            if (inputReverse === '') {
+                return result.innerHTML = '請輸入內容！';
+            }
+            result.innerHTML = '反轉結果：' + reverseString(inputReverse);
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入內容：<input id="inputReverse1" type="text" placeholder="例如：我愛台灣">
+                <button onclick="reverse1Btn()">反轉</button>
+            </p>
+            <p id="reverse1Result"></p>
+            <script>
+                function reverseString(s) {
+                    let rev = '';
+                    for (let i = s.length - 1; i >= 0; i --) {
+                        rev += s[i];
+                    }
+                    return rev;
+                }
+                function reverse1Btn() {
+                    let inputReverse = document.getElementById('inputReverse1').value.trim();
+                    let result = document.getElementById('reverse1Result');
+                    if (inputReverse === '') {
+                        return result.innerHTML = '請輸入內容！';
+                    }
+                    result.innerHTML = '反轉結果：' + reverseString(inputReverse);
+                }
+            </script>
+        </section>
+
+        <section id="section_4">
+            <h2>用陣列方式反轉字串</h2>
+            <ul>
+                <li>.split()：把字串切割成陣列，例如：'臺灣人'.split('')，結果：['臺', '灣', '人']。</li>
+                <li>.reverse()：將陣列中的元素依順序反轉，例如：['臺', '灣', '人'].reverse()，結果：['人', '灣', '臺']。</li>
+                <li>.join()：將陣列中的元素合併成字串 例如：['人', '灣', '臺'].join('')，結果：'人灣臺'。</li>
+            </ul>
+<pre><code>
+    &lt;p&gt;
+        請輸入內容：&lt;input id="inputReverse2" type="text" placeholder="例如：臺灣人"&gt;
+        &lt;button onclick="reverse2Btn()"&gt;反轉&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="reverse2Result"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function reverse2Btn() {
+            let inputReverse = document.getElementById('inputReverse2').value.trim();
+            let result = document.getElementById('reverse2Result');
+            if (inputReverse === '') {
+                return result.innerHTML = '請輸入內容！';
+            }
+            let reverse = inputReverse.split('').reverse().join('');
+            result.innerHTML = `反轉結果：${reverse}`;
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入內容：<input id="inputReverse2" type="text" placeholder="例如：臺灣人">
+                <button onclick="reverse2Btn()">反轉</button>
+            </p>
+            <p id="reverse2Result"></p>
+            <script>
+                function reverse2Btn() {
+                    let inputReverse = document.getElementById('inputReverse2').value.trim();
+                    let result = document.getElementById('reverse2Result');
+                    if (inputReverse === '') {
+                        return result.innerHTML = '請輸入內容！';
+                    }
+                    let reverse = inputReverse.split('').reverse().join('');
+                    result.innerHTML = `反轉結果：${reverse}`;
+                }
+            </script>
+        </section>
+        
+        <section id="section_5">
+            <h2>密碼強度檢查器</h2>
+            <p>輸入一組密碼，密碼長度為8到12組字元，其中包含「@」、「#」特殊字元，符合就顯示「✅通過」，不符合就顯示「❌密碼長度必須為8到12組字元，或❌缺少@、#特殊符號」。</p>
+<pre><code>
+    &lt;p&gt;
+        請輸入密碼：
+        &lt;input id="pwdInput" type="password" size="20" min="8" max="12"&gt;
+        &lt;button onclick="pwdBtn()"&gt;確定&lt;/button&gt;
+    </p>
+    &lt;p id="pwdResult"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function pwdBtn() {
+            let pwdInput = document.getElementById('pwdInput').value.trim();
+            let result = document.getElementById('pwdResult');
+            if (pwdInput === '') {
+                return result.innerHTML = '❌請輸入密碼！';
+            }
+            let lengthok = pwdInput.length &gt;= 8 && pwdInput.length &lt;= 12;
+            let symbolok = pwdInput.includes('@') || pwdInput.includes('#');
+            if (lengthok && symbolok) {
+                result.innerHTML = '✅密碼通過！';
+            } else {
+                let msg = '';
+                if (!lengthok) {
+                    msg += '❌密碼長度必須為8到12組字元！<br>';
+                }
+                if (!symbolok) {
+                    msg += '❌密碼必須包含「@」或「#」特殊符號！';
+                }
+                result.innerHTML = msg;
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入密碼：
+                <input id="pwdInput" type="password" size="20" min="8" max="12">
+                <button onclick="pwdBtn()">確定</button>
+            </p>
+            <p id="pwdResult"></p>
+            <script>
+                function pwdBtn() {
+                    let pwdInput = document.getElementById('pwdInput').value.trim();
+                    let result = document.getElementById('pwdResult');
+                    if (pwdInput === '') {
+                        return result.innerHTML = '❌請輸入密碼！';
+                    }
+                    let lengthok = pwdInput.length >= 8 && pwdInput.length <= 12;
+                    let symbolok = pwdInput.includes('@') || pwdInput.includes('#');
+                    if (lengthok && symbolok) {
+                        result.innerHTML = '✅密碼通過！';
+                    } else {
+                        let msg = '';
+                        if (!lengthok) {
+                            msg += '❌密碼長度必須為8到12組字元！<br>';
+                        }
+                        if (!symbolok) {
+                            msg += '❌密碼必須包含「@」或「#」特殊符號！';
+                        }
+                        result.innerHTML = msg;
+                    }
+                }
+            </script>
+        </section>
+
+        <section id="section_6">
+            <h2>取出姓與名</h2>
+<pre><code>
+    &lt;p&gt;
+        請輸入姓名：&lt;input id="inputName" type="text" min="2"&gt;
+        &lt;button onclick="sliceName()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="sliceResult"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function sliceName() {
+            let fullName = document.getElementById('inputName').value.trim();
+            let result = document.getElementById('sliceResult');
+            if (fullName === '') {
+                return result.innerHTML = '❌請輸入姓名！';
+            } else if (fullName.length &lt; 2) {
+                return result.innerHTML = '❌請輸入正確的姓名（至少兩個字）！';
+            }
+            let firstName = fullName.slice(0, 1);
+            let lastName = fullName.slice(1);
+            result.innerHTML = `姓：${firstName}&lt;br /&gt;名字：${lastName}`;
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入姓名：<input id="inputName" type="text" min="2">
+                <button onclick="sliceName()">確定</button>
+            </p>
+            <p id="sliceResult"></p>
+            <script>
+                function sliceName() {
+                    let fullName = document.getElementById('inputName').value.trim();
+                    let result = document.getElementById('sliceResult');
+                    if (fullName === '') {
+                        return result.innerHTML = '❌請輸入姓名！';
+                    } else if (fullName.length < 2) {
+                        return result.innerHTML = '❌請輸入正確的姓名（至少兩個字）！';
+                    }
+                    let firstName = fullName.slice(0, 1);
+                    let lastName = fullName.slice(1);
+                    result.innerHTML = `姓：${firstName}<br />名字：${lastName}`;
+                }
+            </script>
+        </section>
+
+        <section id="section_7">
+            <h2>帳號與密碼</h2>
+            <p>
+                帳號：<input id="accountInput" type="text" min="4">
+                密碼：<input id="passwordInput" type="password" min="8" max="12">
+                <button onclick="loginBtn()">登入</button>
+            </p>
+            <p id="loginResult"></p>
+            <script>
+                function loginBtn() {
+                    let account = document.getElementById('accountInput').value.trim();
+                    let password = document.getElementById('passwordInput').value.trim();
+                    let result = document.getElementById('loginResult');
+                    let allEmpty = account === '' && password === '';
+                    let accountOK = account.length >= 4;
+                    let passwordOK = password.length >= 8;
+                    if (allEmpty) {
+                        return result.innerHTML = '❌請輸入帳號與密碼！';
+                    }
+                    if (account === '') {
+                        return result.innerHTML = '❌請輸入帳號！';
+                    }
+                    if (password === '') {
+                        return result.innerHTML = '❌請輸入密碼！';
+                    }
+                    if (accountOK && passwordOK) {
+                        result.innerHTML = `
+                            ✅歡迎登入！<br />
+                            您的帳號是：${account}<br />
+                            您的密碼是：${password}
+                        `;
+                    } else {
+                        if (!accountOK || !passwordOK) {
+                            result.innerHTML = '❌登入失敗！'
+                        }
+                    }
+                }
+            </script>
+        </section>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>
