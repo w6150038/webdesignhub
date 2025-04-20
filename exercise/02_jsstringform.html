@@ -297,7 +297,7 @@
 <pre><code>
     &lt;p&gt;
         請輸入密碼：
-        &lt;input id="pwdInput" type="password" size="20" min="8" max="12"&gt;
+        &lt;input id="pwdInput" type="password"&gt;
         &lt;button onclick="pwdBtn()"&gt;確定&lt;/button&gt;
     </p>
     &lt;p id="pwdResult"&gt;&lt;/p&gt;
@@ -327,7 +327,7 @@
 </code></pre>
             <p>
                 請輸入密碼：
-                <input id="pwdInput" type="password" size="20" min="8" max="12">
+                <input id="pwdInput" type="password">
                 <button onclick="pwdBtn()">確定</button>
             </p>
             <p id="pwdResult"></p>
@@ -360,7 +360,7 @@
             <h2>取出姓與名</h2>
 <pre><code>
     &lt;p&gt;
-        請輸入姓名：&lt;input id="inputName" type="text" min="2"&gt;
+        請輸入姓名：&lt;input id="inputName" type="text"&gt;
         &lt;button onclick="sliceName()"&gt;確定&lt;/button&gt;
     &lt;/p&gt;
     &lt;p id="sliceResult"&gt;&lt;/p&gt;
@@ -380,7 +380,7 @@
     &lt;/script&gt;
 </code></pre>
             <p>
-                請輸入姓名：<input id="inputName" type="text" min="2">
+                請輸入姓名：<input id="inputName" type="text">
                 <button onclick="sliceName()">確定</button>
             </p>
             <p id="sliceResult"></p>
@@ -402,9 +402,47 @@
 
         <section id="section_7">
             <h2>帳號與密碼</h2>
+<pre><code>
+    &lt;p&gt;
+        帳號：&lt;input id="accountInput" type="text"&gt;
+        密碼：&lt;input id="passwordInput" type="password"&gt;
+        &lt;button onclick="loginBtn()"&gt;登入&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="loginResult"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function loginBtn() {
+            let account = document.getElementById('accountInput').value.trim();
+            let password = document.getElementById('passwordInput').value.trim();
+            let result = document.getElementById('loginResult');
+            let allEmpty = account === '' && password === '';
+            let accountOK = account.length &gt;= 4;
+            let passwordOK = password.length &gt;= 8;
+            if (allEmpty) {
+                return result.innerHTML = '❌請輸入帳號與密碼！';
+            }
+            if (account === '') {
+                return result.innerHTML = '❌請輸入帳號！';
+            }
+            if (password === '') {
+                return result.innerHTML = '❌請輸入密碼！';
+            }
+            if (accountOK && passwordOK) {
+                result.innerHTML = `
+                    ✅歡迎登入！&lt;br /&gt;
+                    您的帳號是：${account}&lt;br /&gt;
+                    您的密碼是：${password}
+                `;
+            } else {
+                if (!accountOK || !passwordOK) {
+                    result.innerHTML = '❌登入失敗！'
+                }
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
             <p>
-                帳號：<input id="accountInput" type="text" min="4">
-                密碼：<input id="passwordInput" type="password" min="8" max="12">
+                帳號：<input id="accountInput" type="text">
+                密碼：<input id="passwordInput" type="password">
                 <button onclick="loginBtn()">登入</button>
             </p>
             <p id="loginResult"></p>
@@ -436,6 +474,180 @@
                             result.innerHTML = '❌登入失敗！'
                         }
                     }
+                }
+            </script>
+        </section>
+
+        <section id="section_8">
+            <h2>E-mail驗證(非正規表達式)</h2>
+<pre><code>
+    &lt;p&gt;
+        請輸入E-mail：
+        &lt;input id="mailInput" type="text"&gt;
+        &lt;button onclick="mailBtn()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="mailResult"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function mailBtn() {
+            let mailAddr = document.getElementById('mailInput').value.trim();
+            let result = document.getElementById('mailResult');
+            let hasAt = mailAddr.includes('@');
+            let hasDot = mailAddr.includes('.');
+            if (mailAddr === '') {
+                return result.innerHTML = '請輸入E-mail！';
+            }
+            if (hasAt && hasDot) {
+                result.innerHTML = `您輸入的E-mail：${mailAddr}，✅格式正確！`;
+            } else {
+                result.innerHTML = `您輸入的E-mail：${mailAddr}，❌格式錯誤，格式必須包含「@」與「.」！`;
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入E-mail：
+                <input id="mailInput" type="text">
+                <button onclick="mailBtn()">確定</button>
+            </p>
+            <p id="mailResult"></p>
+            <script>
+                function mailBtn() {
+                    let mailAddr = document.getElementById('mailInput').value.trim();
+                    let result = document.getElementById('mailResult');
+                    let hasAt = mailAddr.includes('@');
+                    let hasDot = mailAddr.includes('.');
+                    if (mailAddr === '') {
+                        return result.innerHTML = '請輸入E-mail！';
+                    }
+                    if (hasAt && hasDot) {
+                        result.innerHTML = `您輸入的E-mail：${mailAddr}，✅格式正確！`;
+                    } else {
+                        result.innerHTML = `您輸入的E-mail：${mailAddr}，❌格式錯誤，格式必須包含「@」與「.」！`;
+                    }
+                }
+            </script>
+        </section>
+
+        <section id="sectoin_9">
+            <h2>小表單實作</h2>
+<pre><code>
+    &lt;p&gt;
+        &lt;form method="post" action="" onsubmit="return false;"&gt;
+            &lt;fieldset&gt;
+                &lt;legend&gt;用戶登入&lt;/legend&gt;
+                帳號：&lt;input id="account1" type="text"&gt;&lt;br /&gt;
+                密碼：&lt;input id="password1" type="password"&gt;&lt;br /&gt;
+                E-mail：&lt;input id="mail" type="text"&gt;&lt;br /&gt;
+                &lt;button type="submit" onclick="loginBtn1()"&gt;登入&lt;/button&gt;
+                &lt;button type="reset"&gt;取消&lt;button&gt;
+            &lt;/fieldset&gt;
+        &lt;/form&gt;
+        &lt;p id="loginResult1"&gt;&lt;/p&gt;
+        &lt;script&gt;
+            function loginBtn1() {
+                let account = document.getElementById('account1').value.trim();
+                let password = document.getElementById('password1').value.trim();
+                let email = document.getElementById('mail').value.trim();
+                let result = document.getElementById('loginResult1');
+                let allEmpty = account === '' && password === '' && email === '';
+                let accountlength = account.length &gt;= 4;
+                let passwordlength = password.length &gt;= 8 && password.length &lt;= 12;
+                let passwordincludes = password.includes('@') || password.includes('#');
+                let emailincludes = email.includes('@') && email.includes('.');
+                if (allEmpty) {
+                    return result.innerHTML = '❌請輸入帳號、密碼與E-mail！';
+                }
+                if (account === '') {
+                    return result.innerHTML = '❌請輸入帳號！';
+                }
+                if (password === '') {
+                    return result.innerHTML = '❌請輸入密碼！';
+                }
+                if (email === '') {
+                    return result.innerHTML = '❌請輸入E-mail！';
+                }
+                let msg = '';
+                if (!accountlength) {
+                    msg += '❌帳號長度至少要4個字元！&lt;br /&gt;'
+                }
+                if (!passwordlength) {
+                    msg += '❌密碼長度必須為8到12組字元！&lt;br&gt;';
+                }
+                if (!passwordincludes) {
+                    msg += '❌密碼必須包含「@」或「#」特殊符號！&lt;br /&gt;';
+                }
+                if (!emailincludes) {
+                    msg += '❌E-mail必須包含「@」與「.」！'
+                }
+                if (msg !== "") {
+                    return result.innerHTML = msg;
+                }
+                result.innerHTML = `
+                    ✅登入成功！&lt;br /&gt;
+                    您的帳號是：${account}&lt;br /&gt;
+                    您的密碼是：${password}&lt;br /&gt;
+                    您的E-mail是：${email}
+                `
+            }
+        &lt;/script&gt;
+</code></pre>
+            <p>
+            <form method="post" action="" onsubmit="return false;">
+                <fieldset>
+                    <legend>用戶登入</legend>
+                    帳號：<input id="account1" type="text"><br />
+                    密碼：<input id="password1" type="password"><br />
+                    E-mail：<input id="mail" type="text"><br />
+                    <button type="submit" onclick="loginBtn1()">登入</button>
+                    <button type="reset">取消</button>
+                </fieldset>
+            </form>
+            <p id="loginResult1"></p>
+            <script>
+                function loginBtn1() {
+                    let account = document.getElementById('account1').value.trim();
+                    let password = document.getElementById('password1').value.trim();
+                    let email = document.getElementById('mail').value.trim();
+                    let result = document.getElementById('loginResult1');
+                    let allEmpty = account === '' && password === '' && email === '';
+                    let accountlength = account.length >= 4;
+                    let passwordlength = password.length >= 8 && password.length <= 12;
+                    let passwordincludes = password.includes('@') || password.includes('#');
+                    let emailincludes = email.includes('@') && email.includes('.');
+                    if (allEmpty) {
+                        return result.innerHTML = '❌請輸入帳號、密碼與E-mail！';
+                    }
+                    if (account === '') {
+                        return result.innerHTML = '❌請輸入帳號！';
+                    }
+                    if (password === '') {
+                        return result.innerHTML = '❌請輸入密碼！';
+                    }
+                    if (email === '') {
+                        return result.innerHTML = '❌請輸入E-mail！';
+                    }
+                    let msg = '';
+                    if (!accountlength) {
+                        msg += '❌帳號長度至少要4個字元！<br />'
+                    }
+                    if (!passwordlength) {
+                        msg += '❌密碼長度必須為8到12組字元！<br>';
+                    }
+                    if (!passwordincludes) {
+                        msg += '❌密碼必須包含「@」或「#」特殊符號！<br />';
+                    }
+                    if (!emailincludes) {
+                        msg += '❌E-mail必須包含「@」與「.」！'
+                    }
+                    if (msg !== "") {
+                        return result.innerHTML = msg;
+                    }
+                    result.innerHTML = `
+                        ✅登入成功！<br />
+                        您的帳號是：${account}<br />
+                        您的密碼是：${password}<br />
+                        您的E-mail是：${email}
+                    `
                 }
             </script>
         </section>
