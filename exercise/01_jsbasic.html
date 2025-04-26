@@ -293,39 +293,40 @@
 			<h2>函式：function</h2>
 			<p>定義一個函式square(num)，輸入一個數字，回傳它的平方值。</p>
 <pre><code>
-	請輸入數字：&lt;input id="fn_1" type="number"&gt;
-	&lt;button id="fn_1_Btn" onclick="fn_1_Btn()"&gt;送出&lt;/button&gt;&lt;br /&gt;
-	&lt;div id="fn_1_Answer"&gt;&lt;/div&gt;
-	&lt;script&gt;
-		function square(num) {
-			return num ** 2;
-		}
-
-		function fn_1_Btn() {
-			if (document.getElementById('fn_1').value === "") {
-				return document.getElementById('fn_1_Answer').innerHTML = '請輸入數字！';
+	請輸入數字：&lt;input id="squareInput" type="number"&gt;
+		&lt;button id="squareBtn" onclick="squareBtn()"&gt;送出&lt;/button&gt;
+		&lt;div id="squareResult"&gt;&lt;/div&gt;
+		&lt;script&gt;
+			function square(num) {
+				return num ** 2;
 			}
-			let fn_1 = Number(document.getElementById('fn_1').value);
-			let r = square(fn_1);
-			document.getElementById('fn_1_Answer').innerHTML = `${fn_1}的平方 = ${r}`;
-		}
-	&lt;/script&gt;
+
+			function squareBtn() {
+				let numberValue = Number(document.getElementById('squareInput').value.trim());
+				let result = document.getElementById('squareResult');
+				if (numberValue === '') {
+					return result.innerHTML = '請輸入有效數字！';
+				}
+				let r = square(numberValue);
+				result.innerHTML = `${numberValue}的平方 = ${r}`;
+			}
+		&lt;/script&gt;
 </code></pre>
-			請輸入數字：<input id="fn_1" type="number">
-			<button id="fn_1_Btn" onclick="fn_1_Btn()">送出</button><br />
-			<div id="fn_1_Answer"></div>
+			請輸入數字：<input id="squareInput" type="number">
+			<button id="squareBtn" onclick="squareBtn()">送出</button>
+			<div id="squareResult"></div>
 			<script>
 				function square(num) {
 					return num ** 2;
 				}
-
-				function fn_1_Btn() {
-					if (document.getElementById('fn_1').value === "") {
-						return document.getElementById('fn_1_Answer').innerHTML = '請輸入數字！';
+				function squareBtn() {
+					let numberValue = Number(document.getElementById('squareInput').value.trim());
+					let result = document.getElementById('squareResult');
+					if (numberValue === '') {
+						return result.innerHTML = '請輸入有效數字！';
 					}
-					let fn_1 = Number(document.getElementById('fn_1').value);
-					let r = square(fn_1);
-					document.getElementById('fn_1_Answer').innerHTML = `${fn_1}的平方 = ${r}`;
+					let r = square(numberValue);
+					result.innerHTML = `${numberValue}的平方 = ${r}`;
 				}
 			</script>
 		</section>
@@ -337,19 +338,19 @@
 	底&lt;input id="triangleBase" type="number" min="0"&gt; * 高&lt;input id="triangleHeight" type="number" min="0"&gt; / 2 = &lt;span id="triangleAnswer"&gt;&lt;/span&gt;&lt;br /&gt;
 	&lt;button id="triangleBtn" onclick="triangleBtn()"&gt;計算&lt;/button&gt;
 	&lt;script&gt;
-		function triangle(a, b) {
-			return (a * b) / 2;
+		function triangle(b, h) {
+			return (b * h) / 2;
 		}
 
 		function triangleBtn() {
-			let triangleBase = Number(document.getElementById('triangleBase').value);
-			let triangleHeight = Number(document.getElementById('triangleHeight').value);
+			let triangleBase = Number(document.getElementById('triangleBase').value.trim());
+			let triangleHeight = Number(document.getElementById('triangleHeight').value.trim());
+			let answer = document.getElementById('triangleAnswer');
 			let r = triangle(triangleBase, triangleHeight);
 			if (triangleBase &lt;= 0 || triangleHeight &lt;= 0) {
-				document.getElementById('triangleAnswer').innerHTML = '請輸入大於 0 的數值！';
-				return;
+				return answer.innerHTML = '請輸入大於 0 的數值！';
 			}
-			document.getElementById('triangleAnswer').innerHTML = `${r} 平方公分`;
+			answer.innerHTML = `${r} 平方公分`;
 		}
 	&lt;/script&gt;
 </code></pre>
@@ -358,19 +359,19 @@
 				<button id="triangleBtn" onclick="triangleBtn()">計算</button>
 			</p>
 			<script>
-				function triangle(a, b) {
-					return (a * b) / 2;
+				function triangle(b, h) {
+					return (b * h) / 2;
 				}
 
 				function triangleBtn() {
-					let triangleBase = Number(document.getElementById('triangleBase').value);
-					let triangleHeight = Number(document.getElementById('triangleHeight').value);
+					let triangleBase = Number(document.getElementById('triangleBase').value.trim());
+					let triangleHeight = Number(document.getElementById('triangleHeight').value.trim());
+					let answer = document.getElementById('triangleAnswer');
 					let r = triangle(triangleBase, triangleHeight);
 					if (triangleBase <= 0 || triangleHeight <= 0) {
-						document.getElementById('triangleAnswer').innerHTML = '請輸入大於 0 的數值！';
-						return;
+						return answer.innerHTML = '請輸入大於 0 的數值！';
 					}
-					document.getElementById('triangleAnswer').innerHTML = `${r} 平方公分`;
+					answer.innerHTML = `${r} 平方公分`;
 				}
 			</script>
 		</section>
@@ -427,6 +428,9 @@
 		}
 
 		function tempChg() {
+			if (document.getElementById('tempF').value === "") {
+				return document.getElementById('tempC').innerHTML = '請輸入華氏溫度！';
+			}
 			let tempF = Number(document.getElementById('tempF').value);
 			let fc = temp(tempF);
 			document.getElementById('tempC').innerHTML = `攝氏${fc}℃`;
@@ -758,7 +762,7 @@
 						r = num1 * num2;
 						break;
 					case "/":
-						r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2)
+						r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2);
 						break;
 					default:
 						r = '未知的運算！';
@@ -803,7 +807,7 @@
 								r = num1 * num2;
 								break;
 							case "/":
-								r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2)
+								r = (num2 === 0) ? '除數不能為0！' : (num1 / num2).toFixed(2);
 								break;
 							default:
 								r = '未知的運算！';

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="web, design, html, css, javascript">
+	<meta name="description" content="歡迎光臨Web Design Hub">
+	<meta name="author" content="王群銘">
+	<link rel="stylesheet" href="style.css">
+	<title>第2週(進階)：表單即時驗證</title>
+	<link rel="shortcut icon" href="icon檔案"/>
+    <link rel="bookmark" href="icon檔案"/>
+</head>
+<body>
+    <script>
+		function loadComponent(id, file) {
+			fetch(file)
+				.then(response => response.text())
+				.then(content => {
+					document.getElementById(id).innerHTML = content;
+				})
+				.catch(error => console.error(`無法載入 ${file}`, error));
+		}
+	
+		loadComponent("header", "header.html");
+		loadComponent("footer", "footer.html");
+	</script>
+
+	<script>
+		window.onload = function () {
+			let hash = window.location.hash; // 取得 URL 的 #錨點
+			if (hash) {
+				document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+			}
+		};
+	</script>
+
+	<div id="header"></div>
+	<main>
+        <section id="section_1">
+            <h2>帳號即時驗證</h2>
+            <p>至少4碼，英數混合。</p>
+<pre><code>
+    &lt;p&gt;
+        帳號：&lt;input id="accountInput" type="text" minlength="4"&gt;
+        &lt;span id="accountMsg"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;script&gt;
+        let accountInput = document.getElementById('accountInput');
+        let accountMsg = document.getElementById('accountMsg');
+        accountInput.addEventListener('input', function () {
+            let accountVal = accountInput.value.trim();
+            let pattern = /^(?=.*[a-zA-Z])(?=.*\d)/
+            if (accountVal.length === 0) {
+                accountMsg.innerHTML = '❌請輸入帳號';
+                accountMsg.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                accountMsg.style.cssText = 'color: red';
+            } else if (accountVal.length &lt; 4) {
+                accountMsg.innerHTML = '❌帳號至少4個字元';
+                accountMsg.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                accountMsg.style.cssText = 'color: red';
+            } else if (!pattern.test(accountVal)) {
+                accountMsg.innerHTML = '❌帳號必須英文數字混合';
+                accountInput.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                accountMsg.style.cssText = 'color: red';
+            } else {
+                accountMsg.innerHTML = '✔️帳號格式正確';
+                accountMsg.style.cssText = 'border: 1px solid green; box-shadow: 0 0 5px green; outline: none';
+                accountMsg.style.cssText = 'color: green';
+            }
+        });
+    &lt;/script&gt;
+</code></pre>
+        <p>
+            帳號：<input id="accountInput" type="text" minlength="4">
+            <span id="accountMsg"></span>
+        </p>
+        <script>
+            let accountInput = document.getElementById('accountInput');
+            let accountMsg = document.getElementById('accountMsg');
+            accountInput.addEventListener('input', function () {
+                let accountVal = accountInput.value.trim();
+                let pattern = /^(?=.*[a-zA-Z])(?=.*\d)/
+                if (accountVal.length === 0) {
+                    accountMsg.innerHTML = '❌請輸入帳號';
+                    accountInput.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    accountMsg.style.cssText = 'color: red';
+                } else if (accountVal.length < 4) {
+                    accountMsg.innerHTML = '❌帳號至少4個字元';
+                    accountInput.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    accountMsg.style.cssText = 'color: red';
+                } else if (!pattern.test(accountVal)) {
+                    accountMsg.innerHTML = '❌帳號必須英文數字混合';
+                    accountInput.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    accountMsg.style.cssText = 'color: red';
+                } else {
+                    accountMsg.innerHTML = '✔️帳號格式正確';
+                    accountInput.style.cssText = 'border: 1px solid green; box-shadow: 0 0 5px green; outline: none';
+                    accountMsg.style.cssText = 'color: green';
+                }
+            });
+        </script>
+        </section>
+
+        <section id="section_2">
+            <h2>初階版密碼即時驗證</h2>
+        <p>8到12個字元，含特殊符號(@)或(#)。</p>
+<pre><code>
+    &lt;p&gt;
+        密碼：&lt;input id="passwordInput1" type="text" minlength="8" maxlength="12"&gt;
+        &lt;span id="passwordMsg1"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;script&gt;
+        let passwordInput1 = document.getElementById('passwordInput1');
+        let passwordMsg1 = document.getElementById('passwordMsg1');
+        passwordInput1.addEventListener('input', function () {
+            let passwordVal = document.getElementById('passwordInput1').value.trim();
+            let passwordlength = passwordVal.length &gt;= 8 && passwordVal.length &lt;= 12;
+            let passwordincludes = passwordVal.includes('@') || passwordVal.includes('#');
+            if (passwordVal.length === 0) {
+                passwordMsg1.innerHTML = '❌請輸入密碼';
+                passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                passwordMsg1.style.cssText = 'color: red';
+            } else if (!passwordlength) {
+                passwordMsg1.innerHTML = '❌密碼長度為8到12個字元';
+                passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                passwordMsg1.style.cssText = 'color: red';
+            } else if (!passwordincludes) {
+                passwordMsg1.innerHTML = '❌密碼長度必須包含「@」或「#」符號';
+                passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                passwordMsg1.style.cssText = 'color: red';
+            } else {
+                passwordMsg1.innerHTML = '✔️密碼格式正確';
+                passwordInput1.style.cssText = 'border: 1px solid green; box-shadow: 0 0 5px green; outline: none';
+                passwordMsg1.style.cssText = 'color: green';
+            }
+        });
+    &lt;/script&gt;
+</code></pre>
+        <p>
+            密碼：<input id="passwordInput1" type="text" minlength="8" maxlength="12">
+            <span id="passwordMsg1"></span>
+        </p>
+        <script>
+            let passwordInput1 = document.getElementById('passwordInput1');
+            let passwordMsg1 = document.getElementById('passwordMsg1');
+            passwordInput1.addEventListener('input', function () {
+                let passwordVal = document.getElementById('passwordInput1').value.trim();
+                let passwordlength = passwordVal.length >= 8 && passwordVal.length <= 12;
+                let passwordincludes = passwordVal.includes('@') || passwordVal.includes('#');
+                if (passwordVal.length === 0) {
+                    passwordMsg1.innerHTML = '❌請輸入密碼';
+                    passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    passwordMsg1.style.cssText = 'color: red';
+                } else if (!passwordlength) {
+                    passwordMsg1.innerHTML = '❌密碼長度為8到12個字元';
+                    passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    passwordMsg1.style.cssText = 'color: red';
+                } else if (!passwordincludes) {
+                    passwordMsg1.innerHTML = '❌密碼長度必須包含「@」或「#」符號';
+                    passwordInput1.style.cssText = 'border: 1px solid red; box-shadow: 0 0 5px red; outline: none';
+                    passwordMsg1.style.cssText = 'color: red';
+                } else {
+                    passwordMsg1.innerHTML = '✔️密碼格式正確';
+                    passwordInput1.style.cssText = 'border: 1px solid green; box-shadow: 0 0 5px green; outline: none';
+                    passwordMsg1.style.cssText = 'color: green';
+                }
+            });
+        </script>
+        </section>
+    </main>
+	<div id="footer"></div>
+</body>
+</html>

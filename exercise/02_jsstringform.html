@@ -7,7 +7,7 @@
 	<meta name="description" content="歡迎光臨Web Design Hub">
 	<meta name="author" content="王群銘">
 	<link rel="stylesheet" href="style.css">
-	<title>第2週：字串與表單</title>
+	<title>第2週(初階)：字串與表單</title>
 	<link rel="shortcut icon" href="icon檔案"/>
     <link rel="bookmark" href="icon檔案"/>
 </head>
@@ -299,7 +299,7 @@
         請輸入密碼：
         &lt;input id="pwdInput" type="password"&gt;
         &lt;button onclick="pwdBtn()"&gt;確定&lt;/button&gt;
-    </p>
+    &lt;/p&gt;
     &lt;p id="pwdResult"&gt;&lt;/p&gt;
     &lt;script&gt;
         function pwdBtn() {
@@ -315,7 +315,7 @@
             } else {
                 let msg = '';
                 if (!lengthok) {
-                    msg += '❌密碼長度必須為8到12組字元！<br>';
+                    msg += '❌密碼長度必須為8到12組字元！&lt;br&gt;';
                 }
                 if (!symbolok) {
                     msg += '❌密碼必須包含「@」或「#」特殊符號！';
@@ -494,7 +494,7 @@
             let hasAt = mailAddr.includes('@');
             let hasDot = mailAddr.includes('.');
             if (mailAddr === '') {
-                return result.innerHTML = '請輸入E-mail！';
+                return result.innerHTML = '❌請輸入E-mail！';
             }
             if (hasAt && hasDot) {
                 result.innerHTML = `您輸入的E-mail：${mailAddr}，✅格式正確！`;
@@ -517,7 +517,7 @@
                     let hasAt = mailAddr.includes('@');
                     let hasDot = mailAddr.includes('.');
                     if (mailAddr === '') {
-                        return result.innerHTML = '請輸入E-mail！';
+                        return result.innerHTML = '❌請輸入E-mail！';
                     }
                     if (hasAt && hasDot) {
                         result.innerHTML = `您輸入的E-mail：${mailAddr}，✅格式正確！`;
@@ -529,69 +529,67 @@
         </section>
 
         <section id="section_9">
-            <h2>小表單實作</h2>
+            <h2>簡易用戶登入表單</h2>
 <pre><code>
-    &lt;p&gt;
-        &lt;form method="post" action="" onsubmit="return false;"&gt;
-            &lt;fieldset&gt;
-                &lt;legend&gt;用戶登入&lt;/legend&gt;
-                帳號：&lt;input id="account1" type="text"&gt;&lt;br /&gt;
-                密碼：&lt;input id="password1" type="password"&gt;&lt;br /&gt;
-                E-mail：&lt;input id="mail" type="text"&gt;&lt;br /&gt;
-                &lt;button type="submit" onclick="loginBtn1()"&gt;登入&lt;/button&gt;
-                &lt;button type="reset"&gt;取消&lt;button&gt;
-            &lt;/fieldset&gt;
-        &lt;/form&gt;
-        &lt;p id="loginResult1"&gt;&lt;/p&gt;
-        &lt;script&gt;
-            function loginBtn1() {
-                let account = document.getElementById('account1').value.trim();
-                let password = document.getElementById('password1').value.trim();
-                let email = document.getElementById('mail').value.trim();
-                let result = document.getElementById('loginResult1');
-                let allEmpty = account === '' && password === '' && email === '';
-                let accountlength = account.length &gt;= 4;
-                let passwordlength = password.length &gt;= 8 && password.length &lt;= 12;
-                let passwordincludes = password.includes('@') || password.includes('#');
-                let emailincludes = email.includes('@') && email.includes('.');
-                if (allEmpty) {
-                    return result.innerHTML = '❌請輸入帳號、密碼與E-mail！';
-                }
-                if (account === '') {
-                    return result.innerHTML = '❌請輸入帳號！';
-                }
-                if (password === '') {
-                    return result.innerHTML = '❌請輸入密碼！';
-                }
-                if (email === '') {
-                    return result.innerHTML = '❌請輸入E-mail！';
-                }
-                let msg = '';
-                if (!accountlength) {
-                    msg += '❌帳號長度至少要4個字元！&lt;br /&gt;'
-                }
-                if (!passwordlength) {
-                    msg += '❌密碼長度必須為8到12組字元！&lt;br&gt;';
-                }
-                if (!passwordincludes) {
-                    msg += '❌密碼必須包含「@」或「#」特殊符號！&lt;br /&gt;';
-                }
-                if (!emailincludes) {
-                    msg += '❌E-mail必須包含「@」與「.」！'
-                }
-                if (msg !== "") {
-                    return result.innerHTML = msg;
-                }
-                result.innerHTML = `
-                    ✅登入成功！&lt;br /&gt;
-                    您的帳號是：${account}&lt;br /&gt;
-                    您的密碼是：${password}&lt;br /&gt;
-                    您的E-mail是：${email}
-                `
+     &lt;form method="post" action="" onsubmit="return false;"&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;用戶登入&lt;/legend&gt;
+            帳號：&lt;input id="account1" type="text"&gt;&lt;br /&gt;
+            密碼：&lt;input id="password1" type="password"&gt;&lt;br /&gt;
+            E-mail：&lt;input id="mail" type="text"&gt;&lt;br /&gt;
+            &lt;button type="submit" onclick="loginBtn1()"&gt;登入&lt;/button&gt;
+            &lt;button type="reset"&gt;取消&lt;button&gt;
+        &lt;/fieldset&gt;
+    &lt;/form&gt;
+    &lt;p id="loginResult1"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function loginBtn1() {
+            let account = document.getElementById('account1').value.trim();
+            let password = document.getElementById('password1').value.trim();
+            let email = document.getElementById('mail').value.trim();
+            let result = document.getElementById('loginResult1');
+            let allEmpty = account === '' && password === '' && email === '';
+            let accountlength = account.length &gt;= 4;
+            let passwordlength = password.length &gt;= 8 && password.length &lt;= 12;
+            let passwordincludes = password.includes('@') || password.includes('#');
+            let emailincludes = email.includes('@') && email.includes('.');
+            if (allEmpty) {
+                return result.innerHTML = '❌請輸入帳號、密碼與E-mail！';
             }
+            if (account === '') {
+                return result.innerHTML = '❌請輸入帳號！';
+            }
+            if (password === '') {
+                return result.innerHTML = '❌請輸入密碼！';
+            }
+            if (email === '') {
+                return result.innerHTML = '❌請輸入E-mail！';
+            }
+            let msg = '';
+            if (!accountlength) {
+                msg += '❌帳號長度至少要4個字元！&lt;br /&gt;'
+            }
+            if (!passwordlength) {
+                msg += '❌密碼長度必須為8到12個字元！&lt;br&gt;';
+            }
+            if (!passwordincludes) {
+                msg += '❌密碼必須包含「@」或「#」特殊符號！&lt;br /&gt;';
+            }
+            if (!emailincludes) {
+                msg += '❌E-mail必須包含「@」與「.」！'
+            }
+            if (msg !== "") {
+                return result.innerHTML = msg;
+            }
+            result.innerHTML = `
+                ✅登入成功！&lt;br /&gt;
+                您的帳號是：${account}&lt;br /&gt;
+                您的密碼是：${password}&lt;br /&gt;
+                您的E-mail是：${email}
+            `
+        }
         &lt;/script&gt;
 </code></pre>
-            <p>
             <form method="post" action="" onsubmit="return false;">
                 <fieldset>
                     <legend>用戶登入</legend>
@@ -631,7 +629,7 @@
                         msg += '❌帳號長度至少要4個字元！<br />'
                     }
                     if (!passwordlength) {
-                        msg += '❌密碼長度必須為8到12組字元！<br>';
+                        msg += '❌密碼長度必須為8到12個字元！<br>';
                     }
                     if (!passwordincludes) {
                         msg += '❌密碼必須包含「@」或「#」特殊符號！<br />';
@@ -648,6 +646,333 @@
                         您的密碼是：${password}<br />
                         您的E-mail是：${email}
                     `
+                }
+            </script>
+        </section>
+
+        <section id="section_10">
+            <h2>正規表達式(RegEx)</h2>'
+            <ul>
+                <li>字面值方式：let pattern1 = /abc/; (此方式較常用)</li>
+                <li>建構子方式：let pattern2 = new RegExp('abc');</li>
+                <li>.test()：檢查使用者輸入的內容是否符合這個規則。</li>
+                <li>數字驗證：/\d/</li>
+                <li>字母驗證：/[a-zA-Z]/</li>
+                <li>帳號英數混合驗證：/^(?=.*[a-zA-Z])(?=.*\d)/</li>
+                <li>手機驗證：/^09\d{8}$/</li>
+                <li>E-mail驗證：/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/</li>
+            </ul>
+            <table border="1">
+                <caption>正規表達式(RegEx)</caption>
+                <tr>
+                    <th>語法</th>
+                    <th>說明</th>
+                    <th>範例</th>
+                </tr>
+                <tr>
+                    <td>^</td>
+                    <td>開頭</td>
+                    <td>/^a/：開頭是a</td>
+                </tr>
+                <tr>
+                    <td>$</td>
+                    <td>結尾</td>
+                    <td>/b$/：結尾是b</td>
+                </tr>
+                <tr>
+                    <td>.</td>
+                    <td>任意一個字元</td>
+                    <td>/a.b/：abc</td>
+                </tr>
+                <tr>
+                    <td>\d</td>
+                    <td>數字</td>
+                    <td>/\d/：0~9</td>
+                </tr>
+                <tr>
+                    <td>\w</td>
+                    <td>找出任何一個英文字母、數字或底線</td>
+                    <td>/\w/：a, Z, 3, _</td>
+                </tr>
+                <tr>
+                    <td>\s</td>
+                    <td>空白字元</td>
+                    <td>/\s/</td>
+                </tr>
+                <tr>
+                    <td>[...]</td>
+                    <td>範圍選擇</td>
+                    <td>/[a-z]/</td>
+                </tr>
+                <tr>
+                    <td>[^...]</td>
+                    <td>開頭不是...</td>
+                    <td>/[^a-z]/：開頭不是a~z</td>
+                </tr>
+                <tr>
+                    <td>|</td>
+                    <td>或</td>
+                    <td>/a|b/</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>0次或多次</td>
+                    <td>/a*/："", "aaa"</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>1次或多次</td>
+                    <td>/a+/："a", "aa"</td>
+                </tr>
+                <tr>
+                    <td>?</td>
+                    <td>0次或1次</td>
+                    <td>/a?/："", "a"</td>
+                </tr>
+                <tr>
+                    <td>{n}</td>
+                    <td>出現n次</td>
+                    <td>/a{3}/："aaa"</td>
+                </tr>
+                <tr>
+                    <td>{n,}</td>
+                    <td>至少n次</td>
+                    <td>/a{2,}/："aa", "aaa"</td>
+                </tr>
+                <tr>
+                    <td>{n,m}</td>
+                    <td>n到m次</td>
+                    <td>/a{2,4}/："aa", "aaa", "aaaa"</td>
+                </tr>
+                <tr>
+                    <td>( )</td>
+                    <td>群組</td>
+                    <td>/(abc)+/："abc", "abcabc", "abcabcabc"</td>
+                </tr>
+                <tr>
+                    <td>\</td>
+                    <td>跳脫字元</td>
+                    <td>/\./：找出.句點；/\@/：找出@符號</td>
+                </tr>
+            </table>
+            <p>
+            <h3>判斷是否含有數字</h3>
+<pre><code>
+    &lt;p&gt;
+        請輸入內容：&lt;input id="regexInput1" type="text"&gt;
+        &lt;button onclick="regexBtn1()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="regexResult1"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function regexBtn1() {
+            let regexInput = document.getElementById('regexInput1').value.trim();
+            let result = document.getElementById('regexResult1');
+            let pattern = /\d/;
+            if (regexInput === '') {
+                return result.innerHTML = '請輸入內容！';
+            }
+            if (pattern.test(regexInput)) {
+                result.innerHTML = `您輸入的是${regexInput}，有包含數字！`;
+            } else {
+                result.innerHTML = `您輸入的是${regexInput}，未包含數字！`;
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入內容：<input id="regexInput1" type="text">
+                <button onclick="regexBtn1()">確定</button>
+            </p>
+            <p id="regexResult1"></p>
+            <script>
+                function regexBtn1() {
+                    let regexInput = document.getElementById('regexInput1').value.trim();
+                    let result = document.getElementById('regexResult1');
+                    let pattern = /\d/;
+                    if (regexInput === '') {
+                        return result.innerHTML = '請輸入內容！';
+                    }
+                    if (pattern.test(regexInput)) {
+                        result.innerHTML = `您輸入的是${regexInput}，有包含數字！`;
+                    } else {
+                        result.innerHTML = `您輸入的是${regexInput}，未包含數字！`;
+                    }
+                }
+            </script>
+
+            <h3>判斷是否含有英文字母</h3>
+<pre><code>
+    &lt;p&gt;
+        請輸入內容：&lt;input id="regexInput2" type="text"&gt;
+        &lt;button onclick="regexBtn2()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="regexResult2"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function regexBtn2() {
+            let regexInput = document.getElementById('regexInput2').value.trim();
+            let result = document.getElementById('regexResult2');
+            let pattern = /[a-zA-Z]/;
+            if (regexInput === '') {
+                return result.innerHTML = '請輸入內容！';
+            }
+            if (pattern.test(regexInput)) {
+                result.innerHTML = `您輸入的是${regexInput}，有包含英文字母！`;
+            } else {
+                result.innerHTML = `您輸入的是${regexInput}，未包含英文字母！`;
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入內容：<input id="regexInput2" type="text">
+                <button onclick="regexBtn2()">確定</button>
+            </p>
+            <p id="regexResult2"></p>
+            <script>
+                function regexBtn2() {
+                    let regexInput = document.getElementById('regexInput2').value.trim();
+                    let result = document.getElementById('regexResult2');
+                    let pattern = /[a-zA-Z]/;
+                    if (regexInput === '') {
+                        return result.innerHTML = '請輸入內容！';
+                    }
+                    if (pattern.test(regexInput)) {
+                        result.innerHTML = `您輸入的是${regexInput}，有包含英文字母！`;
+                    } else {
+                        result.innerHTML = `您輸入的是${regexInput}，未包含英文字母！`;
+                    }
+                }
+            </script>
+
+            <h3>檢查是否為4碼數字</h3>
+<pre><code>
+    &lt;p&gt;
+        請輸入數字：&lt;input id="regexInput3" type="text" maxlength="4"&gt;
+        &lt;button onclick="regexBtn3()"&gt;確定&lt;/button&gt;
+    </p>
+    &lt;p id="regexResult3"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function regexBtn3() {
+            let regexInput = document.getElementById('regexInput3').value.trim();
+            let result = document.getElementById('regexResult3');
+            let pattern = /^\d{4}$/;
+            if (regexInput === '') {
+                return result.innerHTML = '請輸入4碼數字！';
+            }
+            if (pattern.test(regexInput)) {
+                result.innerHTML = `您輸入的是${regexInput}，是4碼數字！`;
+            } else {
+                result.innerHTML = `您輸入的是${regexInput}，不是4碼數字！`;
+            }    
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入數字：<input id="regexInput3" type="text" maxlength="4">
+                <button onclick="regexBtn3()">確定</button>
+            </p>
+            <p id="regexResult3"></p>
+            <script>
+                function regexBtn3() {
+                    let regexInput = document.getElementById('regexInput3').value.trim();
+                    let result = document.getElementById('regexResult3');
+                    let pattern = /^\d{4}$/;
+                    if (regexInput === '') {
+                        return result.innerHTML = '請輸入4碼數字！';
+                    }
+                    if (pattern.test(regexInput)) {
+                        result.innerHTML = `您輸入的是${regexInput}，是4碼數字！`;
+                    } else {
+                        result.innerHTML = `您輸入的是${regexInput}，不是4碼數字！`;
+                    }    
+                }
+            </script>
+
+            <h3>檢查手機號碼格式(10碼)</h3>
+<pre><code>
+    &lt;p&gt;
+        請輸入手機號碼：&lt;input id="regexInput4" type="text" maxlength="10" placeholder="例如：0912345678"&gt;
+        &lt;button onclick="regexBtn4()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="regexResult4"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function regexBtn4() {
+            let regexInput = document.getElementById('regexInput4').value.trim();
+            let result = document.getElementById('regexResult4');
+            let pattern = /^09\d{8}$/;
+            if (regexInput === '') {
+                return result.innerHTML = '請輸入手機號碼！';
+            }
+            if (pattern.test(regexInput)) {
+                result.innerHTML = `您輸入的手機號碼是${regexInput}，格式正確！`;
+            } else {
+                result.innerHTML = `您輸入的手機號碼是${regexInput}，格式錯誤！`;
+            }    
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入手機號碼：<input id="regexInput4" type="text" maxlength="10" placeholder="例如：0912345678">
+                <button onclick="regexBtn4()">確定</button>
+            </p>
+            <p id="regexResult4"></p>
+            <script>
+                function regexBtn4() {
+                    let regexInput = document.getElementById('regexInput4').value.trim();
+                    let result = document.getElementById('regexResult4');
+                    let pattern = /^09\d{8}$/;
+                    if (regexInput === '') {
+                        return result.innerHTML = '請輸入手機號碼！';
+                    }
+                    if (pattern.test(regexInput)) {
+                        result.innerHTML = `您輸入的手機號碼是${regexInput}，格式正確！`;
+                    } else {
+                        result.innerHTML = `您輸入的手機號碼是${regexInput}，格式錯誤！`;
+                    }    
+                }
+            </script>
+
+            <h3>E-mail驗證(正規表達式)</h3>
+<pre><code>
+    &lt;p&gt;
+        請輸入E-mail：&lt;input id="regexInput5" type="text" size="30" placeholder="例如：daniel.wang@example.com.tw"&gt;
+        &lt;button onclick="regexBtn5()"&gt;確定&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p id="regexResult5"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function regexBtn5() {
+            let regexInput = document.getElementById('regexInput5').value.trim();
+            let result = document.getElementById('regexResult5');
+            let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (regexInput === '') {
+                result.innerHTML = '請輸入E-mail！';
+            }
+            if (pattern.test(regexInput)) {
+                result.innerHTML = `您輸入的E-mail是：${regexInput}，格式正確！`;
+            } else {
+                result.innerHTML = `您輸入的E-mail是：${regexInput}，格式錯誤！`;
+            }
+        }
+    &lt;/script&gt;
+</code></pre>
+            <p>
+                請輸入E-mail：<input id="regexInput5" type="text" size="30" placeholder="例如：daniel.wang@example.com.tw">
+                <button onclick="regexBtn5()">確定</button>
+            </p>
+            <p id="regexResult5"></p>
+            <script>
+                function regexBtn5() {
+                    let regexInput = document.getElementById('regexInput5').value.trim();
+                    let result = document.getElementById('regexResult5');
+                    let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (regexInput === '') {
+                        result.innerHTML = '請輸入E-mail！';
+                    }
+                    if (pattern.test(regexInput)) {
+                        result.innerHTML = `您輸入的E-mail是：${regexInput}，格式正確！`;
+                    } else {
+                        result.innerHTML = `您輸入的E-mail是：${regexInput}，格式錯誤！`;
+                    }
                 }
             </script>
         </section>

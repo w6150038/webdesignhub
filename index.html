@@ -1,299 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="keywords" content="web, design, html, css, javascript">
-	<meta name="description" content="歡迎光臨Web Design Hub">
-	<meta name="author" content="王群銘">
-	<title>Web Design Hub</title>
-	<link rel="shortcut icon" href="icon檔案"/>
-  <link rel="bookmark" href="icon檔案"/>
-	<link rel="stylesheet" href="reset.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Design Hub</title>
+  <link rel="stylesheet" href="reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        function loadComponent(id, file) {
-            fetch(file)
-                .then(response => response.text())
-                .then(content => {
-                    document.getElementById(id).innerHTML = content;
-                })
-                .catch(error => console.error(`無法載入 ${file}`, error));
-        }
+  <script>
+    function loadComponent(id, file) {
+      fetch(file)
+        .then(response => response.text())
+        .then(content => {
+          document.getElementById(id).innerHTML = content;
+        })
+        .catch(error => console.error(`無法載入 ${file}`, error));
+    }
+  </script>
 
-        loadComponent("header", "header.html");
-        loadComponent("footer", "footer.html");
-    </script>
+  <div id="header"></div>
+  <main class="container py-4">
+    <!-- 學習日誌卡片容器 -->
+    <div class="row row-cols-1 row-cols-md-2 g-4" id="journalContainer"></div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const itemsPerPage = 10; // 每頁顯示 10 筆資料
-        let currentPage = 1; // 當前頁數
-        const timelineItems = document.querySelectorAll(".timeline-item");
-        const totalPages = Math.ceil(timelineItems.length / itemsPerPage);
-        const paginationContainer = document.getElementById("pagination"); // 分頁按鈕容器
+    <!-- 分頁按鈕 -->
+    <nav>
+      <ul class="pagination justify-content-center mt-4" id="pagination"></ul>
+    </nav>
 
-        function showPage(page) {
-          const startIndex = (page - 1) * itemsPerPage;
-          const endIndex = startIndex + itemsPerPage;
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="journalModal" tabindex="-1" aria-labelledby="journalModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="journalModalLabel">詳細內容</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-          // 顯示當前頁的日誌，隱藏其他的
-          timelineItems.forEach((item, index) => {
-            item.style.display = index >= startIndex && index < endIndex ? "block" : "none";
-          });
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadComponent("header", "header.html");
+      loadComponent("footer", "footer.html");
 
-          // 更新頁碼按鈕的高亮效果
-          document.querySelectorAll("#pagination button").forEach((btn, index) => {
-            btn.classList.toggle("active", index + 1 === page);
-          });
-        }
+      const data = [
+        { date: "2025-04-22", title: "🔐初階版密碼即時驗證", text: "輸入密碼時會即時驗證效果。", link: "exercise/03_jsvalidation.html#section_2" },
+        { date: "2025-04-22", title: "👤帳號即時驗證", text: "輸入帳號時會即時驗證效果。", link: "exercise/03_jsvalidation.html#section_1" },
+        { date: "2025-04-22", title: "✔️正規表達式(RegEx)", text: "用正規表達式來驗證表單，裡面有E-mail驗證(進階版)。", link: "exercise/02_jsstringform.html#section_10" },
+        { date: "2025-04-20", title: "🔒用戶登入表單(簡易版)", text: "做一個簡易版的用戶登入表單。", link: "exercise/02_jsstringform.html#section_9" },
+        { date: "2025-04-20", title: "✉️E-mail驗證(簡易版)", text: "使用非正規表達式。", link: "exercise/02_jsstringform.html#section_8" },
+        { date: "2025-04-20", title: "🔑帳號與密碼", text: "輸入帳號與密碼。", link: "exercise/02_jsstringform.html#section_7" },
+        { date: "2025-04-18", title: "📋取出姓與名", text: "用.slice()取出姓與名。", link: "exercise/02_jsstringform.html#section_6" },
+        { date: "2025-04-18", title: "🔐密碼強度檢查器", text: "您設定的密碼強度夠強嗎？", link: "exercise/02_jsstringform.html#section_5" },
+        { date: "2025-04-18", title: "↩️字串反轉(二)", text: "用陣列方式將字串反轉。", link: "exercise/02_jsstringform.html#section_4" },
+        { date: "2025-04-17", title: "↩️字串反轉(一)", text: "用for迴圈將字串反轉。", link: "exercise/02_jsstringform.html#section_3" },
+        { date: "2025-04-17", title: "✏️字串處理(二)", text: "如何使用字串part2。", link: "exercise/02_jsstringform.html#section_2" },
+        { date: "2025-04-16", title: "✏️字串處理(一)", text: "如何使用字串part1。", link: "exercise/02_jsstringform.html#section_1" },
+        { date: "2025-04-16", title: "📅判斷閏年", text: "今年是閏年嗎？", link: "exercise/01_jsbasic.html#section_17" },
+        { date: "2025-04-12", title: "➕➖✖️➗簡易計算機", text: "如何做出簡易計算機？", link: "exercise/01_jsbasic.html#section_16" },
+        { date: "2025-04-12", title: "🏋️‍♂️BMI計算機", text: "如何做出簡易計算機？", link: "exercise/01_jsbasic.html#section_15" },
+        { date: "2025-04-10", title: "🔺判斷三角形的類型（等邊、等腰、不等邊）", text: "等邊？等腰？不等邊？", link: "exercise/01_jsbasic.html#section_14" },
+        { date: "2025-04-10", title: "🔢判斷數字是奇數或偶數", text: "輸入數字判斷是奇數還是偶數。", link: "exercise/01_jsbasic.html#section_13" },
+        { date: "2025-04-10", title: "🔢判斷正數、負數或零", text: "輸入數字判斷這是正數、負數還是零。", link: "exercise/01_jsbasic.html#section_12" },
+        { date: "2025-04-09", title: "🌡攝氏溫度與華氏溫度的轉換", text: "攝氏30℃是華氏幾℉？華氏0℉是攝氏幾℃？", link: "exercise/01_jsbasic.html#section_10" },
+        { date: "2025-04-09", title: "📐計算三角形面積", text: "如何寫出計算三角形面積的程式？", link: "exercise/01_jsbasic.html#section_9" },
+        { date: "2025-04-08", title: "🟢函式：function", text: "定義一個函式square(num)，輸入一個數字，回傳它的平方值。", link: "exercise/01_jsbasic.html#section_8" },
+        { date: "2025-04-06", title: "🔄迴圈(三)：do...while...", text: "用do...while...迴圈計算1到100之間的奇數和。", link: "exercise/01_jsbasic.html#section_7" },
+        { date: "2025-04-05", title: "🔄迴圈(二)：while", text: "用while迴圈計算1到100之間的偶數和。", link: "exercise/01_jsbasic.html#section_6" },
+        { date: "2025-04-04", title: "🔄迴圈(一)：for", text: "用for迴圈計算1到10之間的奇數和。", link: "exercise/01_jsbasic.html#section_5" },
+        { date: "2025-04-03", title: "📌條件判斷(二)：switch", text: "用switch判斷今天是星期幾📆。", link: "exercise/01_jsbasic.html#section_4" },
+        { date: "2025-04-02", title: "📌條件判斷(一)：if...else...", text: "用if判斷年齡是否成年👩‍🦱🧑。", link: "exercise/01_jsbasic.html#section_3" },
+        { date: "2025-04-01", title: "📝變數與常數、基本運算", text: "先了解一下變數、常數以及要如何做出基本的運算。", link: "exercise/01_jsbasic.html#section_1" },
+      ];
 
-      function createPagination() {
-        paginationContainer.innerHTML = ""; // 先清空舊的按鈕
+      const perPage = 6;
+      let currentPage = 1;
+
+      function renderPage(page) {
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        const currentData = data.slice(start, end);
+
+        const container = document.getElementById("journalContainer");
+        container.innerHTML = "";
+
+        currentData.forEach(item => {
+          const col = document.createElement("div");
+          col.className = "col";
+          col.innerHTML = `
+            <div class="card h-100">
+              <div class="card-header">${item.date}</div>
+              <div class="card-body">
+                <h5 class="card-title">${item.title}</h5>
+                <p class="card-text">${item.text}</p>
+                <a href="${item.link}" class="btn btn-primary">查看實作</a>
+              </div>
+            </div>`;
+          container.appendChild(col);
+        });
+      }
+
+      function renderPagination() {
+        const totalPages = Math.ceil(data.length / perPage);
+        const pagination = document.getElementById("pagination");
+        pagination.innerHTML = "";
 
         for (let i = 1; i <= totalPages; i++) {
-          const button = document.createElement("button");
-          button.textContent = i;
-          button.addEventListener("click", () => {
+          const li = document.createElement("li");
+          li.className = `page-item ${i === currentPage ? "active" : ""}`;
+          li.innerHTML = `<button class="page-link">${i}</button>`;
+          li.querySelector("button").addEventListener("click", () => {
             currentPage = i;
-            showPage(currentPage);
+            renderPage(currentPage);
+            renderPagination();
           });
-          paginationContainer.appendChild(button);
+          pagination.appendChild(li);
         }
       }
 
-        // 初始化分頁
-        createPagination();
-        showPage(currentPage);
-      });
-    </script>
-
-    <div id="header"></div>
-    <main>
-      <h2>📖學習日誌</h2>
-      <section class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-20</div>
-          <div class="timeline-content">
-            <h3>🔒用戶登入表單</h3>
-            <p>簡易小表單製作。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_9">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-20</div>
-          <div class="timeline-content">
-            <h3>✉️E-mail驗證(一)</h3>
-            <p>使用非正規表達式。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_8">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-20</div>
-          <div class="timeline-content">
-            <h3>🔑帳號與密碼</h3>
-            <p>輸入帳號與密碼</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_7">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-18</div>
-          <div class="timeline-content">
-            <h3>📋取出姓與名</h3>
-            <p>用.slice()取出姓與名</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_6">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-18</div>
-          <div class="timeline-content">
-            <h3>🔐密碼強度檢查器</h3>
-            <p>您設定的密碼強度夠強嗎？</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_5">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-18</div>
-          <div class="timeline-content">
-            <h3>↩️字串反轉(二)</h3>
-            <p>用陣列方式將字串反轉。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_4">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-17</div>
-          <div class="timeline-content">
-            <h3>↩️字串反轉(一)</h3>
-            <p>用for迴圈將字串反轉。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_3">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-17</div>
-          <div class="timeline-content">
-            <h3>✏️字串處理(二)</h3>
-            <p>如何使用字串part1。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_2">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-16</div>
-          <div class="timeline-content">
-            <h3>✏️字串處理(一)</h3>
-            <p>如何使用字串part2。</p>
-            <a class="a_btn" href="exercise/02_jsstringform.html#section_1">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-16</div>
-          <div class="timeline-content">
-            <h3>📅判斷閏年</h3>
-            <p>今年是閏年嗎？</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_17">查看實作</a>
-          </div>
-        </div>        
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-12</div>
-          <div class="timeline-content">
-            <h3>➕➖✖️➗簡易計算機</h3>
-            <p>如何做出簡易計算機？</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_16">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-11</div>
-          <div class="timeline-content">
-            <h3>🏋️‍♂️BMI計算機</h3>
-            <p>您的體重肥胖嗎？快來測量您的BMI吧！</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_15">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-10</div>
-          <div class="timeline-content">
-            <h3>🔺判斷三角形的類型（等邊、等腰、不等邊）</h3>
-            <p>等邊？等腰？不等邊？</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_14">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-10</div>
-          <div class="timeline-content">
-            <h3>🔢判斷數字是奇數或偶數</h3>
-            <p>輸入數字判斷是奇數還是偶數。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_13">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-10</div>
-          <div class="timeline-content">
-            <h3>🔢判斷正數、負數或零</h3>
-            <p>輸入數字判斷這是正數、負數還是零。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_12">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-09</div>
-          <div class="timeline-content">
-            <h3>🌡攝氏溫度與華氏溫度的轉換</h3>
-            <p>攝氏30℃是華氏幾℉？華氏0℉是攝氏幾℃？</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_10">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-09</div>
-          <div class="timeline-content">
-            <h3>📐計算三角形面積</h3>
-            <p>如何寫出計算三角形面積的程式？</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_9">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-08</div>
-          <div class="timeline-content">
-            <h3>🟢函式：function</h3>
-            <p>定義一個函式square(num)，輸入一個數字，回傳它的平方值。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_8">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-06</div>
-          <div class="timeline-content">
-            <h3>🔄迴圈(三)：do...while...</h3>
-            <p>用do...while...迴圈計算1到100之間的奇數和。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_7">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-05</div>
-          <div class="timeline-content">
-            <h3>🔄迴圈(二)：while</h3>
-            <p>用while迴圈計算1到100之間的偶數和。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_6">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-04</div>
-          <div class="timeline-content">
-            <h3>🔄迴圈(一)：for</h3>
-            <p>用for迴圈計算1到10之間的奇數和。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_5">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-03</div>
-          <div class="timeline-content">
-            <h3>📌條件判斷(二)：switch</h3>
-            <p>用switch判斷今天是星期幾📆。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_4">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-02</div>
-          <div class="timeline-content">
-            <h3>📌條件判斷(一)：if...else...</h3>
-            <p>用if判斷年齡是否成年👩‍🦱🧑。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_3">查看實作</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025-04-01</div>
-          <div class="timeline-content">
-            <h3>📝變數與常數、基本運算</h3>
-            <p>先了解一下變數、常數以及要如何做出基本的運算。</p>
-            <a class="a_btn" href="exercise/01_jsbasic.html#section_1">查看實作</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 分頁按鈕 -->
-      <div id="pagination"></div>
-    </main>
-    <div id="footer"></div>
+      renderPage(currentPage);
+      renderPagination();
+    });
+  </script>
+  <div id="footer"></div>
 </body>
 </html>
