@@ -51,11 +51,11 @@
     &lt;p&gt;
         請輸入一句話(中英文皆可)：&lt;br /&gt;
         &lt;input id="userInput" type="text"&gt;
-        &lt;button onclick="chekkString()"&gt;分析&lt;/button&gt;
+        &lt;button onclick="chekString()"&gt;分析&lt;/button&gt;
         &lt;p id="stringResult"&gt;&lt;/p&gt;
     &lt;/p&gt;
     &lt;script&gt;
-        function chekkString() {
+        function chekString() {
             let str = document.getElementById('userInput').value;
             let result = document.getElementById('stringResult');
             if (str.trim() === '') {
@@ -78,11 +78,11 @@
             <p>
                 請輸入一句話(中英文皆可)：<br />
                 <input id="userInput" type="text">
-                <button onclick="chekkString()">分析</button>
+                <button onclick="chekString()">分析</button>
                 <p id="stringResult"></p>
             </p>
             <script>
-                function chekkString() {
+                function chekString() {
                     let str = document.getElementById('userInput').value;
                     let result = document.getElementById('stringResult');
                     if (str.trim() === '') {
@@ -531,7 +531,7 @@
         <section id="section_9">
             <h2>簡易用戶登入表單</h2>
 <pre><code>
-     &lt;form method="post" action="" onsubmit="return false;"&gt;
+    &lt;form method="post" action="" onsubmit="return false;"&gt;
         &lt;fieldset&gt;
             &lt;legend&gt;用戶登入&lt;/legend&gt;
             帳號：&lt;input id="account1" type="text"&gt;&lt;br /&gt;
