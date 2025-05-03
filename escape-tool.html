@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML 語法轉義工具 - 升級版</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      font-family: "Segoe UI", sans-serif;
+      padding: 2rem;
+    }
+    h2 {
+      color: #00ffe0;
+    }
+    textarea, pre {
+      width: 100%;
+      min-height: 180px;
+      background-color: #2d2d2d;
+      color: #00ff88;
+      border: 1px solid #444;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      white-space: pre; /* 保留縮排 */
+      overflow-x: auto;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #00c3a0;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+    button:hover {
+      background-color: #00e6b2;
+    }
+    .btn-group {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔧 HTML 原始碼轉義工具（升級版）</h2>
+
+  <label for="input">貼上你的 HTML 原始碼：</label>
+  <textarea id="input" placeholder="請貼上 HTML 程式碼..."></textarea>
+
+  <div class="btn-group">
+    <button onclick="convertHTML()">➡️ 轉成可顯示語法</button>
+    <button onclick="copyToClipboard()">📋 複製結果</button>
+  </div>
+
+  <label for="output">轉換結果（可貼到 &lt;code&gt; 裡）：</label>
+  <pre id="output" readonly></pre>
+
+  <script>
+    function convertHTML() {
+      const input = document.getElementById('input').value;
+      const escaped = input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      document.getElementById('output').textContent = escaped;
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("已複製轉換結果到剪貼簿！");
+      }).catch(err => {
+        alert("複製失敗：" + err);
+      });
+    }
+  </script>
+
+</body>
+</html>
