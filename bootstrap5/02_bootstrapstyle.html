@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Class用法</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+  <link href="../bootstrapcolor.css" rel="stylesheet">
+  <style>
+    pre {
+        background: linear-gradient(to bottom, #212529, #343a40); /* 類似 bg-dark + bg-gradient */
+        color: #ffc107; /* Bootstrap 的 text-warning 對應顏色 */
+        font-weight: bold;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        font-family: monospace;
+        white-space: pre-wrap; /* 保持預設格式換行 */
+    }
+  </style>
+</head>
+
+<body>
+<div id="header"></div>
+
+<main>
+  <div class="container table-responsive">
+    <div class="row">
+        <h1 class="text-warning text-center p-2">字體大小</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <caption class="caption-top text-white fs-4 fw-bold text-center">fs-中的數字越小，字體越大(與 h 標籤相反)</caption>
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                                <th class="text-center">實際大小</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>fs-1</td>
+                                <td>最大字體</td>
+                                <td>2.5rem</td>
+                            </tr>
+                            <tr>
+                                <td>fs-2</td>
+                                <td>很大</td>
+                                <td>2rem</td>
+                            </tr>
+                            <tr>
+                                <td>fs-3</td>
+                                <td>大</td>
+                                <td>1.75rem</td>
+                            </tr>
+                            <tr>
+                                <td>fs-4</td>
+                                <td>中大(h4大小)</td>
+                                <td>1.5rem</td>
+                            </tr>
+                            <tr>
+                                <td>fs-5</td>
+                                <td>普通大小</td>
+                                <td>1.25rem</td>
+                            </tr>
+                            <tr>
+                                <td>fs-6</td>
+                                <td>最小</td>
+                                <td>1rem</td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">字體顏色</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <p>
+                    搭配深/淺背景組合：<br />
+                    <ul>
+                        <li>深背景：搭配text-white或text-light</li>
+                        <li>淺背景：搭配text-dark或text-muted</li>
+                    </ul>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">顏色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>text-primary</td>
+                                <td>藍色(主色)</td>
+                            </tr>
+                            <tr>
+                                <td>text-secondary</td>
+                                <td>灰色(次色)</td>
+                            </tr>
+                            <tr>
+                                <td>text-success</td>
+                                <td>綠色</td>
+                            </tr>
+                            <tr>
+                                <td>text-danger</td>
+                                <td>紅色</td>
+                            </tr>
+                            <tr>
+                                <td>text-warning</td>
+                                <td>黃色</td>
+                            </tr>
+                            <tr>
+                                <td>text-info</td>
+                                <td>淺藍色</td>
+                            </tr>
+                            <tr>
+                                <td>text-light</td>
+                                <td>白色(適用於背景深色)</td>
+                            </tr>
+                            <tr>
+                                <td>text-dark</td>
+                                <td>黑色</td>
+                            </tr>
+                            <tr>
+                                <td>text-muted</td>
+                                <td>淺灰色</td>
+                            </tr>
+                            <tr>
+                                <td>text-white</td>
+                                <td>白色</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">字體粗細</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>fw-bold</td>
+                                <td>粗體</td>
+                            </tr>
+                            <tr>
+                                <td>fw-semibold</td>
+                                <td>半粗體</td>
+                            </tr>
+                            <tr>
+                                <td>fw-normal</td>
+                                <td>正常字體</td>
+                            </tr>
+                            <tr>
+                                <td>fw-light</td>
+                                <td>輕字體</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">字體斜體</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>fst-italic</td>
+                                <td>斜體</td>
+                            </tr>
+                            <tr>
+                                <td>fst-normal</td>
+                                <td>正常字體</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">對齊方式</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>text-start</td>
+                                <td>靠左對齊</td>
+                            </tr>
+                            <tr>
+                                <td>text-center</td>
+                                <td>置中對置</td>
+                            </tr>
+                            <tr>
+                                <td>text-end</td>
+                                <td>靠右對齊</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">背景顏色</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <ul>
+                    <li>可搭配漸層效果：bg-gradient</li>
+                </ul>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">顏色</th>
+                                <th class="text-center">搭配字體顏色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>bg-primary</td>
+                                <td>藍色</td>
+                                <td>text-white</td>
+                            </tr>
+                            <tr>
+                                <td>bg-secondary</td>
+                                <td>灰色</td>
+                                <td>text-white</td>
+                            </tr>
+                            <tr>
+                                <td>bg-success</td>
+                                <td>綠色</td>
+                                <td>text-white</td>
+                            </tr>
+                            <tr>
+                                <td>bg-danger</td>
+                                <td>紅色</td>
+                                <td>text-white</td>
+                            </tr>
+                            <tr>
+                                <td>bg-warning</td>
+                                <td>黃色</td>
+                                <td>text-dark</td>
+                            </tr>
+                            <tr>
+                                <td>bg-info</td>
+                                <td>淺藍色</td>
+                                <td>text-dark</td>
+                            </tr>
+                            <tr>
+                                <td>bg-light</td>
+                                <td>淺灰白色</td>
+                                <td>text-dark</td>
+                            </tr>
+                            <tr>
+                                <td>bg-dark</td>
+                                <td>黑色</td>
+                                <td>text-white</td>
+                            </tr>
+                            <tr>
+                                <td>bg-white</td>
+                                <td>白色</td>
+                                <td>text-dark</td>
+                            </tr>
+                            <tr>
+                                <td>bg-transparent</td>
+                                <td>透明色</td>
+                                <td>根據底色決定字色</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">邊框</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>border</td>
+                                <td>四邊都加上邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-top</td>
+                                <td>只有上邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-bottom</td>
+                                <td>只有下邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-start</td>
+                                <td>只有左邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-end</td>
+                                <td>只有右邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-0</td>
+                                <td>無邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-top-0</td>
+                                <td>無上邊框</td>
+                            </tr>
+                            <tr>
+                                <td>border-2 ~ border-5</td>
+                                <td>邊框粗細 (數字越大越粗)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">邊框顏色</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">顏色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>border-primary</td>
+                                <td>藍色</td>
+                            </tr>
+                            <tr>
+                                <td>border-secondary</td>
+                                <td>灰色</td>
+                            </tr>
+                            <tr>
+                                <td>border-success</td>
+                                <td>綠色</td>
+                            </tr>
+                            <tr>
+                                <td>border-danger</td>
+                                <td>紅色</td>
+                            </tr>
+                            <tr>
+                                <td>border-warning</td>
+                                <td>黃色</td>
+                            </tr>
+                            <tr>
+                                <td>border-warning</td>
+                                <td>淺藍色</td>
+                            </tr>
+                            <tr>
+                                <td>border-dark</td>
+                                <td>黑色</td>
+                            </tr>
+                            <tr>
+                                <td>border-light</td>
+                                <td>白色</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-warning text-center p-2">邊框圓角</h1>
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="p-2 text-white">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">類型</th>
+                                <th class="text-center">說明</th>
+                                <th class="text-center">備註</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>rounded</td>
+                                <td>基本圓角</td>
+                                <td>所有角變圓</td>
+                            </tr>
+                            <tr>
+                                <td>rounded-top, rounded-end, rounded-bottom, rounded-start</td>
+                                <td>個別邊圓角</td>
+                                <td>指定邊的角變圓</td>
+                            </tr>
+                            <tr>
+                                <td>rounded-circle</td>
+                                <td>圓形</td>
+                                <td>完整圓形(需搭配寬高相等)</td>
+                            </tr>
+                            <tr>
+                                <td>rounded-pill</td>
+                                <td>Pill膠囊型</td>
+                                <td>超圓角(像膠囊)</td>
+                            </tr>
+                            <tr>
+                                <td>rounded-0</td>
+                                <td>無圓角</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 bg-danger text-white text-center rounded p-3">紅色圓角框</div>
+        <div class="col-12 col-md-6 col-lg-4 bg-success text-white text-center rounded-pill py-3">膠囊按鈕</div>
+        <div class="col-12 col-md-6 col-lg-4 bg-warning text-dark rounded-top p-3">上方圓角</div>
+    </div>
+  </div>
+</main>
+
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>
