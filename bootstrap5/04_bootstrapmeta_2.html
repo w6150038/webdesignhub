@@ -80,6 +80,141 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <h3 class="text-warning text-start p-2">3. RWD響應式欄位</h3>
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="p-2 text-white">
+                    <h3 class="text-primary">col-數字</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">類型</th>
+                                    <th class="text-center">畫面寬度 (以上)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>col-sm-數字</td>
+                                    <td>>= 576px (小螢幕)</td>
+                                </tr>
+                                <tr>
+                                    <td>col-md-數字</td>
+                                    <td>>= 768px (中螢幕)</td>
+                                </tr>
+                                <tr>
+                                    <td>col-lg-數字</td>
+                                    <td>>= 992px (大螢幕)</td>
+                                </tr>
+                                <tr>
+                                    <td>col-xl-數字</td>
+                                    <td>>= 1200px</td>
+                                </tr>
+                                <tr>
+                                    <td>col-sxl-數字</td>
+                                    <td>>= 1400px</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-12">
+<pre><code>
+    &lt;div class="row"&gt;
+        &lt;div class="col-12 col-md-6 col-lg-3 bg-primary text-white text-center p-3"&gt;A&lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-3 bg-success text-white text-center p-3"&gt;B&lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-3 bg-warning text-white text-center p-3"&gt;C&lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-3 bg-danger text-white text-center p-3"&gt;D&lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 bg-primary text-white text-center p-3">A</div>
+                    <div class="col-12 col-md-6 col-lg-3 bg-success text-white text-center p-3">B</div>
+                    <div class="col-12 col-md-6 col-lg-3 bg-warning text-white text-center p-3">C</div>
+                    <div class="col-12 col-md-6 col-lg-3 bg-danger text-white text-center p-3">D</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="text-warning text-start p-2">4. 欄位偏移 (空格)</h3>
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="p-2 text-white">
+                    <h3 class="text-primary">offset-數字</h3>
+                    <p>用來空出左邊的欄位，類似插入空白欄位。</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-12">
+<pre><code>
+    &lt;div class="row"&gt;
+        &lt;div class="col-4 offset-2 bg-primary text-white text-center p-3"&gt;左邊空出2欄&lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+                <div class="row">
+                    <div class="col-4 offset-2 bg-primary text-white text-center p-3">左邊空出2欄</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="text-warning text-start p-2">5. 改變欄位順序</h3>
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="p-2 text-white">
+                    <h3 class="text-primary">order-數字</h3>
+                    <p>不改變HTML語法，用order改變順序。</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-12">
+<pre><code>
+    &lt;div class="row text-white text-center"&gt;
+        &lt;div class="col-12 col-md-6 col-lg-6 order-2 order-md-1 order-lg-2 bg-primary p-3 border rounded"&gt;
+            &lt;h3&gt;A&lt;/h3&gt;
+            &lt;p&gt;小螢幕：下&lt;br /&gt;中螢幕：左&lt;br /&gt;大螢幕：右&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-6 order-1 order-md-2 order-lg-1 bg-success p-3 border rounded"&gt;
+            &lt;h3&gt;B&lt;/h3&gt;
+            &lt;p&gt;小螢幕：上&lt;br /&gt;中螢幕：右&lt;br /&gt;大螢幕：左&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+            <div class="row text-white text-center">
+                <div class="col-12 col-md-6 col-lg-6 order-2 order-md-1 order-lg-2 bg-primary p-3 border rounded">
+                    <h3>A</h3>
+                    <p>小螢幕：下<br />中螢幕：左<br />大螢幕：右</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 order-1 order-md-2 order-lg-1 bg-success p-3 border rounded">
+                    <h3>B</h3>
+                    <p>小螢幕：上<br />中螢幕：右<br />大螢幕：左</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="text-warning text-start p-2">6. 欄高一致性</h3>
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="p-2 text-white">
+                    <h3 class="text-primary">align-items-stretch</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-12">
+<pre><code>
+    &lt;div class="row align-items-stretch"&gt;
+        &lt;div class="col-12 col-md-6 col-lg-6 bg-primary text-white text-center p-3"&gt;
+            &lt;p&gt;靜夜思-李白&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-6 bg-orange text-white text-center p-3"&gt;
+            &lt;p&gt;床前明月光，&lt;br /&gt;疑是地上霜，&lt;br /&gt;舉頭望明月，&lt;br /&gt;低頭思故鄉。&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+                <div class="row align-items-stretch">
+                    <div class="col-12 col-md-6 col-lg-6 bg-primary text-white text-center p-3">
+                        <p>靜夜思-李白</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 bg-orange text-white text-center p-3">
+                        <p>床前明月光，<br />疑是地上霜，<br />舉頭望明月，<br />低頭思故鄉。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
