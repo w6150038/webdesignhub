@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap排版</title>
+  <title>Bootstrap 排版</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
   <link href="../bootstrapcolor.css" rel="stylesheet">
+  <style>
+    pre {
+        background: linear-gradient(to bottom, #212529, #343a40); /* 類似 bg-dark + bg-gradient */
+        color: #ffc107; /* Bootstrap 的 text-warning 對應顏色 */
+        font-weight: bold;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        font-family: monospace;
+        white-space: pre-wrap; /* 保持預設格式換行 */
+    }
+  </style>
 </head>
 
 <body>
@@ -76,6 +87,148 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-12">
+        <div class="p-3 text-white">
+          <h2 class="text-primary">Grid System</h2>
+          <ul>
+            <li>Bootstrap的網格系統(Grid System)使用Flexbox建構，使用容器(Container)、行(Rows)和欄(Columns)的組合進行排版，並隨著螢幕可見區域(Viewport)自動調整。</li>
+            <li>Grid System外層是容器(Container)，容器內使用row樣式定義行，每一行總共有12欄，col樣式是指定跨欄合併的欄數。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container p-3">
+    <h2 class="text-primary">部落格樣式</h2>
+    <div class="row" style="height: 100px">
+      <div class="col-2 bg-info">左欄 col-2</div>
+      <div class="col bg-light text-dark">內容區 col</div>
+      <div class="col-2 bg-info">右欄 col-2</div>
+    </div>
+  </div>
+  <div class="container p-3">
+    <h2 class="text-primary">欄的斷點樣式</h2>
+    <p class="text-white mb-2">可按f12，切換裝置工具列，就能以手機模式預覽。</p>
+    <div class="row">
+      <div class="col-lg bg-danger text-white">
+        col-lg
+      </div>
+      <div class="col-lg bg-warning text-dark">
+        col-lg
+      </div>
+      <div class="col-lg bg-success text-white">
+        col-lg
+      </div>
+    </div>
+  </div>
+  <div class="container p-3">
+    <h2 class="text-primary">欄寬隨著內容長度改變</h2>
+    <p class="text-white mb-2">col-{breakpoint}-auto</p>
+    <div class="row justify-content-center bg-dark">
+      <div class="col-lg-2 border border-3 border-primary">
+        左欄<br />
+        col-lg-2
+      </div>
+      <div class="col-lg-auto bg-warning text-dark border border-3 border-danger">
+        空山不見人<br />
+        col-lg-auto
+      </div>
+      <div class="col-lg-2 border border-3 border-success">
+        右欄<br />
+        col-lg-2
+      </div>
+    </div>
+    <div class="row bg-dark">
+      <div class="col border border-3 border-primary">
+        左欄<br />
+        col
+      </div>
+      <div class="col-lg-auto bg-warning text-dark border border-3 border-danger">
+        空山不見人，但見人語響。返景入深林，復照青苔上。<br />
+        col-lg-auto
+      </div>
+      <div class="col-lg-2 border border-3 border-success">
+        右欄<br />
+        col-lg-2
+      </div>
+    </div>
+  </div>
+  <div class="container p-3">
+    <h2 class="text-primary">CSS-Media Queries (@media)</h2>
+    <ul>
+      <li>
+        語法：<br />
+        @media "媒體類型" (媒體特徵) {<br />
+        &emsp;CSS樣式<br />
+        }
+      </li>
+      <li>媒體類型是用來指定適用的類型，當省略媒體類型時預設會使用all。</li>
+    </ul>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-12">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th class="text-center">媒體類型</th>
+                <th class="text-center">說明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>all</td>
+                <td>所有類型</td>
+              </tr>
+              <tr>
+                <td>print</td>
+                <td>印表機列印</td>
+              </tr>
+              <tr>
+                <td>screen</td>
+                <td>電腦螢幕</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="text-center text-warning">範例</h2>
+      <div class="col-12 col-md-6 col-lg-12">
+        <pre><code>
+          //列印時套用的CSS樣式
+          @media print {
+            p {
+              font-size: 10pt;
+            }
+          }
+        </code></pre>
+        <pre><code>
+          //電腦螢幕套用的CSS樣式
+          @media screen {
+            p {
+              font-size: 13px;
+            }
+          }
+        </code></pre>
+        <pre><code>
+          //列印、電腦螢幕套用的CSS樣式
+          @media screen, print {
+            p {
+              color: green;
+            }
+          }
+        </code></pre>
+      </div>
+      <div class="col-12 col-md-6 col-lg-12">
+        <ul>
+          <li>媒體特徵是指符合的條件，必須使用括號()包起來，特徵只要有範圍就可以加上前綴 min-* 或 max-* 查詢最小值或最大值。</li>
+          <li>min-width或min-height是最小值，是指螢幕寬度或高度必須大於此值才符合條件。例如min-width: 576px，表示大於或等於576px都符合。</li>
+          <li>max-width或max-height是最大值，是指螢幕寬度或高度必須小於此值才符合條件。例如max-width: 600px，表示小於或等於600px都符合。</li>
+        </ul>
       </div>
     </div>
   </div>
