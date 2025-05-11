@@ -1,5 +1,5 @@
 body {
-    font-family: monospace, sans-serif;
+    font-family: '微軟正黑體', monospace, sans-serif;
     margin: 20px;
     background-color: #f4f4f4;
 }
@@ -12,19 +12,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-area {
-    display: flex;
-    margin-bottom: 20px;
-    padding: 5px;
-    border-radius: 6px;
-    background-color: transparent;
 }
 
 #taskInput {

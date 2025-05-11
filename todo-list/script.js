@@ -26,7 +26,7 @@ if (storedTasks) {
             } else {
                 taskSpan.classList.remove('text-decoration-line-through', 'text-muted');
             }
-            localStorage.setItem('tasks', taskList.innerHTML); // 儲存更新後的列表
+            localStorage.setItem('tasks', taskList.innerHTML);
         });
     });
 }
