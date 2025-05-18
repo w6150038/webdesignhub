@@ -29,7 +29,7 @@
     <div class="row">
         <h1 class="text-warning text-center p-2">按鈕</h1>
         <pre><code>
-            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 gap-2 d-flex flex-wrap"&gt;
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 d-flex flex-wrap"&gt;
                 &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
                 &lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
                 &lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
@@ -59,6 +59,28 @@
     </div>
     <div class="row my-4">
         <h1 class="text-warning text-center">Outline 按鈕大小與 Hover 效果</h1>
+        <pre><code>
+            &lt;h3 class="text-white"&gt;大尺寸 btn-lg&lt;/h3&gt;
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap"&gt;
+                &lt;button class="btn btn-outline-primary btn-lg"&gt;藍色大按鈕&lt;/button&gt;
+                &lt;button class="btn btn-outline-success btn-lg"&gt;綠色大按鈕&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;h3 class="text-white"&gt;中尺寸 (預設按鈕) btn&lt;/h3&gt;
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap"&gt;
+                &lt;button class="btn btn-outline-primary"&gt;藍色按鈕&lt;/button&gt;
+                &lt;button class="btn btn-outline-success"&gt;綠色按鈕&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;h3 class="text-white"&gt;小尺寸 btn-sm&lt;/h3&gt;
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap"&gt;
+                &lt;button class="btn btn-outline-primary btn-sm"&gt;藍色按鈕&lt;/button&gt;
+                &lt;button class="btn btn-outline-success btn-sm"&gt;綠色按鈕&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;h3 class="text-white"&gt;膠囊按鈕 rounded-pill&lt;/h3&gt;
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap"&gt;
+                &lt;button class="btn btn-outline-primary rounded-pill"&gt;藍色按鈕&lt;/button&gt;
+                &lt;button class="btn btn-outline-success rounded-pill"&gt;綠色按鈕&lt;/button&gt;
+            &lt;/div&gt;
+        </code></pre>
         <h3 class="text-white">大尺寸 btn-lg</h3>
         <div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap">
             <button class="btn btn-outline-primary btn-lg">藍色大按鈕</button>
@@ -86,19 +108,93 @@
             在&lt;head&gt;裡加入Bootstrap的CDN：<br />
             &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"&gt;
         </p>
+        <pre><code>
+            &lt;div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap"&gt;
+                &lt;button class="btn btn-outline-primary"&gt;
+                    &lt;i class="bi bi-house-door"&gt;&lt;/i&gt;首頁
+                &lt;/button&gt;
+                &lt;button class="btn btn-outline-success"&gt;
+                    &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt;確認
+                &lt;/button&gt;
+                &lt;button class="btn btn-outline-danger"&gt;
+                    &lt;i class="bi bi-trash"&gt;&lt;/i&gt;刪除
+                &lt;/button&gt;
+                &lt;button class="btn btn-outline-light"&gt;
+                    &lt;i class="bi bi-apple"&gt;&lt;/i&gt;蘋果
+                &lt;/button&gt;
+            &lt;/div&gt;
+        </code></pre>
         <div class="col-12 col-md-6 col-lg-12 gap-2 mb-3 d-flex flex-wrap">
             <button class="btn btn-outline-primary">
-                <span class="bi bi-house-door">首頁</span>
+                <i class="bi bi-house-door"></i>首頁
             </button>
             <button class="btn btn-outline-success">
-                <span class="bi bi-check-circle">確認</span>
+                <i class="bi bi-check-circle"></i>確認
             </button>
             <button class="btn btn-outline-danger">
-                <span class="bi bi-trash">刪除</span>
+                <i class="bi bi-trash"></i>刪除
             </button>
             <button class="btn btn-outline-light">
-                <span class="bi bi-apple">蘋果</span>
+                <i class="bi bi-apple"></i>蘋果
             </button>
+        </div>
+    </div>
+    <div class="row my-4">
+        <h1 class="text-warning text-center p-2">按鈕群組</h1>
+        <ul class="text-white">
+            <li>btn-group：按鈕外層容器，把多個按鈕排成一組。</li>
+            <li>btn-group-vertical：垂直群組按鈕。</li>
+            <li>role="group"和aria-label="example"：無障礙輔助屬性。</li>
+            <li>button加上type="button"：可防止表單被送出。</li>
+        </ul>
+        <h2 class="text-warning text-center">水平按鈕群組</h2>
+        <pre><code>
+            &lt;div class="col-12 col-md-6 col-lg-12 btn-group mb-3" role="group" aria-label="水平按鈕群組"&gt;
+                &lt;button type="button" class="btn btn-primary"&gt;按鈕1&lt;/button&gt;
+                &lt;button type="button" class="btn btn-primary"&gt;按鈕2&lt;/button&gt;
+                &lt;button type="button" class="btn btn-primary"&gt;按鈕3&lt;/button&gt;
+            &lt;/div&gt;
+        </code></pre>
+        <div class="col-12 col-md-6 col-lg-12 btn-group mb-3" role="group" aria-label="水平按鈕群組">
+            <button type="button" class="btn btn-primary">按鈕1</button>
+            <button type="button" class="btn btn-primary">按鈕2</button>
+            <button type="button" class="btn btn-primary">按鈕3</button>
+        </div>
+        <h2 class="text-warning text-center">垂直按鈕群組</h2>
+        <pre><code>
+            &lt;div class="col-12 col-md-6 col-lg-12 btn-group-vertical mb-3" role="group" aria-label="垂直按鈕群組"&gt;
+                &lt;button type="button" class="btn btn-outline-success"&gt;按鈕1&lt;/button&gt;
+                &lt;button type="button" class="btn btn-outline-success"&gt;按鈕2&lt;/button&gt;
+                &lt;button type="button" class="btn btn-outline-success"&gt;按鈕3&lt;/button&gt;
+            &lt;/div&gt;
+        </code></pre>
+        <div class="col-12 col-md-6 col-lg-12 btn-group-vertical mb-3" role="group" aria-label="垂直按鈕群組">
+            <button type="button" class="btn btn-outline-success">按鈕1</button>
+            <button type="button" class="btn btn-outline-success">按鈕2</button>
+            <button type="button" class="btn btn-outline-success">按鈕3</button>
+        </div>
+        <h2 class="text-warning text-center">垂直按鈕群組 + Icon 圖示</h2>
+        <pre><code>
+            &lt;div class="col-12 col-md-6 col-lg-12 btn-group-vertical mb-3" role="group" aria-label="垂直icon圖示按鈕群組"&gt;
+                &lt;button type="button" class="btn btn-outline-primary"&gt;
+                    &lt;i class="bi bi-house-door"&gt;&lt;/i&gt;首頁
+                &lt;/button&gt;
+                &lt;button type="button" class="btn btn-outline-success"&gt;
+                    &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt;確認
+                &lt;/button&gt;
+                &lt;button type="button" class="btn btn-outline-danger"&gt;
+                    &lt;i class="bi bi-trash"&gt;&lt;/i&gt;刪除
+            &lt;/div&gt;
+        </code></pre>
+        <div class="col-12 col-md-6 col-lg-12 btn-group-vertical mb-3" role="group" aria-label="垂直icon圖示按鈕群組">
+            <button type="button" class="btn btn-outline-primary">
+                <i class="bi bi-house-door"></i>首頁
+            </button>
+            <button type="button" class="btn btn-outline-success">
+                <i class="bi bi-check-circle"></i>確認
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i>刪除
         </div>
     </div>
   </div>
