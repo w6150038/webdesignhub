@@ -23,9 +23,35 @@
                 <div class="col-12 col-md-6 col-lg-12">
                     <p>Toast 是一種短暫顯示的提示框，常用來顯示儲存成功、訊息送出等通知，通常會自動消失，也可以手動關閉。</p>
                 </div>
+<pre><code>
+    &lt;div class="col-12 col-md-6 col-lg-12"&gt;
+        &lt;button type="button" class="btn btn-primary" id="showToast"&gt;儲存&lt;/button&gt;
+        &lt;div class="toast-container position-fixed bottom-0 center-bottom p-3"&gt;
+            &lt;div id="myToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true"&gt;
+                &lt;div class="d-flex"&gt;
+                    &lt;div class="toast-body"&gt;
+                        資料儲存成功！
+                    &lt;/div&gt;
+                    &lt;button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        const toastTrigger = document.getElementById('showToast');
+        const myToast = document.getElementById('myToast');
+
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', function() {
+                const toast = new bootstrap.Toast(myToast);
+                toast.show();
+            });
+        }
+    &lt;/script&gt;
+</code></pre>
                 <div class="col-12 col-md-6 col-lg-12">
                     <button type="button" class="btn btn-primary" id="showToast">儲存</button>
-                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div class="toast-container position-fixed bottom-0 center-bottom p-3">
                         <div id="myToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="d-flex">
                                 <div class="toast-body">

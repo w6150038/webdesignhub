@@ -6,10 +6,11 @@
   <title>Bootstrap Components 進階元件</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
   <link href="../bootstrapcolor.css" rel="stylesheet">
   <style>
-    /* 套用 Bootstrap 的 primary 顏色到未展開的按鈕 */
+    /* 套用 Bootstrap 的 success 顏色到未展開的按鈕 */
     .accordion-button {
         background-color: var(--bs-success);
         color: white;
@@ -22,7 +23,7 @@
         box-shadow: none;
     }
 
-    /* 移除 hover 時的變色效果 */
+    /* hover 的變色效果 */
     .accordion-button:hover {
         background-color: var(--bs-primary);
         color: white;
@@ -48,6 +49,153 @@
         object-fit: cover;
     }
     /* Carousel 縮圖預覽大小結束*/
+
+    /* 適用於全站所有 Popover */
+        /* Popover 標題樣式開始 (也就是 title="Popover 標題") */
+        .popover-header {
+            color: red;
+            background-color: yellow;
+            text-align: center;
+        }
+        /* Popover 標題樣式結束 */
+
+        /* Popover 內容樣式開始 (也就是 data-bs-content="Popover 顯示的內容") */
+        .popover-body {
+            color: white;
+            background-color: blue;
+        }
+        /* Popover 內容樣式結束 */
+    
+    /* 適用於各別獨立的 Popover */
+        /* Popover 標題樣式開始 */
+        .popover-style .popover-header {
+            background: lightseagreen;
+            color: white;
+            font-weight: bold;
+        }
+        /* Popover 標題樣式結束 */
+        /* Popover 內容樣式開始 */
+        .popover-style .popover-body {
+            background: lightblue;
+            color: red;
+        }
+        /* Popover 內容樣式結束 */
+
+        /* Popover 圖片與網址標題樣式開始 */
+        .custom-html-popover .popover-header {
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+        }
+        /* Popover 圖片與網址標題樣式結束 */
+
+        /* Popover 圖片與網址內容樣式開始 */
+        .custom-html-popover .popover-body {
+            background-color: #eee;
+            color: black;
+            font-size: 0.95rem;
+        }
+        /* Popover 圖片與網址內容樣式結束 */
+
+        /* Popover 表單標題樣式開始 */
+        .popover-form .popover-header {
+            background-color: lightseagreen;
+            color: white;
+            font-weight: bold;
+        }
+        /* Popover 表單標題樣式結束 */
+
+        /* Popover 表單內容樣式開始 */
+        .popover-form .popover-body {
+            min-width: 200px;
+            background-color: #eee;
+            color: black;
+            font-size: 0.95rem;
+        }
+        /* Popover 表單內容樣式結束 */
+
+    /* Tab 的 Accordion 樣式開始 */
+        /* 套用 Bootstrap 的 danger 顏色到未展開的按鈕 */
+        .tab-new-header {
+            background-color: var(--bs-danger);
+            color: white;
+        }
+
+        /* 讓點擊後仍保留白字 */
+        .tab-new-header:not(.collapsed) {
+            background-color: var(--bs-danger);
+            color: white;
+            box-shadow: none;
+        }
+
+        /* hover 的變色效果 */
+        .tab-new-header:hover {
+            background-color: rgb(239, 72, 72);
+            color: white;
+        }
+
+        /* 打開 Accordion 後的背景顏色 */
+        .tab-new-body {
+            background-color: var(--bs-secondary);
+            color: white;
+        }
+    /* Tab 的 Accordion 樣式結束 */
+
+    /* Tab 捲動條樣式開始 */
+        .nav-tabs-wrapper {
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+        }
+    /* Tab 捲動條樣銙結束*/
+
+    /* Tab 報名表重新填寫按鈕樣式開始 */
+        .btn-outline-info:hover {
+            color: white;
+        }
+    /* Tab 報名表重新填寫按鈕樣式結束 */
+
+    /* Offcanvas 樣式開始 */
+        .offcanvas-style-left {
+            width: 300px;
+            background-color: #cce5ff;
+            color: #333;
+            border-top-right-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .offcanvas-style-right {
+            width: 300px;
+            background-color: #cce5ff;
+            color: #333;
+            border-top-left-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .offcanvas-style-top {
+            height: 300px;
+            background-color: #cce5ff;
+            color: #333;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .offcanvas-style-bottom {
+            height: 300px;
+            background-color: #cce5ff;
+            color: #333;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+    /* Offcanvas 樣式結束 */
+
+    /* Offcanvas 會員登入成功進度條樣式開始 */
+        .timer-progress-bar {
+            background-color: #4CAF50 !important;
+            height: 6px !important;
+        }
+    /* Offcanvas 會員登入成功進度條樣式結束 */
   </style>
 </head>
 
@@ -197,14 +345,14 @@
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion" id="accordionExample1">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headerOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     問題 1：電玩的影片被挪用來說是烏俄戰爭的戰事，這種假訊息的手法叫做什麼？
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="headerOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="headerOne" data-bs-parent="#accordionExample1">
                                 <div class="accordion-body">
                                     答案：移花接木。
                                 </div>
@@ -216,7 +364,7 @@
                                     問題 2：手機收到一段傳言，會讓自己感覺到很生氣，應該怎麼做？
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headerTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headerTwo" data-bs-parent="#accordionExample1">
                                 <div class="accordion-body">
                                     答案：先查證，再轉傳。
                                 </div>
@@ -228,7 +376,7 @@
                                     問題 3：檢視AI生成照片的時候，什麼地方容易有缺陷，可以注意哪裡？
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headerThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headerThree" data-bs-parent="#accordionExample1">
                                 <div class="accordion-body">
                                     解答 3：光影和背景。
                                 </div>
@@ -302,7 +450,7 @@
                 <div class="col">
                     <h3 class="text-primary text-center mb-3">基本輪播</h3>
 <pre><code>
-    &lt;div id="carouselExample1" class="carousel slide carousel-fade mb-3" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover"&gt;
+    &lt;div id="carouselExample1" class="carousel slide carousel-fade mb-3" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover"&gt;
         &lt;div class="carousel-inner"&gt;
             &lt;div class="carousel-item active"&gt;
                 &lt;img src="https://picsum.photos/800/300?random=1" class="d-block w-100" alt="圖片1"&gt;
@@ -322,7 +470,7 @@
         &lt;/button&gt;
     &lt;/div&gt;
 </code></pre>
-                    <div id="carouselExample1" class="carousel slide carousel-fade mb-3" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+                    <div id="carouselExample1" class="carousel slide carousel-fade mb-3" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="https://picsum.photos/800/300?random=1" class="d-block w-100" alt="圖片1">
@@ -345,7 +493,7 @@
                 <div class="col">
                     <h3 class="text-primary text-center mb-3">加入指示點與圖片說明</h3>
 <pre><code>
-    &lt;div id="carouselExample2" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000"&gt;
+    &lt;div id="carouselExample2" class="carousel slide carousel-fade" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000"&gt;
         &lt;div class="carousel-indicators"&gt;
             &lt;button type="button" class="active" data-bs-target="#carouselExample2" data-bs-slide-to="0" aria-current="true" aria-label="圖片1"&gt;&lt;/button&gt;
             &lt;button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="1" aria-label="圖片1"&gt;&lt;/button&gt;
@@ -353,21 +501,21 @@
         &lt;/div&gt;
         &lt;div class="carousel-inner"&gt;
             &lt;div class="carousel-item active"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=1" class="d-block w-100" alt="圖片1"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=4" class="d-block w-100" alt="圖片1"&gt;
                 &lt;div class="carousel-caption d-none d-md-block"&gt;
                     &lt;h5&gt;圖片標題 1&lt;/h5&gt;
                     &lt;p&gt;這是圖片 1。&lt;/p&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="carousel-item"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=2" class="d-block w-100" alt="圖片2"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=5" class="d-block w-100" alt="圖片2"&gt;
                 &lt;div class="carousel-caption d-none d-md-block"&gt;
                     &lt;h5&gt;圖片標題 2&lt;/h5&gt;
                     &lt;p&gt;這是圖片 2。&lt;/p&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="carousel-item"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=3" class="d-block w-100" alt="圖片3"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=6" class="d-block w-100" alt="圖片3"&gt;
                 &lt;div class="carousel-caption d-none d-md-block"&gt;
                     &lt;h5&gt;圖片標題 3&lt;/h5&gt;
                     &lt;p&gt;這是圖片 3。&lt;/p&gt;
@@ -382,7 +530,7 @@
         &lt;/button&gt;
     &lt;/div&gt;
 </code></pre>
-                    <div id="carouselExample2" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div id="carouselExample2" class="carousel slide carousel-fade" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000">
                         <div class="carousel-indicators">
                             <button type="button" class="active" data-bs-target="#carouselExample2" data-bs-slide-to="0" aria-current="true" aria-label="圖片1"></button>
                             <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="1" aria-label="圖片2"></button>
@@ -390,21 +538,21 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https://picsum.photos/800/300?random=1" class="d-block w-100" alt="圖片1">
+                                <img src="https://picsum.photos/800/300?random=4" class="d-block w-100" alt="圖片1">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>圖片標題 1</h5>
                                     <p>這是圖片 1。</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="https://picsum.photos/800/300?random=2" class="d-block w-100" alt="圖片2">
+                                <img src="https://picsum.photos/800/300?random=5" class="d-block w-100" alt="圖片2">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>圖片標題 2</h5>
                                     <p>這是圖片 2。</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="https://picsum.photos/800/300?random=3" class="d-block w-100" alt="圖片3">
+                                <img src="https://picsum.photos/800/300?random=6" class="d-block w-100" alt="圖片3">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>圖片標題 3</h5>
                                     <p>這是圖片 3。</p>
@@ -422,7 +570,7 @@
                 <div class="col">
                     <h3 class="text-primary text-center mt-3 mb-3">縮圖預覽 (網路抓圖)</h3>
 <pre><code>
-    &lt;div id="carouselWithThumbnails1" class="carousel slide" data-bs-ride="carousel"&gt;
+    &lt;div id="carouselWithThumbnails1" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel"&gt;
         &lt;div class="carousel-inner"&gt;
             &lt;div class="carousel-item active"&gt;
                 &lt;img src="https://picsum.photos/id/1015/800/300" class="d-block w-100" alt="大圖片1"&gt;
@@ -441,7 +589,7 @@
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>
-                    <div id="carouselWithThumbnails1" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselWithThumbnails1" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="https://picsum.photos/id/1015/800/300" class="d-block w-100" alt="大圖片1">
@@ -463,41 +611,1376 @@
                 <div class="col">
                     <h3 class="text-primary text-center mt-3 mb-3">縮圖預覽 (自己的圖片)</h3>
 <pre><code>
-    &lt;div id="carouselWithThumbnails2" class="carousel slide" data-bs-ride="carousel"&gt;
+    &lt;div id="carouselWithThumbnails2" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel"&gt;
         &lt;div class="carousel-inner"&gt;
             &lt;div class="carousel-item active"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=1" class="d-block w-100" alt="大圖片1"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=7" class="d-block w-100" alt="大圖片1"&gt;
             &lt;/div&gt;
             &lt;div class="carousel-item"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=2" class="d-block w-100" alt="大圖片2"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=8" class="d-block w-100" alt="大圖片2"&gt;
             &lt;/div&gt;
             &lt;div class="carousel-item"&gt;
-                &lt;img src="https://picsum.photos/800/300?random=3" class="d-block w-100" alt="大圖片3"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=9" class="d-block w-100" alt="大圖片3"&gt;
             &lt;/div&gt;
         &lt;/div&gt;
         &lt;div class="d-flex justify-content-center mt-3"&gt;
-            &lt;img src="https://picsum.photos/800/300?random=1" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="0"&gt;
-            &lt;img src="https://picsum.photos/800/300?random=2" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="1"&gt;
-            &lt;img src="https://picsum.photos/800/300?random=3" class="img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="2"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=7" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="0"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=8" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="1"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=9" class="img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="2"&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>
-                    <div id="carouselWithThumbnails2" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselWithThumbnails2" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item text-center active">
-                                <img src="https://picsum.photos/800/300?random=1" class="img-fluid w-50 mx-auto" alt="大圖片1">
+                                <img src="https://picsum.photos/800/300?random=7" class="img-fluid w-50 mx-auto" alt="大圖片1">
                             </div>
                             <div class="carousel-item text-center">
-                                <img src="https://picsum.photos/800/300?random=2" class="img-fluid w-50 mx-auto" alt="大圖片2">
+                                <img src="https://picsum.photos/800/300?random=8" class="img-fluid w-50 mx-auto" alt="大圖片2">
                             </div>
                             <div class="carousel-item text-center">
-                                <img src="https://picsum.photos/800/300?random=3" class="img-fluid w-50 mx-auto" alt="大圖片3">
+                                <img src="https://picsum.photos/800/300?random=9" class="img-fluid w-50 mx-auto" alt="大圖片3">
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-3">
-                            <img src="https://picsum.photos/800/300?random=1" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="0">
-                            <img src="https://picsum.photos/800/300?random=2" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="1">
-                            <img src="https://picsum.photos/800/300?random=3" class="img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="2">
+                            <img src="https://picsum.photos/800/300?random=7" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="0">
+                            <img src="https://picsum.photos/800/300?random=8" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="1">
+                            <img src="https://picsum.photos/800/300?random=9" class="img-thumbnail thumbnail-preview" data-bs-target="#carouselWithThumbnails2" data-bs-slide-to="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3 class="text-primary text-center mt-3 mb-3">多組Carousel輪播</h3>
+                    <h4 class="text-warning text-center mt-3 mb-3">第1組：活動輪播</h4>
+<pre><code>
+    &lt;div id="activityCarousel" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000"&gt;
+        &lt;div class="carousel-inner"&gt;
+            &lt;div class="carousel-item active"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=11" class="d-block w-100" alt="活動1"&gt;
+                &lt;div class="carousel-caption d-none d-md-block"&gt;
+                    &lt;h5&gt;夏日特賣&lt;/h5&gt;
+                    &lt;p&gt;全館 5 折起，限時三天！&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="carousel-item"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=12" class="d-block w-100" alt="活動2"&gt;
+                &lt;div class="carousel-caption d-none d-md-block"&gt;
+                    &lt;h5&gt;新店開幕&lt;/h5&gt;
+                    &lt;p&gt;來店禮限量送完為止&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="carousel-item"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=13" class="d-block w-100" alt="活動3"&gt;
+                &lt;div class="carousel-caption d-none d-md-block"&gt;
+                    &lt;h5&gt;會員日&lt;/h5&gt;
+                    &lt;p&gt;紅利雙倍送！&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="carousel-control-prev" type="button" data-bs-target="#activityCarousel" data-bs-slide="prev"&gt;
+            &lt;span class="carousel-control-prev-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button class="carousel-control-next" type="button" data-bs-target="#activityCarousel" data-bs-slide="next"&gt;
+            &lt;span class="carousel-control-next-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+</code></pre>
+                    <div id="activityCarousel" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://picsum.photos/800/300?random=11" class="d-block w-100" alt="活動1">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>夏日特賣</h5>
+                                    <p>全館 5 折起，限時三天！</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://picsum.photos/800/300?random=12" class="d-block w-100" alt="活動2">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>新店開幕</h5>
+                                    <p>來店禮限量送完為止</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://picsum.photos/800/300?random=13" class="d-block w-100" alt="活動3">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>會員日</h5>
+                                    <p>紅利雙倍送！</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#activityCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#activityCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <h4 class="text-warning text-center mt-3 mb-3">第2組：相簿輪播</h4>
+<pre><code>
+    &lt;div id="albumCarousel" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel"&gt;
+        &lt;div class="carousel-inner"&gt;
+            &lt;div class="carousel-item active"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=14" class="d-block w-100" alt="照片1"&gt;
+            &lt;/div&gt;
+            &lt;div class="carousel-item"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=15" class="d-block w-100" alt="照片2"&gt;
+            &lt;/div&gt;
+            &lt;div class="carousel-item"&gt;
+                &lt;img src="https://picsum.photos/800/300?random=16" class="d-block w-100" alt="照片3"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="d-flex justify-content-center mt-3"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=14" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="0"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=15" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="1"&gt;
+            &lt;img src="https://picsum.photos/800/300?random=16" class="img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="2"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+                    <div id="albumCarousel" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://picsum.photos/800/300?random=14" class="d-block w-100" alt="照片1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://picsum.photos/800/300?random=15" class="d-block w-100" alt="照片2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://picsum.photos/800/300?random=16" class="d-block w-100" alt="照片3">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <img src="https://picsum.photos/800/300?random=14" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="0">
+                            <img src="https://picsum.photos/800/300?random=15" class="me-2 img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="1">
+                            <img src="https://picsum.photos/800/300?random=16" class="img-thumbnail thumbnail-preview" data-bs-target="#albumCarousel" data-bs-slide-to="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 text-white">
+        <div class="container table-responsive">
+            <h2 class="text-warning text-center mb-3">Tooltip & Popover 訊息小浮窗</h2>
+            <p>Tooltip 和 Popover 兩者都要用 JavaScript 才能啟用。</p>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                <div class="col">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">元件名稱</th>
+                                <th class="text-center">觸發方式</th>
+                                <th class="text-center">顯示內容</th>
+                                <th class="text-center">適用情境</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tooltip</td>
+                                <td>滑鼠碰到。</td>
+                                <td>簡短文字。</td>
+                                <td>顯示欄位說明、提示。</td>
+                            </tr>
+                            <tr>
+                                <td>Popover</td>
+                                <td>點擊後出現。</td>
+                                <td>標題 + 內容。</td>
+                                <td>顯示更多補充資訊或操作提示。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col mb-3">
+                    <h2 class="text-primary">Tootip</h2>
+<pre><code>
+    &lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" title="Tooltip 顯示的文字" data-bs-placement="right"&gt;
+        滑鼠移過來
+    &lt;/button&gt;
+    &lt;script&gt;
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(el =&gt; new bootstrap.Tooltip(el));
+    &lt;/script&gt;
+</code></pre>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" title="Tooltip 顯示的文字" data-bs-placement="right">
+                        滑鼠移過來
+                    </button>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                <div class="col mb-3">
+                    <h2 class="text-primary">Popover</h2>
+<pre><code>
+    &lt;button type="button" class="btn btn-danger" data-bs-toggle="popover" title="Popover 標題" data-bs-content="Popover 顯示的內容"&gt;
+        滑鼠點擊
+    &lt;/button&gt;
+    &lt;script&gt;
+        const popoverTriggerList1 = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList1 = [...popoverTriggerList1].map(el =&gt; new bootstrap.Popover(el));
+    &lt;/script&gt;
+</code></pre>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="popover" title="Popover 標題" data-bs-content="Popover 顯示的內容">
+                        滑鼠點擊
+                    </button>
+                </div>
+                <div class="col mb-3">
+                    <h2 class="text-primary">Popover (各別獨立樣式)</h2>
+<pre><code>
+    &lt;button type="button" class="btn btn-success popover1" data-bs-toggle="popover" title="Popover 標題" data-bs-content="Popover 顯示的內容" data-bs-placement="auto"&gt;
+        滑鼠點擊
+    &lt;/button&gt;
+    &lt;script&gt;
+        const popoverTriggerList2 = document.querySelectorAll('.popover1');
+        popoverTriggerList2.forEach(el =&gt; {
+            new bootstrap.Popover(el, {
+                customClass: 'popover-style'
+            });
+        });
+    &lt;/script&gt;
+</code></pre>
+                    <button type="button" class="btn btn-success popover1" data-bs-toggle="popover" title="Popover 標題" data-bs-content="Popover 顯示的內容" data-bs-placement="auto">
+                        滑鼠點擊
+                    </button>
+                </div>
+                <div class="col mb-3">
+                    <h2 class="text-primary">Popover (圖片與網址)</h2>
+<pre><code>
+    &lt;button type="button" class="btn btn-success popover-html" data-bs-toggle="popover" title="Popover 標題" data-bs-placement="right"&gt;
+        滑鼠點擊
+    &lt;/button&gt;
+    &lt;script&gt;
+        const htmlPopoverList = document.querySelectorAll('.popover-html');
+        htmlPopoverList.forEach(el =&gt; {
+            new bootstrap.Popover(el, {
+                html: true,
+                anitize: false,
+                content: `
+                    &lt;img src="https://picsum.photos/800/300?random=17" class="img-fluid mb-2" alt="示意圖"&gt;
+                    &lt;br /&gt;
+                    &lt;a href="https://getbootstrap.com/" target="_blank"&gt;開啟 Bootstrap 官網&lt;/a&gt;
+                `,
+                customClass: 'custom-html-popover'
+            });
+        });
+    &lt;/script&gt;
+</code></pre>
+                    <button type="button" class="btn btn-success popover-html" data-bs-toggle="popover" title="Popover 標題" data-bs-placement="right">
+                        滑鼠點擊
+                    </button>
+                </div>
+                <div class="col mb-3">
+                    <h2 class="text-primary">Popover (表單)</h2>
+<pre><code>
+    &lt;button type="button" class="btn btn-info popover-form" id="formPopover" data-bs-toggle="popover" title="訂閱電子報" data-bs-placement="right"&gt;
+        訂閱電子報
+    &lt;/button&gt;
+    &lt;script&gt;
+        const formPopover = document.getElementById('formPopover');
+        if (formPopover) {
+            new bootstrap.Popover(formPopover, {
+            html: true,
+            sanitize: false,
+            ontent: `
+                &lt;form onsubmit="event.preventDefault(); alert('感謝訂閱！'); bootstrap.Popover.getInstance(document.getElementById('formPopover')).hide();"&gt;
+                    &lt;div class="mb-2"&gt;
+                    &lt;input type="email" class="form-control form-control-sm" placeholder="請輸入 E-mail" required&gt;
+                    &lt;/div&gt;
+                    &lt;button type="submit" class="btn btn-primary btn-sm"&gt;送出&lt;/button&gt;
+                &lt;/form&gt;
+            `,
+            customClass: 'popover-form'
+            });
+        };
+    &lt;/script&gt;
+</code></pre>
+                    <button type="button" class="btn btn-info popover-form" id="formPopover" data-bs-toggle="popover" title="訂閱電子報" data-bs-placement="right">
+                        訂閱電子報
+                    </button>
+                </div>
+                <div class="col">
+                    <p>在網頁任何地方點選一下，會把正在出現的 popover 關閉，需要用共用的 JavaScript 程式。</p>
+<pre><code>
+    &lt;script&gt;
+        document.addEventListener('click', function (e) {
+            document.querySelectorAll('[data-bs-toggle="popover"]').forEach(triggerEl =&gt; {
+                const popoverEl = document.querySelector('.popover');
+                if (
+                    !triggerEl.contains(e.target) &amp;&amp; (!popoverEl || !popoverEl.contains(e.target))
+                ) {
+                bootstrap.Popover.getInstance(triggerEl)?.hide();
+                };
+            });
+        });
+    &lt;/script&gt;
+</code></pre>
+                </div>
+            </div>
+    </section>
+
+    <section class="py-4 text-white">
+        <div class="container table-responsive">
+            <h2 class="text-warning text-center mb-3">Tabs 頁籤</h2>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                <div class="col">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">class 名稱</th>
+                                <th class="text-center">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>nav-tabs</td>
+                                <td>切換頁籤的按鈕列，也可改成 nav-pills，變成膠囊樣式。</td>
+                            </tr>
+                            <tr>
+                                <td>data-bs-toggle="tab"</td>
+                                <td>讓按鈕具有切換頁籤的功能。</td>
+                            </tr>
+                            <tr>
+                                <td>tab-content</td>
+                                <td>放對應的內容，每個 tab-pane 是一個頁籤內容。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+<pre><code>
+&lt;div class="nav-tabs-wrapper overflow-auto"&gt;
+    &lt;ul class="nav nav-tabs flex-nowrap" id="myTab" role="tablist"&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button type="button" class="nav-link active bg-danger text-white" id="new-tab" data-bs-toggle="tab" data-bs-target="#new" role="tab" aria-controls="new" aria-selected="true"&gt;
+                最新課程
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button type="button" class="nav-link bg-orange text-white" id="class-tab" data-bs-toggle="tab" data-bs-target="#class" role="tab" aria-controls="class" aria-selected="false"&gt;
+                階級介紹
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button type="button" class="nav-link bg-primary text-white" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" role="tab" aria-controls="instructor" aria-selected="false"&gt;
+                師資陣容
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button type="button" class="nav-link bg-info text-white" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" role="tab" aria-controls="signup" aria-selected="false"&gt;
+                我要報名
+            &lt;/button&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="tab-content p-3 border border-top-0 bg-light text-dark" id="myTabContent"&gt;
+        &lt;div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab"&gt;
+            &lt;div class="accordion" id="accordionNew"&gt;
+                &lt;div class="accordion-item"&gt;
+                    &lt;h2 class="accordion-header" id="headerOne"&gt;
+                        &lt;button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"&gt;
+                            🔔 114 年暑期初階班開始報名囉。
+                        &lt;/button&gt;
+                    &lt;/h2&gt;
+                    &lt;div class="accordion-collapse collapse" id="collapseOne" aria-labelledby="headerOne" data-bs-parent="#accordionNew"&gt;
+                        &lt;div class="accordion-body tab-new-body"&gt;
+                            &lt;p&gt;課程名稱：114 年暑期初階班 (滿 5 人開班)&lt;/p&gt;
+                            &lt;p&gt;上課日期：114 年 7 月 5、12、19、26 日&lt;/p&gt;
+                            &lt;p&gt;上課時間：早上 9 點 至 中午 12 點 (3小時)&lt;/p&gt;
+                            &lt;p&gt;報名人數上限：10 人&lt;/p&gt;
+                            &lt;p&gt;教練名稱：○○○ 教練&lt;/p&gt;
+                            &lt;p&gt;課程費用：每堂課新台幣 500 元&lt;/p&gt;
+                            &lt;p&gt;
+                                課程重點：
+                                &lt;ul&gt;
+                                    &lt;li&gt;正確握拍法（正手、反手）&lt;/li&gt;
+                                    &lt;li&gt;發高遠球、挑球、吊球的基本技術&lt;/li&gt;
+                                    &lt;li&gt;步伐訓練（前、後、左右移動）&lt;/li&gt;
+                                    &lt;li&gt;培養對羽球的節奏感與準確性&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="accordion-item"&gt;
+                    &lt;h2 class="accordion-header" id="headerTwo"&gt;
+                        &lt;button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"&gt;
+                            🔔 114 年暑期中階班開始報名囉。
+                        &lt;/button&gt;
+                    &lt;/h2&gt;
+                    &lt;div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headerTwo" data-bs-parent="#accordionNew"&gt;
+                        &lt;div class="accordion-body tab-new-body"&gt;
+                            &lt;p&gt;課程名稱：114 年暑期中階班 (滿 3 人開班)&lt;/p&gt;
+                            &lt;p&gt;上課日期：114 年 7 月 5、12、19、26 日&lt;/p&gt;
+                            &lt;p&gt;上課時間：下午 2 點 至 下午 5 點 (3小時)&lt;/p&gt;
+                            &lt;p&gt;報名人數上限：5 人&lt;/p&gt;
+                            &lt;p&gt;教練名稱：○○○ 教練&lt;/p&gt;
+                            &lt;p&gt;課程費用：每堂課新台幣 500 元&lt;/p&gt;
+                            &lt;p&gt;
+                                課程重點：
+                                &lt;ul&gt;
+                                    &lt;li&gt;強化殺球、網前挑球、切球等技術&lt;/li&gt;
+                                    &lt;li&gt;雙打站位與輪轉策略&lt;/li&gt;
+                                    &lt;li&gt;實戰模擬與體能訓練&lt;/li&gt;
+                                    &lt;li&gt;錯誤修正與穩定性提升&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="accordion-item"&gt;
+                    &lt;h2 class="accordion-header" id="headerThree"&gt;
+                        &lt;button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"&gt;
+                            🔔 114 年暑期高階班開始報名囉。
+                        &lt;/button&gt;
+                    &lt;/h2&gt;
+                    &lt;div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headerThree" data-bs-parent="#accordionNew"&gt;
+                        &lt;div class="accordion-body tab-new-body"&gt;
+                            &lt;p&gt;課程名稱：114 年暑期高階班 (滿 3 人開班)&lt;/p&gt;
+                            &lt;p&gt;上課日期：114 年 7 月 6、13、20、27 日&lt;/p&gt;
+                            &lt;p&gt;上課時間：下午 2 點 至 下午 5 點 (3小時)&lt;/p&gt;
+                            &lt;p&gt;報名人數上限：5 人&lt;/p&gt;
+                            &lt;p&gt;教練名稱：○○○ 教練&lt;/p&gt;
+                            &lt;p&gt;課程費用：每堂課新台幣 500 元&lt;/p&gt;
+                            &lt;p&gt;
+                                課程重點：
+                                &lt;ul&gt;
+                                    &lt;li&gt;高強度對抗練習&lt;/li&gt;
+                                    &lt;li&gt;戰術演練、配合默契&lt;/li&gt;
+                                    &lt;li&gt;體能與爆發力訓練&lt;/li&gt;
+                                    &lt;li&gt;心理素質與臨場應變&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="tab-pane fade" id="class" role="tabpanel" aria-labelledby="class-tab"&gt;
+            &lt;h2 class="fw-bold mb-3 bg-orange text-white text-center"&gt;初階 (Beginner)&lt;/h2&gt;
+            &lt;div class="card d-flex flex-column justify-content-center align-items-center h-100"&gt;
+                &lt;img src="https://picsum.photos/400/200?random=1" class="d-block card-img-top img-fluid w-50" alt="圖片1"&gt;
+                &lt;div class="card-body w-100 text-start"&gt;
+                    &lt;p class="card-text text-dark"&gt;適合對象：剛開始接觸羽球，或只會基本揮拍的人。&lt;/p&gt;
+                    &lt;p class="card-text text-dark"&gt;
+                        特徵：
+                        &lt;ul class="text-dark"&gt;
+                            &lt;li&gt;握拍姿勢、站姿、揮拍姿勢還在學習中。&lt;/li&gt;
+                            &lt;li&gt;發球、接發球基本動作尚不穩定。&lt;/li&gt;
+                            &lt;li&gt;移動步伐不熟悉（容易卡腳步）。&lt;/li&gt;
+                            &lt;li&gt;大部分回球靠運氣或本能。&lt;/li&gt;
+                            &lt;li&gt;還不熟悉雙打站位、場地分工。&lt;/li&gt;
+                            &lt;li&gt;幾乎無比賽經驗。&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;h2 class="fw-bold mb-3 bg-success text-white text-center"&gt;中階 (Intermediate)&lt;/h2&gt;
+            &lt;div class="card d-flex flex-column justify-content-center align-items-center h-100"&gt;
+                &lt;img src="https://picsum.photos/400/200?random=2" class="d-block card-img-top img-fluid w-50" alt="圖片1"&gt;
+                &lt;div class="card-body w-100 text-start"&gt;
+                    &lt;p class="card-text text-dark"&gt;適合對象：已經打球一段時間，基本技術已有基礎，能進行對打與比賽。&lt;/p&gt;
+                    &lt;p class="card-text text-dark"&gt;
+                        特徵：
+                        &lt;ul class="text-dark"&gt;
+                            &lt;li&gt;握拍與擊球姿勢較正確。&lt;/li&gt;
+                            &lt;li&gt;能穩定發高遠球、吊球、平球，偶爾可殺球。&lt;/li&gt;
+                            &lt;li&gt;步伐靈活，有一定反應速度。&lt;/li&gt;
+                            &lt;li&gt;具備基本的戰術意識（如左右分工、吊球與殺球配合）。&lt;/li&gt;
+                            &lt;li&gt;能參與練習賽、友誼賽等。&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;h2 class="fw-bold mb-3 bg-primary text-white text-center"&gt;高階 (Advanced)&lt;/h2&gt;
+            &lt;div class="card d-flex flex-column justify-content-center align-items-center h-100"&gt;
+                &lt;img src="https://picsum.photos/400/200?random=3" class="d-block card-img-top img-fluid w-50" alt="圖片1"&gt;
+                &lt;div class="card-body w-100 text-start"&gt;
+                    &lt;p class="card-text text-dark"&gt;適合對象：打球多年，有正式比賽經驗，目標為競技層級或業餘菁英。&lt;/p&gt;
+                    &lt;p class="card-text text-dark"&gt;
+                        特徵：
+                        &lt;ul class="text-dark"&gt;
+                            &lt;li&gt;所有基本技術純熟，動作標準、效率高。&lt;/li&gt;
+                            &lt;li&gt;擅長快速多變的球路（如連續殺球、反手撲球、快速平抽）。&lt;/li&gt;
+                            &lt;li&gt;能讀懂對手動作，預測落點。&lt;/li&gt;
+                            &lt;li&gt;體能佳、步伐快速。&lt;/li&gt;
+                            &lt;li&gt;熟悉各種比賽策略與臨場應變。&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab"&gt;
+            &lt;div class="row row-cols-1 row-cols-md-2 row-cols-lg-3"&gt;
+                &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=4" class="card-img-top img-fluid" alt="圖片1"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=5" class="card-img-top img-fluid" alt="圖片2"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=6" class="card-img-top img-fluid" alt="圖片3"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=7" class="card-img-top img-fluid" alt="圖片4"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=8" class="card-img-top img-fluid" alt="圖片5"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class="col"&gt;
+                    &lt;div class="card h-100 shadow-sm"&gt;
+                        &lt;img src="https://picsum.photos/400/200?random=9" class="card-img-top img-fluid" alt="圖片6"&gt;
+                        &lt;div class="card-body"&gt;
+                            &lt;div class="card-title text-center fs-3 fw-bold text-dark"&gt;○○○ 教練&lt;/div&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;專業證照&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;中華羽球協會青奧國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會世青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會亞青國手&lt;/li&gt;
+                                &lt;li&gt;中華羽球協會甲組球員&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p class="fw-bold fs-5 text-danger"&gt;經歷&lt;/p&gt;
+                            &lt;ul class="text-dark"&gt;
+                                &lt;li&gt;青年奧運男女混雙 亞軍&lt;/li&gt;
+                                &lt;li&gt;義大利青少年羽球國際系列賽女單 冠軍&lt;/li&gt;
+                                 &lt;li&gt;澳洲青少年羽球國際系列賽 女單 冠軍&lt;/li&gt;
+                                &lt;li&gt;全國羽球排名賽 女乙單 亞軍&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                 &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab"&gt;
+            &lt;h2 class="fw-bold bg-info text-white text-center mb-3"&gt;報名表&lt;/h2&gt;
+            &lt;form class="needs-validation" novalidate&gt;
+                &lt;div class="mb-3"&gt;
+                    &lt;label for="name" class="form-label"&gt;姓名 &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
+                    &lt;input type="text" class="form-control" id="name" name="name" required&gt;
+                    &lt;div class="invalid-feedback"&gt;請輸入姓名&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mb-3" id="genderGroup"&gt;
+                    &lt;label class="form-label"&gt;性別 &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;&lt;br /&gt;
+                    &lt;div class="form-check form-check-inline"&gt;
+                      &lt;input type="radio" class="form-check-input" id="male" name="gender" required aria-required="true"&gt;
+                      &lt;label for="male" class="form-check-label"&gt;先生&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form-check form-check-inline"&gt;
+                      &lt;input type="radio" class="form-check-input" id="female" name="gender"&gt;
+                      &lt;label for="female" class="form-check-label"&gt;小姐&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div id="genderFeedback" class="text-danger small d-none"&gt;請選擇性別&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mb-3"&gt;
+                    &lt;label for="phone" class="form-label"&gt;聯絡電話 &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
+                    &lt;input type="text" class="form-control" id="phone" name="phone" required aria-required="true"&gt;
+                    &lt;div class="invalid-feedback"&gt;請輸入聯絡電話&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mb-3"&gt;
+                    &lt;label for="email" class="form-label"&gt;電子信箱 &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
+                    &lt;input type="email" class="form-control" id="email" name="email" required aria-required="true"&gt;
+                    &lt;div class="invalid-feedback"&gt;請輸入電子信箱&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mb-3"&gt;
+                    &lt;label for="course" class="form-label"&gt;選擇課程 &lt;span class="text-danger"&gt;*&lt;/span&gt;&lt;/label&gt;
+                    &lt;select class="form-select" id="course" required aria-required="true"&gt;
+                        &lt;option value=""&gt;=== 請選擇課程 ===&lt;/option&gt;
+                        &lt;option value="beginner"&gt;初階班&lt;/option&gt;
+                        &lt;option value="intermediate"&gt;中階班&lt;/option&gt;
+                        &lt;option value="advanced"&gt;高階班&lt;/option&gt;
+                    &lt;/select&gt;
+                    &lt;div class="invalid-feedback"&gt;請選擇一個課程&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mb-3"&gt;
+                    &lt;label for="note" class="form-label"&gt;備註&lt;/label&gt;
+                    &lt;textarea class="form-control" id="note" rows="3"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div class="text-center"&gt;
+                    &lt;button type="submit" class="btn btn-info text-white me-2"&gt;送出報名&lt;/button&gt;
+                    &lt;button type="reset" class="btn btn-outline-info"&gt;重新填寫&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        const genderGroup = document.getElementById('genderGroup');
+        const genderFeedback = document.getElementById('genderFeedback');
+    
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                let genderSelected = false;
+                genderRadios.forEach(radio =&gt; {
+                    if (radio.checked) genderSelected = true;
+                });
+    
+                // 檢查整體表單是否有效 + 性別是否有選
+                if (!form.checkValidity() || !genderSelected) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (!genderSelected) {
+                        genderFeedback.classList.remove('d-none');
+                        genderFeedback.classList.add('d-block');
+                        genderGroup.classList.add('is-invalid');
+                    } else {
+                        genderFeedback.classList.remove('d-block');
+                        genderFeedback.classList.add('d-none');
+                        genderGroup.classList.remove('is-invalid');
+                    }
+                } else {
+                    event.preventDefault();
+                    lert('報名完成，我們將會盡快與您聯絡，謝謝。');
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    genderGroup.classList.remove('is-invalid');
+                    genderFeedback.classList.add('d-none');
+                    return;
+                }
+    
+                form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+&lt;/script&gt;
+</code></pre>
+                    <div class="nav-tabs-wrapper overflow-auto">
+                        <ul class="nav nav-tabs flex-nowrap" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="nav-link active bg-danger text-white" id="new-tab" data-bs-toggle="tab" data-bs-target="#new" role="tab" aria-controls="new" aria-selected="true">
+                                    最新課程
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="nav-link bg-orange text-white" id="class-tab" data-bs-toggle="tab" data-bs-target="#class" role="tab" aria-controls="class" aria-selected="false">
+                                    階級介紹
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="nav-link bg-primary text-white" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" role="tab" aria-controls="instructor" aria-selected="false">
+                                    師資陣容
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="nav-link bg-info text-white" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" role="tab" aria-controls="signup" aria-selected="false">
+                                    我要報名
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3 border border-top-0 bg-light text-dark" id="myTabContent">
+                            <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                                <div class="accordion" id="accordionNew">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headerOne">
+                                            <button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                🔔 114 年暑期初階班開始報名囉。
+                                            </button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="collapseOne" aria-labelledby="headerOne" data-bs-parent="#accordionNew">
+                                            <div class="accordion-body tab-new-body">
+                                                <p>課程名稱：114 年暑期初階班 (滿 5 人開班)</p>
+                                                <p>上課日期：114 年 7 月 5、12、19、26 日</p>
+                                                <p>上課時間：早上 9 點 至 中午 12 點 (3小時)</p>
+                                                <p>報名人數上限：10 人</p>
+                                                <p>教練名稱：○○○ 教練</p>
+                                                <p>課程費用：每堂課新台幣 500 元</p>
+                                                <p>
+                                                    課程重點：
+                                                    <ul>
+                                                        <li>正確握拍法（正手、反手）</li>
+                                                        <li>發高遠球、挑球、吊球的基本技術</li>
+                                                        <li>步伐訓練（前、後、左右移動）</li>
+                                                        <li>培養對羽球的節奏感與準確性</li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headerTwo">
+                                            <button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                🔔 114 年暑期中階班開始報名囉。
+                                            </button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headerTwo" data-bs-parent="#accordionNew">
+                                            <div class="accordion-body tab-new-body">
+                                                <p>課程名稱：114 年暑期中階班 (滿 3 人開班)</p>
+                                                <p>上課日期：114 年 7 月 5、12、19、26 日</p>
+                                                <p>上課時間：下午 2 點 至 下午 5 點 (3小時)</p>
+                                                <p>報名人數上限：5 人</p>
+                                                <p>教練名稱：○○○ 教練</p>
+                                                <p>課程費用：每堂課新台幣 500 元</p>
+                                                <p>
+                                                    課程重點：
+                                                    <ul>
+                                                        <li>強化殺球、網前挑球、切球等技術</li>
+                                                        <li>雙打站位與輪轉策略</li>
+                                                        <li>實戰模擬與體能訓練</li>
+                                                        <li>錯誤修正與穩定性提升</li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headerThree">
+                                            <button class="accordion-button tab-new-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                🔔 114 年暑期高階班開始報名囉。
+                                            </button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headerThree" data-bs-parent="#accordionNew">
+                                            <div class="accordion-body tab-new-body">
+                                                <p>課程名稱：114 年暑期高階班 (滿 3 人開班)</p>
+                                                <p>上課日期：114 年 7 月 6、13、20、27 日</p>
+                                                <p>上課時間：下午 2 點 至 下午 5 點 (3小時)</p>
+                                                <p>報名人數上限：5 人</p>
+                                                <p>教練名稱：○○○ 教練</p>
+                                                <p>課程費用：每堂課新台幣 500 元</p>
+                                                <p>
+                                                    課程重點：
+                                                    <ul>
+                                                        <li>高強度對抗練習</li>
+                                                        <li>戰術演練、配合默契</li>
+                                                        <li>體能與爆發力訓練</li>
+                                                        <li>心理素質與臨場應變</li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="class" role="tabpanel" aria-labelledby="class-tab">
+                                <h2 class="fw-bold mb-3 bg-orange text-white text-center">初階 (Beginner)</h2>
+                                <div class="card d-flex flex-column justify-content-center align-items-center h-100">
+                                    <img src="https://picsum.photos/400/200?random=1" class="d-block card-img-top img-fluid w-50" alt="圖片1">
+                                    <div class="card-body w-100 text-start">
+                                        <p class="card-text text-dark">適合對象：剛開始接觸羽球，或只會基本揮拍的人。</p>
+                                        <p class="card-text text-dark">
+                                            特徵：
+                                            <ul class="text-dark">
+                                                <li>握拍姿勢、站姿、揮拍姿勢還在學習中。</li>
+                                                <li>發球、接發球基本動作尚不穩定。</li>
+                                                <li>移動步伐不熟悉（容易卡腳步）。</li>
+                                                <li>大部分回球靠運氣或本能。</li>
+                                                <li>還不熟悉雙打站位、場地分工。</li>
+                                                <li>幾乎無比賽經驗。</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <h2 class="fw-bold mb-3 bg-success text-white text-center">中階 (Intermediate)</h2>
+                                <div class="card d-flex flex-column justify-content-center align-items-center h-100">
+                                    <img src="https://picsum.photos/400/200?random=2" class="d-block card-img-top img-fluid w-50" alt="圖片1">
+                                    <div class="card-body w-100 text-start">
+                                        <p class="card-text text-dark">適合對象：已經打球一段時間，基本技術已有基礎，能進行對打與比賽。</p>
+                                        <p class="card-text text-dark">
+                                            特徵：
+                                            <ul class="text-dark">
+                                                <li>握拍與擊球姿勢較正確。</li>
+                                                <li>能穩定發高遠球、吊球、平球，偶爾可殺球。</li>
+                                                <li>步伐靈活，有一定反應速度。</li>
+                                                <li>具備基本的戰術意識（如左右分工、吊球與殺球配合）。</li>
+                                                <li>能參與練習賽、友誼賽等。</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <h2 class="fw-bold mb-3 bg-primary text-white text-center">高階 (Advanced)</h2>
+                                <div class="card d-flex flex-column justify-content-center align-items-center h-100">
+                                    <img src="https://picsum.photos/400/200?random=3" class="d-block card-img-top img-fluid w-50" alt="圖片1">
+                                    <div class="card-body w-100 text-start">
+                                        <p class="card-text text-dark">適合對象：打球多年，有正式比賽經驗，目標為競技層級或業餘菁英。</p>
+                                        <p class="card-text text-dark">
+                                            特徵：
+                                            <ul class="text-dark">
+                                                <li>所有基本技術純熟，動作標準、效率高。</li>
+                                                <li>擅長快速多變的球路（如連續殺球、反手撲球、快速平抽）。</li>
+                                                <li>能讀懂對手動作，預測落點。</li>
+                                                <li>體能佳、步伐快速。</li>
+                                                <li>熟悉各種比賽策略與臨場應變。</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                                    <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=4" class="card-img-top img-fluid" alt="圖片1">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=5" class="card-img-top img-fluid" alt="圖片2">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=6" class="card-img-top img-fluid" alt="圖片3">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=7" class="card-img-top img-fluid" alt="圖片4">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=8" class="card-img-top img-fluid" alt="圖片5">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <img src="https://picsum.photos/400/200?random=9" class="card-img-top img-fluid" alt="圖片6">
+                                            <div class="card-body">
+                                                <div class="card-title text-center fs-3 fw-bold text-dark">○○○ 教練</div>
+                                                <p class="fw-bold fs-5 text-danger">專業證照</p>
+                                                <ul class="text-dark">
+                                                    <li>中華羽球協會青奧國手</li>
+                                                    <li>中華羽球協會世青國手</li>
+                                                    <li>中華羽球協會亞青國手</li>
+                                                    <li>中華羽球協會甲組球員</li>
+                                                </ul>
+                                                <p class="fw-bold fs-5 text-danger">經歷</p>
+                                                <ul class="text-dark">
+                                                    <li>青年奧運男女混雙 亞軍</li>
+                                                    <li>義大利青少年羽球國際系列賽女單 冠軍</li>
+                                                     <li>澳洲青少年羽球國際系列賽 女單 冠軍</li>
+                                                    <li>全國羽球排名賽 女乙單 亞軍</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                                <h2 class="fw-bold bg-info text-white text-center mb-3">報名表</h2>
+                                <form class="needs-validation" novalidate>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">姓名 <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" required aria-required="true">
+                                        <div class="invalid-feedback">請輸入姓名</div>
+                                    </div>
+                                    <div class="mb-3" id="genderGroup">
+                                        <label class="form-label">性別 <span class="text-danger">*</span></label><br />
+                                        <div class="form-check form-check-inline">
+                                          <input type="radio" class="form-check-input" id="male" name="gender" required aria-required="true">
+                                          <label for="male" class="form-check-label">先生</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                          <input type="radio" class="form-check-input" id="female" name="gender">
+                                          <label for="female" class="form-check-label">小姐</label>
+                                        </div>
+                                        <div id="genderFeedback" class="text-danger small d-none">請選擇性別</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">聯絡電話 <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="phone" name="phone" required aria-required="true">
+                                        <div class="invalid-feedback">請輸入聯絡電話</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">電子信箱 <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required aria-required="true">
+                                        <div class="invalid-feedback">請輸入電子信箱</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="course" class="form-label">選擇課程 <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="course" required aria-required="true">
+                                            <option value="">=== 請選擇課程 ===</option>
+                                            <option value="beginner">初階班</option>
+                                            <option value="intermediate">中階班</option>
+                                            <option value="advanced">高階班</option>
+                                        </select>
+                                        <div class="invalid-feedback">請選擇一個課程</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="note" class="form-label">備註</label>
+                                        <textarea class="form-control" id="note" rows="3"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info text-white me-2">送出報名</button>
+                                        <button type="reset" class="btn btn-outline-info">重新填寫</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 text-white">
+        <div class="container table-responsive">
+            <h2 class="text-warning text-center mb-3">Offcanvas 側邊欄</h2>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                <div class="col">
+<pre><code>
+&lt;div class="row row-cols-2 row-cols-md-2 row-cols-lg-4"&gt;
+    &lt;div class="col"&gt;
+        &lt;button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin"&gt;
+            會員登入
+        &lt;/button&gt;
+        &lt;div class="offcanvas offcanvas-start offcanvas-style-left" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel"&gt;
+            &lt;div class="offcanvas-header"&gt;
+                &lt;h5 class="offcanvas-title text-primary text-center w-100" id="offcanvasLoginLabel"&gt;會員登入&lt;/h5&gt;                &lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="offcanvas-body"&gt;
+                &lt;form class="needs-validation" novalidate&gt;
+                    &lt;div class="mb-3"&gt;
+                        &lt;label for="loginAccount" class="form-label"&gt;帳號：&lt;/label&gt;
+                        &lt;input type="text" id="loginAccount" class="form-control" data-bs-toggle="tooltip" title="請輸入帳號" data-bs-placement="right" aria-describedby="accountHelp" aria-required="true" required&gt;
+                        &lt;div class="invalid-feedback"&gt;請輸入帳號&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="mb-3"&gt;
+                        &lt;label for="loginPassword" class="form-label"&gt;密碼：&lt;/label&gt;
+                        &lt;input type="password" id="loginPassword" class="form-control" data-bs-toggle="tooltip" title="請輸入密碼" data-bs-placement="right" aria-required="true" required&gt;
+                        &lt;div class="invalid-feedback"&gt;請輸入密碼&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="mb-3 form-check"&gt;
+                        &lt;input type="checkbox" id="formCheck" class="form-check-input"&gt;
+                        &lt;label for="formCheck" class="form-check-label"&gt;記住我&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="text-center"&gt;
+                        &lt;button type="submit" class="btn btn-outline-primary me-2"&gt;登入&lt;/button&gt;
+                        &lt;button type="reset" class="btn btn-outline-primary"&gt;重新輸入&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col"&gt;
+        &lt;button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"&gt;
+            活動選單
+        &lt;/button&gt;
+        &lt;div class="offcanvas offcanvas-end offcanvas-style-right" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenu"&gt;
+            &lt;div class="offcanvas-header"&gt;
+                &lt;h5 class="offcanvas-title text-success text-center w-100" id="offcanvasMenu"&gt;活動選單&lt;/h5&gt;
+                &lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="offcanvas-body"&gt;
+                &lt;ul class="list-group"&gt;
+                    &lt;li class="list-group-item"&gt;&lt;a href="#"&gt;比賽日程&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="list-group-item"&gt;&lt;a href="#"&gt;訓練日程&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="list-group-item"&gt;&lt;a href="#"&gt;場地資訊&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="list-group-item"&gt;&lt;a href="#"&gt;聯絡我們&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;div class="col"&gt;
+            &lt;button type="button" class="btn btn-danger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotice"&gt;
+                網站公告
+            &lt;/button&gt;
+            &lt;div class="offcanvas offcanvas-top offcanvas-style-top" tabindex="-1" id="offcanvasNotice" aria-labelledby="offcanvasNotice"&gt;
+                &lt;div class="offcanvas-header"&gt;
+                    &lt;h5 class="offcanvas-title text-danger text-center w-100" id="offcanvasNotice"&gt;網站公告&lt;/h5&gt;
+                    &lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class="offcanvas-body"&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;114-06-10 114 年 7 月 5 日中階班暫停一次，課程將順延一周。&lt;/li&gt;
+                        &lt;li&gt;114-06-13 清水里長盃報告時間延長至今日下午 5 點止。&lt;/li&gt;
+                        &lt;li&gt;114-06-18 清水里長盃請各位選手上午 8 點準時報到。&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="col"&gt;
+            &lt;button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasReciprocal"&gt;
+                活動倒數
+            &lt;/button&gt;
+            &lt;div class="offcanvas offcanvas-bottom offcanvas-style-bottom" tabindex="-1" id="offcanvasReciprocal" aria-labelledby="offcanvasReciprocal"&gt;
+                &lt;div class="offcanvas-header"&gt;
+                    &lt;h5 class="offcanvas-title text-dark text-center w-100" id="offcanvasExampleReciprocal"&gt;活動倒數&lt;/h5&gt;
+                    &lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class="offcanvas-body text-center"&gt;
+                    &lt;div class="alert alert-warning"&gt;
+                        &lt;span class="fs-5"&gt;114 年暑期初階班報名截止日：&lt;/span&gt;&lt;strong class="fs-4 text-primary"&gt;114 年 6 月 30 日，&lt;span id="beginnerCountdownDays" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;span id="beginnerCloseDay" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;/strong&gt;
+                    &lt;/div&gt;
+                    &lt;div class="alert alert-danger"&gt;
+                        &lt;span class="fs-5"&gt;114 年暑期中階班報名截止日：&lt;/span&gt;&lt;strong class="fs-4 text-primary"&gt;114 年 6 月 30 日，&lt;span id="intermediateCountdownDays" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;span id="intermediateCloseDay" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;/strong&gt;
+                    &lt;/div&gt;
+                    &lt;div class="alert alert-info"&gt;
+                        &lt;span class="fs-5"&gt;114 年暑期高階班報名截止日：&lt;/span&gt;&lt;strong class="fs-4 text-primary"&gt;114 年 6 月 30 日，&lt;span id="advancedCountdownDays" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;span id="advancedCloseDay" class="fs-2 text-danger"&gt;&lt;/span&gt;&lt;/strong&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Offcanvas 會員登入程式開始 --&gt;
+&lt;script&gt;
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                if (!form.checkValidity()) {
+                    event.stopPropagation();
+                } else {
+                    const account = document.getElementById('loginAccount').value.trim();
+                    const password = document.getElementById('loginPassword').value.trim();
+                    if (account === 'admin' &amp;&amp; password === '123456') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '登入成功',
+                            text: account + '，歡迎回來！',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            customClass: {
+                                timerProgressBar: 'timer-progress-bar'
+                            }
+                        });
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '登入失敗',
+                            text: '帳號密碼錯誤，請重新輸入！',
+                            showConfirmButton: true,
+                            confirmButtonText: '重新輸入'
+                        });
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+&lt;/script&gt;
+&lt;!-- Offcanvas 會員登入程式結束 --&gt;
+
+&lt;!-- Offcanvas 活動倒數計時 (初階班) 程式開始 --&gt;
+&lt;script&gt;
+    const beginnerDeadline = new Date("2025-06-30");
+    const beginnerToday = new Date();
+    beginnerToday.setHours(0, 0, 0, 0);
+    const beginnerDiffTime = beginnerDeadline - beginnerToday;
+    const beginnerDayLeft = Math.ceil(beginnerDiffTime / (1000 * 60 * 60 * 24));
+    const beginnerCountdownDay = document.getElementById('beginnerCountdownDays');
+    const beginnerCloseDay = document.getElementById('beginnerCloseDay');
+    if (beginnerDayLeft &gt;= 0) {
+        beginnerCountdownDay.textContent = `剩下 ${beginnerDayLeft} 天！`;
+    } else {
+        beginnerCloseDay.textContent = '報名時間已截止！';
+    }
+&lt;/script&gt;
+&lt;!-- Offcanvas 活動倒數計時 (初階班) 程式結束 --&gt;
+
+&lt;!-- Offcanvas 活動倒數計時 (中階班) 程式開始 --&gt;
+&lt;script&gt;
+    const intermediateDeadline = new Date("2025-06-30");
+    const intermediateToday = new Date();
+    intermediateToday.setHours(0, 0, 0, 0);
+    const intermediateDiffTime = intermediateDeadline - intermediateToday;
+    const intermediateDayLeft = Math.ceil(intermediateDiffTime / (1000 * 60 * 60 * 24));
+    const intermediateCountdownDay = document.getElementById('intermediateCountdownDays');
+    const intermediateCloseDay = document.getElementById('intermediateCloseDay');
+    if (intermediateDayLeft &gt;= 0) {
+        intermediateCountdownDay.textContent = `剩下 ${intermediateDayLeft} 天！`;
+    } else {
+        intermediateCloseDay.textContent = '報名時間已截止！';
+    }
+&lt;/script&gt;
+&lt;!-- Offcanvas 活動倒數計時 (中階班) 程式結束 --&gt;
+
+&lt;!-- Offcanvas 活動倒數計時 (高階班) 程式開始 --&gt;
+&lt;script&gt;
+    const advancedDeadline = new Date("2025-06-30");
+    const advancedToday = new Date();
+    advancedToday.setHours(0, 0, 0, 0);
+    const advancedDiffTime = advancedDeadline - advancedToday;
+    const advancedDayLeft = Math.ceil(advancedDiffTime / (1000 * 60 * 60 * 24));
+    const advancedCountdownDay = document.getElementById('advancedCountdownDays');
+    const advancedCloseDay = document.getElementById('advancedCloseDay');
+    if (advancedDayLeft &gt;= 0) {
+        advancedCountdownDay.textContent = `剩下 ${advancedDayLeft} 天！`;
+    } else {
+        advancedCloseDay.textContent = '報名時間已截止！';
+    }
+&lt;/script&gt;
+&lt;!-- Offcanvas 活動倒數計時 (高階班) 程式結束 --&gt;
+</code></pre>
+                </div>
+            </div>
+            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4">
+                <div class="col">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin">
+                        會員登入
+                    </button>
+                    <div class="offcanvas offcanvas-start offcanvas-style-left" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title text-primary text-center w-100" id="offcanvasLoginLabel">會員登入</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                  <label for="loginAccount" class="form-label">帳號：</label>
+                                  <input type="text" id="loginAccount" class="form-control" data-bs-toggle="tooltip" title="請輸入帳號" data-bs-placement="right" aria-describedby="accountHelp" aria-required="true" required>
+                                  <div class="invalid-feedback">請輸入帳號</div>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="loginPassword" class="form-label">密碼：</label>
+                                  <input type="password" id="loginPassword" class="form-control" data-bs-toggle="tooltip" title="請輸入密碼" data-bs-placement="right" aria-required="true" required>
+                                  <div class="invalid-feedback">請輸入密碼</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                  <input type="checkbox" id="formCheck" class="form-check-input">
+                                  <label for="formCheck" class="form-check-label">記住我</label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-primary me-2">登入</button>
+                                    <button type="reset" class="btn btn-outline-primary">重新輸入</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                        活動選單
+                    </button>
+                    <div class="offcanvas offcanvas-end offcanvas-style-right" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenu">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title text-success text-center w-100" id="offcanvasMenu">活動選單</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="#">比賽日程</a></li>
+                                <li class="list-group-item"><a href="#">訓練日程</a></li>
+                                <li class="list-group-item"><a href="#">場地資訊</a></li>
+                                <li class="list-group-item"><a href="#">聯絡我們</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotice">
+                        網站公告
+                    </button>
+                    <div class="offcanvas offcanvas-top offcanvas-style-top" tabindex="-1" id="offcanvasNotice" aria-labelledby="offcanvasNotice">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title text-danger text-center w-100" id="offcanvasNotice">網站公告</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul>
+                                <li>114-06-10 114 年 7 月 5 日中階班暫停一次，課程將順延一周。</li>
+                                <li>114-06-13 清水里長盃報告時間延長至今日下午 5 點止。</li>
+                                <li>114-06-18 清水里長盃請各位選手上午 8 點準時報到。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasReciprocal">
+                        活動倒數
+                    </button>
+                    <div class="offcanvas offcanvas-bottom offcanvas-style-bottom" tabindex="-1" id="offcanvasReciprocal" aria-labelledby="offcanvasReciprocal">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title text-dark text-center w-100" id="offcanvasExampleReciprocal">活動倒數</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body text-center">
+                            <div class="alert alert-warning">
+                                <span class="fs-5">114 年暑期初階班報名截止日：</span><strong class="fs-4 text-primary">114 年 6 月 30 日，<span id="beginnerCountdownDays" class="fs-2 text-danger"></span><span id="beginnerCloseDay" class="fs-2 text-danger"></span></strong>
+                            </div>
+                            <div class="alert alert-danger">
+                                <span class="fs-5">114 年暑期中階班報名截止日：</span><strong class="fs-4 text-primary">114 年 6 月 30 日，<span id="intermediateCountdownDays" class="fs-2 text-danger"></span><span id="intermediateCloseDay" class="fs-2 text-danger"></span></strong>
+                            </div>
+                            <div class="alert alert-info">
+                                <span class="fs-5">114 年暑期高階班報名截止日：</span><strong class="fs-4 text-primary">114 年 6 月 30 日，<span id="advancedCountdownDays" class="fs-2 text-danger"></span><span id="advancedCloseDay" class="fs-2 text-danger"></span></strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -509,6 +1992,227 @@
 <div id="footer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../script.js"></script>
+
+<!-- Tooltip 程式開始 -->
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
+</script>
+<!-- Tooltip 程式結束 -->
+
+<!-- Popover 程式開始 -->
+<script>
+    const popoverTriggerList1 = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList1 = [...popoverTriggerList1].map(el => new bootstrap.Popover(el));
+</script>
+<!-- Popover 程式結束 -->
+
+<!-- Popover 各別獨立樣式程式開始 -->
+<script>
+    const popoverTriggerList2 = document.querySelectorAll('.popover1');
+    popoverTriggerList2.forEach(el => {
+        new bootstrap.Popover(el, {
+            customClass: 'popover-style'
+        });
+    });
+</script>
+<!-- Popover 各別獨立樣式程式結束 -->
+
+<!-- Popover 圖片與網址程式開始 -->
+<script>
+    const htmlPopoverList = document.querySelectorAll('.popover-html');
+    htmlPopoverList.forEach(el => {
+        new bootstrap.Popover(el, {
+            html: true,
+            anitize: false,
+            content: `
+                <img src="https://picsum.photos/800/300?random=17" class="img-fluid mb-2" alt="示意圖">
+                <br />
+                <a href="https://getbootstrap.com/" target="_blank">開啟 Bootstrap 官網</a>
+            `,
+            customClass: 'custom-html-popover'
+        });
+    });
+</script>
+<!-- Popover 圖片與網址程式結束 -->
+
+<!-- Popover 表單程式開始 -->
+<script>
+    const formPopover = document.getElementById('formPopover');
+    if (formPopover) {
+        new bootstrap.Popover(formPopover, {
+        html: true,
+        sanitize: false,
+        content: `
+            <form onsubmit="event.preventDefault(); alert('感謝訂閱！'); bootstrap.Popover.getInstance(document.getElementById('formPopover')).hide();">
+                <div class="mb-2">
+                <input type="email" class="form-control form-control-sm" placeholder="請輸入 E-mail" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">送出</button>
+            </form>
+        `,
+        customClass: 'popover-form'
+        });
+    };
+</script>
+<!-- Popover 表單程式結束 -->
+
+<!-- 共用關閉 Popover 程式開始 -->
+<script>
+    document.addEventListener('click', function (e) {
+        document.querySelectorAll('[data-bs-toggle="popover"]').forEach(triggerEl => {
+            const popoverEl = document.querySelector('.popover');
+            if (
+                !triggerEl.contains(e.target) && (!popoverEl || !popoverEl.contains(e.target))
+            ) {
+            bootstrap.Popover.getInstance(triggerEl)?.hide();
+            };
+        });
+    });
+</script>
+<!-- 共用關閉 Popover 程式結束 -->
+
+<!-- Tab 報名表程式開始  -->
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        const genderGroup = document.getElementById('genderGroup');
+        const genderFeedback = document.getElementById('genderFeedback');
+    
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                let genderSelected = false;
+                genderRadios.forEach(radio => {
+                    if (radio.checked) genderSelected = true;
+                });
+    
+                // 檢查整體表單是否有效 + 性別是否有選
+                if (!form.checkValidity() || !genderSelected) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (!genderSelected) {
+                        genderFeedback.classList.remove('d-none');
+                        genderFeedback.classList.add('d-block');
+                        genderGroup.classList.add('is-invalid');
+                    } else {
+                        genderFeedback.classList.remove('d-block');
+                        genderFeedback.classList.add('d-none');
+                        genderGroup.classList.remove('is-invalid');
+                    }
+                } else {
+                    event.preventDefault();
+                    alert('報名完成，我們將會盡快與您聯絡，謝謝。');
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    genderGroup.classList.remove('is-invalid');
+                    genderFeedback.classList.add('d-none');
+                    return;
+                }
+    
+                form.classList.add('was-validated');
+                }, false);
+            });
+    })();
+</script>
+<!-- Tab 報名表程式結束  -->
+
+<!-- Offcanvas 會員登入程式開始 -->
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                if (!form.checkValidity()) {
+                    event.stopPropagation();
+                } else {
+                    const account = document.getElementById('loginAccount').value.trim();
+                    const password = document.getElementById('loginPassword').value.trim();
+                    if (account === 'admin' && password === '123456') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '登入成功',
+                            text: account + '，歡迎回來！',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            customClass: {
+                                timerProgressBar: 'timer-progress-bar'
+                            }
+                        });
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '登入失敗',
+                            text: '帳號密碼錯誤，請重新輸入！',
+                            showConfirmButton: true,
+                            confirmButtonText: '重新輸入'
+                        });
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+<!-- Offcanvas 會員登入程式結束 -->
+
+<!-- Offcanvas 活動倒數計時 (初階班) 程式開始 -->
+<script>
+    const beginnerDeadline = new Date("2025-06-30");
+    const beginnerToday = new Date();
+    beginnerToday.setHours(0, 0, 0, 0);
+    const beginnerDiffTime = beginnerDeadline - beginnerToday;
+    const beginnerDayLeft = Math.ceil(beginnerDiffTime / (1000 * 60 * 60 * 24));
+    const beginnerCountdownDay = document.getElementById('beginnerCountdownDays');
+    const beginnerCloseDay = document.getElementById('beginnerCloseDay');
+    if (beginnerDayLeft >= 0) {
+        beginnerCountdownDay.textContent = `剩下 ${beginnerDayLeft} 天！`;
+    } else {
+        beginnerCloseDay.textContent = '報名時間已截止！';
+    }
+</script>
+<!-- Offcanvas 活動倒數計時 (初階班) 程式結束 -->
+
+<!-- Offcanvas 活動倒數計時 (中階班) 程式開始 -->
+<script>
+    const intermediateDeadline = new Date("2025-06-30");
+    const intermediateToday = new Date();
+    intermediateToday.setHours(0, 0, 0, 0);
+    const intermediateDiffTime = intermediateDeadline - intermediateToday;
+    const intermediateDayLeft = Math.ceil(intermediateDiffTime / (1000 * 60 * 60 * 24));
+    const intermediateCountdownDay = document.getElementById('intermediateCountdownDays');
+    const intermediateCloseDay = document.getElementById('intermediateCloseDay');
+    if (intermediateDayLeft >= 0) {
+        intermediateCountdownDay.textContent = `剩下 ${intermediateDayLeft} 天！`;
+    } else {
+        intermediateCloseDay.textContent = '報名時間已截止！';
+    }
+</script>
+<!-- Offcanvas 活動倒數計時 (中階班) 程式結束 -->
+
+<!-- Offcanvas 活動倒數計時 (高階班) 程式開始 -->
+<script>
+    const advancedDeadline = new Date("2025-06-30");
+    const advancedToday = new Date();
+    advancedToday.setHours(0, 0, 0, 0);
+    const advancedDiffTime = advancedDeadline - advancedToday;
+    const advancedDayLeft = Math.ceil(advancedDiffTime / (1000 * 60 * 60 * 24));
+    const advancedCountdownDay = document.getElementById('advancedCountdownDays');
+    const advancedCloseDay = document.getElementById('advancedCloseDay');
+    if (advancedDayLeft >= 0) {
+        advancedCountdownDay.textContent = `剩下 ${advancedDayLeft} 天！`;
+    } else {
+        advancedCloseDay.textContent = '報名時間已截止！';
+    }
+</script>
+<!-- Offcanvas 活動倒數計時 (高階班) 程式結束 -->
 </body>
 </html>

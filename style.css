@@ -2,28 +2,12 @@ body {
     background-color: #0a0a23;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 100px;
 }
 
 a.nav-link {
     position: relative;
     overflow: hidden;
-}
-
-a.nav-link::after {
-    content: "";
-    position: absolute;
-    left: -100%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #00f0ff;
-    opacity: 0.2;
-    transition: left 0.4s;
-    z-index: -1;
-}
-
-a.nav-link:hover::after {
-    left: 0;
 }
 
 .learning-card {
@@ -55,8 +39,24 @@ pre {
     background: linear-gradient(to bottom, #212529, #343a40); /* 類似 bg-dark + bg-gradient */
     color: #ffc107; /* Bootstrap 的 text-warning 對應顏色 */
     font-weight: bold;
-    padding: 1rem;
+    text-align: left;
     border-radius: 0.375rem;
     font-family: monospace;
     white-space: pre-wrap; /* 保持預設格式換行 */
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
+.popover1140601 .popover-header {
+    background-color: lightseagreen;
+    color: white;;
+    font-weight: bold;
+    text-align: center;
+}
+
+.popover1140601 .popover-body {
+    min-width: 200px;
+    background-color: #eee;
+    color: black;
+    font-size: 0.95rem;
 }
