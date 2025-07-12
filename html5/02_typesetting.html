@@ -45,14 +45,18 @@
 					</div>
 					<div class="col">
 						&lt;p&gt;與&lt;br&gt;顯示結果：<br />
-						我是第一段<p>
-						我是第一段第一行<br />
-						我是第一段第二行<br />
-						我是第一段第三行
-						<p>我是第二段</p>
-						我是第二段第一行<br />
-						我是第二段第二行<br />
-						我是第二段第三行<p>
+						<p>
+							我是第一段
+							我是第一段第一行<br />
+							我是第一段第二行<br />
+							我是第一段第三行
+						</p>
+						<p>
+							我是第二段
+							我是第二段第一行<br />
+							我是第二段第二行<br />
+							我是第二段第三行
+						</p>
 					</div>
 				</div>
 			</div>
@@ -115,19 +119,19 @@
 									<td>設定段落標題大小，&lt;h1&gt;最大，&lt;h6&gt;最小，標記裡的文字會獨佔一行。</td>
 								</tr>
 							</tbody>						
-						<table>
+						</table>
 					</div>
 					<div class="col">
 						&lt;pre&gt;顯示結果：<br />
 						<pre><code>
-我是html原始碼。
-我是html原始碼。
-我是html原始碼。
-我是html原始碼。
+							我是html原始碼。
+							我是html原始碼。
+							我是html原始碼。
+							我是html原始碼。
 						</code></pre>
 
 						&lt;blockquote&gt;顯示結果：<br />
-							<blockquote style="border-top: 2px solid #959595; border-bottom: 2px solid #959595;" cite="http://https://web.customs.gov.tw/taichung">
+							<blockquote style="border-top: 2px solid #959595; border-bottom: 2px solid #959595;" cite="https://web.customs.gov.tw/taichung">
 								<p>關務署臺中關，換行縮排。</p>
 								<p>關務署臺中關，換行縮排。</p>
 							</blockquote>
@@ -136,11 +140,11 @@
 							<hr />
 
 						&lt;h1&gt;到&lt;h6&gt;顯示結果：<br />
-							<h1>我是h1</h1><br />
-							<h2>我是h2</h2><br />
-							<h3>我是h3</h3><br />
-							<h4>我是h4</h4><br />
-							<h5>我是h5</h5><br />
+							<h1 class="my-2">我是h1</h1>
+							<h2 class="my-2">我是h2</h2>
+							<h3 class="my-2">我是h3</h3>
+							<h4 class="my-2">我是h4</h4>
+							<h5 class="my-2">我是h5</h5>
 							<h6>我是h6</h6>
 					</div>
 				</div>
@@ -325,70 +329,82 @@
 				<h2 class="text-warning text-center mb-3">巢狀式清單</h2>
 				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
 					<div class="col">
-						<ul>
-							<li>臺大醫院</li>
-								<ul>
-									<li>心臟科</li>
-									<ol>
-										<li>AAA醫師</li>
-										<li>BBB醫師</li>
-										<li>CCC醫師</li>
-									</ol>
-									<li>耳鼻喉科</li>
-									<ol>
-										<li>DDD醫師</li>
-										<li>EEE醫師</li>
-										<li>FFF醫師</li>
-									</ol>
-									<li>眼科</li>
-									<ol>
-										<li>GGG醫師</li>
-										<li>HHH醫師</li>
-										<li>III醫師</li>
-									</ol>
-								</ul>		
-							<li>長庚醫院</li>
-								<ul>
-									<li>心臟科</li>
-									<ol>
-										<li>JJJ醫師</li>
-										<li>KKK醫師</li>
-										<li>LLL醫師</li>
-									</ol>
-									<li>耳鼻喉科</li>
-									<ol>
-										<li>MMM醫師</li>
-										<li>NNN醫師</li>
-										<li>OOO醫師</li>
-									</ol>
-									<li>眼科</li>	
-									<ol>
-										<li>PPP醫師</li>
-										<li>QQQ醫師</li>
-										<li>RRR醫師</li>
-									</ol>
+						<ul class="list-group">
+							<li class="list-group-item">臺大醫院
+								<ul class="list-group">
+									<li class="list-group-item">心臟科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">AAA醫師</li>
+											<li class="list-group-item">BBB醫師</li>
+											<li class="list-group-item">CCC醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">耳鼻喉科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">DDD醫師</li>
+											<li class="list-group-item">EEE醫師</li>
+											<li class="list-group-item">FFF醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">眼科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">GGG醫師</li>
+											<li class="list-group-item">HHH醫師</li>
+											<li class="list-group-item">III醫師</li>
+										</ol>
+									</li>
 								</ul>
-							<li>馬偕醫院</li>
-							<ul>
-								<li>心臟科</li>
-								<ol>
-									<li>SSS醫師</li>
-									<li>TTT醫師</li>
-									<li>UUU醫師</li>
-								</ol>
-								<li>耳鼻喉科</li>
-								<ol>
-									<li>VVV醫師</li>
-									<li>WWW醫師</li>
-									<li>XXX醫師</li>
-								</ol>
-								<li>眼科</li>
-								<ol>
-									<li>YYY醫師</li>
-									<li>ZZZ醫師</li>
-									<li>aaa醫師</li>
-								</ol>
-							</ul>
+							</li>
+							<li class="list-group-item">長庚醫院
+								<ul class="list-group">
+									<li class="list-group-item">心臟科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">JJJ醫師</li>
+											<li class="list-group-item">KKK醫師</li>
+											<li class="list-group-item">LLL醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">耳鼻喉科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">MMM醫師</li>
+											<li class="list-group-item">NNN醫師</li>
+											<li class="list-group-item">OOO醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">眼科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">PPP醫師</li>
+											<li class="list-group-item">QQQ醫師</li>
+											<li class="list-group-item">RRR醫師</li>
+										</ol>
+									</li>
+								</ul>
+							</li>
+							<li class="list-group-item">馬偕醫院
+								<ul>
+									<li class="list-group-item">心臟科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">SSS醫師</li>
+											<li>TTT醫師</li>
+											<li>UUU醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">耳鼻喉科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">VVV醫師</li>
+											<li class="list-group-item">WWW醫師</li>
+											<li class="list-group-item">XXX醫師</li>
+										</ol>
+									</li>
+									<li class="list-group-item">眼科
+										<ol class="list-group list-group-numbered">
+											<li class="list-group-item">YYY醫師</li>
+											<li class="list-group-item">ZZZ醫師</li>
+											<li class="list-group-item">aaa醫師</li>
+										</ol>
+									</li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div class="col">
@@ -431,7 +447,7 @@
 										<tr>
 											<td>none[預設保留邊距和填充(留白)]</td>
 											<td>
-												<ol align="left" style="list-style-type: none;">
+												<ol style="text-align: left;" style="list-style-type: none;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -441,7 +457,7 @@
 										<tr>
 											<td>none(將margin和padding設為0)</td>
 											<td>
-												<ol align="left" style="list-style-type: none; margin: 0; padding: 0;">
+												<ol style="text-align: left;" style="list-style-type: none; margin: 0; padding: 0;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -451,7 +467,7 @@
 										<tr>
 											<td>circle</td>
 											<td>
-												<ul align="left" style="list-style-type: circle;">
+												<ul style="text-align: left;" style="list-style-type: circle;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -461,7 +477,7 @@
 										<tr>
 											<td>square</td>
 											<td>
-												<ul align="left" style="list-style-type: square;">
+												<ul style="text-align: left;" style="list-style-type: square;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -471,7 +487,7 @@
 										<tr>
 											<td>cjk-ideographic</td>
 											<td>
-												<ol align="left" style="list-style-type: cjk-ideographic;">
+												<ol style="text-align: left;" style="list-style-type: cjk-ideographic;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -481,7 +497,7 @@
 										<tr>
 											<td>decimal</td>
 											<td>
-												<ol align="left" style="list-style-type: decimal;">
+												<ol style="text-align: left;" style="list-style-type: decimal;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -491,7 +507,7 @@
 										<tr>
 											<td>decimal-leading-zero</td>
 											<td>
-												<ol align="left" style="list-style-type: decimal-leading-zero;">
+												<ol style="text-align: left;" style="list-style-type: decimal-leading-zero;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -504,7 +520,7 @@
 												lower-latin
 											</td>
 											<td>
-												<ol align="left" style="list-style-type: lower-alpha;">
+												<ol style="text-align: left;" style="list-style-type: lower-alpha;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -517,7 +533,7 @@
 												upper-latin
 											</td>
 											<td>
-												<ol align="left" style="list-style-type: upper-alpha;">
+												<ol style="text-align: left;" style="list-style-type: upper-alpha;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -527,7 +543,7 @@
 										<tr>
 											<td>lower-greek</td>
 											<td>
-												<ol align="left" style="list-style-type: lower-greek;">
+												<ol style="text-align: left;" style="list-style-type: lower-greek;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -539,7 +555,7 @@
 												lower-roman<br />
 											</td>
 											<td>
-												<ol align="left" style="list-style-type: lower-roman;">
+												<ol style="text-align: left;" style="list-style-type: lower-roman;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -551,7 +567,7 @@
 												upper-roman<br />
 											</td>
 											<td>
-												<ol align="left" style="list-style-type: upper-roman;">
+												<ol style="text-align: left;" style="list-style-type: upper-roman;">
 													<li>羽毛球</li>
 													<li>棒球</li>
 													<li>籃球</li>
@@ -755,73 +771,76 @@
 					<div class="col">
 						<ul>
 							<li>必須放在&lt;head&gt;與&lt;/head&gt;標記之間。</li>
-							<li>語法分兩大類：</li>
-							<ol>
-								<li>&lt;meta&nbsp;http-equiv="定義HTTP表頭相關資訊"&nbsp;content="表頭相關資訊內容"&gt;</li>
-								<li>&lt;meta&nbsp;name="宣告網頁相關資訊"&nbsp;content="網頁相關資訊內容"&gt;</li>
-							</ol>
-							<li>http-equiv屬性</li>
-							<dl>
-								<dt>content-type</dt>
-								<dd>&lt;meta&nbsp;http-equiv="content-type"&nbsp;content="text/html;&nbsp;charset=big5"&gt;</dd>
-								<dd>設定網頁格式的屬性設定值，每一項內容以分號;隔開。</dd>
-								<dd>text/html表示以text與html標準來編譯網頁。</dd>
-								<dd>charset是指定網頁的編碼字集(Character Set)，big5是繁體中文；zh-tw是台灣(中文)；gb2312是大陸(簡體)。</dd>
-							</dl>
-							<dl>
-								<dt>refresh</dt>
-								<dd>&lt;meta&nbsp;http-equiv="refresh"&nbsp;content="10;&nbsp;url=http://www.google.com.tw"&gt;</dd>
-								<dd>設定預設秒數自動轉址，如果省略網址，則表示重新整理網頁。</dd>
-							</dl>
-							<dl>
-								<dt>expires</dt>
-								<dd>&lt;meta&nbsp;http-equiv="expires"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
-								<dd>設定網頁到期時間，當網頁時間到期時，瀏覽器會從伺服器重新下載網頁，content值必須使用GMT時間格式。</dd>
-							</dl>
-							<dl>
-								<dt>pragma</dt>
-								<dd>&lt;meta&nbsp;http-equiv="pragma"&nbsp;content="no-cache"&gt;</dd>
-								<dd>設定網頁快取(cache)。</dd>
-								<dd>當content設定"no-cache"時，表示禁止瀏覽器從暫存區讀取快取，使用者無法離線瀏覽。</dd>
-							</dl>
-							<dl>
-								<dt>set-cookie</dt>
-								<dd>&lt;meta&nbsp;http-equiv="set-cookie"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
-								<dd>設定cookie到期時間，content值必須使用GMT時間格式。</dd>
-							</dl>
-							<dl>
-								<dt>windows-target</dt>
-								<dd>&lt;meta&nbsp;http-equiv="windows-target"&nbsp;content="_top"&gt;</dd>
-								<dd>"_top"表示強制將網頁顯示於最上層，防止他人在框架裡顯示您的網頁。</dd>
-							</dl>
-							<li>name屬性</li>
-							<dl>
-								<dt>keywords</dt>
-								<dd>&lt;meta&nbsp;name="keywords"&nbsp;content="bedminton,羽球,羽球拍,羽球鞋,運動"&gt;</dd>
-								<dd>設定網頁的關鍵字。</dd>
-								<dd>content裡填入網頁的關鍵字，可讓搜尋引擎更容易搜尋到網頁，可輸入中、英文、數字，以逗號,隔開。</dd>
-							</dl>
-							<dl>
-								<dt>description</dt>
-								<dd>&lt;meta&nbsp;name="description"&nbsp;content="網頁簡要說明"&gt;</dd>
-								<dd>說明網頁主要內容，建議不要超過100個字元。</dd>
-							</dl>
-							<dl>
-								<dt>author</dt>
-								<dd>&lt;meta&nbsp;name="author"&nbsp;content="Daniel"&gt;</dd>
-								<dd>說明網頁的作者。</dd>
-							</dl>
-							<dl>
-								<dt>creation-date</dt>
-								<dd>&lt;meta&nbsp;name="creation-date"&nbsp;content="Fri, 22 Nov 2024 08:00:00 GMT"&gt;</dd>
-								<dd>標註網頁製作時間，必須使用GMT時間格式。</dd>
-							</dl>
-							<dl>
-								<dt>viewport</dt>
-								<dd>&lt;meta&nbsp;name="viewport"&nbsp;content="width=device-width, initial-scale=1"</dd>
-								<dd>width=device-width：指定瀏覽器頁面寬度等同於手機、平板…等裝置。</dd>
-								<dd>initial-scale=1：指定畫面初始縮放比例為100%，即不放大也不縮小。</dd>
-							</dl>
+							<li>語法分兩大類：
+								<ol>
+									<li>&lt;meta&nbsp;http-equiv="定義HTTP表頭相關資訊"&nbsp;content="表頭相關資訊內容"&gt;</li>
+									<li>&lt;meta&nbsp;name="宣告網頁相關資訊"&nbsp;content="網頁相關資訊內容"&gt;</li>
+								</ol>
+							</li>
+							<li>http-equiv屬性
+								<dl>
+									<dt>content-type</dt>
+									<dd>&lt;meta&nbsp;http-equiv="content-type"&nbsp;content="text/html;&nbsp;charset=big5"&gt;</dd>
+									<dd>設定網頁格式的屬性設定值，每一項內容以分號;隔開。</dd>
+									<dd>text/html表示以text與html標準來編譯網頁。</dd>
+									<dd>charset是指定網頁的編碼字集(Character Set)，big5是繁體中文；zh-tw是台灣(中文)；gb2312是大陸(簡體)。</dd>
+								</dl>
+								<dl>
+									<dt>refresh</dt>
+									<dd>&lt;meta&nbsp;http-equiv="refresh"&nbsp;content="10;&nbsp;url=http://www.google.com.tw"&gt;</dd>
+									<dd>設定預設秒數自動轉址，如果省略網址，則表示重新整理網頁。</dd>
+								</dl>
+								<dl>
+									<dt>expires</dt>
+									<dd>&lt;meta&nbsp;http-equiv="expires"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
+									<dd>設定網頁到期時間，當網頁時間到期時，瀏覽器會從伺服器重新下載網頁，content值必須使用GMT時間格式。</dd>
+								</dl>
+								<dl>
+									<dt>pragma</dt>
+									<dd>&lt;meta&nbsp;http-equiv="pragma"&nbsp;content="no-cache"&gt;</dd>
+									<dd>設定網頁快取(cache)。</dd>
+									<dd>當content設定"no-cache"時，表示禁止瀏覽器從暫存區讀取快取，使用者無法離線瀏覽。</dd>
+								</dl>
+								<dl>
+									<dt>set-cookie</dt>
+									<dd>&lt;meta&nbsp;http-equiv="set-cookie"&nbsp;content="Sun, 24 Nov 2024 15:00:00 GMT"&gt;</dd>
+									<dd>設定cookie到期時間，content值必須使用GMT時間格式。</dd>
+								</dl>
+								<dl>
+									<dt>windows-target</dt>
+									<dd>&lt;meta&nbsp;http-equiv="windows-target"&nbsp;content="_top"&gt;</dd>
+									<dd>"_top"表示強制將網頁顯示於最上層，防止他人在框架裡顯示您的網頁。</dd>
+								</dl>
+							</li>
+							<li>name屬性
+								<dl>
+									<dt>keywords</dt>
+									<dd>&lt;meta&nbsp;name="keywords"&nbsp;content="bedminton,羽球,羽球拍,羽球鞋,運動"&gt;</dd>
+									<dd>設定網頁的關鍵字。</dd>
+									<dd>content裡填入網頁的關鍵字，可讓搜尋引擎更容易搜尋到網頁，可輸入中、英文、數字，以逗號,隔開。</dd>
+								</dl>
+								<dl>
+									<dt>description</dt>
+									<dd>&lt;meta&nbsp;name="description"&nbsp;content="網頁簡要說明"&gt;</dd>
+									<dd>說明網頁主要內容，建議不要超過100個字元。</dd>
+								</dl>
+								<dl>
+									<dt>author</dt>
+									<dd>&lt;meta&nbsp;name="author"&nbsp;content="Daniel"&gt;</dd>
+									<dd>說明網頁的作者。</dd>
+								</dl>
+								<dl>
+									<dt>creation-date</dt>
+									<dd>&lt;meta&nbsp;name="creation-date"&nbsp;content="Fri, 22 Nov 2024 08:00:00 GMT"&gt;</dd>
+									<dd>標註網頁製作時間，必須使用GMT時間格式。</dd>
+								</dl>
+								<dl>
+									<dt>viewport</dt>
+									<dd>&lt;meta&nbsp;name="viewport"&nbsp;content="width=device-width, initial-scale=1"</dd>
+									<dd>width=device-width：指定瀏覽器頁面寬度等同於手機、平板…等裝置。</dd>
+									<dd>initial-scale=1：指定畫面初始縮放比例為100%，即不放大也不縮小。</dd>
+								</dl>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -879,6 +898,7 @@
 	</main>
 
 	<div id="footer"></div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/webdesignhub/script.js"></script>
 </body>

@@ -1,449 +1,489 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap 欄與列 (一)</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../style.css" rel="stylesheet">
-  <link href="../bootstrapcolor.css" rel="stylesheet">
-  <style>
-    pre {
-        background: linear-gradient(to bottom, #212529, #343a40); /* 類似 bg-dark + bg-gradient */
-        color: #ffc107; /* Bootstrap 的 text-warning 對應顏色 */
-        font-weight: bold;
-        padding: 1rem;
-        border-radius: 0.375rem;
-        font-family: monospace;
-        white-space: pre-wrap; /* 保持預設格式換行 */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/webdesignhub/">
+    <title>Bootstrap 欄與列 (一)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="bootstrapcolor.css" rel="stylesheet">
 </head>
 
 <body>
-<div id="header"></div>
+    <div id="header"></div>
 
-<main>
-  <div class="container table-responsive">
-    <div class="row">
-        <h1 class="text-warning text-center p-2">countainer</h1>
-        <div class="col-12 col-md-6 col-lg-12">
-            <div class="p-2 text-white">
-                <h3 class="text-primary">介紹</h3>
-                <ul>
-                    <li>在Bootstrap裡，所有的排版結構(row、col)都必須放在container裡面。</li>
-                    <li>
-                        container是最外層的框架，主要負責：
-                        <ol>
-                            <li>限制內容最大寬度(自適應)。</li>
-                            <li>自動加上左右padding(內距)。</li>
-                            <li>保持版型不要整個貼邊。</li>
-                        </ol>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <div class="text-white">
-                <h3 class="p-2 text-primary">基本類型</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th class="text-center">類型</th>
-                                <th class="text-center">用法</th>
-                                <th class="text-center">說明</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>container</td>
-                                <td>&lt;div class="container"&gt;&lt;/div&gt;</td>
-                                <td>有固定寬度，隨著螢幕大小自動變化。</td>
-                            </tr>
-                            <tr>
-                                <td>container-fluid</td>
-                                <td>&lt;div class="container-fluid"&gt;&lt;/div&gt;</td>
-                                <td>100%滿版寬度。</td>
-                            </tr>
-                            <tr>
-                                <td>container-{breakpoint}</td>
-                                <td>&lt;div class="container-md"&gt;&lt;/div&gt;</td>
-                                <td>
-                                    某尺寸以上固定，以下滿版。<br />
-                                    左邊的用法是小於md斷點時是滿版，大於等於md變固定寬度。(<a href="02_bootstraptypesetting.html#breakpoint">參考表格</a>)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>  
-                </div>
-            </div>
-        </div>
-        <h2 class="text-warning text-center p-2">container-範例</h2>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <div class="p-2 text-white">
-                <h3 class="text-primary">container</h3>
-                <div class="container bg-secondary bg-gradient">
-                    <h5>標題</h5>
-                    <p>這是一般container，有固定寬度。</p>
-                    <ul>
-                        <li>大螢幕時不會貼邊，有左右留白。</li>
-                        <li>小螢幕自動收窄。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <div class="p-2 text-white">
-                <h3 class="text-primary">container-fluid</h3>
-                <div class="container-fluid bg-secondary bg-gradient">
-                    <h5>滿版標題</h5>
-                    <p>這是container-fluid，佔滿整個螢幕100%寬度。</p>
-                    <ul>
-                        <li>不論大螢幕小螢幕，都會滿版。</li>
-                        <li>適用於Hero Banner(大圖)、滿版背景區塊、全螢幕表單。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <div class="p-2 text-white">
-                <h3 class="text-primary">container-{breakpoint}</h3>
-                <div class="container-md bg-secondary bg-gradient">
-                    <h5>中型螢幕後固定寬度</h5>
-                    <p>如果設定col-md，適用於小於768px寬時滿版，大於768px時限制寬度。</p>
-                    <ul>
-                        <li>手機時是滿版。</li>
-                        <li>平板以上開始有左右留白。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <h1 class="text-warning text-center p-2">row</h1>
-        <div class="col-12 col-md-6 col-lg-12">
-            <div class="p-2 text-white">
-                <h3 class="text-primary">介紹</h3>
-                <ul>
-                    <li>row是水平排列容器，裡面會包著.col欄位，讓欄位在一行內水平排列。</li>
-                    <li>必須放在container或container-fluid裡面。</li>
-                    <li>每個row裡的col-*都是獨立設定，不會繼承上一層的欄位設定。</li>
-                </ul>
-            </div>
-        </div>
-        <h2 class="text-warning text-center p-2">row-範例</h2>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>1. 標準用法</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">row</h3>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row border border-primary border-3"&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位3&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row border border-primary border-3">
-                        <div class="col border border-primary border-2">欄位1</div>
-                        <div class="col border border-primary border-2">欄位2</div>
-                        <div class="col border border-primary border-2">欄位3</div>
+    <main>
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">countainer</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col">
+                        <ul>
+                            <li>在Bootstrap裡，所有的排版結構(row、col)都必須放在container裡面。</li>
+                            <li>
+                                container是最外層的框架，主要負責：
+                                <ol>
+                                    <li>限制內容最大寬度(自適應)。</li>
+                                    <li>自動加上左右padding(內距)。</li>
+                                    <li>保持版型不要整個貼邊。</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">類型</th>
+                                    <th class="text-center">用法</th>
+                                    <th class="text-center">說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>container</td>
+                                    <td>&lt;div class="container"&gt;&lt;/div&gt;</td>
+                                    <td>有固定寬度，隨著螢幕大小自動變化。</td>
+                                </tr>
+                                <tr>
+                                    <td>container-fluid</td>
+                                    <td>&lt;div class="container-fluid"&gt;&lt;/div&gt;</td>
+                                    <td>100%滿版寬度。</td>
+                                </tr>
+                                <tr>
+                                    <td>container-{breakpoint}</td>
+                                    <td>&lt;div class="container-md"&gt;&lt;/div&gt;</td>
+                                    <td>
+                                        某尺寸以上固定，以下滿版。<br />
+                                        左邊的用法是小於md斷點時是滿版，大於等於md變固定寬度。(<a
+                                            href="02_bootstraptypesetting.html#breakpoint">參考表格</a>)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>2. 欄位加數字</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">col-數字(最多12格)</h3>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row border border-primary border-3"&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位1&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位2&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位3&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位4&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位5&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位6&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位7&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位8&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位9&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位10&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位11&lt;/div&gt;
-        &lt;div class="col-1 border border-primary border-2"&gt;欄位12&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row border border-primary border-3">
-                        <div class="col-1 border border-primary border-2">欄位1</div>
-                        <div class="col-1 border border-primary border-2">欄位2</div>
-                        <div class="col-1 border border-primary border-2">欄位3</div>
-                        <div class="col-1 border border-primary border-2">欄位4</div>
-                        <div class="col-1 border border-primary border-2">欄位5</div>
-                        <div class="col-1 border border-primary border-2">欄位6</div>
-                        <div class="col-1 border border-primary border-2">欄位7</div>
-                        <div class="col-1 border border-primary border-2">欄位8</div>
-                        <div class="col-1 border border-primary border-2">欄位9</div>
-                        <div class="col-1 border border-primary border-2">欄位10</div>
-                        <div class="col-1 border border-primary border-2">欄位11</div>
-                        <div class="col-1 border border-primary border-2">欄位12</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">container-一般版</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-secondary bg-gradient">
+                        <h5>標題</h5>
+                        <p>這是一般container，有固定寬度。</p>
+                        <ul>
+                            <li>大螢幕時不會貼邊，有左右留白。</li>
+                            <li>小螢幕自動收窄。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>3. RWD響應式欄位</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">col-breakpoint-數字</h3>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row border border-primary border-3"&gt;
-        &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位1&lt;/div&gt;
-        &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位2&lt;/div&gt;
-        &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位3&lt;/div&gt;
-        &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位3&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row border border-primary border-3">
-                        <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位1</div>
-                        <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位2</div>
-                        <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位3</div>
-                        <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位3</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container-fluid table-responsive">
+                <h2 class="text-warning text-center mb-3">container-fluid (滿版)</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-secondary bg-gradient">
+                        <h5>滿版標題</h5>
+                        <p>這是container-fluid，佔滿整個螢幕100%寬度。</p>
+                        <ul>
+                            <li>不論大螢幕小螢幕，都會滿版。</li>
+                            <li>適用於Hero Banner(大圖)、滿版背景區塊、全螢幕表單。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>4. 主內容區+側邊欄</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">col-breakpoint-數字</h3>
-<pre><code>
-    &lt;div class="container bg-secondary bg-gradient"&gt;
-        &lt;div class="row border border-primary border-3"&gt;
-            &lt;div class="col-md-8 border border-primary border-2"&gt;主內容區&lt;/div&gt;
-            &lt;div class="col-md-4 border border-primary border-2"&gt;側邊欄&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row border border-primary border-3">
-                        <div class="col-md-8 border border-primary border-2">主內容區</div>
-                        <div class="col-md-4 border border-primary border-2">側邊欄</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container-sm border border-warning">
+                <h2 class="text-warning text-center mb-3">container-sm</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-primary bg-gradient">
+                        <h5>小型螢幕以上固定寬度</h5>
+                        <p>使用 container-sm。</p>
+                        <ul>
+                            <li>在手機 (寬度小於 576px) 時為滿版。</li>
+                            <li>在平板或更大螢幕 (寬度 ≥ 576px) 時開始出現左右留白，寬度限制為 <strong>540px</strong>。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>5. 自動欄寬</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">col-auto</h3>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row border border-primary border-3"&gt;
-        &lt;div class="col-auto border border-primary border-2"&gt;寬度隨內容變化&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;自動佔滿剩下空間&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row border border-primary border-3">
-                        <div class="col-auto border border-primary border-2">寬度隨內容變化</div>
-                        <div class="col border border-primary border-2">自動佔滿剩下空間</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container-md border border-warning">
+                <h2 class="text-warning text-center mb-3">container-md</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-success bg-gradient">
+                        <h5>中型螢幕以上固定寬度</h5>
+                        <p>使用 container-md。</p>
+                        <ul>
+                            <li>在手機與小型裝置 (寬度小於 768px) 時為滿版。</li>
+                            <li>在中型裝置以上 (寬度 ≥ 768px) 時開始有左右留白，寬度限制為 <strong>720px</strong>。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>6. 一行幾欄</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">row-cols-數字</h3>
-                <ul>
-                    <li>row-cols-數字：會自動在每列塞進多少欄位。</li>
-                    <li>RWD做法：row-cols-1、row-cols-md-2、row-cols-lg-3</li>
-                </ul>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row row-cols-3 border border-primary border-3"&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位3&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位4(自動換行)&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row row-cols-3 border border-primary border-3">
-                        <div class="col border border-primary border-2">欄位1</div>
-                        <div class="col border border-primary border-2">欄位2</div>
-                        <div class="col border border-primary border-2">欄位3</div>
-                        <div class="col border border-primary border-2">欄位4(自動換行)</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container-lg border border-warning">
+                <h2 class="text-warning text-center mb-3">container-lg</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-danger bg-gradient">
+                        <h5>大型螢幕以上固定寬度</h5>
+                        <p>使用 container-lg。</p>
+                        <ul>
+                            <li>在手機與中型裝置 (寬度小於 992px) 時為滿版。</li>
+                            <li>在大型裝置以上 (寬度 ≥ 992px) 時出現左右留白，寬度限制為 <strong>960px</strong>。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>7. 欄位間距控制</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">gx-數字、gy-數字</h3>
-                <ul>
-                    <li>gx：橫向間距。</li>
-                    <li>gy：縱向間距。</li>
-                    <li>數字從0~5(0是無間距)。</li>
-                </ul>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row gx-1 gy-2 border border-primary border-3"&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
-        &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row gx-1 gy-2 border border-primary border-3">
-                        <div class="col border border-primary border-2">欄位1</div>
-                        <div class="col border border-primary border-2">欄位2</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">row</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col">
+                        <ul>
+                            <li>row是水平排列容器，裡面會包著.col欄位，讓欄位在一行內水平排列。</li>
+                            <li>必須放在container或container-fluid裡面。</li>
+                            <li>每個row裡的col-*都是獨立設定，不會繼承上一層的欄位設定。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>8. 調整對齊方式</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">justify-content-*</h3>
-                <ul>
-                    <li>justify-content-start：靠左對齊。</li>
-                    <li>justify-content-center：置中。</li>
-                    <li>justify-content-end：靠右對齊。</li>
-                    <li>justify-content-between：兩端對齊。</li>
-                    <li>justify-content-around：均分間距。</li>
-                </ul>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row justify-content-center"&gt;
-        &lt;div class="col-4 border border-primary border-2"&gt;欄位1&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row justify-content-center">
-                        <div class="col-4 border border-primary border-2">欄位1</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-12 p-2">
-            <h3>9. 巢狀row</h3>
-            <div class="p-2 text-white">
-                <h3 class="text-primary">巢狀Grid，適合做左右+上下組合排版</h3>
-<pre><code>
-&lt;div class="container bg-secondary bg-gradient"&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="col-6 border border-primary border-2"&gt;左欄位
-            &lt;div class="row g-2"&gt;
-                &lt;div class="col-6 mb-2 border border-danger border-2"&gt;左邊&lt;/div&gt;
-                &lt;div class="col-6 mb-2 border border-danger border-2"&gt;右邊&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="col-6 border border-warning border-2"&gt;右欄位&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-                <div class="container bg-secondary bg-gradient">
-                    <div class="row">
-                        <div class="col-6 border border-primary border-2">左欄位
-                            <div class="row g-2">
-                                <div class="col-6 mb-2 border border-danger border-2">左邊</div>
-                                <div class="col-6 mb-2 border border-danger border-2">右邊</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">row-範例</h2>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 p-2">
+                        <h3>1. 標準用法</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">row</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row border border-primary border-3"&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位3&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row border border-primary border-3">
+                                    <div class="col border border-primary border-2">欄位1</div>
+                                    <div class="col border border-primary border-2">欄位2</div>
+                                    <div class="col border border-primary border-2">欄位3</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6 border border-warning border-2">右欄位</div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 p-2">
+                        <h3>2. 欄位加數字</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">col-數字(最多12格)</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row border border-primary border-3"&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位2&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位3&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位4&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位5&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位6&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位7&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位8&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位9&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位10&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位11&lt;/div&gt;
+                                            &lt;div class="col-1 border border-primary border-2"&gt;欄位12&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row border border-primary border-3">
+                                    <div class="col-1 border border-primary border-2">欄位1</div>
+                                    <div class="col-1 border border-primary border-2">欄位2</div>
+                                    <div class="col-1 border border-primary border-2">欄位3</div>
+                                    <div class="col-1 border border-primary border-2">欄位4</div>
+                                    <div class="col-1 border border-primary border-2">欄位5</div>
+                                    <div class="col-1 border border-primary border-2">欄位6</div>
+                                    <div class="col-1 border border-primary border-2">欄位7</div>
+                                    <div class="col-1 border border-primary border-2">欄位8</div>
+                                    <div class="col-1 border border-primary border-2">欄位9</div>
+                                    <div class="col-1 border border-primary border-2">欄位10</div>
+                                    <div class="col-1 border border-primary border-2">欄位11</div>
+                                    <div class="col-1 border border-primary border-2">欄位12</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 p-2">
+                        <h3>3. RWD 響應式欄位</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">col-breakpoint-數字</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row border border-primary border-3"&gt;
+                                            &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                            &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位2&lt;/div&gt;
+                                            &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位3&lt;/div&gt;
+                                            &lt;div class="col-12 col-md-6 col-lg-3 border border-primary border-2"&gt;欄位3&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row border border-primary border-3">
+                                    <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位1</div>
+                                    <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位2</div>
+                                    <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位3</div>
+                                    <div class="col-12 col-md-6 col-lg-3 border border-primary border-2">欄位3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 p-2">
+                        <h3>4. 主內容區+側邊欄</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">col-breakpoint-數字</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row border border-primary border-3"&gt;
+                                            &lt;div class="col-md-8 border border-primary border-2"&gt;主內容區&lt;/div&gt;
+                                            &lt;div class="col-md-4 border border-primary border-2"&gt;側邊欄&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row border border-primary border-3">
+                                    <div class="col-md-8 border border-primary border-2">主內容區</div>
+                                    <div class="col-md-4 border border-primary border-2">側邊欄</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 p-2">
+                        <h3>5. 自動欄寬</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">col-auto</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row border border-primary border-3"&gt;
+                                            &lt;div class="col-auto border border-primary border-2"&gt;寬度隨內容變化&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;自動佔滿剩下空間&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row border border-primary border-3">
+                                    <div class="col-auto border border-primary border-2">寬度隨內容變化</div>
+                                    <div class="col border border-primary border-2">自動佔滿剩下空間</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 p-2">
+                        <h3>6. 一行幾欄</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">row-cols-數字</h3>
+                            <ul>
+                                <li>row-cols-數字：會自動在每列塞進多少欄位。</li>
+                                <li>RWD做法：row-cols-1、row-cols-md-2、row-cols-lg-3</li>
+                            </ul>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row row-cols-3 border border-primary border-3"&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位3&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位4(自動換行)&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row row-cols-3 border border-primary border-3">
+                                    <div class="col border border-primary border-2">欄位1</div>
+                                    <div class="col border border-primary border-2">欄位2</div>
+                                    <div class="col border border-primary border-2">欄位3</div>
+                                    <div class="col border border-primary border-2">欄位4(自動換行)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 p-2">
+                        <h3>7. 欄位間距控制</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">gx-數字、gy-數字</h3>
+                            <ul>
+                                <li>gx：橫向間距。</li>
+                                <li>gy：縱向間距。</li>
+                                <li>數字從0~5(0是無間距)。</li>
+                            </ul>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row gx-1 gy-2 border border-primary border-3"&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                            &lt;div class="col border border-primary border-2"&gt;欄位2&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row gx-1 gy-2 border border-primary border-3">
+                                    <div class="col border border-primary border-2">欄位1</div>
+                                    <div class="col border border-primary border-2">欄位2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 p-2">
+                        <h3>8. 調整對齊方式</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">justify-content-*</h3>
+                            <ul>
+                                <li>justify-content-start：靠左對齊。</li>
+                                <li>justify-content-center：置中。</li>
+                                <li>justify-content-end：靠右對齊。</li>
+                                <li>justify-content-between：兩端對齊。</li>
+                                <li>justify-content-around：均分間距。</li>
+                            </ul>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row justify-content-center"&gt;
+                                            &lt;div class="col-4 border border-primary border-2"&gt;欄位1&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row justify-content-center">
+                                    <div class="col-4 border border-primary border-2">欄位1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 p-2">
+                        <h3>9. 巢狀 row</h3>
+                        <div class="p-2 text-white">
+                            <h3 class="text-primary">巢狀Grid，適合做左右+上下組合排版</h3>
+                            <pre><code>
+                                    &lt;div class="container bg-secondary bg-gradient"&gt;
+                                        &lt;div class="row"&gt;
+                                            &lt;div class="col-6 border border-primary border-2"&gt;左欄位
+                                                &lt;div class="row g-2"&gt;
+                                                    &lt;div class="col-6 mb-2 border border-danger border-2"&gt;左邊&lt;/div&gt;
+                                                    &lt;div class="col-6 mb-2 border border-danger border-2"&gt;右邊&lt;/div&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class="col-6 border border-warning border-2"&gt;右欄位&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </code></pre>
+                            <div class="container bg-secondary bg-gradient">
+                                <div class="row">
+                                    <div class="col-6 border border-primary border-2">左欄位
+                                        <div class="row g-2">
+                                            <div class="col-6 mb-2 border border-danger border-2">左邊</div>
+                                            <div class="col-6 mb-2 border border-danger border-2">右邊</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 border border-warning border-2">右欄位</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <h1 class="text-warning text-center p-2">間距類別</h1>
-        <div class="col-12 col-md-6 col-lg-12">
-            <div class="p-2 text-white">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover table-bordered">
-                        <caption class="caption-top text-white fs-4 fw-bold text-center">數字 0～5，越大越遠</caption>
-                        <thead class="table-dark">
-                            <tr>
-                                <th class="text-center">類型</th>
-                                <th class="text-center">語法格式</th>
-                                <th class="text-center">說明</th>
-                                <th class="text-center">範例</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Margin(外距)</td>
-                                <td>
-                                    m-數字：全部<br />
-                                    mt-數字：上<br />
-                                    mb-數字：下<br />
-                                    ms-數字：左<br />
-                                    me-數字：右<br />
-                                </td>
-                                <td>設定元素與外部距離</td>
-                                <td>mb-3：元素下方外距 3</td>
-                            </tr>
-                            <tr>
-                                <td>Padding(內距)</td>
-                                <td>
-                                    p-數字：全部<br />
-                                    pt-數字：上<br />
-                                    pb-數字：下<br />
-                                    ps-數字：左<br />
-                                    pe-數字：右<br />
-                                </td>
-                                <td>設定元素與內容的內部距離</td>
-                                <td>ps-4：左內距 4</td>
-                            </tr>
-                            <tr>
-                                <td>Gap(欄距)</td>
-                                <td>
-                                    g-數字：全部<br />
-                                    gx-數字：水平<br />
-                                    gy-數字：垂直
-                                </td>
-                                <td>只用在row或d-flex</td>
-                                <td>g-3：水平+垂直間距 3</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">間距類別</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col">
+                        <table class="table table-striped table-hover table-bordered">
+                            <caption class="caption-top text-white fs-4 fw-bold text-center">數字 0～5，越大越遠</caption>
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">類型</th>
+                                    <th class="text-center">語法格式</th>
+                                    <th class="text-center">說明</th>
+                                    <th class="text-center">範例</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Margin(外距)</td>
+                                    <td>
+                                        m-數字：全部<br />
+                                        mt-數字：上<br />
+                                        mb-數字：下<br />
+                                        ms-數字：左<br />
+                                        me-數字：右<br />
+                                    </td>
+                                    <td>設定元素與外部距離</td>
+                                    <td>mb-3：元素下方外距 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Padding(內距)</td>
+                                    <td>
+                                        p-數字：全部<br />
+                                        pt-數字：上<br />
+                                        pb-數字：下<br />
+                                        ps-數字：左<br />
+                                        pe-數字：右<br />
+                                    </td>
+                                    <td>設定元素與內容的內部距離</td>
+                                    <td>ps-4：左內距 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Gap(欄距)</td>
+                                    <td>
+                                        g-數字：全部<br />
+                                        gx-數字：水平<br />
+                                        gy-數字：垂直
+                                    </td>
+                                    <td>只用在row或d-flex</td>
+                                    <td>g-3：水平+垂直間距 3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <h1 class="text-warning text-center p-2">間距排版範例</h1>
-        <div class="container bg-light p-4">
-            <h4 class="mb-3 text-primary">間距展示</h4>
-            <div class="row g-3">
-              <div class="col-4 bg-info text-white p-3">col-4<br>(p-3)</div>
-              <div class="col-4 bg-success text-white p-3">col-4<br>(p-3)</div>
-              <div class="col-4 bg-warning text-dark p-3">col-4<br>(p-3)</div>
+        </section>
+        
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">間距排版範例</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col bg-light">
+                        <h4 class="mt-2 mb-3 text-primary text-center">間距展示</h4>
+                        <div class="row g-3">
+                            <div class="col-4 bg-info text-white p-3">col-4<br>(p-3)</div>
+                            <div class="col-4 bg-success text-white p-3">col-4<br>(p-3)</div>
+                            <div class="col-4 bg-warning text-dark p-3">col-4<br>(p-3)</div>
+                        </div>
+                        <div class="mt-4 mb-4 p-3 bg-secondary text-white">
+                            上方留 margin (mt-4)，下方鬥 maring (mb-4)，內部留 padding (p-3)
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-4 p-3 bg-secondary text-white">
-              下方留 margin (mt-4)，內部留 padding (p-3)
-            </div>
-        </div>
-    </div>
-  </div>
-</main>
+        </section>
+    </main>
 
-<div id="footer"></div>
+    <div id="footer"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/webdesignhub/script.js"></script>
 </body>
 </html>

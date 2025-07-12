@@ -6,722 +6,1021 @@
 	<meta name="keyword" content="html5, 網頁設計, css, javascript">
 	<meta name="description" content="css-flexbox">
 	<meta name="author" content="王群銘">
+	<base href="/webdesignhub/">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="css3.css">
-	<link href="../bootstrapcolor.css" rel="stylesheet">
-	<title>flexbox</title>
+	<link href="style.css" rel="stylesheet" >
+	<link href="css3/css3.css" rel="stylesheet">
+	<link href="bootstrapcolor.css" rel="stylesheet">
+	<title>Flexbox</title>
 </head>
 <body>
 	<div id="header"></div>
+
 	<main>
-    <h2>CSS盒子模型(Box Model)</h2>
-    <p>HTML的區塊元素都可以當作一個盒子，CSS針對盒子的位置與外觀定義了盒子模型，包括邊距(margin)、邊框(border)、填充(padding)。</p>
-    <div class="box1">content</div>
-    <p>
-        上面的div元件使用CSS設定寬度150px，但實際上佔版面的總寬度與總高度如下：<br />
-        總寬度=左邊距+左邊框+左填充+寬度+右填充+右邊框+右邊距<br />
-        總高度=上邊距+上邊框+上填充+高度+下填充+下邊框+下邊距
-    </p>
-
-	<h2>box-sizing</h2>
-	<ul>
-		<li>box-sizing屬性是定義元件的寬度和高度是否包括填充(padding)與邊框(border)。</li>
-		<li>
-			box-sizing: content-box：此為預設值，寬度和高度只包括內容(content)本身的寬度和高度，不包括邊框(border)、填充(padding)和邊距(margin)。
-		</li>
-		<li>
-			div {<br />
-			&emsp;&emsp;&emsp;box-sizing: content-box;<br />
-			&emsp;&emsp;&emsp;width: 200px;<br />
-			&emsp;&emsp;&emsp;border: 20px solid #ffcc00;<br />
-			&emsp;&emsp;&emsp;padding: 15px;<br />
-			&emsp;&emsp;&emsp;background-color: lightblue;<br />
-			&emsp;}
-		</li>
-		<li>
-			<p>上面語法在div元件設定了box-sizing: content-box，因此content的寬度就是200px，不會受到border、padding和margin設定的影響。</p>
-			<div class="box2">content寬度200px</div>
-		</li>
-		<p>
-		<li>box-sizing: border-box：此設定的寬度和高度包括了內容(content)、填充(padding)、和邊框(border)，但不包括邊距(margin)。</li>
-		<li>
-			div {<br />
-			&emsp;&emsp;&emsp;box-sizing: border-box;<br />
-			&emsp;&emsp;&emsp;width: 200px;<br />
-			&emsp;&emsp;&emsp;border: 20px solid #ffcc00;<br />
-			&emsp;&emsp;&emsp;padding: 15px;<br />
-			&emsp;&emsp;&emsp;background-color: lightblue;<br />
-			&emsp;}
-		</li>
-		<li>
-			<p>上面語法在div元件設定了box-sizing: border-box，此設定涵蓋了border: 20px、padding: 15px，因此content的寬度就只剩下130px。</p>
-			<div class="box3">content寬度剩下130px</div>
-		</li>
-	</ul>
-
-	<h2>Flexbox彈性盒子模型(Flexible Box Model)</h2>
-	<ul>
-		<li>在盒子加入主軸(main axis)與交叉軸(cross axis)，讓盒子能夠彈性縮放。當一個HTML元件利用CSS將display設定為flex，該元件就成為一個彈性容器(flex container)。</li>
-		<li>彈性盒子(flexbox)是由外層容器(flex container)與內層子元素(flex item)所組合而成。</li>
-		<li>
-			<div class="flex_c1">flex container <p>
-				<div class="flex_i1">flex item 1</div>
-				<div class="flex_i2">flex item 2</div>
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">CSS盒子模型(Box Model)</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>
+							HTML的區塊元素都可以當作一個盒子，CSS針對盒子的位置與外觀定義了盒子模型，包括邊距(margin)、邊框(border)、填充(padding)。
+						</p>
+						<div class="box1">content</div>
+						<p>
+							上面的div元件使用CSS設定寬度150px，但實際上佔版面的總寬度與總高度如下：<br />
+							總寬度=左邊距+左邊框+左填充+寬度+右填充+右邊框+右邊距<br />
+							總高度=上邊距+上邊框+上填充+高度+下填充+下邊框+下邊距
+						</p>
+					</div>
+				</div>
 			</div>
-		</li>
-		<li>flexbox靠主軸(main axis)與交叉軸(cross axis)進行子元素的分配與排列，彈性容器(flex container)裡的子元素稱為彈性元素(flex item)，彈性元素會沿著主軸或交叉軸，從起點往終點方向排列。</li>
-		<li>
-			要產生一個flexbox，只要將HTML元件裡的CSS display屬性設定為flex或inline-flex即可。
-			<ul>
-				<li>display: flex</li>
-				<ol>
-					<li>flexbox在預設情況下，如果沒有設定container的寬度，它的寬度就會佔據整個螢幕。</li>
-					<li>
-						<div class="container1">
-							<div class="d_one">item 1</div>
-							<div class="d_one">item 2</div>
-							<div class="d_one">item 3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">box-sizing</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>box-sizing屬性是定義元件的寬度和高度是否包括填充(padding)與邊框(border)。</li>
+							<li>
+								box-sizing: content-box：此為預設值，寬度和高度只包括內容(content)本身的寬度和高度，不包括邊框(border)、填充(padding)和邊距(margin)。
+							</li>
+							<li>
+								<pre><code>
+									div {
+										box-sizing: content-box;
+										width: 200px;
+										border: 20px solid #ffcc00;
+										padding: 15px;
+										background-color: lightblue;
+									}
+								</code></pre>
+							</li>
+							<li>
+								<p>
+									上面語法在div元件設定了box-sizing: content-box，因此content的寬度就是200px，不會受到border、padding和margin設定的影響。
+								</p>
+								<div class="box2">content寬度200px</div>
+							</li>
+							<p>
+								<li>box-sizing: border-box：此設定的寬度和高度包括了內容(content)、填充(padding)、和邊框(border)，但不包括邊距(margin)。</li>
+								<li>
+									<pre><code>
+										div {
+											box-sizing: border-box;
+											width: 200px;
+											border: 20px solid #ffcc00;
+											padding: 15px;
+											background-color: lightblue;
+										}
+									</code></pre>
+									
+								</li>
+								<li>
+									<p>上面語法在div元件設定了box-sizing: border-box，此設定涵蓋了border: 20px、padding: 15px，因此content的寬度就只剩下130px。</p>
+									<div class="box3">content寬度剩下130px</div>
+								</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">Flexbox彈性盒子模型(Flexible Box Model)</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>在盒子加入主軸(main axis)與交叉軸(cross axis)，讓盒子能夠彈性縮放。當一個HTML元件利用CSS將display設定為flex，該元件就成為一個彈性容器(flex container)。</li>
+							<li>彈性盒子(flexbox)是由外層容器(flex container)與內層子元素(flex item)所組合而成。</li>
+							<li>
+								<div class="flex_c1">flex container <p>
+									<div class="flex_i1">flex item 1</div>
+									<div class="flex_i2">flex item 2</div>
+								</div>
+							</li>
+							<li>flexbox靠主軸(main axis)與交叉軸(cross axis)進行子元素的分配與排列，彈性容器(flex container)裡的子元素稱為彈性元素(flex
+								item)，彈性元素會沿著主軸或交叉軸，從起點往終點方向排列。</li>
+							<li>
+								要產生一個flexbox，只要將HTML元件裡的CSS display屬性設定為flex或inline-flex即可。
+								<ul>
+									<li>display: flex</li>
+									<ol>
+										<li>flexbox在預設情況下，如果沒有設定container的寬度，它的寬度就會佔據整個螢幕。</li>
+										<li>
+											<div class="container1">
+												<div class="d_one">item 1</div>
+												<div class="d_one">item 2</div>
+												<div class="d_one">item 3</div>
+											</div>
+											<div class="container2">
+												<div class="d_one">item 4</div>
+												<div class="d_one">item 5</div>
+												<div class="d_one">item 6</div>
+											</div>
+										</li>
+										<li>當container有設定寬度時，第一個flex容器仍然會佔據整行的區塊，就算右側有剩餘空間，第二個flex容器也會被移到下一行。</li>
+										<li>
+											<div class="container3">
+												<div class="d_two">item 1</div>
+												<div class="d_two">item 2</div>
+												<div class="d_two">item 3</div>
+											</div>
+											<div class="container4">
+												<div class="d_two">item 4</div>
+												<div class="d_two">item 5</div>
+												<div class="d_two">item 6</div>
+											</div>
+										</li>
+									</ol>
+									<li>display: inline-flex
+										<ol>
+											<li>不管有無設定container寬度，只要右側有剩餘空間，第二個彈性容器(flex container)會排在第一個彈性容器後方，放在同一行。</li>
+											<li>
+												<div class="container8">
+													<div class="d_one">item 1</div>
+													<div class="d_one">item 2</div>
+													<div class="d_one">item 3</div>
+												</div>
+												<div class="container9">
+													<div class="d_one">item 4</div>
+													<div class="d_one">item 5</div>
+													<div class="d_one">item 6</div>
+												</div>
+											</li>
+										</ol>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">練習用ul清單取消符號，改橫向模式並設定超連結。</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<div class="ul_1">
+							<ul>
+								<li><a href="http://tw.yahoo.com" target="_blank">Yahoo奇摩</a></li>
+								<li></li>
+								<li><a href="http://www.google.com.tw" target="_blank">Google</a></li>
+								<li></li>
+								<li><a href="http://www.pchome.com.tw" target="_blank">PChome</a></li>
+							</ul>
 						</div>
-						<div class="container2">
-							<div class="d_one">item 4</div>
-							<div class="d_one">item 5</div>
-							<div class="d_one">item 6</div>
-						</div>
-					</li>
-					<li>當container有設定寬度時，第一個flex容器仍然會佔據整行的區塊，就算右側有剩餘空間，第二個flex容器也會被移到下一行。</li>
-					<li>
-						<div class="container3">
-							<div class="d_two">item 1</div>
-							<div class="d_two">item 2</div>
-							<div class="d_two">item 3</div>
-						</div>
-						<div class="container4">
-							<div class="d_two">item 4</div>
-							<div class="d_two">item 5</div>
-							<div class="d_two">item 6</div>
-						</div>
-					</li>
-				</ol>
-				<li>display: inline-flex
-					<ol>
-						<li>不管有無設定container寬度，只要右側有剩餘空間，第二個彈性容器(flex container)會排在第一個彈性容器後方，放在同一行。</li>
-						<li>
-							<div class="container8">
-								<div class="d_one">item 1</div>
-								<div class="d_one">item 2</div>
-								<div class="d_one">item 3</div>
-							</div>
-							<div class="container9">
-								<div class="d_one">item 4</div>
-								<div class="d_one">item 5</div>
-								<div class="d_one">item 6</div>
-							</div>
-						</li>
-					</ol>
-				</li>
-			</ul>
-		</li>
-	</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<p>練習用ul清單取消符號，改橫向模式並設定超連結。</p>
-	<div class="ul_1">
-		<ul>
-			<li><a href="http://tw.yahoo.com" target="_blank">Yahoo奇摩</a></li>
-			<li></li>
-			<li><a href="http://www.google.com.tw" target="_blank">Google</a></li>
-			<li></li>
-			<li><a href="http://www.pchome.com.tw" target="_blank">PChome</a></li>
-		</ul>
-	</div>
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex container屬性</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>flexbox屬性能夠設置flex物件排列的方向與對齊的方式。</p>
+						<ul>
+							<li>水平對齊text-align與垂直對齊vertical-align不適用於flex，flex是靠主軸(等於text-align)和交叉軸(等於vertical-align)的方式來對齊。</li>
+							<li>flexbox的外層容器(flex container)的屬性主要是設定子元素(item)排列的方向及對齊。</li>
+							<li>
+								<table class="table table-striped table-hover table-bordered mt-3">
+									<thead class="table-dark">
+										<tr>
+											<th class="text-center">屬性</th>
+											<th class="text-center">說明</th>
+											<th class="text-center">用法</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>display</td>
+											<td class="text-align-left">
+												設置flex排列方式
+												<ul>
+													<li>flex：區塊元素</li>
+													<li>inline-flex：行內元素</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												display: flex;<br />
+												display: inline-flex;
+											</td>
+										<tr>
+											<td>flex-direction</td>
+											<td class="text-align-left">
+												彈性元素的排列方向
+												<ul>
+													<li>row：預設值，從左到右排列</li>
+													<li>row-reverse：從右到左排列</li>
+													<li>column：從上到下排列</li>
+													<li>column-reverse：從下到上排列</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												flex-direction: row;<br />
+												flex-direction: row-reverse;<br />
+												flex-direction: column;<br />
+												flex-direction: column-reverse;
+											</td>
+										</tr>
+										<tr>
+											<td>flex-wrap</td>
+											<td class="text-align-left">
+												設置flex容器單行或多行
+												<ul>
+													<li>nowrap：不斷行，維持單行</li>
+													<li>wrap：多行</li>
+													<li>wrap-reverse：多行，且與wrap起點與終點相反</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												flex-wrap: nowrap;<br />
+												flex-wrap: wrap;<br />
+												flex-wrap: wrap-reverse;
+											</td>
+										</tr>
+										<tr>
+											<td>flex-flow</td>
+											<td class="text-align-left">flex-direction與flex-wrap綜合應用</td>
+											<td class="text-align-left">flex-flow: row nowrap;</td>
+										</tr>
+										<tr>
+											<td>justify-content</td>
+											<td class="text-align-left">
+												設置彈性元素在主軸的對齊方式
+												<ul>
+													<li>flex-start：靠主軸起點對齊</li>
+													<li>flex-end：靠主軸終點對齊</li>
+													<li>center：置中對齊</li>
+													<li>space-between：平均分配寬度，左右兩個元素貼齊邊緣</li>
+													<li>space-around：平均分配寬度和間距</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												justify-content: flex-start;<br />
+												justify-content: flex-end;<br />
+												justify-content: center;<br />
+												justify-content: space-between;<br />
+												justify-content: space-around;
+											</td>
+										</tr>
+										<tr>
+											<td>align-items</td>
+											<td class="text-align-left">
+												設置彈性元素在行內交叉軸的對齊方式<br />
+												如果彈性元素設定align-self屬性，則align-items無效
+												<ul>
+													<li>flex-start：靠交叉軸起點對齊</li>
+													<li>flex-end：靠交叉軸終點對齊</li>
+													<li>center：置中對齊</li>
+													<li>baseline：彈性元素內容基線對齊</li>
+													<li>stretch：將彈性元素拉伸對齊交叉軸起點與終點</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												align-items: flex-start;<br />
+												align-items: flex-end;<br />
+												align-items: center;<br />
+												align-items: baseline;<br />
+												align-items: stretch;
+											</td>
+										</tr>
+										<tr>
+											<td>align-content</td>
+											<td class="text-align-left">
+												設置彈性元素在整體交叉軸的對齊方式
+												<ul>
+													<li>flex-start：靠交叉軸起點對齊</li>
+													<li>flex-end：靠交叉軸終點對齊</li>
+													<li>center：置中對齊</li>
+													<li>space-between：平均分配高度，頂部和底部兩個元素貼齊邊緣</li>
+													<li>space-around：平均分配高度和間距</li>
+													<li>stretch：拉伸至整個空間</li>
+												</ul>
+											</td>
+											<td class="text-align-left">
+												align-content: flex-start;<br />
+												align-content: flex-end;<br />
+												align-content: center;<br />
+												align-content: space-between;<br />
+												align-content: space-around;<br />
+												align-content: stretch;
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<p>flexbox屬性能夠設置flex物件排列的方向與對齊的方式。</p>
-	<h2>flex container屬性</h2>
-	<ul>
-		<li>水平對齊text-align與垂直對齊vertical-align不適用於flex，flex是靠主軸(等於text-align)和交叉軸(等於vertical-align)的方式來對齊。</li>
-		<li>flexbox的外層容器(flex container)的屬性主要是設定子元素(item)排列的方向及對齊。</li>
-		<li>
-			<table border="1">
-				<tr>
-					<th>屬性</th>
-					<th>說明</th>
-					<th>用法</th>
-				</tr>
-				<tr>
-					<td>display</td>
-					<td class="text-align-left">
-						設置flex排列方式
-						<ul>
-							<li>flex：區塊元素</li>
-							<li>inline-flex：行內元素</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						display: flex;<br />
-						display: inline-flex;
-					</td>
-				<tr>
-					<td>flex-direction</td>
-					<td class="text-align-left">
-						彈性元素的排列方向
-						<ul>
-							<li>row：預設值，從左到右排列</li>
-							<li>row-reverse：從右到左排列</li>
-							<li>column：從上到下排列</li>
-							<li>column-reverse：從下到上排列</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						flex-direction: row;<br />
-						flex-direction: row-reverse;<br />
-						flex-direction: column;<br />
-						flex-direction: column-reverse;
-					</td>
-				</tr>
-				<tr>
-					<td>flex-wrap</td>
-					<td class="text-align-left">
-						設置flex容器單行或多行
-						<ul>
-							<li>nowrap：不斷行，維持單行</li>
-							<li>wrap：多行</li>
-							<li>wrap-reverse：多行，且與wrap起點與終點相反</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						flex-wrap: nowrap;<br />
-						flex-wrap: wrap;<br />
-						flex-wrap: wrap-reverse;
-					</td>
-				</tr>
-				<tr>
-					<td>flex-flow</td>
-					<td class="text-align-left">flex-direction與flex-wrap綜合應用</td>
-					<td class="text-align-left">flex-flow: row nowrap;</td>
-				</tr>
-				<tr>
-					<td>justify-content</td>
-					<td class="text-align-left">
-						設置彈性元素在主軸的對齊方式
-						<ul>
-							<li>flex-start：靠主軸起點對齊</li>
-							<li>flex-end：靠主軸終點對齊</li>
-							<li>center：置中對齊</li>
-							<li>space-between：平均分配寬度，左右兩個元素貼齊邊緣</li>
-							<li>space-around：平均分配寬度和間距</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						justify-content: flex-start;<br />
-						justify-content: flex-end;<br />
-						justify-content: center;<br />
-						justify-content: space-between;<br />
-						justify-content: space-around;
-					</td>
-				</tr>
-				<tr>
-					<td>align-items</td>
-					<td class="text-align-left">
-						設置彈性元素在行內交叉軸的對齊方式<br />
-						如果彈性元素設定align-self屬性，則align-items無效
-						<ul>
-							<li>flex-start：靠交叉軸起點對齊</li>
-							<li>flex-end：靠交叉軸終點對齊</li>
-							<li>center：置中對齊</li>
-							<li>baseline：彈性元素內容基線對齊</li>
-							<li>stretch：將彈性元素拉伸對齊交叉軸起點與終點</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						align-items: flex-start;<br />
-						align-items: flex-end;<br />
-						align-items: center;<br />
-						align-items: baseline;<br />
-						align-items: stretch;
-					</td>
-				</tr>
-				<tr>
-					<td>align-content</td>
-					<td class="text-align-left">
-						設置彈性元素在整體交叉軸的對齊方式
-						<ul>
-							<li>flex-start：靠交叉軸起點對齊</li>
-							<li>flex-end：靠交叉軸終點對齊</li>
-							<li>center：置中對齊</li>
-							<li>space-between：平均分配高度，頂部和底部兩個元素貼齊邊緣</li>
-							<li>space-around：平均分配高度和間距</li>
-							<li>stretch：拉伸至整個空間</li>
-						</ul>
-					</td>
-					<td class="text-align-left">
-						align-content: flex-start;<br />
-						align-content: flex-end;<br />
-						align-content: center;<br />
-						align-content: space-between;<br />
-						align-content: space-around;<br />
-						align-content: stretch;
-					</td>
-				</tr>
-			</table>
-		</li>
-	</ul>
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-direction: row;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>從左到右排列。</p>
+						<div class="flex-direction-row">
+							<div class="flex-direction-row-item">1</div>
+							<div class="flex-direction-row-item">2</div>
+							<div class="flex-direction-row-item">3</div>
+							<div class="flex-direction-row-item">4</div>
+							<div class="flex-direction-row-item">5</div>
+							<div class="flex-direction-row-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<h3>flex-direction: row;</h3>
-	<p>從左到右排列。</p>
-	<div class="flex-direction-row">
-		<div class="flex-direction-row-item">1</div>
-		<div class="flex-direction-row-item">2</div>
-		<div class="flex-direction-row-item">3</div>
-		<div class="flex-direction-row-item">4</div>
-		<div class="flex-direction-row-item">5</div>
-		<div class="flex-direction-row-item">6</div>
-	</div>
-	<p>
-	<h3>flex-direction: row-reverse;</h3>
-	<p>從右到左排列。</p>
-	<div class="flex-direction-row-reverse">
-		<div class="flex-direction-row-reverse-item">1</div>
-		<div class="flex-direction-row-reverse-item">2</div>
-		<div class="flex-direction-row-reverse-item">3</div>
-		<div class="flex-direction-row-reverse-item">4</div>
-		<div class="flex-direction-row-reverse-item">5</div>
-		<div class="flex-direction-row-reverse-item">6</div>
-	</div>
-	<p>
-	<h3>flex-direction: column;</h3>
-	<p>從上到下排列。</p>
-	<div class="flex-direction-column">
-		<div class="flex-direction-column-item">1</div>
-		<div class="flex-direction-column-item">2</div>
-		<div class="flex-direction-column-item">3</div>
-		<div class="flex-direction-column-item">4</div>
-		<div class="flex-direction-column-item">5</div>
-		<div class="flex-direction-column-item">6</div>
-	</div>
-	<p>
-	<h3>flex-direction: column-reverse;</h3>
-	<p>從下到上排列。</p>
-	<div class="flex-direction-column-reverse">
-		<div class="flex-direction-column-reverse-item">1</div>
-		<div class="flex-direction-column-reverse-item">2</div>
-		<div class="flex-direction-column-reverse-item">3</div>
-		<div class="flex-direction-column-reverse-item">4</div>
-		<div class="flex-direction-column-reverse-item">5</div>
-		<div class="flex-direction-column-reverse-item">6</div>
-	</div>
-	<p>
-	<h3>flex-wrap: nowrap;</h3>
-	<p>不斷行，維持單行。</p>
-	<div class="flex-wrap-nowrap">
-		<div class="flex-wrap-nowrap-item">1</div>
-		<div class="flex-wrap-nowrap-item">2</div>
-		<div class="flex-wrap-nowrap-item">3</div>
-		<div class="flex-wrap-nowrap-item">4</div>
-		<div class="flex-wrap-nowrap-item">5</div>
-		<div class="flex-wrap-nowrap-item">6</div>
-	</div>
-	<p>
-	<h3>flex-wrap: wrap;</h3>
-	<p>多行。</p>
-	<div class="flex-wrap-wrap">
-		<div class="flex-wrap-wrap-item">1</div>
-		<div class="flex-wrap-wrap-item">2</div>
-		<div class="flex-wrap-wrap-item">3</div>
-		<div class="flex-wrap-wrap-item">4</div>
-		<div class="flex-wrap-wrap-item">5</div>
-		<div class="flex-wrap-wrap-item">6</div>
-	</div>
-	<p>
-	<h3>flex-wrap: wrap-reverse;</h3>
-	<p>多行，且與wrap起點與終點相反。</p>
-	<div class="flex-wrap-wrap-reverse">
-		<div class="flex-wrap-wrap-reverse-item">1</div>
-		<div class="flex-wrap-wrap-reverse-item">2</div>
-		<div class="flex-wrap-wrap-reverse-item">3</div>
-		<div class="flex-wrap-wrap-reverse-item">4</div>
-		<div class="flex-wrap-wrap-reverse-item">5</div>
-		<div class="flex-wrap-wrap-reverse-item">6</div>
-	</div>
-	<p>
-	<h3>justify-content: flex-start;</h3>
-	<p>靠主軸起點對齊。</p>
-	<div class="justify-content-flex-start">
-		<div class="justify-content-flex-start-item">1</div>
-		<div class="justify-content-flex-start-item">2</div>
-		<div class="justify-content-flex-start-item">3</div>
-		<div class="justify-content-flex-start-item">4</div>
-		<div class="justify-content-flex-start-item">5</div>
-		<div class="justify-content-flex-start-item">6</div>
-	</div>
-	<p>
-	<h3>justify-content: flex-end;</h3>
-	<p>靠主軸終點對齊。</p>
-	<div class="justify-content-flex-end">
-		<div class="justify-content-flex-end-item">1</div>
-		<div class="justify-content-flex-end-item">2</div>
-		<div class="justify-content-flex-end-item">3</div>
-		<div class="justify-content-flex-end-item">4</div>
-		<div class="justify-content-flex-end-item">5</div>
-		<div class="justify-content-flex-end-item">6</div>
-	</div>
-	<h3>justify-content: center;</h3>
-	<p>置中對齊。</p>
-	<div class="justify-content-center">
-		<div class="justify-content-center-item">1</div>
-		<div class="justify-content-center-item">2</div>
-		<div class="justify-content-center-item">3</div>
-		<div class="justify-content-center-item">4</div>
-		<div class="justify-content-center-item">5</div>
-		<div class="justify-content-center-item">6</div>
-	</div>
-	<p>
-	<h3>justify-content: space-between;</h3>
-	<p>平均分配寬度，左右兩個item元素貼齊邊緣。</p>
-	<div class="justify-content-space-between">
-		<div class="justify-content-space-between-item">1</div>
-		<div class="justify-content-space-between-item">2</div>
-		<div class="justify-content-space-between-item">3</div>
-		<div class="justify-content-space-between-item">4</div>
-		<div class="justify-content-space-between-item">5</div>
-		<div class="justify-content-space-between-item">6</div>
-	</div>
-	<p>
-	<h3>justify-content: space-around;</h3>
-	<p>平均分配寬度與間距。</p>
-	<div class="justify-content-space-around">
-		<div class="justify-content-space-around-item">1</div>
-		<div class="justify-content-space-around-item">2</div>
-		<div class="justify-content-space-around-item">3</div>
-		<div class="justify-content-space-around-item">4</div>
-		<div class="justify-content-space-around-item">5</div>
-		<div class="justify-content-space-around-item">6</div>
-	</div>
-	<p>
-	<h3>align-items: flex-start;</h3>
-	<p>對齊交叉軸的開始處。</p>
-	<div class="align-items-flex-start">
-		<div class="align-items-flex-start-item-1">1</div>
-		<div class="align-items-flex-start-item-2">2</div>
-		<div class="align-items-flex-start-item-3">3</div>
-		<div class="align-items-flex-start-item-4">4</div>
-		<div class="align-items-flex-start-item-5">5</div>
-		<div class="align-items-flex-start-item-6">6</div>
-	</div>
-	<p>
-	<h3>align-items: flex-end;</h3>
-	<p>對齊交叉軸的末端。</p>
-	<div class="align-items-flex-end">
-		<div class="align-items-flex-end-item-1">1</div>
-		<div class="align-items-flex-end-item-2">2</div>
-		<div class="align-items-flex-end-item-3">3</div>
-		<div class="align-items-flex-end-item-4">4</div>
-		<div class="align-items-flex-end-item-5">5</div>
-		<div class="align-items-flex-end-item-6">6</div>
-	</div>
-	<p>
-	<h3>align-items: center;</h3>
-	<p>垂直置中對齊。</p>
-		<div class="align-items-center-1">
-			<div class="align-items-center-item-1">1</div>
-			<div class="align-items-center-item-2">2</div>
-			<div class="align-items-center-item-3">3</div>
-			<div class="align-items-center-item-4">4</div>
-			<div class="align-items-center-item-5">5</div>
-			<div class="align-items-center-item-6">6</div>
-		</div>
-	<p>
-	<h3>align-items: baseline;</h3>
-	<p>對齊文字的baseline基線，彈性元素(item)的height高度要改成line-height行高才會顯示效果。</p>
-		<div class="align-items-baseline">
-			<div class="align-items-baseline-item-1">1</div>
-			<div class="align-items-baseline-item-2">2</div>
-			<div class="align-items-baseline-item-3">3</div>
-			<div class="align-items-baseline-item-4">4</div>
-			<div class="align-items-baseline-item-5">5</div>
-			<div class="align-items-baseline-item-6">6</div>
-		</div>
-	<p>
-	<h3>align-items: stretch;</h3>
-	<p>將彈性元素(item)拉伸對齊交叉軸起點與終點，不能設定彈性元素(item)的高度。</p>
-		<div class="align-items-stretch">
-			<div class="align-items-stretch-item-1">1</div>
-			<div class="align-items-stretch-item-2">2</div>
-			<div class="align-items-stretch-item-3">3</div>
-			<div class="align-items-stretch-item-4">4</div>
-			<div class="align-items-stretch-item-5">5</div>
-			<div class="align-items-stretch-item-6">6</div>
-		</div>
-	<p>
-	<h3>align-content: flex-start;</h3>
-	<p>靠交叉軸起點對齊。</p>
-		<div class="align-content-flex-start">
-			<div class="align-content-flex-start-item">1</div>
-			<div class="align-content-flex-start-item">2</div>
-			<div class="align-content-flex-start-item">3</div>
-			<div class="align-content-flex-start-item">4</div>
-			<div class="align-content-flex-start-item">5</div>
-			<div class="align-content-flex-start-item">6</div>
-		</div>
-	<p>
-	<h3>align-content: flex-end;</h3>
-	<p>靠交叉軸終點對齊。</p>
-		<div class="align-content-flex-end">
-			<div class="align-content-flex-end-item">1</div>
-			<div class="align-content-flex-end-item">2</div>
-			<div class="align-content-flex-end-item">3</div>
-			<div class="align-content-flex-end-item">4</div>
-			<div class="align-content-flex-end-item">5</div>
-			<div class="align-content-flex-end-item">6</div>
-		</div>
-	<p>
-	<h3>align-content: center;</h3>
-	<p>垂直置中對齊。</p>
-		<div class="align-content-center">
-			<div class="align-content-center-item">1</div>
-			<div class="align-content-center-item">2</div>
-			<div class="align-content-center-item">3</div>
-			<div class="align-content-center-item">4</div>
-			<div class="align-content-center-item">5</div>
-			<div class="align-content-center-item">6</div>
-		</div>
-	<p>
-	<h3>align-content: space-between;</h3>
-	<p>平均分配高度，頂部與底部兩個item元素貼齊邊緣。</p>
-		<div class="align-content-space-between">
-			<div class="align-content-space-between-item">1</div>
-			<div class="align-content-space-between-item">2</div>
-			<div class="align-content-space-between-item">3</div>
-			<div class="align-content-space-between-item">4</div>
-			<div class="align-content-space-between-item">5</div>
-			<div class="align-content-space-between-item">6</div>
-		</div>
-	<p>
-	<h3>align-content: space-around;</h3>
-	<p>平均分配高度與間距。</p>
-		<div class="align-content-space-around">
-			<div class="align-content-space-around-item">1</div>
-			<div class="align-content-space-around-item">2</div>
-			<div class="align-content-space-around-item">3</div>
-			<div class="align-content-space-around-item">4</div>
-			<div class="align-content-space-around-item">5</div>
-			<div class="align-content-space-around-item">6</div>
-		</div>
-	<p>
-	<h3>align-content: stretch;</h3>
-	<p>拉伸至整個空間。</p>
-		<div class="align-content-stretch">
-			<div class="align-content-stretch-item">1</div>
-			<div class="align-content-stretch-item">2</div>
-			<div class="align-content-stretch-item">3</div>
-			<div class="align-content-stretch-item">4</div>
-			<div class="align-content-stretch-item">5</div>
-			<div class="align-content-stretch-item">6</div>
-		</div>
-	<p>
-	
-	<h2>flex items屬性</h2>
-	<table border="1">
-		<tr>
-			<th>屬性</th>
-			<th>說明</th>
-			<th>用法</th>
-		</tr>
-		<tr>
-			<td>align-self</td>
-			<td class="text-align-left">調整單一子元素在交叉軸的位置，屬性值與align-items相同。</td>
-			<td class="text-align-left">
-				align-self: flex-start;<br />
-				align-self: flex-end;<br />
-				align-self: center;<br />
-				align-self: baseline;<br />
-				align-self: stretch;
-			</td>
-		</tr>
-		<tr>
-			<td>flex-basis</td>
-			<td class="text-align-left">
-				設定初始寬度與高度。<br />
-				若flex-direction: row，則flex-basis決定width。<br />
-				若flex-direction: column，則flex-basis決定height。<br />
-				設定值：<br />
-				<ul>
-					<li>auto：根據自身尺寸縮放(預設值)。</li>
-					<li>width/height：數值或百分比。</li>
-				</ul>
-			</td>
-			<td class="text-align-left">
-				flex-basis: 80px;<br />
-				flex-basis: auto;<br />
-				flex-basis: 10em;
-			</td>
-		</tr>
-		<tr>
-			<td>flex-grow</td>
-			<td class="text-align-left">分配彈性盒子剩餘空間的伸展權重，設定值為大於或等於0的數值，預設值為0。</td>
-			<td class="text-align-left">
-				flex-grow: 3;<br />
-				flex-grow: 0.6;
-			</td>
-		</tr>
-		<tr>
-			<td>flex-shrink</td>
-			<td class="text-align-left">分配彈性盒子不足空間的壓縮權重，設定值為大於或等於0的數值，預設值為1。</td>
-			<td class="text-align-left">
-				flex-shrink: 2;<br />
-				flex-shrink: 0.6;
-			</td>
-		</tr>
-		<tr>
-			<td>flex</td>
-			<td class="text-align-left">
-				同時設置flex-grow、flex-shrink、flex-basis。<br />
-				<ul>
-					<li>flex-grow：預設值為0。</li>
-					<li>flex-shrink：預設值為1。</li>
-					<li>flex-basis：預設值為auto。</li>
-				</ul>
-			</td>
-			<td class="text-align-left">
-				flex: 10em;<br />
-				flex: 1 30px;<br />
-				flex: 2 2 10%;
-			</td>
-		</tr>
-		<tr>
-			<td>order</td>
-			<td class="text-align-left">設定flex items排列順序，數值為整數，可以是負數，預設值為0。</td>
-			<td class="text-align-left">order: 2;</td>
-		</tr>
-	</table>
-	<p>
-	<h3>align-self</h3>
-	<p>將第6個子元素加入align-self: flex-start，</p>
-	<div class="align-items-flex-end">
-		<div class="align-items-flex-end-item-1">1</div>
-		<div class="align-items-flex-end-item-2">2</div>
-		<div class="align-items-flex-end-item-3">3</div>
-		<div class="align-items-flex-end-item-4">4</div>
-		<div class="align-items-flex-end-item-5">5</div>
-		<div class="align-self-flex-start">6</div>
-	</div>
-	<p>
-	<h3>flex-basis</h3>
-	<ul>
-		<li>設定初始寬度和高度。</li>
-		<li>預設值為auto，也就是跟著自身內容縮放。</li>
-		<li>通常flex設定width和height是沒有效果的。</li>
-		<li>
-			<span>box-1設定width: 50px；box-2設定width: 50px和flex-basis: 100px，結果會以flex-basis: 100px設定為優先。。</span>
-			<div class="flex-basis-container">
-				<div class="flex-basis-box-1">box-1</div>
-				<div class="flex-basis-box-2">box-2</div>
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-direction: row-reverse;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>從右到左排列。</p>
+						<div class="flex-direction-row-reverse">
+							<div class="flex-direction-row-reverse-item">1</div>
+							<div class="flex-direction-row-reverse-item">2</div>
+							<div class="flex-direction-row-reverse-item">3</div>
+							<div class="flex-direction-row-reverse-item">4</div>
+							<div class="flex-direction-row-reverse-item">5</div>
+							<div class="flex-direction-row-reverse-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-	</ul>
-	<p>
-	<h3>flex-grow</h3>
-	<ul>
-		<li>分配彈性盒子剩餘空間的伸展權重。</li>
-		<li>如果彈性盒子裡所有子項目都設定相同的flex-grow，則會平均分配剩餘空間。</li>
-		<li>
-			<span>container設定寬度500px，3個box設定寬度各100px，container剩餘寬度為200px。</span>
-			<div class="flex-grow-container">
-				<div class="flex-grow-box-1">box-1</div>
-				<div class="flex-grow-box-2">box-2</div>
-				<div class="flex-grow-box-3">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-direction: column;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>從上到下排列。</p>
+						<div class="flex-direction-column">
+							<div class="flex-direction-column-item">1</div>
+							<div class="flex-direction-column-item">2</div>
+							<div class="flex-direction-column-item">3</div>
+							<div class="flex-direction-column-item">4</div>
+							<div class="flex-direction-column-item">5</div>
+							<div class="flex-direction-column-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-		<li>
-			<span>將box-1加入flex-grow: 1，表示剩餘空間200px皆分配給box-1，則box-1的寬度是300px。</span>
-			<div class="flex-grow-container">
-				<div class="flex-grow-box-1-grow">box-1</div>
-				<div class="flex-grow-box-2">box-2</div>
-				<div class="flex-grow-box-3">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-direction: column-reverse;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>從下到上排列。</p>
+						<div class="flex-direction-column-reverse">
+							<div class="flex-direction-column-reverse-item">1</div>
+							<div class="flex-direction-column-reverse-item">2</div>
+							<div class="flex-direction-column-reverse-item">3</div>
+							<div class="flex-direction-column-reverse-item">4</div>
+							<div class="flex-direction-column-reverse-item">5</div>
+							<div class="flex-direction-column-reverse-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-		<li>
-			<span>將box-1設定flex-grow: 1，box-2設定flex-grow: 2，表示剩餘空間200px分配給box-1和box-2，兩者寬度皆為200px，box-3的寬度為100px。</span>
-			<div class="flex-grow-container">
-				<div class="flex-grow-box-1-grow-1">box-1</div>
-				<div class="flex-grow-box-2-grow-2">box-2</div>
-				<div class="flex-grow-box-3">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-wrap: nowrap;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>不斷行，維持單行。</p>
+						<div class="flex-wrap-nowrap">
+							<div class="flex-wrap-nowrap-item">1</div>
+							<div class="flex-wrap-nowrap-item">2</div>
+							<div class="flex-wrap-nowrap-item">3</div>
+							<div class="flex-wrap-nowrap-item">4</div>
+							<div class="flex-wrap-nowrap-item">5</div>
+							<div class="flex-wrap-nowrap-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-	</ul>
-	<p>
-	<h3>flex-shrink</h3>
-	<ul>
-		<li>分配彈性盒子不足空間的壓縮權重，預設值為1，也就是所有子元素的壓縮比相同。</li>
-		<li>
-			<span>container設定寬度500px，3個box設定寬度各200px，因此子元素會超出container寬度100px，但若設定flex-shrink: 1，則會讓3個box以同樣的壓縮比容納在container裡。</span>
-			<div class="flex-shrink-container">
-				<div class="flex-shrink-box-1">box-1</div>
-				<div class="flex-shrink-box-2">box-2</div>
-				<div class="flex-shrink-box-3">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-wrap: wrap;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>多行。</p>
+						<div class="flex-wrap-wrap">
+							<div class="flex-wrap-wrap-item">1</div>
+							<div class="flex-wrap-wrap-item">2</div>
+							<div class="flex-wrap-wrap-item">3</div>
+							<div class="flex-wrap-wrap-item">4</div>
+							<div class="flex-wrap-wrap-item">5</div>
+							<div class="flex-wrap-wrap-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-		<li>
-			<span>若將3個box的flex-shrink皆設為0，則子元素會超出container。</span>
-			<div class="flex-shrink-container">
-				<div class="flex-shrink-box-1-shrink-0">box-1</div>
-				<div class="flex-shrink-box-2-shrink-0">box-2</div>
-				<div class="flex-shrink-box-3-shrink-0">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-wrap: wrap-reverse;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>多行，且與wrap起點與終點相反。</p>
+						<div class="flex-wrap-wrap-reverse">
+							<div class="flex-wrap-wrap-reverse-item">1</div>
+							<div class="flex-wrap-wrap-reverse-item">2</div>
+							<div class="flex-wrap-wrap-reverse-item">3</div>
+							<div class="flex-wrap-wrap-reverse-item">4</div>
+							<div class="flex-wrap-wrap-reverse-item">5</div>
+							<div class="flex-wrap-wrap-reverse-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-		<li>
-			<span>box-1不壓縮，box-2壓縮比為1，box-3壓縮比為2。</span>
-			<div class="flex-shrink-container">
-				<div class="flex-shrink-box-1-shrink-0">box-1</div>
-				<div class="flex-shrink-box-2-shrink-1">box-2</div>
-				<div class="flex-shrink-box-3-shrink-2">box-3</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">justify-content: flex-start;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>靠主軸起點對齊。</p>
+						<div class="justify-content-flex-start">
+							<div class="justify-content-flex-start-item">1</div>
+							<div class="justify-content-flex-start-item">2</div>
+							<div class="justify-content-flex-start-item">3</div>
+							<div class="justify-content-flex-start-item">4</div>
+							<div class="justify-content-flex-start-item">5</div>
+							<div class="justify-content-flex-start-item">6</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</li>
-	</ul>
-	<P>
-	<h3>flex綜合應用</h3>
-	<ul>
-		<li>順序為flex-grow、flex-shrink、flex-basis。</li>
-		<li>預設值為0 1 auto，也就是當container有剩餘空間時不伸展，空間不足時會壓縮，尺寸會隨著內容縮放。</li>
-		<li>
-			<table border="1">
-				<tr>
-					<th>CSS語法</th>
-					<th>說明</th>
-				</tr>
-				<tr>
-					<td>flex: auto;</td>
-					<td>相當於flex: 1 1 auto;</td>
-				</tr>
-				<tr>
-					<td>flex: none;</td>
-					<td>相當於flex: 0 0 auto;</td>
-				</tr>
-				<tr>
-					<td>flex: 2;</td>
-					<td>1個整數值，表示flex-grow，相當於flex: 1 1 0%;</td>
-				</tr>
-				<tr>
-					<td>flex: 50px;</td>
-					<td>1個帶單位數值，表示flex-basis。</td>
-				</tr>
-				<tr>
-					<td>flex: 1 50px;</td>
-					<td>1個整數值及1個帶單位數值，表示flex-grow與flex-basis。</td>
-				</tr>
-				<tr>
-					<td>flex: 1 1;</td>
-					<td>2個整數值，表示flex-grow與flex-shrink。</td>
-				</tr>
-				<tr>
-					<td>flex: 1 1 50px;</td>
-					<td>3個值，表示flex-grow、flex-shrink與flex-basis。</td>
-				</tr>
-			</table>
-		</li>
-	</ul>
-</main>
-<div id="footer"></div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../script.js"></script>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">justify-content: flex-end;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>靠主軸終點對齊。</p>
+						<div class="justify-content-flex-end">
+							<div class="justify-content-flex-end-item">1</div>
+							<div class="justify-content-flex-end-item">2</div>
+							<div class="justify-content-flex-end-item">3</div>
+							<div class="justify-content-flex-end-item">4</div>
+							<div class="justify-content-flex-end-item">5</div>
+							<div class="justify-content-flex-end-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">justify-content: center;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>置中對齊。</p>
+						<div class="justify-content-center">
+							<div class="justify-content-center-item">1</div>
+							<div class="justify-content-center-item">2</div>
+							<div class="justify-content-center-item">3</div>
+							<div class="justify-content-center-item">4</div>
+							<div class="justify-content-center-item">5</div>
+							<div class="justify-content-center-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">justify-content: space-between;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>平均分配寬度，左右兩個item元素貼齊邊緣。</p>
+						<div class="justify-content-space-between">
+							<div class="justify-content-space-between-item">1</div>
+							<div class="justify-content-space-between-item">2</div>
+							<div class="justify-content-space-between-item">3</div>
+							<div class="justify-content-space-between-item">4</div>
+							<div class="justify-content-space-between-item">5</div>
+							<div class="justify-content-space-between-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">justify-content: space-around;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>平均分配寬度與間距。</p>
+						<div class="justify-content-space-around">
+							<div class="justify-content-space-around-item">1</div>
+							<div class="justify-content-space-around-item">2</div>
+							<div class="justify-content-space-around-item">3</div>
+							<div class="justify-content-space-around-item">4</div>
+							<div class="justify-content-space-around-item">5</div>
+							<div class="justify-content-space-around-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-items: flex-start;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>對齊交叉軸的開始處。</p>
+						<div class="align-items-flex-start">
+							<div class="align-items-flex-start-item-1">1</div>
+							<div class="align-items-flex-start-item-2">2</div>
+							<div class="align-items-flex-start-item-3">3</div>
+							<div class="align-items-flex-start-item-4">4</div>
+							<div class="align-items-flex-start-item-5">5</div>
+							<div class="align-items-flex-start-item-6">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-items: flex-end;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>對齊交叉軸的末端。</p>
+						<div class="align-items-flex-end">
+							<div class="align-items-flex-end-item-1">1</div>
+							<div class="align-items-flex-end-item-2">2</div>
+							<div class="align-items-flex-end-item-3">3</div>
+							<div class="align-items-flex-end-item-4">4</div>
+							<div class="align-items-flex-end-item-5">5</div>
+							<div class="align-items-flex-end-item-6">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-items: center;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>垂直置中對齊。</p>
+						<div class="align-items-center-1">
+							<div class="align-items-center-item-1">1</div>
+							<div class="align-items-center-item-2">2</div>
+							<div class="align-items-center-item-3">3</div>
+							<div class="align-items-center-item-4">4</div>
+							<div class="align-items-center-item-5">5</div>
+							<div class="align-items-center-item-6">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-items: baseline;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>對齊文字的baseline基線，彈性元素(item)的height高度要改成line-height行高才會顯示效果。</p>
+						<div class="align-items-baseline">
+							<div class="align-items-baseline-item-1">1</div>
+							<div class="align-items-baseline-item-2">2</div>
+							<div class="align-items-baseline-item-3">3</div>
+							<div class="align-items-baseline-item-4">4</div>
+							<div class="align-items-baseline-item-5">5</div>
+							<div class="align-items-baseline-item-6">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-items: stretch;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>將彈性元素(item)拉伸對齊交叉軸起點與終點，不能設定彈性元素(item)的高度。</p>
+						<div class="align-items-stretch">
+							<div class="align-items-stretch-item-1">1</div>
+							<div class="align-items-stretch-item-2">2</div>
+							<div class="align-items-stretch-item-3">3</div>
+							<div class="align-items-stretch-item-4">4</div>
+							<div class="align-items-stretch-item-5">5</div>
+							<div class="align-items-stretch-item-6">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: flex-start;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>靠交叉軸起點對齊。</p>
+						<div class="align-content-flex-start">
+							<div class="align-content-flex-start-item">1</div>
+							<div class="align-content-flex-start-item">2</div>
+							<div class="align-content-flex-start-item">3</div>
+							<div class="align-content-flex-start-item">4</div>
+							<div class="align-content-flex-start-item">5</div>
+							<div class="align-content-flex-start-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: flex-end;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>靠交叉軸終點對齊。</p>
+						<div class="align-content-flex-end">
+							<div class="align-content-flex-end-item">1</div>
+							<div class="align-content-flex-end-item">2</div>
+							<div class="align-content-flex-end-item">3</div>
+							<div class="align-content-flex-end-item">4</div>
+							<div class="align-content-flex-end-item">5</div>
+							<div class="align-content-flex-end-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: center;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>垂直置中對齊。</p>
+						<div class="align-content-center">
+							<div class="align-content-center-item">1</div>
+							<div class="align-content-center-item">2</div>
+							<div class="align-content-center-item">3</div>
+							<div class="align-content-center-item">4</div>
+							<div class="align-content-center-item">5</div>
+							<div class="align-content-center-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: space-between;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>平均分配高度，頂部與底部兩個item元素貼齊邊緣。</p>
+						<div class="align-content-space-between">
+							<div class="align-content-space-between-item">1</div>
+							<div class="align-content-space-between-item">2</div>
+							<div class="align-content-space-between-item">3</div>
+							<div class="align-content-space-between-item">4</div>
+							<div class="align-content-space-between-item">5</div>
+							<div class="align-content-space-between-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: space-around;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>平均分配高度與間距。</p>
+						<div class="align-content-space-around">
+							<div class="align-content-space-around-item">1</div>
+							<div class="align-content-space-around-item">2</div>
+							<div class="align-content-space-around-item">3</div>
+							<div class="align-content-space-around-item">4</div>
+							<div class="align-content-space-around-item">5</div>
+							<div class="align-content-space-around-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-content: stretch;</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>拉伸至整個空間。</p>
+						<div class="align-content-stretch">
+							<div class="align-content-stretch-item">1</div>
+							<div class="align-content-stretch-item">2</div>
+							<div class="align-content-stretch-item">3</div>
+							<div class="align-content-stretch-item">4</div>
+							<div class="align-content-stretch-item">5</div>
+							<div class="align-content-stretch-item">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex items屬性</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<table class="table table-striped table-hover table-bordered mt-3">
+							<thead class="table-dark">
+								<tr>
+									<th class="text-center">屬性</th>
+									<th class="text-center">說明</th>
+									<th class="text-center">用法</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>align-self</td>
+									<td class="text-align-left">調整單一子元素在交叉軸的位置，屬性值與align-items相同。</td>
+									<td class="text-align-left">
+										align-self: flex-start;<br />
+										align-self: flex-end;<br />
+										align-self: center;<br />
+										align-self: baseline;<br />
+										align-self: stretch;
+									</td>
+								</tr>
+								<tr>
+									<td>flex-basis</td>
+									<td class="text-align-left">
+										設定初始寬度與高度。<br />
+										若flex-direction: row，則flex-basis決定width。<br />
+										若flex-direction: column，則flex-basis決定height。<br />
+										設定值：<br />
+										<ul>
+											<li>auto：根據自身尺寸縮放(預設值)。</li>
+											<li>width/height：數值或百分比。</li>
+										</ul>
+									</td>
+									<td class="text-align-left">
+										flex-basis: 80px;<br />
+										flex-basis: auto;<br />
+										flex-basis: 10em;
+									</td>
+								</tr>
+								<tr>
+									<td>flex-grow</td>
+									<td class="text-align-left">分配彈性盒子剩餘空間的伸展權重，設定值為大於或等於0的數值，預設值為0。</td>
+									<td class="text-align-left">
+										flex-grow: 3;<br />
+										flex-grow: 0.6;
+									</td>
+								</tr>
+								<tr>
+									<td>flex-shrink</td>
+									<td class="text-align-left">分配彈性盒子不足空間的壓縮權重，設定值為大於或等於0的數值，預設值為1。</td>
+									<td class="text-align-left">
+										flex-shrink: 2;<br />
+										flex-shrink: 0.6;
+									</td>
+								</tr>
+								<tr>
+									<td>flex</td>
+									<td class="text-align-left">
+										同時設置flex-grow、flex-shrink、flex-basis。<br />
+										<ul>
+											<li>flex-grow：預設值為0。</li>
+											<li>flex-shrink：預設值為1。</li>
+											<li>flex-basis：預設值為auto。</li>
+										</ul>
+									</td>
+									<td class="text-align-left">
+										flex: 10em;<br />
+										flex: 1 30px;<br />
+										flex: 2 2 10%;
+									</td>
+								</tr>
+								<tr>
+									<td>order</td>
+									<td class="text-align-left">設定flex items排列順序，數值為整數，可以是負數，預設值為0。</td>
+									<td class="text-align-left">order: 2;</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">align-self</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<p>將第6個子元素加入align-self: flex-start，</p>
+						<div class="align-items-flex-end">
+							<div class="align-items-flex-end-item-1">1</div>
+							<div class="align-items-flex-end-item-2">2</div>
+							<div class="align-items-flex-end-item-3">3</div>
+							<div class="align-items-flex-end-item-4">4</div>
+							<div class="align-items-flex-end-item-5">5</div>
+							<div class="align-self-flex-start">6</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-basis</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>設定初始寬度和高度。</li>
+							<li>預設值為auto，也就是跟著自身內容縮放。</li>
+							<li>通常flex設定width和height是沒有效果的。</li>
+							<li>
+								<span>box-1設定width: 50px；box-2設定width: 50px和flex-basis: 100px，結果會以flex-basis: 100px設定為優先。。</span>
+								<div class="flex-basis-container">
+									<div class="flex-basis-box-1">box-1</div>
+									<div class="flex-basis-box-2">box-2</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-grow</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>分配彈性盒子剩餘空間的伸展權重。</li>
+							<li>如果彈性盒子裡所有子項目都設定相同的flex-grow，則會平均分配剩餘空間。</li>
+							<li>
+								<span>container設定寬度500px，3個box設定寬度各100px，container剩餘寬度為200px。</span>
+								<div class="flex-grow-container">
+									<div class="flex-grow-box-1">box-1</div>
+									<div class="flex-grow-box-2">box-2</div>
+									<div class="flex-grow-box-3">box-3</div>
+								</div>
+							</li>
+							<li>
+								<span>將box-1加入flex-grow: 1，表示剩餘空間200px皆分配給box-1，則box-1的寬度是300px。</span>
+								<div class="flex-grow-container">
+									<div class="flex-grow-box-1-grow">box-1</div>
+									<div class="flex-grow-box-2">box-2</div>
+									<div class="flex-grow-box-3">box-3</div>
+								</div>
+							</li>
+							<li>
+								<span>將box-1設定flex-grow: 1，box-2設定flex-grow: 2，表示剩餘空間200px分配給box-1和box-2，兩者寬度皆為200px，box-3的寬度為100px。</span>
+								<div class="flex-grow-container">
+									<div class="flex-grow-box-1-grow-1">box-1</div>
+									<div class="flex-grow-box-2-grow-2">box-2</div>
+									<div class="flex-grow-box-3">box-3</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex-shrink</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>分配彈性盒子不足空間的壓縮權重，預設值為1，也就是所有子元素的壓縮比相同。</li>
+							<li>
+								<span>container設定寬度500px，3個box設定寬度各200px，因此子元素會超出container寬度100px，但若設定flex-shrink:
+									1，則會讓3個box以同樣的壓縮比容納在container裡。</span>
+								<div class="flex-shrink-container">
+									<div class="flex-shrink-box-1">box-1</div>
+									<div class="flex-shrink-box-2">box-2</div>
+									<div class="flex-shrink-box-3">box-3</div>
+								</div>
+							</li>
+							<li>
+								<span>若將3個box的flex-shrink皆設為0，則子元素會超出container。</span>
+								<div class="flex-shrink-container">
+									<div class="flex-shrink-box-1-shrink-0">box-1</div>
+									<div class="flex-shrink-box-2-shrink-0">box-2</div>
+									<div class="flex-shrink-box-3-shrink-0">box-3</div>
+								</div>
+							</li>
+							<li>
+								<span>box-1不壓縮，box-2壓縮比為1，box-3壓縮比為2。</span>
+								<div class="flex-shrink-container">
+									<div class="flex-shrink-box-1-shrink-0">box-1</div>
+									<div class="flex-shrink-box-2-shrink-1">box-2</div>
+									<div class="flex-shrink-box-3-shrink-2">box-3</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 text-white">
+			<div class="container table-responsive">
+				<h2 class="text-warning text-center mb-3">flex綜合應用</h2>
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+					<div class="col">
+						<ul>
+							<li>順序為flex-grow、flex-shrink、flex-basis。</li>
+							<li>預設值為0 1 auto，也就是當container有剩餘空間時不伸展，空間不足時會壓縮，尺寸會隨著內容縮放。</li>
+							<li>
+								<table class="table table-striped table-hover table-bordered mt-3">
+									<thead class="table-dark">
+										<tr>
+											<th class="text-center">CSS語法</th>
+											<th class="text-center">說明</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>flex: auto;</td>
+											<td>相當於flex: 1 1 auto;</td>
+										</tr>
+										<tr>
+											<td>flex: none;</td>
+											<td>相當於flex: 0 0 auto;</td>
+										</tr>
+										<tr>
+											<td>flex: 2;</td>
+											<td>1個整數值，表示flex-grow，相當於flex: 1 1 0%;</td>
+										</tr>
+										<tr>
+											<td>flex: 50px;</td>
+											<td>1個帶單位數值，表示flex-basis。</td>
+										</tr>
+										<tr>
+											<td>flex: 1 50px;</td>
+											<td>1個整數值及1個帶單位數值，表示flex-grow與flex-basis。</td>
+										</tr>
+										<tr>
+											<td>flex: 1 1;</td>
+											<td>2個整數值，表示flex-grow與flex-shrink。</td>
+										</tr>
+										<tr>
+											<td>flex: 1 1 50px;</td>
+											<td>3個值，表示flex-grow、flex-shrink與flex-basis。</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div id="footer"></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/webdesignhub/script.js"></script>
 </body>
 </html>

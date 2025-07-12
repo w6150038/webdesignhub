@@ -6,9 +6,11 @@
 	<meta name="keyword" content="html5, 網頁設計, css, javascript">
 	<meta name="description" content="css-flexitems">
 	<meta name="author" content="王群銘">
+    <base href="/webdesignhub/">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../style.css">
-	<title>cssflexitems</title>
+	<link href="style.css" rel="stylesheet" >
+    <link href="bootstrapcolor.css" rel="stylesheet">
+	<title>Flexitems</title>
 	<style type="text/css">
         .card-container {
             width: auto;
@@ -32,7 +34,7 @@
 
         .card:hover {
             box-shadow: 0 30px 18px -8px rgba(0, 0, 0, 0.1);
-            transform: scale(1.1, 1.1);
+            transform: scale(1.05, 1.05);
             cursor: pointer;
         }
 
@@ -97,78 +99,90 @@
 </head>
 <body>
 	<div id="header"></div>
+
 	<main>
-    <div class="card-container">
-        <div class="card">
-            <img class="card-img" src="../images/coffee/latte.jpg" alt="拿鐵咖啡">
-            <div class="card-body">
-                <h5 class="card-title">拿鐵咖啡</h5>
-                <div class="item">
-                    <p class="card-text">富含堅果及果酸風味的濃縮咖啡為基底，沖入溫熱微甜鮮奶，口感絲滑順口。</p>
-                    <button class="flex-150">查看</button>
+        <section class="py-4 text-white">
+            <div class="container table-responsive">
+                <h2 class="text-warning text-center mb-3">CSS Flexitems</h2>
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                    <div class="col">
+                        <div class="card-container">
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/latte.jpg" alt="拿鐵咖啡">
+                                <div class="card-body">
+                                    <h5 class="card-title">拿鐵咖啡</h5>
+                                    <div class="item">
+                                        <p class="card-text">富含堅果及果酸風味的濃縮咖啡為基底，沖入溫熱微甜鮮奶，口感絲滑順口。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 120</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/americano.jpg" alt="美式咖啡">
+                                <div class="card-body">
+                                    <h5 class="card-title">美式咖啡</h5>
+                                    <div class="item">
+                                        <p class="card-text">結合經典濃縮咖啡及熱水，帶來濃郁豐富的咖啡滋味。。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 90</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/cappuccino.jpg" alt="卡布奇諾">
+                                <div class="card-body">
+                                    <h5 class="card-title">卡布奇諾</h5>
+                                    <div class="item">
+                                        <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 150</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/cappuccino.jpg" alt="卡布奇諾">
+                                <div class="card-body">
+                                    <h5 class="card-title">卡布奇諾</h5>
+                                    <div class="item">
+                                        <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 150</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/cappuccino.jpg" alt="卡布奇諾">
+                                <div class="card-body">
+                                    <h5 class="card-title">卡布奇諾</h5>
+                                    <div class="item">
+                                        <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 150</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img" src="images/coffee/cappuccino.jpg" alt="卡布奇諾">
+                                <div class="card-body">
+                                    <h5 class="card-title">卡布奇諾</h5>
+                                    <div class="item">
+                                        <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
+                                        <button class="flex-150">查看</button>
+                                    </div>
+                                    <span class="card-cost">$ 150</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span class="card-cost">$ 120</span>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img" src="../images/coffee/americano.jpg" alt="美式咖啡">
-            <div class="card-body">
-                <h5 class="card-title">美式咖啡</h5>
-                <div class="item">
-                    <p class="card-text">結合經典濃縮咖啡及熱水，帶來濃郁豐富的咖啡滋味。。</p>
-                    <button class="flex-150">查看</button>
-                </div>
-                <span class="card-cost">$ 90</span>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
-            <div class="card-body">
-                <h5 class="card-title">卡布奇諾</h5>
-                <div class="item">
-                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
-                    <button class="flex-150">查看</button>
-                </div>
-                <span class="card-cost">$ 150</span>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
-            <div class="card-body">
-                <h5 class="card-title">卡布奇諾</h5>
-                <div class="item">
-                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
-                    <button class="flex-150">查看</button>
-                </div>
-                <span class="card-cost">$ 150</span>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
-            <div class="card-body">
-                <h5 class="card-title">卡布奇諾</h5>
-                <div class="item">
-                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
-                    <button class="flex-150">查看</button>
-                </div>
-                <span class="card-cost">$ 150</span>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img" src="../images/coffee/cappuccino.jpg" alt="卡布奇諾">
-            <div class="card-body">
-                <h5 class="card-title">卡布奇諾</h5>
-                <div class="item">
-                    <p class="card-text">融合濃縮咖啡及現蒸牛奶，加上豐厚細緻的奶泡，呈現醇厚咖啡風味。。</p>
-                    <button class="flex-150">查看</button>
-                </div>
-                <span class="card-cost">$ 150</span>
-            </div>
-        </div>
-    </div>
-</main>
-<div id="footer"></div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../script.js"></script>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/webdesignhub/script.js"></script>
 </body>
 </html>
