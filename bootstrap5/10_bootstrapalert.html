@@ -1,130 +1,130 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Alert 通知訊息</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="../style.css" rel="stylesheet">
-  <link href="../bootstrapcolor.css" rel="stylesheet">
-</head>
-
-<body>
-<div id="header"></div>
-
-<main>
-    <section class="py-4 text-white">
-        <div class="container table-responsive py-4">
-            <div class="text-center text-warning">
-                <h1>Alert 通知訊息</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-lg-12">
-                    <p>Alert 是一種提示區塊，常用來顯示：</p>
-                    <ul>
-                        <li>成功訊息 (例如表單送出成功)。</li>
-                        <li>錯誤訊息 (例如欄位未填寫)。</li>
-                        <li>警告或通知訊息。</li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <table class="table table-striped table-hover table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th class="text-center">class 名稱</th>
-                                <th class="text-center">說明</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>fade show</td>
-                                <td>淡入效果。</td>
-                            </tr>
-                            <tr>
-                                <td>btn-close</td>
-                                <td>bootstrap 的關閉按鈕。</td>
-                            </tr>
-                            <tr>
-                                <td>data-bs-dismiss="alert"</td>
-                                <td>關閉 Alert 的屬性。</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-12 col-md-6 col-lg-12">
-<pre><code>
-    &lt;div class="alert alert-primary" role="alert"&gt;
-        一般提示訊息。
-    &lt;/div&gt;
-    &lt;div class="alert alert-success" role="alert"&gt;
-        操作成功。
-    &lt;/div&gt;
-    &lt;div class="alert alert-danger" role="alert"&gt;
-        發生錯誤！
-    &lt;/div&gt;
-    &lt;div class="alert alert-warning" role="alert"&gt;
-        警告！
-    &lt;/div&gt;
-    &lt;div class="alert alert-info" role="alert"&gt;
-        額外訊息。
-    &lt;/div&gt;
-    &lt;div class="alert alert-success alert-dismissible fade show" role="alert"&gt;
-        資料送出成功！
-        &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="alert alert-danger alert-dismissible fade show" role="alert"&gt;
-        系統錯誤，請稍候再試。
-        &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
-    &lt;/div&gt;
-</code></pre>
-                </div>
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-primary" role="alert">
-                        一般提示訊息。
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="/webdesignhub/">
+        <title>Bootstrap Alert 通知訊息</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <link href="bootstrapcolor.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header"></div>
+        
+        <main>
+            <section class="py-4 text-white">
+                <div class="container table-responsive py-4">
+                    <div class="text-center text-warning">
+                        <h1>Alert 通知訊息</h1>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-success" role="alert">
-                        操作成功。
+                    <div class="row g-4">
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <p>Alert 是一種提示區塊，常用來顯示：</p>
+                            <ul>
+                                <li>成功訊息 (例如表單送出成功)。</li>
+                                <li>錯誤訊息 (例如欄位未填寫)。</li>
+                                <li>警告或通知訊息。</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="text-center">class 名稱</th>
+                                        <th class="text-center">說明</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>fade show</td>
+                                        <td>淡入效果。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>btn-close</td>
+                                        <td>bootstrap 的關閉按鈕。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>data-bs-dismiss="alert"</td>
+                                        <td>關閉 Alert 的屬性。</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <pre><code>
+                                &lt;div class="alert alert-primary" role="alert"&gt;
+                                    一般提示訊息。
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-success" role="alert"&gt;
+                                    操作成功。
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-danger" role="alert"&gt;
+                                    發生錯誤！
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-warning" role="alert"&gt;
+                                    警告！
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-info" role="alert"&gt;
+                                    額外訊息。
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-success alert-dismissible fade show" role="alert"&gt;
+                                    資料送出成功！
+                                    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+                                &lt;/div&gt;
+                                &lt;div class="alert alert-danger alert-dismissible fade show" role="alert"&gt;
+                                    系統錯誤，請稍候再試。
+                                    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+                                &lt;/div&gt;
+                            </code></pre>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-primary" role="alert">
+                                    一般提示訊息。
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-success" role="alert">
+                                    操作成功。
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-danger" role="alert">
+                                    發生錯誤！
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-warning" role="alert">
+                                    警告！
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-info" role="alert">
+                                    額外訊息。
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    資料送出成功！
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    系統錯誤，請稍候再試。
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-danger" role="alert">
-                        發生錯誤！
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-warning" role="alert">
-                        警告！
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-info" role="alert">
-                        額外訊息。
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        資料送出成功！
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        系統錯誤，請稍候再試。
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<div id="footer"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../script.js"></script>
-</body>
+            </section>
+        </main>
+        
+        <div id="footer"></div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/webdesignhub/script.js"></script>
+    </body>
 </html>
