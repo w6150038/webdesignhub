@@ -136,3 +136,33 @@
   background-color: #20c997 !important;
   color: white !important;
 }
+
+/* orange 邊框 */
+.border-orange {
+  border: 1px solid #fd7e14 !important;
+}
+
+/* purple 邊框 */
+.border-purple {
+  border: 1px solid #6f42c1 !important;
+}
+
+/* pink 邊框 */
+.border-pink {
+  border: 1px solid #d63384 !important;
+}
+
+/* indigo 邊框 */
+.border-indigo {
+  border: 1px solid #6610f2 !important;
+}
+
+/* cyan 邊框 */
+.border-cyan {
+  border: 1px solid #0dcaf0 !important;
+}
+
+/* teal 邊框 */
+.border-teal {
+  border: 1px solid #20c997 !important;
+}
